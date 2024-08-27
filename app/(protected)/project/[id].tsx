@@ -1,8 +1,3 @@
 export default function Project() {
-
-  return (
-    <div>
-      Project by id page
-    </div>
-  );
+  return <div>Project by id page</div>;
 }

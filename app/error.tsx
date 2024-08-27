@@ -1,5 +1,5 @@
-"use client";
+'use client';
 
-const Error = () => (<div>Error components</div>);
+const Error = () => <div>Error components</div>;
 
 export default Error;

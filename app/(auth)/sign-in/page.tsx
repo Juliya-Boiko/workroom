@@ -1,5 +1,9 @@
+import { SignInSection } from '@/components/signIn/SignIn';
+
 export default function SignIn() {
   return (
-    <main>sign-in</main>
+    <>
+      <SignInSection />
+    </>
   );
 }

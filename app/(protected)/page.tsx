@@ -1,9 +1,9 @@
-import { Logo } from "@/components/logo/Logo";
-import { Avatar } from "@/components/ui/avatar/Avatar";
-import { BadgeLevel } from "@/components/ui/badges/level/BadgeLevel";
-import { BadgePriopity } from "@/components/ui/badges/priority/BadgePriority";
-import { BadgeTask } from "@/components/ui/badges/task/BadgeTask";
-import { ELevelEmployee, EPriority, ETaskStatus } from "@/enums";
+import { Logo } from '@/components/logo/Logo';
+import { Avatar } from '@/components/ui/avatar/Avatar';
+import { BadgeLevel } from '@/components/ui/badges/level/BadgeLevel';
+import { BadgePriopity } from '@/components/ui/badges/priority/BadgePriority';
+import { BadgeTask } from '@/components/ui/badges/task/BadgeTask';
+import { ELevelEmployee, EPriority, ETaskStatus } from '@/enums';
 
 export default function Home() {
   return (
@@ -24,8 +24,6 @@ export default function Home() {
       <BadgeTask label={ETaskStatus.DONE} />
       <BadgeTask label={ETaskStatus.INPROGRESS} />
       <BadgeTask label={ETaskStatus.TODO} />
-
-      
     </div>
   );
 }

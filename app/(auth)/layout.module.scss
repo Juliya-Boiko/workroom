@@ -1,0 +1,5 @@
+.authLayout {
+  @include flexContainer(column, center, center);
+  min-height: 100vh;
+  padding: 24px 40px;
+}
