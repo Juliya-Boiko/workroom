@@ -1,0 +1,11 @@
+.label {
+  @include squareSize(20px);
+  @include flexContainer(row, center, center);
+  border: 2px solid $dark;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.hidden {
+  display: none;
+}

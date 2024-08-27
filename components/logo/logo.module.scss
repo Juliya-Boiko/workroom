@@ -1,0 +1,29 @@
+.logo {
+  @include flexContainer(row, center, center);
+  max-width: fit-content;
+  gap: 24px;
+  font-weight: bold;
+  font-size: 18px;
+
+  .iconWrapper {
+    @include squareSize(50px);
+    @include flexContainer(row, center, center);
+    border-radius: 12px;
+  }
+}
+
+.logoColored {
+  color: $blue-1;
+  .iconWrapper {
+    color: $white;
+    background-color: $blue-1;
+  }
+}
+
+.logoDef {
+  color: $white;
+  .iconWrapper {
+    color: $blue-1;
+    background-color: $white;
+  }
+}

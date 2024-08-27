@@ -1,0 +1,19 @@
+.badge {
+  @include flexContainer(row, center, center);
+  width: fit-content;
+  font-weight: bold;
+  font-size: 14px;
+  gap: 4px;
+}
+
+.badgeHigh {
+  color: $red-1;
+}
+
+.badgeMedium {
+  color: $yellow-1;
+}
+
+.badgeLow {
+  color: $green-2;
+}

@@ -1,5 +1,11 @@
+import { Avatar } from "@/components/ui/avatar/Avatar";
+
 export default function Home() {
   return (
-    <main>Home page</main>
+    <div>
+      <Avatar name="Juioi kjjkh" size="s" />
+      <Avatar name="Juioi kjjkh" size="m" />
+      <Avatar name="Juioi kjjkh" size="l" />
+    </div>
   );
 }

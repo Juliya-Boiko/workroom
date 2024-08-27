@@ -1,0 +1,23 @@
+.avatar {
+  @include flexContainer(row, center, center);
+  position: relative;
+  border-radius: 50%;
+  overflow: hidden;
+  color: $white;
+  background-color: $blue-1;
+}
+
+.avatarSmall {
+  @include squareSize(24px);
+  font-size: 12px;
+}
+
+.avatarDef {
+  @include squareSize(30px);
+  font-size: 14px;
+}
+
+.avatarLarge {
+  @include squareSize(50px);
+  font-size: 16px;
+}

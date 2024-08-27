@@ -1,0 +1,24 @@
+.badge {
+  @include flexContainer(row, center, center);
+  width: fit-content;
+  height: 30px;
+  font-weight: bold;
+  font-size: 12px;
+  border-radius: 8px;
+  padding: 0 14px;
+}
+
+.badgeDefault {
+  color: $grey-3;
+  background-color: rgba($grey-3-rgb, 0.14);
+}
+
+.badgeProgress {
+  color: $blue-1;
+  background-color: rgba($blue-1-rgb, 0.14);
+}
+
+.badgeDone {
+  color: $green-1;
+  background-color: rgba($green-1-rgb, 0.14);
+}

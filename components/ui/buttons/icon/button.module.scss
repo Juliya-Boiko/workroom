@@ -1,0 +1,31 @@
+.button {
+  @include squareSize(48px);
+  @include flexContainer(row, center, center);
+  border-radius: 14px;
+  transition: all 250ms ease-in-out;
+
+  &:hover {
+    box-shadow: 0px 6px 58px 0px rgba($grey-2-rgb,0.4);
+    -webkit-box-shadow: 0px 6px 58px 0px rgba($grey-2-rgb,0.4);
+    -moz-box-shadow: 0px 6px 58px 0px rgba($grey-2-rgb,0.4);
+  }
+
+  &:active {
+    outline: 1px solid $blue-1;
+    color: $blue-1;
+  }
+
+  &:disabled {
+    color: $grey-1;
+    box-shadow: none;
+    outline: none;
+  }
+}
+
+.btnTonal {
+  background-color: $grey-5;
+}
+
+.btnDef {
+  background-color: $white;
+}
