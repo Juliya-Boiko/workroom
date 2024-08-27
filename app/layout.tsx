@@ -1,8 +1,6 @@
 import type { Metadata } from "next";
-import { Nunito_Sans } from "next/font/google";
+import { nunitoSans } from "@/utils/fonts";
 import '../styles/global.scss';
-
-const nunitoSans = Nunito_Sans({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
   title: "Workroom",
