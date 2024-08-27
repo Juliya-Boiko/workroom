@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 'use client';
 import styles from './signIn.module.scss';
 import toast from 'react-hot-toast';

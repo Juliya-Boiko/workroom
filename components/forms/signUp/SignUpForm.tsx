@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import styles from './signUp.module.scss';
 import toast from 'react-hot-toast';
 import { useForm } from 'react-hook-form';
