@@ -1,27 +1,25 @@
-'use client';
 import styles from './checkfield.module.scss';
 import { SvgHandler } from '@/components/SvgHandler';
 import { EIconsSet } from '@/enums';
-import { ChangeEvent, useState } from 'react';
 
-export const CheckField = () => {
-  const [checked, setChecked] = useState(false);
+interface Props {
+  name: string;
+  value: boolean;
+  onChange: () => void;
+}
 
-  const handler = (e: ChangeEvent<HTMLInputElement>) => {
-    setChecked(e.target.checked);
-  };
-
+export const CheckField = ({ name, value, onChange }: Props) => {
   return (
-    <label htmlFor="ddd" className={styles.label}>
+    <label htmlFor={name} className={styles.label}>
       <input
         type="checkbox"
-        name="ddd"
-        id="ddd"
+        name={name}
+        id={name}
         className={styles.hidden}
-        checked={checked}
-        onChange={handler}
+        checked={value}
+        onChange={onChange}
       />
-      {checked && <SvgHandler icon={EIconsSet.Checkbox} />}
+      {value && <SvgHandler icon={EIconsSet.Checkbox} />}
     </label>
   );
 };

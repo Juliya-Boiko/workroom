@@ -16,6 +16,7 @@ type InputFieldProps<T extends FieldValues> = {
   };
   icon?: EIconsSet;
   iconPosition?: 'start' | 'end';
+  onIconClick?: () => void;
 };
 
 export const InputField = <T extends FieldValues>({
@@ -28,6 +29,7 @@ export const InputField = <T extends FieldValues>({
   icon,
   name,
   register,
+  onIconClick,
 }: InputFieldProps<T>) => {
   const getPaddings = () => {
     if (iconPosition === 'start') {
@@ -54,6 +56,7 @@ export const InputField = <T extends FieldValues>({
             className={`
               ${styles.icon} ${iconPosition === 'start' ? styles.iconLeft : styles.iconRight}
             `}
+            onClick={onIconClick}
           >
             <SvgHandler icon={icon} />
           </div>
