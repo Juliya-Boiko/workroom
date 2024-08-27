@@ -10,9 +10,9 @@ export enum EIconsSet {
   // Plus,
   // Settings,
   // Logout,
-  // Dashboard,
-  // Calendar,
-  // Persons,
-  // Projects,
+  Dashboard,
+  Calendar,
+  Persons,
+  Projects,
   // Bell,
 }
