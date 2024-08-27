@@ -1,12 +1,17 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import styles from './signUp.module.scss';
+import toast from 'react-hot-toast';
 import { useForm } from 'react-hook-form';
+import { useRouter } from 'next/navigation';
+import { useState, useEffect } from 'react';
 import { yupResolver } from '@hookform/resolvers/yup';
 import { signUpSchema, SignUpFormData } from '@/utils/schemas';
 import { EmailStage, CompanyStage, UserStage, MembersStage } from './stages';
 import { BtnPrimary } from '@/components/ui/buttons/primary/BtnPrimary';
 import { BtnSecondary } from '@/components/ui/buttons/secondary/BtnSecondary';
+import { SvgHandler } from '@/components/SvgHandler';
+import { axiosInstance } from '@/utils/axios';
 import {
-  // EIconsSet,
   usingGoalsDataTypes,
   userPositionsDataTypes,
   ESignStages,
@@ -15,7 +20,7 @@ import {
   companySizeDataTypes,
   EIconsSet,
 } from '@/enums';
-import { SvgHandler } from '@/components/SvgHandler';
+import { ROUTES } from '@/constants';
 
 interface Props {
   activeStage: ESignStages;
@@ -37,6 +42,9 @@ const defaultValues = {
 };
 
 export const SignUpForm = ({ activeStage, onNext, onPrev }: Props) => {
+  const [isDisabled, setIsDisabled] = useState(true);
+  const router = useRouter();
+
   const {
     register,
     control,
@@ -53,16 +61,39 @@ export const SignUpForm = ({ activeStage, onNext, onPrev }: Props) => {
   const step = signStagesDataTypes.findIndex((el) => el === activeStage);
   const members = watch('members');
 
+  const watchFields = () => {
+    if (activeStage === ESignStages.EnterYourEmail) {
+      return watch(['email', 'password', 'confirmPassword']);
+    }
+    if (activeStage === ESignStages.TellAboutYourself) {
+      return watch(['name']);
+    }
+    if (activeStage === ESignStages.TellAboutYourCompany) {
+      return watch(['companyName']);
+    }
+  };
+  const fields = watchFields();
+
+  useEffect(() => {
+    const isAllFilled = fields?.every((el) => el);
+    const isErrors = Object.keys(errors).length > 0;
+    if (isAllFilled && !isErrors) {
+      setIsDisabled(false);
+    } else {
+      setIsDisabled(true);
+    }
+  }, [errors, fields]);
+
   const onSubmit = async (data: SignUpFormData) => {
-    console.log(data);
-    // try {
-    //   const resp = await axiosInstance.post('/users/signup', data);
-    //   if (resp.status === 201) {
-    //     router.push("/");
-    //   }
-    // } catch (error: any) {
-    //   console.log("Signup failed", error.response.data.error);
-    // }
+    try {
+      const response = await axiosInstance.post('/auth/register', data);
+      console.log('axios response', response);
+      if (response.status === 201) {
+        router.push(ROUTES.dashboard);
+      }
+    } catch (error: any) {
+      toast.error(error.response.data.error);
+    }
   };
 
   const handleAddMember = () => {
@@ -108,14 +139,14 @@ export const SignUpForm = ({ activeStage, onNext, onPrev }: Props) => {
           )}
           <div className={styles.btnWrapper}>
             {activeStage !== ESignStages.InviteTeamMembers && (
-              <BtnPrimary onClick={onNext}>
+              <BtnPrimary disabled={isDisabled} onClick={onNext}>
                 <span>Next Step</span>
                 <SvgHandler icon={EIconsSet.ArrowRight} />
               </BtnPrimary>
             )}
             {activeStage === ESignStages.InviteTeamMembers && (
               <BtnPrimary type="submit" disabled={isSubmitting}>
-                <span>Sign In</span>
+                <span>Sign Up</span>
               </BtnPrimary>
             )}
           </div>

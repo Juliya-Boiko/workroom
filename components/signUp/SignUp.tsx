@@ -10,7 +10,6 @@ export const SignUpSection = () => {
 
   const handleNext = () => {
     const currentStage = signStagesDataTypes.findIndex((el) => el === activeStage);
-    console.log(signStagesDataTypes[currentStage + 1]);
     setActiveStages(signStagesDataTypes[currentStage + 1]);
   };
 

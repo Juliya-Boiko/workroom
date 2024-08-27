@@ -1,21 +1,25 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 'use client';
 import styles from './signIn.module.scss';
+import toast from 'react-hot-toast';
+import Link from 'next/link';
 import { useState } from 'react';
 import { useForm } from 'react-hook-form';
-// import { useRouter } from 'next/navigation';
+import { useRouter } from 'next/navigation';
 import { yupResolver } from '@hookform/resolvers/yup';
+import { axiosInstance } from '@/utils/axios';
 import { InputField } from '@/components/ui/input/InputField';
 import { signInSchema, SignInFormData } from '@/utils/schemas';
 import { BtnPrimary } from '@/components/ui/buttons/primary/BtnPrimary';
 import { SvgHandler } from '@/components/SvgHandler';
 import { EIconsSet } from '@/enums';
-import Link from 'next/link';
 import { ROUTES } from '@/constants';
 import { CheckField } from '@/components/ui/checkbox/CheckField';
 
 export const SignInForm = () => {
   const [typePassword, setTypePassword] = useState('password');
   const [remember, setRemember] = useState(false);
+  const router = useRouter();
   const {
     register,
     handleSubmit,
@@ -38,16 +42,14 @@ export const SignInForm = () => {
   };
 
   const onSubmit = async (data: SignInFormData) => {
-    console.log({ data, remember });
-    // try {
-    //   const resp = await axiosInstance.post('/users/signin', data);
-    //   if (resp.status === 200) {
-    //     router.push("/");
-    //   }
-    // } catch (error: any) {
-    //   toast.error(error.response.data.error);
-    //   console.log("Signin failed", error.response.data.error);
-    // }
+    try {
+      const response = await axiosInstance.post('/auth/login', data);
+      if (response.status === 200) {
+        router.push(ROUTES.dashboard);
+      }
+    } catch (error: any) {
+      toast.error(error.response.data.message);
+    }
   };
 
   return (
