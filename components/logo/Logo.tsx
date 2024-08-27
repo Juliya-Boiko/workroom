@@ -1,7 +1,7 @@
 /* eslint-disable max-len */
 import Link from 'next/link';
 import styles from './logo.module.scss';
-import { appRoutes } from '@/constants/appRoutes';
+import { ROUTES } from '@/constants';
 
 interface Props {
   cropped?: boolean;
@@ -11,7 +11,7 @@ interface Props {
 export const Logo = ({ cropped, colored }: Props) => {
   return (
     <Link
-      href={appRoutes.dashboard}
+      href={ROUTES.dashboard}
       className={`${styles.logo} ${colored ? styles.logoColored : styles.logoDef}`}
     >
       <div className={styles.iconWrapper}>
