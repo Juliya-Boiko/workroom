@@ -1,0 +1,35 @@
+@mixin flexContainer($direction, $align, $justify) {
+  display: flex;
+  flex-direction: $direction;
+  align-items: $align;
+  justify-content: $justify;
+}
+
+@mixin squareSize($size) {
+  width: $size;
+  height: $size;
+}
+
+@mixin onDesktop {
+  @media (min-width: $desktop) {
+    @content;
+  }
+}
+
+@mixin onLaptop {
+  @media (min-width: $laptop) {
+    @content;
+  }
+}
+
+@mixin onTablet {
+  @media (min-width: $tablet) {
+    @content;
+  }
+}
+
+@mixin onMobile {
+  @media (min-width: $mobile) {
+    @content;
+  }
+}
