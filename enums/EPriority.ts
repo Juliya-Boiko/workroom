@@ -3,7 +3,7 @@ import { EIconsSet } from '@/enums/EIconsSet';
 export enum EPriority {
   LOW = 'Low',
   MEDIUM = 'Medium',
-  HIGH = 'High'
+  HIGH = 'High',
 }
 
 export const EPrioritySet = {

@@ -1,0 +1,25 @@
+.list {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: repeat(2, 1fr);
+  gap: 16px;
+  font-size: 14px;
+  color: $grey-3;
+}
+
+.item {
+  @include flexContainer(row, center, center);
+  height: 48px;
+  flex-grow: 1;
+  border-radius: 10px;
+  border: 1px solid $grey-7;
+  cursor: pointer;
+  text-align: center;
+  transition: all 250ms ease-in-out;
+}
+
+.active {
+  color: $white;
+  background-color: $blue-1;
+  border-color: $blue-1;
+}

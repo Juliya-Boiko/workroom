@@ -1,10 +1,10 @@
 import Link from 'next/link';
 import Image from 'next/image';
 import styles from './signIn.module.scss';
-import { ROUTES } from '@/constants';
-import { SignInForm } from '../forms/SignInForm';
-import { Logo } from '../logo/Logo';
 import imgSrc from '../../public/sign-in.png';
+import { ROUTES } from '@/constants';
+import { Logo } from '../logo/Logo';
+import { SignInForm } from '../forms/signIn/SignInForm';
 
 export const SignInSection = () => (
   <section className={styles.section}>

@@ -7,3 +7,4 @@ export * from './EPriority';
 export * from './ETaskStatus';
 export * from './EUserPosition';
 export * from './EUsingGoal';
+export * from './ESignStages';

@@ -75,30 +75,30 @@ export const SvgHandler = ({ icon }: { icon: EIconsSet }) => {
       </svg>
     );
   }
-  // if (icon === EIconsSet.ArrowLeft) {
-  //   return (
-  //     <svg xmlns="http://www.w3.org/2000/svg" width={24} height={24} fill="none">
-  //       <path
-  //         fill="#3F8CFF"
-  //         fillRule="evenodd"
-  //         d="m4.21 11.387.083-.094 5-5a1 1 0 0 1 1.497 1.32l-.083.094L7.415 11H19a1 1 0 0 1 .117 1.993L19 13H7.415l3.292 3.293a1 1 0 0 1 .083 1.32l-.083.094a1 1 0 0 1-1.32.083l-.094-.083-5-5a1 1 0 0 1-.083-1.32Z"
-  //         clipRule="evenodd"
-  //       />
-  //     </svg>
-  //   );
-  // }
-  // if (icon === EIconsSet.Plus) {
-  //   return (
-  //     <svg xmlns="http://www.w3.org/2000/svg" width={24} height={24} fill="none">
-  //       <path
-  //         fill="#3F8CFF"
-  //         fillRule="evenodd"
-  //         d="M12.993 5.883A1 1 0 0 0 11 6v5H6l-.117.007A1 1 0 0 0 6 13h5v5l.007.117A1 1 0 0 0 13 18v-5h5l.117-.007A1 1 0 0 0 18 11h-5V6l-.007-.117Z"
-  //         clipRule="evenodd"
-  //       />
-  //     </svg>
-  //   );
-  // }
+  if (icon === EIconsSet.ArrowLeft) {
+    return (
+      <svg xmlns="http://www.w3.org/2000/svg" width={24} height={24} fill="none">
+        <path
+          fill="currentColor"
+          fillRule="evenodd"
+          d="m4.21 11.387.083-.094 5-5a1 1 0 0 1 1.497 1.32l-.083.094L7.415 11H19a1 1 0 0 1 .117 1.993L19 13H7.415l3.292 3.293a1 1 0 0 1 .083 1.32l-.083.094a1 1 0 0 1-1.32.083l-.094-.083-5-5a1 1 0 0 1-.083-1.32Z"
+          clipRule="evenodd"
+        />
+      </svg>
+    );
+  }
+  if (icon === EIconsSet.Plus) {
+    return (
+      <svg xmlns="http://www.w3.org/2000/svg" width={24} height={24} fill="none">
+        <path
+          fill="currentColor"
+          fillRule="evenodd"
+          d="M12.993 5.883A1 1 0 0 0 11 6v5H6l-.117.007A1 1 0 0 0 6 13h5v5l.007.117A1 1 0 0 0 13 18v-5h5l.117-.007A1 1 0 0 0 18 11h-5V6l-.007-.117Z"
+          clipRule="evenodd"
+        />
+      </svg>
+    );
+  }
   // if (icon === EIconsSet.Settings) {
   //   return (
   //     <svg xmlns="http://www.w3.org/2000/svg" width={24} height={24} fill="none">
