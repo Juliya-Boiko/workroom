@@ -8,6 +8,7 @@ import { ELevelEmployee, EPriority, ETaskStatus } from '@/enums';
 export default function Home() {
   return (
     <div>
+      <button type="button">Logout</button>
       <Avatar name="Juioi kjjkh" size="s" />
       <Avatar name="Juioi kjjkh" size="m" />
       <Avatar name="Juioi kjjkh" size="l" />
