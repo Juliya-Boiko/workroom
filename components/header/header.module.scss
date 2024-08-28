@@ -1,0 +1,10 @@
+.header {
+  @include flexContainer(row, center, space-between);
+  padding: 12px;
+
+  .user {
+    display: flex;
+    align-items: center;
+    gap: 24px;
+  }
+}

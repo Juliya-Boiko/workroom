@@ -40,8 +40,12 @@ export async function POST(request: NextRequest) {
       name,
       email,
       password: hashPass,
+      avatar: null,
       companyId,
       position: userPosition,
+      birthday: null,
+      level: null,
+      location: null,
     });
 
     const savedUser = await newUser.save();

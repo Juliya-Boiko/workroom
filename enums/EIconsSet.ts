@@ -1,6 +1,5 @@
 export enum EIconsSet {
   Checkbox,
-  // ArrowDown,
   ArrowDown,
   ArrowUp,
   ArrowRight,
@@ -9,11 +8,13 @@ export enum EIconsSet {
   ChevronDown,
   Eye,
   Plus,
-  // Settings,
-  // Logout,
+  Settings,
+  Logout,
   Dashboard,
   Calendar,
   Persons,
   Projects,
-  // Bell,
+  Bell,
+  Burger,
+  Cross,
 }

@@ -1,0 +1,40 @@
+.menu {
+
+  .container {
+    padding: 24px 12px;
+  }
+
+  .head {
+    @include flexContainer(row, center, space-between);
+    margin-bottom: 60px; 
+  }
+  
+  .btnClose {
+    @include flexContainer(row, center, center);
+    transition: all 250ms ease-in-out;
+    
+    &:hover {
+      color: $blue-1;
+    }
+  }
+
+  .nav {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .link {
+    @include flexContainer(row, center, flex-start);
+    color: $grey-3;
+    font-weight: 500;
+    transition: all 250ms ease-in-out;
+    padding: 8px 12px;
+    gap: 18px;
+    border-radius: 10px;
+    &:hover{
+      color: $blue-1;
+      background-color: rgba($blue-1-rgb, 0.1);
+    }
+  }
+}

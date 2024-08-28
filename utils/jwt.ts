@@ -1,6 +1,5 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import jwt from 'jsonwebtoken';
-import { NextRequest } from 'next/server';
 
 interface JwtPayload {
   id: string;
@@ -12,9 +11,8 @@ export const genToken = (id: string, companyId: string) => {
   return token;
 };
 
-export const decode = async (request: NextRequest) => {
+export const decode = async (token: string) => {
   try {
-    const token = request.cookies.get('workroom')?.value || '';
     const data = jwt.verify(token, process.env.TOKEN_SECRET!) as JwtPayload;
     return data;
   } catch (error: any) {

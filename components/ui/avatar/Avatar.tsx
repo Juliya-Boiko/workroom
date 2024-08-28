@@ -3,7 +3,7 @@ import Image from 'next/image';
 
 interface Props {
   size: 's' | 'm' | 'l';
-  avatar?: string;
+  avatar: string | null;
   name: string;
 }
 
