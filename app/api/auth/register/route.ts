@@ -4,6 +4,9 @@ import Company from '@/models/company';
 import { hashPassword } from '@/utils/bcrypt';
 import { genToken } from '@/utils/jwt';
 import { NextRequest, NextResponse } from 'next/server';
+import { connectToMongoDB } from '@/utils/database';
+
+connectToMongoDB();
 
 export async function POST(request: NextRequest) {
   try {
