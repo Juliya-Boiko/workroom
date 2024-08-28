@@ -1,7 +1,7 @@
 import type { Metadata } from 'next';
 import { nunitoSans } from '@/utils/fonts';
-import '../styles/global.scss';
 import { ToastNotify } from '@/components/ToastNotify';
+import '../styles/global.scss';
 
 export const metadata: Metadata = {
   title: 'Workroom',
@@ -13,7 +13,6 @@ export default function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
-
   return (
     <html lang="en">
       <body className={nunitoSans.className}>

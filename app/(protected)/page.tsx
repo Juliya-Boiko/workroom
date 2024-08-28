@@ -4,11 +4,12 @@ import { BadgeLevel } from '@/components/ui/badges/level/BadgeLevel';
 import { BadgePriopity } from '@/components/ui/badges/priority/BadgePriority';
 import { BadgeTask } from '@/components/ui/badges/task/BadgeTask';
 import { ELevelEmployee, EPriority, ETaskStatus } from '@/enums';
+import { Logout } from '@/components/Logout';
 
 export default function Home() {
   return (
     <div>
-      <button type="button">Logout</button>
+      <Logout>Logout</Logout>
       <Avatar name="Juioi kjjkh" size="s" />
       <Avatar name="Juioi kjjkh" size="m" />
       <Avatar name="Juioi kjjkh" size="l" />
