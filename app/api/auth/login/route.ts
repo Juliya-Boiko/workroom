@@ -3,6 +3,9 @@ import User from '@/models/user';
 import { genToken } from '@/utils/jwt';
 import { NextRequest, NextResponse } from 'next/server';
 import { comparePassword } from '@/utils/bcrypt';
+import { connectToMongoDB } from '@/utils/database';
+
+connectToMongoDB();
 
 export async function POST(request: NextRequest) {
   try {

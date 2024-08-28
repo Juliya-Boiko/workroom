@@ -1,7 +1,6 @@
 import type { Metadata } from 'next';
 import { nunitoSans } from '@/utils/fonts';
 import '../styles/global.scss';
-import { connectToMongoDB } from '@/utils/database';
 import { ToastNotify } from '@/components/ToastNotify';
 
 export const metadata: Metadata = {
@@ -14,7 +13,6 @@ export default function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
-  connectToMongoDB();
 
   return (
     <html lang="en">
