@@ -7,12 +7,12 @@ import { EIconsSet } from '@/enums';
 import { useState, useEffect, useRef } from 'react';
 import { Logout } from '@/components/Logout';
 import { ROUTES } from '@/constants';
-import { axiosInstance } from '@/utils/axios';
+import { usePersonStore } from '@/utils/store';
 
 export const Account = () => {
-  const [user, setUser] = useState({ name: ' ', avatar: null });
   const [open, setOpen] = useState(false);
   const ref = useRef<HTMLDivElement>(null);
+  const { user } = usePersonStore((s) => s);
 
   const toggleOpen = () => {
     setOpen((prev) => !prev);
@@ -31,21 +31,6 @@ export const Account = () => {
       window.removeEventListener('mousedown', handleOutSideClick);
     };
   }, [ref]);
-
-  const fetchData = async () => {
-    try {
-      const response = await axiosInstance.get('/user/info');
-      if (response.status === 200) {
-        setUser(response.data);
-      }
-    } catch (error) {
-      console.log(error);
-    }
-  };
-
-  useEffect(() => {
-    fetchData();
-  }, []);
 
   return (
     <div ref={ref} className={styles.account}>

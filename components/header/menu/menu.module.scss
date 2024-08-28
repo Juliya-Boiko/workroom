@@ -1,7 +1,18 @@
 .menu {
+  @include onLaptop {
+    display: none;
+  }
 
   .container {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
     padding: 24px 12px;
+    @include onTablet {
+      width: 50%;
+      background-color: $white;
+      padding: 24px 48px;
+    }
   }
 
   .head {
@@ -36,5 +47,9 @@
       color: $blue-1;
       background-color: rgba($blue-1-rgb, 0.1);
     }
+  }
+
+  .company {
+    margin: auto auto 0 auto;
   }
 }

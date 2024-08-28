@@ -1,6 +1,13 @@
 .header {
   @include flexContainer(row, center, space-between);
-  padding: 12px;
+  padding: 24px 12px 0 12px;
+  @include onTablet {
+    padding: 24px 48px 0 48px;
+  }
+
+  .company {
+    display: none;
+  }
 
   .user {
     display: flex;

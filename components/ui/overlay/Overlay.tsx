@@ -1,3 +1,5 @@
+'use client';
+import { useEffect } from 'react';
 import styles from './overlay.module.scss';
 
 interface Props {
@@ -5,6 +7,27 @@ interface Props {
   onClose: () => void;
 }
 
-export const Overlay = ({ children }: Props) => {
-  return <div className={styles.overlay}>{children}</div>;
+export const Overlay = ({ children, onClose }: Props) => {
+  const TARGET_ID = 'overlay';
+
+  useEffect(() => {
+    const handleClick = (event: MouseEvent) => {
+      const target = event.target as HTMLElement | null;
+      if (target && target.id === TARGET_ID) {
+        onClose();
+      }
+    };
+
+    window.addEventListener('mousedown', handleClick);
+
+    return () => {
+      window.removeEventListener('mousedown', handleClick);
+    };
+  }, [onClose]);
+
+  return (
+    <div id={TARGET_ID} className={styles.overlay}>
+      {children}
+    </div>
+  );
 };

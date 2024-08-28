@@ -8,6 +8,7 @@ import { Overlay } from '@/components/ui/overlay/Overlay';
 import { Logo } from '@/components/logo/Logo';
 import { navRoutes } from '@/constants';
 import Link from 'next/link';
+import { Company } from '../company/Company';
 
 export const Menu = () => {
   const [open, setOpen] = useState(false);
@@ -34,6 +35,9 @@ export const Menu = () => {
                 </Link>
               ))}
             </nav>
+            <div className={styles.company}>
+              <Company />
+            </div>
           </div>
         </Overlay>
       )}

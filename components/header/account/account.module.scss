@@ -21,10 +21,16 @@
 
   .name {
     display: none;
+    text-transform: capitalize;
+    @include onTablet {
+      display: inline-block;
+    }
   }
 
   .active {
-    // border-radius: 14px 14px 0 0;
+    @include onTablet {
+      border-radius: 14px 14px 0 0;
+    }
   }
 
   .list {
@@ -39,6 +45,11 @@
     display: flex;
     flex-direction: column;
     gap: 8px;
+    @include onTablet {
+      width: 100%;
+      top: 48px;
+      border-radius: 0 0 14px 14px;
+    }
   }
 
   .item {

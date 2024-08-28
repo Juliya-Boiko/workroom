@@ -6,4 +6,7 @@
   background-color: $white;
   top: 0;
   left: 0;
+  @include onTablet {
+    background-color: rgba($blue-4-rgb, 0.16);
+  }
 }
