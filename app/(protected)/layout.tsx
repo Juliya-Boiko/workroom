@@ -1,8 +1,10 @@
 import { Header } from '@/components/header/Header';
+import { Sidebar } from '@/components/sidebar/Sidebar';
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <div>
+    <div className="appLayout">
+      <Sidebar />
       <div>
         <Header />
         <main> {children}</main>

@@ -52,3 +52,11 @@ body {
   background-color: $grey-5;
   line-height: 1;
 }
+
+.appLayout {
+  @include onLaptop {
+    min-height: 100vh;
+    display: flex;
+    padding: 16px;
+  }
+}

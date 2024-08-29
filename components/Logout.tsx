@@ -25,7 +25,7 @@ export const Logout = ({ children }: Props) => {
   };
 
   return (
-    <button type="button" onClick={handleLogout}>
+    <button type="button" title='Logout' onClick={handleLogout}>
       {children}
     </button>
   );
