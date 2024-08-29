@@ -47,6 +47,11 @@ img {
   display: block;
 }
 
+textarea {
+  font-family: inherit;
+  font-size: inherit;
+}
+
 body {
   color: $dark;
   background-color: $grey-5;
@@ -59,4 +64,27 @@ body {
     display: flex;
     padding: 16px;
   }
+}
+
+.react-datepicker {
+  border-radius: 14px !important;
+  overflow: hidden;
+  color: $dark !important;
+  font-family: inherit !important;
+}
+
+.react-datepicker__current-month, .react-datepicker-time__header, .react-datepicker-year-header, .react-datepicker__day {
+  color: $dark !important;
+}
+
+.react-datepicker__day--selected {
+  background: $blue-1 !important;
+}
+
+.react-datepicker__day--disabled {
+  color: $grey-2 !important;
+}
+
+.react-datepicker__day--keyboard-selected {
+  background-color: $white !important;
 }

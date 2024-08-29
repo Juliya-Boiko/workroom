@@ -1,0 +1,17 @@
+.addProject {
+  
+  .container {
+    width: 100%;
+    height: 100%;
+    padding: 24px;
+    background-color: $white;
+  }
+
+  .head {
+    @include flexContainer(row, center, space-between);
+  }
+
+  .title {
+    @extend %page-title;
+  }
+}

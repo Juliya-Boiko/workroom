@@ -11,3 +11,5 @@ export const EPrioritySet = {
   [EPriority.MEDIUM]: EIconsSet.ArrowUp,
   [EPriority.LOW]: EIconsSet.ArrowDown,
 };
+
+export const priorityDataTypes = Object.values(EPriority);

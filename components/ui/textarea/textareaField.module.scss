@@ -19,31 +19,17 @@
   width: 100%;
 }
 
-.icon {
-  position: absolute;
-  z-index: 1;
-  top: 50%;
-  transform: translateY(-50%);
-  cursor: pointer;
-}
-
-.iconLeft {
-  left: 10px;
-}
-
-.iconRight {
-  right: 10px;
-}
-
-.input {
+.textarea {
   background-color: $white;
   border: none;
   outline: 1px solid;
   border-radius: 14px;
-  height: 48px;
+  height: 120px;
   width: 100%;
   font-size: 16px;
   color: $dark;
+  resize: none;
+  padding: 18px;
   @extend %shadow-xs;
 
   &::placeholder {
@@ -67,12 +53,11 @@
   color: $red-1;
 }
 
-
 .labelDef {
   .title {
     color: $grey-3;
   }
-  .input {
+  .textarea {
     outline-color: $grey-7;
   }
 }
@@ -81,7 +66,7 @@
   .title {
     color: $grey-8;
   }
-  .input {
+  .textarea {
     outline-color: $grey-1;
   }
 }
@@ -90,7 +75,7 @@
   .title {
     color: $red-1;
   }
-  .input {
+  .textarea {
     outline-color: $red-1;
   }
 }

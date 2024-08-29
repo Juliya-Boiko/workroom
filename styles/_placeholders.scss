@@ -1,10 +1,21 @@
 %heading-2 {
-  font-weight: bold;
+  font-weight: 700;
   font-size: 22px;
+}
+
+%page-title {
+  font-weight: 700;
+  font-size: 36px;
 }
 
 %shadow-s {
   box-shadow: 0px 6px 58px 0px rgba($grey-2-rgb,0.4);
   -webkit-box-shadow: 0px 6px 58px 0px rgba($grey-2-rgb,0.4);
   -moz-box-shadow: 0px 6px 58px 0px rgba($grey-2-rgb,0.4);
+}
+
+%shadow-xs {
+  box-shadow: 0px 1px 2px 0px rgba(184,200,224,1);
+  -webkit-box-shadow: 0px 1px 2px 0px rgba(184,200,224,1);
+  -moz-box-shadow: 0px 1px 2px 0px rgba(184,200,224,1);
 }

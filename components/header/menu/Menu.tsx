@@ -29,7 +29,12 @@ export const Menu = () => {
             </div>
             <nav className={styles.nav}>
               {navRoutes.map((route) => (
-                <Link key={route.title} href={route.path} className={styles.link}>
+                <Link
+                  key={route.title}
+                  href={route.path}
+                  className={styles.link}
+                  onClick={() => setOpen(false)}
+                >
                   <SvgHandler icon={route.icon} />
                   <span>{route.title}</span>
                 </Link>

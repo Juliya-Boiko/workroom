@@ -17,4 +17,5 @@ export enum EIconsSet {
   Bell,
   Burger,
   Cross,
+  CalendarInput,
 }

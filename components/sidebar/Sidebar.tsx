@@ -14,7 +14,7 @@ export const Sidebar = () => {
   const pathname = usePathname();
 
   const toggleOpen = () => {
-    setOpen(prev => !prev);
+    setOpen((prev) => !prev);
   };
 
   return (
@@ -24,7 +24,7 @@ export const Sidebar = () => {
           type="button"
           className={styles.toggleBtn}
           style={{ transform: open ? 'rotate(0)' : 'rotate(180deg)' }}
-          title='Toggle sidebar'
+          title="Toggle sidebar"
           onClick={toggleOpen}
         >
           <SvgHandler icon={EIconsSet.ArrowRight} />

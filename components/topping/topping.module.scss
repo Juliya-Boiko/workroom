@@ -1,0 +1,7 @@
+.topping {
+  @include flexContainer(row, center, space-between);
+
+  .title {
+    @extend %page-title;
+  }
+}

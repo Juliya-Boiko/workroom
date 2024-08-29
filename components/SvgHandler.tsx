@@ -207,4 +207,16 @@ export const SvgHandler = ({ icon }: { icon: EIconsSet }) => {
       </svg>
     );
   }
+  if (icon === EIconsSet.CalendarInput) {
+    return (
+      <svg xmlns="http://www.w3.org/2000/svg" width={24} height={24} fill="none">
+        <path
+          fill="currentColor"
+          fillRule="evenodd"
+          d="M16.393 1.883A1 1 0 0 0 14.4 2v1h-5V2l-.007-.117A1 1 0 0 0 7.4 2v1H7a4 4 0 0 0-4 4v10a4 4 0 0 0 4 4h10a4 4 0 0 0 4-4V7a4 4 0 0 0-4-4h-.6V2l-.007-.117ZM7.407 5.117 7.4 5H7a2 2 0 0 0-2 2v.5h14V7a2 2 0 0 0-2-2h-.6a1 1 0 0 1-1.993.117L14.4 5h-5a1 1 0 0 1-1.993.117ZM19 9.5H5V17a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V9.5Z"
+          clipRule="evenodd"
+        />
+      </svg>
+    );
+  }
 };
