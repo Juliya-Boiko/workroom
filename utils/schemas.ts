@@ -64,3 +64,14 @@ export const addProjectSchema = yup.object({
 });
 
 export type AddProjectFormData = yup.InferType<typeof addProjectSchema>;
+
+export const addTaskSchema = yup.object({
+  name: yup.string().trim().required('Name is required field'),
+  start: yup.date().default(new Date()).required(),
+  deadline: yup.date().default(new Date()).required(),
+  priority: yup.string().trim().oneOf(priorityDataTypes).default(priorityDataTypes[0]),
+  assignee: yup.array(yup.string()).min(1).required(),
+  description: yup.string().trim(),
+});
+
+export type AddTaskFormData = yup.InferType<typeof addTaskSchema>;

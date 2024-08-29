@@ -1,7 +1,7 @@
 'use client';
 import styles from './projectsSection.module.scss';
 import Link from 'next/link';
-import toast from 'react-hot-toast';
+// import toast from 'react-hot-toast';
 import { axiosInstance } from '@/utils/axios';
 import { useEffect, useState } from 'react';
 import { SvgHandler } from '@/components/SvgHandler';
@@ -37,7 +37,7 @@ export const ProjectsSection = () => {
         }
       } catch (error) {
         setStatus({ loading: false, error: true });
-        toast.error(error.response.data.message);
+        // toast.error(error?.response?.data.message);
         console.log(error);
       }
     };

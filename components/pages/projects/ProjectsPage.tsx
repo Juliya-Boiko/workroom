@@ -1,11 +1,14 @@
 import { Topping } from '@/components/topping/Topping';
-import { AddProject } from '@/components/addProject/AddProject';
+import { Modal } from '@/components/ui/modal/Modal';
+import { AddProjectForm } from '@/components/forms/addProject/AddProjectForm';
 
 export const ProjectsPage = () => {
   return (
     <div>
       <Topping title="Projects">
-        <AddProject />
+        <Modal title="Add Project">
+          <AddProjectForm />
+        </Modal>
       </Topping>
     </div>
   );

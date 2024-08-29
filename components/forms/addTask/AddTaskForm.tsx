@@ -1,19 +1,18 @@
+/* eslint-disable @typescript-eslint/no-unused-vars */
 /* eslint-disable @typescript-eslint/no-explicit-any */
 'use client';
 import styles from '../common.module.scss';
 import { useEffect } from 'react';
 import { useForm, Controller } from 'react-hook-form';
-import { useRouter } from 'next/navigation';
 import { yupResolver } from '@hookform/resolvers/yup';
-import { axiosInstance } from '@/utils/axios';
+// import { axiosInstance } from '@/utils/axios';
 import { InputField } from '@/components/ui/input/InputField';
-import { addProjectSchema, AddProjectFormData } from '@/utils/schemas';
+import { addTaskSchema, AddTaskFormData } from '@/utils/schemas';
 import { BtnPrimary } from '@/components/ui/buttons/primary/BtnPrimary';
 import { TextareaField } from '@/components/ui/textarea/TextareField';
 import { SelectDrop } from '@/components/ui/select/SelectDrop';
 import { priorityDataTypes } from '@/enums';
 import { Picker } from '../../ui/picker/Picker';
-import { ROUTES } from '@/constants';
 
 const nextDay = (value: Date) => {
   const tomorrow = value;
@@ -26,12 +25,11 @@ const defaultValues = {
   start: new Date(),
   deadline: nextDay(new Date()),
   priority: priorityDataTypes[0],
+  assignee: [],
   description: '',
 };
 
-export const AddProjectForm = () => {
-  const router = useRouter();
-
+export const AddTaskForm = () => {
   const {
     control,
     register,
@@ -41,22 +39,23 @@ export const AddProjectForm = () => {
     formState: { errors, isDirty, isValid, isSubmitting },
   } = useForm({
     defaultValues,
-    resolver: yupResolver(addProjectSchema),
+    resolver: yupResolver(addTaskSchema),
     mode: 'onChange',
   });
 
   const startDate = watch('start');
 
-  const onSubmit = async (data: AddProjectFormData) => {
-    try {
-      const response = await axiosInstance.post('/project/', data);
-      console.log(response);
-      if (response.status === 200) {
-        router.push(`${ROUTES.project}/${response.data}`);
-      }
-    } catch (error: any) {
-      console.log(error);
-    }
+  const onSubmit = async (data: AddTaskFormData) => {
+    console.log(data);
+    // try {
+    //   const response = await axiosInstance.post('/project/', data);
+    //   console.log(response);
+    //   if (response.status === 200) {
+    //     router.push(`${ROUTES.project}/${response.data}`);
+    //   }
+    // } catch (error: any) {
+    //   console.log(error);
+    // }
   };
 
   useEffect(() => {
@@ -65,11 +64,14 @@ export const AddProjectForm = () => {
 
   return (
     <form className={styles.form} onSubmit={handleSubmit(onSubmit)}>
+      <button type="button" onClick={() => console.log(errors)}>
+        Check
+      </button>
       <InputField
-        label="Project Name"
+        label="Task Name"
         name="name"
         register={register}
-        placeholder="Project Name"
+        placeholder="Task Name"
         errors={errors.name}
       />
       <div className={styles.pickers}>
@@ -105,9 +107,7 @@ export const AddProjectForm = () => {
         placeholder="Add some description of the project"
       />
       <div>
-        <BtnPrimary type="submit" disabled={!isDirty || !isValid || isSubmitting}>
-          Save Project
-        </BtnPrimary>
+        <BtnPrimary type="submit">Save Project</BtnPrimary>
       </div>
     </form>
   );
