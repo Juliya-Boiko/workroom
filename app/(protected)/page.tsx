@@ -1,9 +1,5 @@
-import { Logout } from '@/components/Logout';
+import { DashboardPage } from '@/components/pages/dashboard/DashboardPage';
 
 export default function Home() {
-  return (
-    <div>
-      <Logout>Logout</Logout>
-    </div>
-  );
+  return <DashboardPage />;
 }

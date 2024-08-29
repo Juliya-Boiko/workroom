@@ -5,7 +5,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
   return (
     <div className="appLayout">
       <Sidebar />
-      <div>
+      <div className="appMain">
         <Header />
         <main> {children}</main>
       </div>

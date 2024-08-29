@@ -1,0 +1,17 @@
+.section {
+
+  .head {
+    @include flexContainer(row, center, space-between);
+    padding-bottom: 24px;
+  }
+
+  .title {
+    @extend %heading-2;
+  }
+
+  .list {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+  }
+}

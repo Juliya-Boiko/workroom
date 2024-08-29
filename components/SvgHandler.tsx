@@ -219,4 +219,16 @@ export const SvgHandler = ({ icon }: { icon: EIconsSet }) => {
       </svg>
     );
   }
+  if (icon === EIconsSet.ChevronRight) {
+    return (
+      <svg xmlns="http://www.w3.org/2000/svg" width={24} height={24} fill="none">
+        <path
+          fill="currentColor"
+          fillRule="evenodd"
+          d="M9.293 7.293a1 1 0 0 1 1.32-.083l.094.083 4 4a1 1 0 0 1 .083 1.32l-.083.094-4 4a1 1 0 0 1-1.497-1.32l.083-.094L12.585 12 9.293 8.707a1 1 0 0 1-.083-1.32l.083-.094Z"
+          clipRule="evenodd"
+        />
+      </svg>
+    );
+  }
 };

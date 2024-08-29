@@ -6,6 +6,7 @@ export enum EIconsSet {
   ArrowLeft,
   Circle,
   ChevronDown,
+  ChevronRight,
   Eye,
   Plus,
   Settings,
