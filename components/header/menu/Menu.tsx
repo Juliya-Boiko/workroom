@@ -15,7 +15,7 @@ export const Menu = () => {
 
   return (
     <div className={styles.menu}>
-      <BtnIcon onClick={() => setOpen(true)}>
+      <BtnIcon title="Menu" onClick={() => setOpen(true)}>
         <SvgHandler icon={EIconsSet.Burger} />
       </BtnIcon>
       {open && (

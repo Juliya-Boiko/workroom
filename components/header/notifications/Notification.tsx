@@ -4,7 +4,7 @@ import { EIconsSet } from '@/enums';
 
 export const Notifications = () => {
   return (
-    <BtnIcon>
+    <BtnIcon title="Notifications">
       <SvgHandler icon={EIconsSet.Bell} />
     </BtnIcon>
   );
