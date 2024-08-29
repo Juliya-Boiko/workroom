@@ -12,7 +12,7 @@
     border-radius: 14px;
     padding: 0 12px;
     transition: all 250ms ease-in-out;
-    @extend %shadow-s;
+    @extend %shadow-xs;
 
     &:hover {
       color: $blue-1;

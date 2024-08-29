@@ -1,8 +1,11 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 'use client';
 import styles from './addProject.module.scss';
 import { useEffect } from 'react';
 import { useForm, Controller } from 'react-hook-form';
+import { useRouter } from 'next/navigation';
 import { yupResolver } from '@hookform/resolvers/yup';
+import { axiosInstance } from '@/utils/axios';
 import { InputField } from '@/components/ui/input/InputField';
 import { addProjectSchema, AddProjectFormData } from '@/utils/schemas';
 import { BtnPrimary } from '@/components/ui/buttons/primary/BtnPrimary';
@@ -10,6 +13,7 @@ import { TextareaField } from '@/components/ui/textarea/TextareField';
 import { SelectDrop } from '@/components/ui/select/SelectDrop';
 import { priorityDataTypes } from '@/enums';
 import { Picker } from '../../ui/picker/Picker';
+import { ROUTES } from '@/constants';
 
 const nextDay = (value: Date) => {
   const tomorrow = value;
@@ -26,13 +30,15 @@ const defaultValues = {
 };
 
 export const AddProjectForm = () => {
+  const router = useRouter();
+
   const {
     control,
     register,
     watch,
     setValue,
     handleSubmit,
-    formState: { errors },
+    formState: { errors, isDirty, isValid, isSubmitting },
   } = useForm({
     defaultValues,
     resolver: yupResolver(addProjectSchema),
@@ -41,8 +47,16 @@ export const AddProjectForm = () => {
 
   const startDate = watch('start');
 
-  const onSubmit = (data: AddProjectFormData) => {
-    console.log({ data, errors });
+  const onSubmit = async (data: AddProjectFormData) => {
+    try {
+      const response = await axiosInstance.post('/project/', data);
+      console.log(response);
+      if (response.status === 200) {
+        router.push(`${ROUTES.project}/${response.data}`);
+      }
+    } catch (error: any) {
+      console.log(error);
+    }
   };
 
   useEffect(() => {
@@ -91,7 +105,9 @@ export const AddProjectForm = () => {
         placeholder="Add some description of the project"
       />
       <div>
-        <BtnPrimary type="submit">Save Project</BtnPrimary>
+        <BtnPrimary type="submit" disabled={!isDirty || !isValid || isSubmitting}>
+          Save Project
+        </BtnPrimary>
       </div>
     </form>
   );

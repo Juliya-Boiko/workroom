@@ -19,7 +19,7 @@ interface CustomInputProps {
 }
 
 const CustomInput = forwardRef<HTMLButtonElement, CustomInputProps>(({ value, onClick }, ref) => (
-  <button className={styles.btnPicker} onClick={onClick} ref={ref}>
+  <button type="button" className={styles.btnPicker} onClick={onClick} ref={ref}>
     <span>{value || 'Select Date'}</span>
     <SvgHandler icon={EIconsSet.CalendarInput} />
   </button>
@@ -45,6 +45,7 @@ export const Picker = ({ label, value, onChange }: Props) => {
         minDate={subDays(value, 0)}
         onChange={handleDateChange}
         customInput={<CustomInput />}
+        popperContainer={({ children }) => <div>{children}</div>}
       />
     </div>
   );

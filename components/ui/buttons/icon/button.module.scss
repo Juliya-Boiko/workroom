@@ -3,7 +3,11 @@
   @include flexContainer(row, center, center);
   border-radius: 14px;
   transition: all 250ms ease-in-out;
-  @extend %shadow-s;
+  @extend %shadow-xs;
+
+  &:hover{
+    color: $blue-1;
+  }
 
   &:active {
     outline: 1px solid $blue-1;

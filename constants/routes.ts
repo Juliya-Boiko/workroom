@@ -9,6 +9,7 @@ export const ROUTES = {
   calendar: '/calendar',
   employees: '/employees',
   projects: '/projects',
+  project: '/project',
 };
 
 export type RoutesType = typeof ROUTES;
