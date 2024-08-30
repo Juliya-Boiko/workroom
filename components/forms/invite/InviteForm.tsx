@@ -77,7 +77,7 @@ export const InviteForm = ({ companyId, email }: Props) => {
           )}
         />
       </div>
-       <InputField
+      <InputField
         label="Name"
         name="name"
         register={register}
@@ -105,7 +105,9 @@ export const InviteForm = ({ companyId, email }: Props) => {
         icon={EIconsSet.Eye}
         onIconClick={toggleType}
       />
-      <BtnPrimary type="submit" disabled={!isDirty || !isValid || isSubmitting}>Sign In</BtnPrimary>
+      <BtnPrimary type="submit" disabled={!isDirty || !isValid || isSubmitting}>
+        Sign In
+      </BtnPrimary>
     </form>
   );
 };

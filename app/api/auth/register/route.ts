@@ -57,7 +57,12 @@ export async function POST(request: NextRequest) {
       await Company.findByIdAndUpdate(companyId, { ownerId: savedUser._id });
       await sendRegistrationEmail({ name: savedUser.name, email: savedUser.email, companyName });
       if (reqBody.members.length > 0) {
-        await sendInviteEmails({ name: savedUser.name, companyId, companyName, members: reqBody.members });
+        await sendInviteEmails({
+          name: savedUser.name,
+          companyId,
+          companyName,
+          members: reqBody.members,
+        });
       }
       initToken = genToken(savedUser._id, companyId);
     } else {
