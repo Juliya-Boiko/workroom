@@ -27,7 +27,7 @@ export async function POST(request: NextRequest) {
     const initUser = {
       name: reqBody.name,
       email: reqBody.email,
-      userPosition: reqBody.userPosition,
+      position: reqBody.userPosition,
       password: hashPass,
       avatar: null,
       birthday: null,

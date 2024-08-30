@@ -13,6 +13,7 @@ import { TextareaField } from '@/components/ui/textarea/TextareField';
 import { SelectDrop } from '@/components/ui/select/SelectDrop';
 import { priorityDataTypes } from '@/enums';
 import { Picker } from '../../ui/picker/Picker';
+import { getEmployees } from '@/actions';
 
 const nextDay = (value: Date) => {
   const tomorrow = value;
@@ -20,16 +21,16 @@ const nextDay = (value: Date) => {
   return tomorrow;
 };
 
-const defaultValues = {
-  name: '',
-  start: new Date(),
-  deadline: nextDay(new Date()),
-  priority: priorityDataTypes[0],
-  assignee: [],
-  description: '',
-};
-
 export const AddTaskForm = () => {
+  const defaultValues = {
+    name: '',
+    start: new Date(),
+    deadline: nextDay(new Date()),
+    priority: priorityDataTypes[0],
+    assignee: [],
+    description: '',
+  };
+
   const {
     control,
     register,
@@ -62,9 +63,14 @@ export const AddTaskForm = () => {
     setValue('deadline', nextDay(startDate));
   }, [setValue, startDate]);
 
+  const check = async () => {
+    const data = await getEmployees();
+    console.log(data);
+  };
+
   return (
     <form className={styles.form} onSubmit={handleSubmit(onSubmit)}>
-      <button type="button" onClick={() => console.log(errors)}>
+      <button type="button" onClick={check}>
         Check
       </button>
       <InputField

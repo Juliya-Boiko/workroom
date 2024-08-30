@@ -1,9 +1,0 @@
-.catch {
-  width: 100%;
-  height: 96px;
-  background-color: $white;
-  border-radius: 24px;
-  @include flexContainer(row, center, center);
-  text-align: center;
-  font-weight: 500;
-}

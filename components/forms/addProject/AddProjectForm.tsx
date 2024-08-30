@@ -1,11 +1,9 @@
-/* eslint-disable @typescript-eslint/no-explicit-any */
 'use client';
 import styles from '../common.module.scss';
 import { useEffect } from 'react';
 import { useForm, Controller } from 'react-hook-form';
 import { useRouter } from 'next/navigation';
 import { yupResolver } from '@hookform/resolvers/yup';
-import { axiosInstance } from '@/utils/axios';
 import { InputField } from '@/components/ui/input/InputField';
 import { addProjectSchema, AddProjectFormData } from '@/utils/schemas';
 import { BtnPrimary } from '@/components/ui/buttons/primary/BtnPrimary';
@@ -14,6 +12,9 @@ import { SelectDrop } from '@/components/ui/select/SelectDrop';
 import { priorityDataTypes } from '@/enums';
 import { Picker } from '../../ui/picker/Picker';
 import { ROUTES } from '@/constants';
+import { useMutation, useQueryClient } from '@tanstack/react-query';
+import { createProject } from '@/actions';
+import { QUERY_KEYS } from '@/constants';
 
 const nextDay = (value: Date) => {
   const tomorrow = value;
@@ -31,6 +32,7 @@ const defaultValues = {
 
 export const AddProjectForm = () => {
   const router = useRouter();
+  const queryClient = useQueryClient();
 
   const {
     control,
@@ -47,16 +49,16 @@ export const AddProjectForm = () => {
 
   const startDate = watch('start');
 
-  const onSubmit = async (data: AddProjectFormData) => {
-    try {
-      const response = await axiosInstance.post('/project/', data);
-      console.log(response);
-      if (response.status === 200) {
-        router.push(`${ROUTES.project}/${response.data}`);
-      }
-    } catch (error: any) {
-      console.log(error);
-    }
+  const mutation = useMutation({
+    mutationFn: createProject,
+    onSuccess: (id: string) => {
+      queryClient.invalidateQueries({ queryKey: [QUERY_KEYS.PROJECTS] });
+      router.push(`${ROUTES.project}/${id}`);
+    },
+  });
+
+  const onSubmit = async (values: AddProjectFormData) => {
+    mutation.mutate(values);
   };
 
   useEffect(() => {

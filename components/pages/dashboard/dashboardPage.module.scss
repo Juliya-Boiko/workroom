@@ -1,5 +1,8 @@
 .dashboardPage {
   padding: 24px 12px;
+  @include onTablet {
+    padding: 48px;
+  }
 
   .container {
     padding: 24px 0;

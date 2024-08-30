@@ -1,72 +1,72 @@
 'use client';
 import styles from './projectsSection.module.scss';
+import Image from 'next/image';
+import imgSrc from '../../../public/projects-placeholder.png';
 import Link from 'next/link';
-// import toast from 'react-hot-toast';
-import { axiosInstance } from '@/utils/axios';
-import { useEffect, useState } from 'react';
+import { useRouter } from 'next/navigation';
+import { useProjects } from '@/services';
 import { SvgHandler } from '@/components/SvgHandler';
 import { EIconsSet } from '@/enums';
 import { ProjectCard } from '@/components/cards/project/ProgectCard';
-import { ROUTES } from '@/constants';
-import { Catch } from '@/components/ui/catch/Catch';
 import { BtnSecondary } from '@/components/ui/buttons/secondary/BtnSecondary';
-import { EPriority } from '@/enums';
+import { BtnPrimary } from '@/components/ui/buttons/primary/BtnPrimary';
 import { projectSectionSkeleton } from '@/helpers';
-
-interface IProject {
-  _id: string;
-  deadline: string;
-  name: string;
-  priority: EPriority;
-  start: string;
-  assignee: string[];
-}
+import { ROUTES } from '@/constants';
 
 export const ProjectsSection = () => {
-  const [projects, setProjects] = useState<IProject[]>(projectSectionSkeleton);
-  const [status, setStatus] = useState({ loading: true, error: false });
+  const router = useRouter();
 
-  useEffect(() => {
-    const fetchData = async () => {
-      try {
-        const response = await axiosInstance.get('/project?take=3');
-        if (response.status === 200) {
-          setProjects(response.data);
-          setStatus((prev) => ({ ...prev, loading: false }));
-          console.log(response);
-        }
-      } catch (error) {
-        setStatus({ loading: false, error: true });
-        // toast.error(error?.response?.data.message);
-        console.log(error);
-      }
-    };
-    fetchData();
-  }, []);
+  const { data, isLoading } = useProjects({ take: 3 });
 
   return (
     <section className={styles.section}>
       <div className={styles.head}>
         <h2 className={styles.title}>Projects</h2>
-        <BtnSecondary>
+        <BtnSecondary onClick={() => router.push(ROUTES.projects)}>
           <span>View all</span>
           <SvgHandler icon={EIconsSet.ChevronRight} />
         </BtnSecondary>
       </div>
-      {status.error ? (
-        <Catch />
-      ) : (
+      {isLoading && (
         <ul className={styles.list}>
-          {projects.map((el) => (
+          {projectSectionSkeleton.map((el) => (
             <li key={el._id} className={styles.item}>
-              <Link href={`${ROUTES.project}/${el._id}`}>
+              <ProjectCard
+                loading={isLoading}
+                name={el.name}
+                deadline={el.deadline}
+                priority={el.priority}
+                start={el.start}
+                assignee={el.assignee}
+              />
+            </li>
+          ))}
+        </ul>
+      )}
+      {data && !data.length && (
+        <div className={styles.placeholder}>
+          <Image src={imgSrc} alt="No projects" className={styles.image} />
+          <p className={styles.text}>
+            There are no projects yet <br /> Let&apos;s add them
+          </p>
+          <BtnPrimary onClick={() => router.push(ROUTES.projects)}>
+            <SvgHandler icon={EIconsSet.Plus} />
+            <span>Add project</span>
+          </BtnPrimary>
+        </div>
+      )}
+      {data && data.length > 0 && (
+        <ul className={styles.list}>
+          {data.map(({ _id, name, deadline, priority, start, assignee }) => (
+            <li key={_id} className={styles.item}>
+              <Link href={`${ROUTES.project}/${_id}`}>
                 <ProjectCard
-                  loading={status.loading}
-                  name={el.name}
-                  deadline={el.deadline}
-                  priority={el.priority}
-                  start={el.start}
-                  assignee={el.assignee}
+                  loading={isLoading}
+                  name={name}
+                  deadline={deadline}
+                  priority={priority}
+                  start={start}
+                  assignee={assignee}
                 />
               </Link>
             </li>
