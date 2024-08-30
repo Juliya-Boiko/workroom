@@ -7,13 +7,13 @@ interface Props {
 }
 
 export const sendEmail = async ({ to, subject, body }: Props) => {
-  const { NEXT_PUBLIC_SMTP_PASSWORD, NEXT_PUBLIC_SMTP_EMAIL } = process.env;
+  const { SMTP_PASSWORD, SMTP_EMAIL } = process.env;
 
   const transport = nodemailer.createTransport({
     service: 'gmail',
     auth: {
-      user: NEXT_PUBLIC_SMTP_EMAIL,
-      pass: NEXT_PUBLIC_SMTP_PASSWORD,
+      user: SMTP_EMAIL,
+      pass: SMTP_PASSWORD,
     },
   });
   try {
@@ -26,7 +26,7 @@ export const sendEmail = async ({ to, subject, body }: Props) => {
 
   try {
     const sendResult = await transport.sendMail({
-      from: NEXT_PUBLIC_SMTP_EMAIL,
+      from: SMTP_EMAIL,
       to,
       subject,
       html: body,
