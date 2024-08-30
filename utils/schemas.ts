@@ -2,6 +2,7 @@ import * as yup from 'yup';
 import {
   usingGoalsDataTypes,
   userPositionsDataTypes,
+  invitePositionDataTypes,
   businessDirectionDataTypes,
   companySizeDataTypes,
   priorityDataTypes,
@@ -50,7 +51,7 @@ export const signUpSchema = yup.object().shape({
     .oneOf(businessDirectionDataTypes)
     .default(businessDirectionDataTypes[0]),
   companySize: yup.string().trim().oneOf(companySizeDataTypes).default(companySizeDataTypes[0]),
-  members: yup.array().of(yup.string().trim().email()),
+  members: yup.array().of(yup.string().trim().email()).required('Name is required'),
 });
 
 export type SignUpFormData = yup.InferType<typeof signUpSchema>;
@@ -75,3 +76,28 @@ export const addTaskSchema = yup.object({
 });
 
 export type AddTaskFormData = yup.InferType<typeof addTaskSchema>;
+
+export const inviteSchema = yup.object().shape({
+  email: yup.string().trim().email().required('Email is required field'),
+  password: yup
+    .string()
+    .trim()
+    .matches(/^(?=.*[A-Z])[A-Za-z\d]{5,10}$/, {
+      excludeEmptyString: true,
+      message: 'Min 5, max 10, contain 1capital letter',
+    })
+    .required('Password is required field'),
+  confirmPassword: yup
+    .string()
+    .trim()
+    .oneOf([yup.ref('password')], 'Passwords must match')
+    .required('Confirm password is required field'),
+  name: yup.string().trim().required('Name is required'),
+  userPosition: yup
+    .string()
+    .trim()
+    .oneOf(invitePositionDataTypes)
+    .default(invitePositionDataTypes[0]),
+});
+
+export type InviteFormData = yup.InferType<typeof inviteSchema>;

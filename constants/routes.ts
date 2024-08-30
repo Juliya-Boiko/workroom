@@ -4,6 +4,7 @@ export const ROUTES = {
   dashboard: '/',
   signIn: '/sign-in',
   signUp: '/sign-up',
+  invite: '/invite',
   password: '/password-recovery',
   settings: '/profile',
   calendar: '/calendar',

@@ -6,3 +6,7 @@ export enum EUserPosition {
 }
 
 export const userPositionsDataTypes = Object.values(EUserPosition);
+
+export const invitePositionDataTypes = userPositionsDataTypes.filter(
+  (el) => el !== EUserPosition.OWNER
+);

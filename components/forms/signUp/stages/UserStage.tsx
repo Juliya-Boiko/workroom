@@ -18,7 +18,7 @@ export const UserStage = ({ register, errors, control }: Props) => (
       name="name"
       register={register}
       placeholder="John Doe"
-      errors={errors.email}
+      errors={errors.name}
     />
     <div className={styles.optionWrapper}>
       <p className={styles.label}>What describes you best?</p>

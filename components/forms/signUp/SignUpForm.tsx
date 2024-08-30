@@ -1,16 +1,15 @@
-/* eslint-disable @typescript-eslint/no-explicit-any */
+'use client';
 import styles from './signUp.module.scss';
-import toast from 'react-hot-toast';
 import { useForm } from 'react-hook-form';
 import { useRouter } from 'next/navigation';
 import { useState, useEffect } from 'react';
 import { yupResolver } from '@hookform/resolvers/yup';
 import { signUpSchema, SignUpFormData } from '@/utils/schemas';
+import { registerUserAndCompany } from '@/actions';
 import { EmailStage, CompanyStage, UserStage, MembersStage } from './stages';
 import { BtnPrimary } from '@/components/ui/buttons/primary/BtnPrimary';
 import { BtnSecondary } from '@/components/ui/buttons/secondary/BtnSecondary';
 import { SvgHandler } from '@/components/SvgHandler';
-import { axiosInstance } from '@/utils/axios';
 import {
   usingGoalsDataTypes,
   userPositionsDataTypes,
@@ -85,15 +84,8 @@ export const SignUpForm = ({ activeStage, onNext, onPrev }: Props) => {
   }, [errors, fields]);
 
   const onSubmit = async (data: SignUpFormData) => {
-    try {
-      const response = await axiosInstance.post('/auth/register', data);
-      console.log('axios response', response);
-      if (response.status === 201) {
-        router.push(ROUTES.dashboard);
-      }
-    } catch (error: any) {
-      toast.error(error.response.data.error);
-    }
+    const resp = await registerUserAndCompany(data);
+    if (resp) router.push(ROUTES.dashboard);
   };
 
   const handleAddMember = () => {
