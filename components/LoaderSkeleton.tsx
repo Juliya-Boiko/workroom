@@ -1,6 +1,13 @@
 import Skeleton from 'react-loading-skeleton';
 import 'react-loading-skeleton/dist/skeleton.css';
 
-export const LoaderSkeleton = ({ height }: { height: number }) => {
-  return <Skeleton baseColor="#F4F9FD" height={height} />;
+interface Props {
+  height: number;
+  circle?: boolean;
+}
+
+export const LoaderSkeleton = ({ height, circle }: Props) => {
+  return (
+    <Skeleton containerClassName="flex-1" baseColor="#F4F9FD" height={height} circle={circle} />
+  );
 };

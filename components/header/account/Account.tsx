@@ -1,18 +1,18 @@
 'use client';
 import styles from './account.module.scss';
 import Link from 'next/link';
+import { useState, useEffect, useRef } from 'react';
+import { useUser } from '@/services';
 import { SvgHandler } from '@/components/SvgHandler';
 import { Avatar } from '@/components/ui/avatar/Avatar';
 import { EIconsSet } from '@/enums';
-import { useState, useEffect, useRef } from 'react';
 import { Logout } from '@/components/Logout';
 import { ROUTES } from '@/constants';
-import { usePersonStore } from '@/utils/store';
 
 export const Account = () => {
   const [open, setOpen] = useState(false);
+  const { data, isLoading } = useUser();
   const ref = useRef<HTMLDivElement>(null);
-  const { user } = usePersonStore((s) => s);
 
   const toggleOpen = () => {
     setOpen((prev) => !prev);
@@ -24,9 +24,7 @@ export const Account = () => {
         setOpen(false);
       }
     };
-
     window.addEventListener('mousedown', handleOutSideClick);
-
     return () => {
       window.removeEventListener('mousedown', handleOutSideClick);
     };
@@ -39,8 +37,8 @@ export const Account = () => {
         className={`${styles.btnOpen} ${open ? styles.active : ''}`}
         onClick={toggleOpen}
       >
-        {user.name && <Avatar size="m" avatar={user.avatar} name={user.name} />}
-        <span className={styles.name}>{user.name}</span>
+        <Avatar loading={isLoading} size="m" user={data} />
+        {data && <span className={styles.name}>{data.name}</span>}
         <SvgHandler icon={EIconsSet.ChevronDown} />
       </button>
       {open && (

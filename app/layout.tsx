@@ -1,7 +1,8 @@
 import type { Metadata } from 'next';
 import { nunitoSans } from '@/utils/fonts';
 import { ToastNotify } from '@/components/ToastNotify';
-import { AppInitializer } from '@/components/AppInitializer';
+import QueryProvider from '@/components/QueryProvider';
+import { ReactQueryDevtools } from '@tanstack/react-query-devtools';
 import '../styles/global.scss';
 
 export const metadata: Metadata = {
@@ -17,9 +18,11 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={nunitoSans.className}>
-        <ToastNotify />
-        <AppInitializer />
-        {children}
+        <QueryProvider>
+          <ToastNotify />
+          {children}
+          <ReactQueryDevtools />
+        </QueryProvider>
       </body>
     </html>
   );
