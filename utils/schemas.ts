@@ -71,11 +71,13 @@ export const addTaskSchema = yup.object({
   start: yup.date().default(new Date()).required(),
   deadline: yup.date().default(new Date()).required(),
   priority: yup.string().trim().oneOf(priorityDataTypes).default(priorityDataTypes[0]),
-  assignee: yup.object({
-    _id: yup.string().required(),
-    name: yup.string().required(),
-    avatar: yup.string().nullable(),
-  }).required('Assignee is required'),
+  assignee: yup
+    .object({
+      _id: yup.string().required(),
+      name: yup.string().required(),
+      avatar: yup.string().nullable().default(null),
+    })
+    .required('Assignee is required'),
   description: yup.string().trim(),
 });
 

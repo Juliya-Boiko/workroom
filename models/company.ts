@@ -11,6 +11,7 @@ const companySchema = new Schema(
   },
   {
     timestamps: true,
+    versionKey: false,
   }
 );
 

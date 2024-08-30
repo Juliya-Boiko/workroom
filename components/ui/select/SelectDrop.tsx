@@ -18,7 +18,7 @@ export const SelectDrop = ({ options, value, onChange }: Props) => {
   const ref = useRef<HTMLDivElement>(null);
 
   const handleOption = (option: string | UserType) => {
-    if (typeof option !== "string" && !option._id) return;
+    if (typeof option !== 'string' && !option._id) return;
     onChange(option);
     setOpen(false);
   };
@@ -45,15 +45,20 @@ export const SelectDrop = ({ options, value, onChange }: Props) => {
         onClick={() => setOpen((prev) => !prev)}
       >
         <div>
-          {value && typeof value === "string" && <span>{value}</span>}
-          {value && typeof value !== "string" && <div className={styles.user}><Avatar size="s" user={{ name: value.name, avatar: value.avatar }} /><span>{value.name}</span></div>}
+          {value && typeof value === 'string' && <span>{value}</span>}
+          {value && typeof value !== 'string' && (
+            <div className={styles.user}>
+              {value.name && <Avatar size="s" user={{ name: value.name, avatar: value.avatar }} />}
+              <span>{value.name}</span>
+            </div>
+          )}
         </div>
         <SvgHandler icon={EIconsSet.ChevronDown} />
       </button>
       {open && options && (
         <ul className={styles.options}>
           {options.map((option) => {
-            return typeof option === "string" ? (
+            return typeof option === 'string' ? (
               <li key={option} className={styles.option} onClick={() => handleOption(option)}>
                 {option}
               </li>
@@ -62,7 +67,7 @@ export const SelectDrop = ({ options, value, onChange }: Props) => {
                 <Avatar size="s" user={{ name: option.name, avatar: option.avatar }} />
                 <span>{option.name}</span>
               </li>
-            )
+            );
           })}
         </ul>
       )}

@@ -1,35 +1,32 @@
-/* eslint-disable @typescript-eslint/no-explicit-any */
 'use client';
 import styles from '../common.module.scss';
 import { useEffect } from 'react';
 import { useForm, Controller } from 'react-hook-form';
+import { useEmployees } from '@/services';
+import { useMutation } from '@tanstack/react-query';
+import { getTomorrowDate } from '@/helpers';
 import { yupResolver } from '@hookform/resolvers/yup';
-import { InputField } from '@/components/ui/input/InputField';
 import { addTaskSchema, AddTaskFormData } from '@/utils/schemas';
+import { InputField } from '@/components/ui/input/InputField';
 import { BtnPrimary } from '@/components/ui/buttons/primary/BtnPrimary';
 import { TextareaField } from '@/components/ui/textarea/TextareField';
 import { SelectDrop } from '@/components/ui/select/SelectDrop';
-import { priorityDataTypes } from '@/enums';
+import { ETaskStatus, priorityDataTypes } from '@/enums';
 import { Picker } from '../../ui/picker/Picker';
-import { getEmployees } from '@/actions';
-import { useEmployees } from '@/services';
+import { IDynamicComponent } from '@/interfaces';
+import { createTask } from '@/actions/task';
 
-const nextDay = (value: Date) => {
-  const tomorrow = value;
-  tomorrow.setDate(tomorrow.getDate() + 1);
-  return tomorrow;
-};
-
-export const AddTaskForm = () => {
+export const AddTaskForm = ({ slug }: IDynamicComponent) => {
+  // const queryClient = useQueryClient();
   const { data: employees } = useEmployees({});
-  const employeesOptions = employees ? employees.map((el) => {
-    return { _id, name, avatar };
-  }) : []
-  
+  const employeesOptions = employees
+    ? employees.map(({ _id, name, avatar }) => ({ _id, name, avatar }))
+    : [];
+
   const defaultValues = {
     name: '',
     start: new Date(),
-    deadline: nextDay(new Date()),
+    deadline: getTomorrowDate(new Date()),
     priority: priorityDataTypes[0],
     assignee: {
       _id: '',
@@ -54,23 +51,29 @@ export const AddTaskForm = () => {
 
   const startDate = watch('start');
 
+  const mutation = useMutation({
+    mutationFn: createTask,
+    onSuccess: () => {
+      console.log('Task created');
+      // queryClient.invalidateQueries({ queryKey: [QUERY_KEYS.PROJECTS] });
+    },
+  });
+
   const onSubmit = async (data: AddTaskFormData) => {
+    const task = {
+      ...data,
+      status: ETaskStatus.TODO,
+      assignee: data.assignee._id,
+      projectId: slug,
+      description: data.description || '',
+    };
     console.log(data);
-    // try {
-    //   const response = await axiosInstance.post('/project/', data);
-    //   console.log(response);
-    //   if (response.status === 200) {
-    //     router.push(`${ROUTES.project}/${response.data}`);
-    //   }
-    // } catch (error: any) {
-    //   console.log(error);
-    // }
+    mutation.mutate(task);
   };
 
   useEffect(() => {
-    setValue('deadline', nextDay(startDate));
+    setValue('deadline', getTomorrowDate(startDate));
   }, [setValue, startDate]);
-
 
   return (
     <form className={styles.form} onSubmit={handleSubmit(onSubmit)}>
@@ -81,18 +84,20 @@ export const AddTaskForm = () => {
         placeholder="Task Name"
         errors={errors.name}
       />
-
       <div className={styles.optionWrapper}>
         <p className={styles.label}>Assignee</p>
         <Controller
           control={control}
           name="assignee"
           render={({ field }) => (
-            <SelectDrop options={employees || []} value={field.value} onChange={field.onChange} />
+            <SelectDrop
+              options={employeesOptions || []}
+              value={field.value}
+              onChange={field.onChange}
+            />
           )}
         />
       </div>
-
       <div className={styles.pickers}>
         <Controller
           control={control}
@@ -126,7 +131,9 @@ export const AddTaskForm = () => {
         placeholder="Add some description of the project"
       />
       <div>
-        <BtnPrimary type="submit">Save Project</BtnPrimary>
+        <BtnPrimary type="submit" disabled={!isDirty || !isValid || isSubmitting}>
+          Save Task
+        </BtnPrimary>
       </div>
     </form>
   );

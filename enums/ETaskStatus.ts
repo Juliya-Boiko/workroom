@@ -3,3 +3,5 @@ export enum ETaskStatus {
   INPROGRESS = 'In Progress',
   DONE = 'Done',
 }
+
+export const taskStatusDataTypes = Object.values(ETaskStatus);

@@ -15,17 +15,12 @@ import { ROUTES } from '@/constants';
 import { useMutation, useQueryClient } from '@tanstack/react-query';
 import { createProject } from '@/actions';
 import { QUERY_KEYS } from '@/constants';
-
-const nextDay = (value: Date) => {
-  const tomorrow = value;
-  tomorrow.setDate(tomorrow.getDate() + 1);
-  return tomorrow;
-};
+import { getTomorrowDate } from '@/helpers';
 
 const defaultValues = {
   name: '',
   start: new Date(),
-  deadline: nextDay(new Date()),
+  deadline: getTomorrowDate(new Date()),
   priority: priorityDataTypes[0],
   description: '',
 };
@@ -62,7 +57,7 @@ export const AddProjectForm = () => {
   };
 
   useEffect(() => {
-    setValue('deadline', nextDay(startDate));
+    setValue('deadline', getTomorrowDate(startDate));
   }, [setValue, startDate]);
 
   return (

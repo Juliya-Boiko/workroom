@@ -19,3 +19,9 @@ export const formatDayDate = (value: string) => {
     return day.toLocaleDateString(DATE_LOCALE, TODAY_OPTIONS);
   }
 };
+
+export const getTomorrowDate = (value: Date) => {
+  const tomorrow = value;
+  tomorrow.setDate(tomorrow.getDate() + 1);
+  return tomorrow;
+};

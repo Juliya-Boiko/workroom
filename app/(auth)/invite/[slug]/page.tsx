@@ -1,12 +1,7 @@
 import { InviteSection } from '@/components/invite/InviteSection';
+import { IDynamicPage } from '@/interfaces';
 
-interface InvitePageProps {
-  params: {
-    slug: string;
-  };
-}
-
-export default async function Invite({ params }: InvitePageProps) {
+export default async function Invite({ params }: IDynamicPage) {
   const { slug } = params;
 
   return <InviteSection slug={slug} />;

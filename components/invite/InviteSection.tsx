@@ -1,16 +1,12 @@
 import styles from './invite.module.scss';
-import { Logo } from '../logo/Logo';
 import Image from 'next/image';
 import imgSrc from '../../public/sign-in.png';
-
 import { decodeInvite } from '@/utils/jwt';
+import { IDynamicComponent } from '@/interfaces';
+import { Logo } from '../logo/Logo';
 import { InviteForm } from '../forms/invite/InviteForm';
 
-interface Props {
-  slug: string;
-}
-
-export const InviteSection = async ({ slug }: Props) => {
+export const InviteSection = async ({ slug }: IDynamicComponent) => {
   const { companyId, email } = await decodeInvite(slug);
 
   return (
