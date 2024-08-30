@@ -1,11 +1,9 @@
-/* eslint-disable @typescript-eslint/no-unused-vars */
 /* eslint-disable @typescript-eslint/no-explicit-any */
 'use client';
 import styles from '../common.module.scss';
 import { useEffect } from 'react';
 import { useForm, Controller } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
-// import { axiosInstance } from '@/utils/axios';
 import { InputField } from '@/components/ui/input/InputField';
 import { addTaskSchema, AddTaskFormData } from '@/utils/schemas';
 import { BtnPrimary } from '@/components/ui/buttons/primary/BtnPrimary';
@@ -14,6 +12,7 @@ import { SelectDrop } from '@/components/ui/select/SelectDrop';
 import { priorityDataTypes } from '@/enums';
 import { Picker } from '../../ui/picker/Picker';
 import { getEmployees } from '@/actions';
+import { useEmployees } from '@/services';
 
 const nextDay = (value: Date) => {
   const tomorrow = value;
@@ -22,12 +21,21 @@ const nextDay = (value: Date) => {
 };
 
 export const AddTaskForm = () => {
+  const { data: employees } = useEmployees({});
+  const employeesOptions = employees ? employees.map((el) => {
+    return { _id, name, avatar };
+  }) : []
+  
   const defaultValues = {
     name: '',
     start: new Date(),
     deadline: nextDay(new Date()),
     priority: priorityDataTypes[0],
-    assignee: [],
+    assignee: {
+      _id: '',
+      name: '',
+      avatar: null,
+    },
     description: '',
   };
 
@@ -63,16 +71,9 @@ export const AddTaskForm = () => {
     setValue('deadline', nextDay(startDate));
   }, [setValue, startDate]);
 
-  const check = async () => {
-    const data = await getEmployees();
-    console.log(data);
-  };
 
   return (
     <form className={styles.form} onSubmit={handleSubmit(onSubmit)}>
-      <button type="button" onClick={check}>
-        Check
-      </button>
       <InputField
         label="Task Name"
         name="name"
@@ -80,6 +81,18 @@ export const AddTaskForm = () => {
         placeholder="Task Name"
         errors={errors.name}
       />
+
+      <div className={styles.optionWrapper}>
+        <p className={styles.label}>Assignee</p>
+        <Controller
+          control={control}
+          name="assignee"
+          render={({ field }) => (
+            <SelectDrop options={employees || []} value={field.value} onChange={field.onChange} />
+          )}
+        />
+      </div>
+
       <div className={styles.pickers}>
         <Controller
           control={control}
