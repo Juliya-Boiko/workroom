@@ -7,6 +7,9 @@
 
   .company {
     display: none;
+    @include onLaptop {
+      display: block;
+    }
   }
 
   .user {

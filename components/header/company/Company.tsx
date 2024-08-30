@@ -1,13 +1,9 @@
 'use client';
 import styles from './company.module.scss';
-import { usePersonStore } from '@/utils/store';
+import { useCompany } from '@/services';
 
 export const Company = () => {
-  const { company } = usePersonStore((s) => s);
+  const { data } = useCompany();
 
-  return (
-    <div className={styles.company}>
-      <h4>{company}</h4>
-    </div>
-  );
+  return <div className={styles.company}>{data && <h4>{data}</h4>}</div>;
 };

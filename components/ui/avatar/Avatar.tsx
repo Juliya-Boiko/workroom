@@ -1,16 +1,18 @@
 import styles from './avatar.module.scss';
 import Image from 'next/image';
+import { LoaderSkeleton } from '@/components/LoaderSkeleton';
+import { IUserInfo } from '@/interfaces';
 
 interface Props {
   size: 's' | 'm' | 'l';
-  avatar: string | null;
-  name: string;
+  user?: IUserInfo;
+  loading?: boolean;
 }
 
-export const Avatar = ({ size, avatar, name }: Props) => {
+export const Avatar = ({ size, user, loading }: Props) => {
   const getInitials = () =>
-    name
-      ? name
+    user && user.name
+      ? user.name
           .split(' ')
           .filter((el) => el)
           .map((el) => el.toUpperCase().charAt(0))
@@ -24,13 +26,28 @@ export const Avatar = ({ size, avatar, name }: Props) => {
     if (size === 'l') return styles.avatarLarge;
   };
 
+  const getHeight = () => {
+    if (size === 's') return 24;
+    if (size === 'm') return 30;
+    if (size === 'l') return 50;
+    return 30;
+  };
+
   return (
-    <div className={` ${styles.avatar} ${getSizeStyles()}`}>
-      {avatar ? (
-        <Image src={avatar} fill alt={name} />
+    <>
+      {loading && !user ? (
+        <div className={getSizeStyles()}>
+          <LoaderSkeleton circle height={getHeight()} />
+        </div>
       ) : (
-        <span className={styles.initials}>{getInitials()}</span>
+        <div className={`${styles.avatar} ${getSizeStyles()}`}>
+          {user?.avatar ? (
+            <Image src={user.avatar} fill alt={user.name} />
+          ) : (
+            <span className={styles.initials}>{getInitials()}</span>
+          )}
+        </div>
       )}
-    </div>
+    </>
   );
 };

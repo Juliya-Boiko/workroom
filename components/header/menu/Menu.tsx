@@ -1,5 +1,6 @@
 'use client';
 import styles from './menu.module.scss';
+import Link from 'next/link';
 import { SvgHandler } from '@/components/SvgHandler';
 import { BtnIcon } from '@/components/ui/buttons/icon/BtnIcon';
 import { EIconsSet } from '@/enums';
@@ -7,7 +8,6 @@ import { useState } from 'react';
 import { Overlay } from '@/components/ui/overlay/Overlay';
 import { Logo } from '@/components/logo/Logo';
 import { navRoutes } from '@/constants';
-import Link from 'next/link';
 import { Company } from '../company/Company';
 
 export const Menu = () => {
