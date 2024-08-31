@@ -5,14 +5,15 @@ import { useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { useRouter } from 'next/navigation';
 import { yupResolver } from '@hookform/resolvers/yup';
-import { InputField } from '@/components/ui/input/InputField';
+import { loginUser } from '@/actions';
 import { signInSchema, SignInFormData } from '@/utils/schemas';
+import { InputField } from '@/components/ui/input/InputField';
 import { BtnPrimary } from '@/components/ui/buttons/primary/BtnPrimary';
 import { SvgHandler } from '@/components/SvgHandler';
 import { EIconsSet } from '@/enums';
 import { ROUTES } from '@/constants';
 import { CheckField } from '@/components/ui/checkbox/CheckField';
-import { loginUser } from '@/actions';
+
 export const SignInForm = () => {
   const [typePassword, setTypePassword] = useState('password');
   const [remember, setRemember] = useState(false);

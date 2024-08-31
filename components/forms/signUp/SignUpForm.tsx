@@ -1,11 +1,9 @@
 'use client';
 import styles from './signUp.module.scss';
 import { useForm } from 'react-hook-form';
-import { useRouter } from 'next/navigation';
 import { useState, useEffect } from 'react';
 import { yupResolver } from '@hookform/resolvers/yup';
 import { signUpSchema, SignUpFormData } from '@/utils/schemas';
-import { registerUserAndCompany } from '@/actions';
 import { EmailStage, CompanyStage, UserStage, MembersStage } from './stages';
 import { BtnPrimary } from '@/components/ui/buttons/primary/BtnPrimary';
 import { BtnSecondary } from '@/components/ui/buttons/secondary/BtnSecondary';
@@ -19,12 +17,12 @@ import {
   companySizeDataTypes,
   EIconsSet,
 } from '@/enums';
-import { ROUTES } from '@/constants';
 
 interface Props {
   activeStage: ESignStages;
   onNext: () => void;
   onPrev: () => void;
+  onSubmit: (data: SignUpFormData) => void;
 }
 
 const defaultValues = {
@@ -40,9 +38,8 @@ const defaultValues = {
   members: [''],
 };
 
-export const SignUpForm = ({ activeStage, onNext, onPrev }: Props) => {
+export const SignUpForm = ({ activeStage, onNext, onPrev, onSubmit }: Props) => {
   const [isDisabled, setIsDisabled] = useState(true);
-  const router = useRouter();
 
   const {
     register,
@@ -83,11 +80,6 @@ export const SignUpForm = ({ activeStage, onNext, onPrev }: Props) => {
     }
   }, [errors, fields]);
 
-  const onSubmit = async (data: SignUpFormData) => {
-    const resp = await registerUserAndCompany(data);
-    if (resp) router.push(ROUTES.dashboard);
-  };
-
   const handleAddMember = () => {
     const values = getValues('members');
     if (!values) return;
@@ -110,6 +102,9 @@ export const SignUpForm = ({ activeStage, onNext, onPrev }: Props) => {
         <h2 className={styles.title}>{activeStage}</h2>
       </div>
       <form className={styles.form} onSubmit={handleSubmit(onSubmit)}>
+        <button type="button" onClick={() => console.log(errors)}>
+          Checj
+        </button>
         {activeStage === ESignStages.EnterYourEmail && (
           <EmailStage register={register} errors={errors} />
         )}

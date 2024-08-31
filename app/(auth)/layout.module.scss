@@ -1,5 +1,6 @@
 .authLayout {
   @include flexContainer(column, center, center);
+  height: 100%;
   min-height: 100vh;
   padding: 24px;
   @include onTablet {

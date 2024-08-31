@@ -1,5 +1,6 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import Task from '@/models/task';
+import Project from '@/models/project';
 import { NextRequest, NextResponse } from 'next/server';
 import { connectToMongoDB } from '@/utils/database';
 import { decode } from '@/utils/jwt';
@@ -18,7 +19,12 @@ export async function POST(request: NextRequest) {
       userId: id,
       ...reqBody,
     });
-    await task.save();
+    const savedTask = await task.save();
+    await Project.findByIdAndUpdate(
+      reqBody.projectId,
+      { $push: { assignee: savedTask.assignee } },
+      { new: true, useFindAndModify: false }
+    );
     return NextResponse.json({ message: 'Task created' }, { status: 201 });
   } catch (error: any) {
     return NextResponse.json({ message: error.message }, { status: 500 });
