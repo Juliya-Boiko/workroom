@@ -14,7 +14,7 @@ import { SelectDrop } from '@/components/ui/select/SelectDrop';
 import { ETaskStatus, priorityDataTypes } from '@/enums';
 import { Picker } from '../../ui/picker/Picker';
 import { IDynamicComponent } from '@/interfaces';
-import { createTask } from '@/actions/task';
+import { createTask } from '@/actions';
 
 export const AddTaskForm = ({ slug }: IDynamicComponent) => {
   // const queryClient = useQueryClient();

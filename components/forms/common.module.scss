@@ -39,3 +39,8 @@
     color: $grey-3;
   }
 }
+
+.preloader {
+  padding-top: 48px;
+  @include flexContainer (row, center, center);
+}

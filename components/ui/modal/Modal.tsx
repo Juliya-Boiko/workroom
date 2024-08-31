@@ -3,24 +3,21 @@ import styles from './modal.module.scss';
 import { useState } from 'react';
 import { EIconsSet } from '@/enums';
 import { SvgHandler } from '@/components/SvgHandler';
-import { BtnPrimary } from '../buttons/primary/BtnPrimary';
 import { Overlay } from '../overlay/Overlay';
 import { BtnIcon } from '../buttons/icon/BtnIcon';
 
 interface Props {
   title: string;
-  children: string | JSX.Element | JSX.Element[];
+  activator: string | JSX.Element | JSX.Element[];
+  content: string | JSX.Element | JSX.Element[];
 }
 
-export const Modal = ({ children, title }: Props) => {
+export const Modal = ({ content, title, activator }: Props) => {
   const [open, setOpen] = useState(false);
 
   return (
     <div className={styles.modal}>
-      <BtnPrimary onClick={() => setOpen(true)}>
-        <SvgHandler icon={EIconsSet.Plus} />
-        <span>{title}</span>
-      </BtnPrimary>
+      <div onClick={() => setOpen(true)}>{activator}</div>
       {open && (
         <Overlay onClose={() => setOpen(false)}>
           <div className={styles.container}>
@@ -30,7 +27,7 @@ export const Modal = ({ children, title }: Props) => {
                 <SvgHandler icon={EIconsSet.Cross} />
               </BtnIcon>
             </div>
-            {children}
+            {content}
           </div>
         </Overlay>
       )}
