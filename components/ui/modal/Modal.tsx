@@ -1,6 +1,6 @@
 'use client';
 import styles from './modal.module.scss';
-import { useState } from 'react';
+import { useModal } from '@/services/useModal';
 import { EIconsSet } from '@/enums';
 import { SvgHandler } from '@/components/SvgHandler';
 import { Overlay } from '../overlay/Overlay';
@@ -13,17 +13,17 @@ interface Props {
 }
 
 export const Modal = ({ content, title, activator }: Props) => {
-  const [open, setOpen] = useState(false);
+  const { isModalOpen, openModal, closeModal } = useModal();
 
   return (
     <div className={styles.modal}>
-      <div onClick={() => setOpen(true)}>{activator}</div>
-      {open && (
-        <Overlay onClose={() => setOpen(false)}>
+      <div onClick={openModal}>{activator}</div>
+      {isModalOpen && (
+        <Overlay>
           <div className={styles.container}>
             <div className={styles.head}>
               <h3 className={styles.title}>{title}</h3>
-              <BtnIcon title="Close" tonal onClick={() => setOpen(false)}>
+              <BtnIcon title="Close" tonal onClick={closeModal}>
                 <SvgHandler icon={EIconsSet.Cross} />
               </BtnIcon>
             </div>

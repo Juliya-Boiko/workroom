@@ -97,4 +97,19 @@
       margin-left: auto;
     }
   }
+
+  .image {
+    display: block;
+    margin: 24px auto;
+    width: 100%;
+    height: auto;
+    @include onTablet {
+      width: 400px;
+    }
+  }
+
+  .approveBtn {
+    margin-top: 24px;
+    @include flexContainer(row, center, flex-end);
+  }
 }

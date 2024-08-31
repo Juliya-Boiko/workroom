@@ -1,0 +1,55 @@
+.chooseProject {
+
+  .chooseBtn {
+    @include flexContainer(row, center, space-between);
+    width: 100%;
+    padding: 24px;
+    gap: 8px;
+    border-radius: 24px;
+    background-color: $white;
+    font-weight: 700;
+  }
+
+  .openBtn {
+    border-radius: 24px 24px 0 0;
+    border-bottom: 1px solid $grey-9;
+
+  }
+
+  .list {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    padding: 8px;
+    border-radius: 0 0 24px 24px;
+    background-color: $white;
+  }
+
+  .item {
+    @include flexContainer(row, center, space-between);
+    padding: 16px;
+    border-radius: 14px;
+    transition: all 250ms ease-in-out;
+    cursor: pointer;
+
+    &:hover {
+      background-color: $grey-5;
+      .icon {
+        color: $blue-1;
+        opacity: 1;
+      }
+    }
+  }
+
+  .icon {
+    opacity: 0
+  }
+
+  .active {
+    background-color: $grey-5;
+    font-weight: 700;
+    .icon {
+      opacity: 0;
+    }
+  }
+}

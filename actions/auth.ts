@@ -39,3 +39,20 @@ export const registerUser = async (data: InviteType) => {
     toast.error(error.response.data.error);
   }
 };
+
+export const inviteUsers = async (data: string[]) => {
+  try {
+    const response = await axiosInstance.post('/auth/invite', data);
+    if (response.data.warning) {
+      toast.success('Emails sended');
+      toast.error(response.data.message);
+    } else {
+      toast.success(response.data.message);
+    }
+    console.log(response.data);
+    return response.status === 200;
+  } catch (error: any) {
+    console.log(error);
+    toast.error(error.response.data.message);
+  }
+};

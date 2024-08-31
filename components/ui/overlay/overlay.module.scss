@@ -9,6 +9,5 @@
   @include onTablet {
     background-color: rgba($blue-4-rgb, 0.16);
     display: flex;
-    // @include flexContainer(row, center, center);
   }
 }
