@@ -1,0 +1,95 @@
+.taskCard {
+  padding: 24px;
+  border-radius: 24px;
+  background-color: $white;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  @include onLaptop {
+    flex-direction: row;
+    gap: 0;
+  }
+  @include onDesktop {
+    gap: 48px;
+  }
+
+  .title {
+    display: none;
+    font-size: 14px;
+    color: $grey-10;
+    margin-bottom: 8px;
+    @include onLaptop {
+      display: block;
+    }
+  }
+
+  .name {
+    @include onLaptop {
+      flex-grow: 1;
+    }
+  }
+
+  .taskName {
+    font-weight: 700;
+    @include onLaptop {
+      min-height: 30px;
+      @include flexContainer (column, flex-start, center);
+    }
+  }
+
+  .info {
+    display: flex;
+    justify-content: space-between;
+    gap: 32px;
+  }
+
+  .assignee {
+    @include onLaptop {
+      min-width: 150px;
+    }
+  }
+
+  .user {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+  
+  .badges {
+    @include flexContainer (row-reverse, center, space-between);
+    @include onDesktop {
+      gap: 32px;
+    }
+  }
+
+  .user {
+    display: flex;
+    align-items: center;
+  }
+
+  .estimate {
+     @include onLaptop {
+      @include flexContainer (column, center, flex-start);
+    }
+  }
+
+  .time {
+    @include onLaptop {
+      @include flexContainer (column, center, center);
+      height: 30px;
+    }
+  }
+
+  .priority, .status {
+    @include onLaptop {
+      min-width: 100px;
+      @include flexContainer (column, center, center);
+    }
+    // width: 100px;
+    // @include flexContainer (column, center, flex-start);
+  }
+
+  .priority {
+    // min-width: 80px;
+  }
+}

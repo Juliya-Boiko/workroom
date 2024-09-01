@@ -1,66 +1,56 @@
-import { BtnIcon } from '@/components/ui/buttons/icon/BtnIcon';
 import styles from './tasks.module.scss';
-import { SvgHandler } from '@/components/SvgHandler';
-import { EIconsSet, EView, viewDataTypes } from '@/enums';
-// import { Preloader } from '@/components/ui/preloader/Preloader';
 import imgSrc from '../../../public/tasks-placeholder.png';
 import Image from 'next/image';
+import { taskSorter } from '@/helpers';
+import { EView } from '@/enums';
+import { ITask } from '@/interfaces';
+import { TasksActions } from './tasksActions/TasksActions';
+import { TasksList } from './tasksList/TasksList';
 
 interface Props {
   view: EView;
   project: boolean;
-  tasks: string[];
+  tasks: ITask[];
   loading: boolean;
   setView: (v: EView) => void;
 }
 
 export const Tasks = ({ project, tasks, view, loading, setView }: Props) => {
-  console.log({ tasks, loading });
+  const sortedTasks = taskSorter(tasks);
 
   return (
     <section className={styles.tasks}>
-      <div className={styles.header}>
-        <h6 className={styles.title}>Tasks</h6>
-        <div className={styles.actions}>
-          <div className={styles.view}>
-            {viewDataTypes.map(({ value, icon }) => (
-              <BtnIcon
-                key={value}
-                title={value}
-                active={view === value}
-                onClick={() => setView(value)}
-              >
-                <SvgHandler icon={icon} />
-              </BtnIcon>
-            ))}
-          </div>
-          <BtnIcon title="Filter">
-            <SvgHandler icon={EIconsSet.Filter} />
-          </BtnIcon>
-        </div>
-      </div>
+      <TasksActions view={view} setView={setView} />
 
       <div className={styles.container}>
-        {!project && <p className={styles.text}>Choose project to review tasks</p>}
-        {project && !tasks.length && (
-          <p className={styles.text}>You dont have tasks in this project</p>
+        {!loading && !project && (
+          <>
+            <p className={styles.text}>Choose project to review tasks</p>
+            <Image src={imgSrc} alt="Tasks" className={styles.image} />
+          </>
         )}
-        {!project || !tasks.length ? (
-          <Image src={imgSrc} alt="Tasks" className={styles.image} />
-        ) : (
+        {!loading && project && !tasks.length && (
+          <>
+            <p className={styles.text}>You dont have tasks in this project</p>
+            <Image src={imgSrc} alt="Tasks" className={styles.image} />
+          </>
+        )}
+        {loading && (
           <div className={styles.wrapper}>
             <div className={styles.banner}>Active Tasks</div>
-            <ul className={styles.list}>list</ul>
+            <TasksList loading={loading} tasks={sortedTasks.active} />
             <div className={styles.banner}>Backlog</div>
-            <ul className={styles.list}>list</ul>
+            <TasksList loading={loading} tasks={sortedTasks.backlog} />
           </div>
         )}
-
-        {/* {loading && <Preloader />} */}
-        {/* <div className={styles.banner}>Active Tasks</div>
-        <ul className={styles.list}>list</ul>
-        <div className={styles.banner}>Backlog</div>
-        <ul className={styles.list}>list</ul> */}
+        {tasks.length && (
+          <div className={styles.wrapper}>
+            <div className={styles.banner}>Active Tasks</div>
+            <TasksList loading={loading} tasks={sortedTasks.active} />
+            <div className={styles.banner}>Backlog</div>
+            <TasksList loading={loading} tasks={sortedTasks.backlog} />
+          </div>
+        )}
       </div>
     </section>
   );

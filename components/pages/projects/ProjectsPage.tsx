@@ -13,6 +13,7 @@ import { BtnPrimary } from '@/components/ui/buttons/primary/BtnPrimary';
 import { ChooseProject } from '@/components/sections/chooseProject/ChooseProject';
 import { Preloader } from '@/components/ui/preloader/Preloader';
 import { Tasks } from '@/components/sections/tasks/Tasks';
+
 interface SelectedProject {
   _id: string;
   name: string;
@@ -33,46 +34,44 @@ export const ProjectsPage = () => {
   };
 
   return (
-    <>
-      <div className={styles.projectsPage}>
-        <Topping title="Projects">
-          <Modal
-            title="Add Project"
-            activator={
-              <BtnPrimary>
-                <SvgHandler icon={EIconsSet.Plus} />
-                <span>Add Project</span>
-              </BtnPrimary>
-            }
-            content={<AddProjectForm />}
-          />
-        </Topping>
-        {isLoadingProjects ? (
-          <div className={styles.loader}>
-            <Preloader />
-          </div>
-        ) : (
-          <div className={styles.container}>
-            {projects && projects.length ? (
-              <>
-                <ChooseProject active={active} list={projects} onChoose={handleChoose} />
-                <Tasks
-                  view={view}
-                  loading={isLoadingTasks}
-                  project={!!active}
-                  tasks={tasks || []}
-                  setView={(v: EView) => setView(v)}
-                />
-              </>
-            ) : (
-              <div className={styles.placeholder}>
-                <Image src={imgSrc} alt="Projects" className={styles.image} />
-                <p>You dont have projects yet</p>
-              </div>
-            )}
-          </div>
-        )}
-      </div>
-    </>
+    <div className={styles.projectsPage}>
+      <Topping title="Projects">
+        <Modal
+          title="Add Project"
+          activator={
+            <BtnPrimary>
+              <SvgHandler icon={EIconsSet.Plus} />
+              <span>Add Project</span>
+            </BtnPrimary>
+          }
+          content={<AddProjectForm />}
+        />
+      </Topping>
+      {isLoadingProjects ? (
+        <div className={styles.loader}>
+          <Preloader />
+        </div>
+      ) : (
+        <div className={styles.container}>
+          {projects && projects.length ? (
+            <>
+              <ChooseProject active={active} list={projects} onChoose={handleChoose} />
+              <Tasks
+                view={view}
+                loading={isLoadingTasks}
+                project={!!active}
+                tasks={tasks || []}
+                setView={(v: EView) => setView(v)}
+              />
+            </>
+          ) : (
+            <div className={styles.placeholder}>
+              <Image src={imgSrc} alt="Projects" className={styles.image} />
+              <p>You dont have projects yet</p>
+            </div>
+          )}
+        </div>
+      )}
+    </div>
   );
 };
