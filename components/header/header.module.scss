@@ -4,6 +4,9 @@
   @include onTablet {
     padding: 24px 48px 0 48px;
   }
+  @include onLaptop {
+    padding: 0 32px;
+  }
 
   .company {
     display: none;

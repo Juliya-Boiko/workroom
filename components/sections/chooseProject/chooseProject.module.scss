@@ -1,4 +1,20 @@
 .chooseProject {
+  @include onLaptop {
+    width: 265px;
+  }
+
+  .title {
+    display: none;
+    font-weight: 700;
+    padding: 24px;
+    gap: 8px;
+    border-radius: 24px 24px 0 0;
+    border-bottom: 1px solid $grey-9;
+    background-color: $white;
+    @include onLaptop {
+      @include flexContainer(row, center, space-between);
+    }
+  }
 
   .chooseBtn {
     @include flexContainer(row, center, space-between);
@@ -8,12 +24,24 @@
     border-radius: 24px;
     background-color: $white;
     font-weight: 700;
+    text-align: start;
+    @include onLaptop {
+      display: none;
+    }
+  }
+
+  .name {
+    max-width: calc(100% - 48px);
+    display: -webkit-box;
+    line-clamp: 1;
+    -webkit-line-clamp: 1;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
   }
 
   .openBtn {
     border-radius: 24px 24px 0 0;
     border-bottom: 1px solid $grey-9;
-
   }
 
   .list {
@@ -25,31 +53,71 @@
     background-color: $white;
   }
 
-  .item {
-    @include flexContainer(row, center, space-between);
-    padding: 16px;
-    border-radius: 14px;
-    transition: all 250ms ease-in-out;
-    cursor: pointer;
-
-    &:hover {
-      background-color: $grey-5;
-      .icon {
-        color: $blue-1;
-        opacity: 1;
-      }
+  .listHidden {
+    display: none;
+    @include onLaptop {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      padding: 8px;
+      border-radius: 0 0 24px 24px;
+      background-color: $white;
     }
   }
 
-  .icon {
-    opacity: 0
+  .item {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    padding: 16px;
+    border-radius: 14px;
+    transition: all 250ms ease-in-out;
+    &:hover {
+      background-color: $grey-5;
+    }
+  }
+
+  .itemBtn {
+    text-align: start;
+    transition: all 150ms ease-in-out;
+    &:hover {
+      font-weight: 700;
+    }
+    @include onLaptop {
+      display: -webkit-box;
+      line-clamp: 2;
+      -webkit-line-clamp: 2;
+      -webkit-box-orient: vertical;
+      overflow: hidden;
+    }
   }
 
   .active {
+    position: relative;
     background-color: $grey-5;
-    font-weight: 700;
-    .icon {
-      opacity: 0;
+    .itemBtn {
+      font-weight: 700;
+    }
+    &::after {
+      content: '';
+      position: absolute;
+      top: 0;
+      right: -8px;
+      display: block;
+      height: 100%;
+      width: 4px;
+      border-radius: 2px;
+      background-color: $blue-1;
+    }
+  }
+
+  .link {
+    @include flexContainer(row, center, flex-start);
+    gap: 8px;
+    color: $blue-1;
+    transition: all 150ms ease-in-out;
+    &:hover {
+      font-weight: 700;
     }
   }
 }

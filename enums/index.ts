@@ -8,3 +8,4 @@ export * from './ETaskStatus';
 export * from './EUserPosition';
 export * from './EUsingGoal';
 export * from './ESignStages';
+export * from './EView';

@@ -19,4 +19,8 @@ export enum EIconsSet {
   Burger,
   Cross,
   CalendarInput,
+  Columns,
+  List,
+  Timeline,
+  Filter,
 }

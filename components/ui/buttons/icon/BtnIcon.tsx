@@ -7,15 +7,17 @@ interface Props {
   children: string | JSX.Element | JSX.Element[];
   disabled?: boolean;
   title: string;
+  active?: boolean;
   onClick?: () => void;
 }
 
-export const BtnIcon = ({ type, title, children, tonal, disabled, onClick }: Props) => {
+export const BtnIcon = ({ type, title, children, tonal, active, disabled, onClick }: Props) => {
   return (
     <button
       type={type ? type : 'button'}
       title={title}
-      className={`${styles.button} ${tonal ? styles.btnTonal : styles.btnDef}`}
+      // eslint-disable-next-line max-len
+      className={`${styles.button} ${tonal ? styles.btnTonal : styles.btnDef} ${active ? styles.active : ''}`}
       disabled={disabled}
       onClick={onClick}
     >

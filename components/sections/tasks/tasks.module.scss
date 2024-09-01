@@ -1,0 +1,57 @@
+.tasks {
+  flex-grow: 1;
+
+  .header {
+    display: flex;
+    flex-direction: column;
+    gap: 24px; 
+    @include onTablet {
+      flex-direction: row;
+      align-items: center;
+    }
+  }
+
+  .title {
+    font-size: 18px;
+    font-weight: 700;
+    @include onTablet {
+      width: 33%;
+    }
+  }
+
+  .actions {
+    @include flexContainer(row, center, space-between);
+     @include onTablet {
+      width: 66%;
+    }
+  }
+
+  .view {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+  }
+
+  .container {
+    padding-top: 24px;
+    @include onTablet {
+      padding-top: 48px;
+    }
+  }
+
+  .text {
+    text-align: center;
+    margin-bottom: 24px;
+    color: $grey-1;
+  }
+
+  .image {
+    width: 100%;
+    height: auto;
+    opacity: 0.5;
+    @include onTablet {
+      max-width: 400px;
+      margin: 0 auto;
+    }
+  }
+}

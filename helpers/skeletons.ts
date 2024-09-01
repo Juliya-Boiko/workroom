@@ -27,17 +27,17 @@ export const projectSectionSkeleton = [
   },
 ];
 
-export const chooseSectionSkeleton = [
-  {
-    _id: '1',
-    name: 'Medical App (iOS native)',
-  },
-  {
-    _id: '2',
-    name: 'Food Delivery Service',
-  },
-  {
-    _id: '3',
-    name: 'Fortune website',
-  },
+export const chooseSectionSkeleton: { _id: string; name: string }[] = [
+  // {
+  //   _id: '1',
+  //   name: 'Medical App (iOS native)',
+  // },
+  // {
+  //   _id: '2',
+  //   name: 'Food Delivery Service',
+  // },
+  // {
+  //   _id: '3',
+  //   name: 'Fortune website',
+  // },
 ];

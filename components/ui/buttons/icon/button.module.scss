@@ -28,3 +28,8 @@
 .btnDef {
   background-color: $white;
 }
+
+.active {
+  outline: 1px solid $blue-1;
+  color: $blue-1;
+}

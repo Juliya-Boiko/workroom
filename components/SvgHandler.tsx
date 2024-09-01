@@ -231,4 +231,52 @@ export const SvgHandler = ({ icon }: { icon: EIconsSet }) => {
       </svg>
     );
   }
+  if (icon === EIconsSet.Columns) {
+    return (
+      <svg xmlns="http://www.w3.org/2000/svg" width={24} height={24} fill="none">
+        <path
+          fill="currentColor"
+          fillRule="evenodd"
+          d="M21 2a1 1 0 0 1 .117 1.993L21 4H3a1 1 0 0 1-.117-1.993L3 2h18Zm-1 5.77v6.46c0 1.53-1.343 2.77-3 2.77h-1c-1.657 0-3-1.24-3-2.77V7.77C13 6.24 14.343 5 16 5h1c1.657 0 3 1.24 3 2.77Zm-2 6.341V7.89C18 7.398 17.552 7 17 7h-1c-.552 0-1 .398-1 .889v6.222c0 .491.448.889 1 .889h1c.552 0 1-.398 1-.889ZM8 5H7C5.343 5 4 6.427 4 8.188v10.624C4 20.573 5.343 22 7 22h1c1.657 0 3-1.427 3-3.188V8.188C11 6.428 9.657 5 8 5ZM7 7h1c.552 0 1 .485 1 1.083v10.834C9 19.515 8.552 20 8 20H7c-.552 0-1-.485-1-1.083V8.083C6 7.485 6.448 7 7 7Z"
+          clipRule="evenodd"
+        />
+      </svg>
+    );
+  }
+  if (icon === EIconsSet.List) {
+    return (
+      <svg xmlns="http://www.w3.org/2000/svg" width={24} height={24} fill="none">
+        <path
+          fill="currentColor"
+          fillRule="evenodd"
+          d="M21 5a1 1 0 0 1 .117 1.993L21 7H3a1 1 0 0 1-.117-1.993L3 5h18Zm0 6a1 1 0 0 1 .117 1.993L21 13H3a1 1 0 0 1-.117-1.993L3 11h18Zm1 7a1 1 0 0 0-1-1H3l-.117.007A1 1 0 0 0 3 19h18l.117-.007A1 1 0 0 0 22 18Z"
+          clipRule="evenodd"
+        />
+      </svg>
+    );
+  }
+  if (icon === EIconsSet.Timeline) {
+    return (
+      <svg xmlns="http://www.w3.org/2000/svg" width={24} height={24} fill="none">
+        <path
+          fill="currentColor"
+          fillRule="evenodd"
+          d="M12 2a1 1 0 0 1 .993.883L13 3v1h2a3 3 0 0 1 3 3v1a3 3 0 0 1-3 3h-2v2h6a3 3 0 0 1 3 3v1a3 3 0 0 1-3 3h-6v1a1 1 0 0 1-1.993.117L11 21v-1h-1a3 3 0 0 1-3-3v-1a3 3 0 0 1 3-3h1v-2H5a3 3 0 0 1-3-3V7a3 3 0 0 1 3-3h6V3a1 1 0 0 1 1-1Zm0 16h7a1 1 0 0 0 1-1v-1a1 1 0 0 0-1-1h-9a1 1 0 0 0-1 1v1a1 1 0 0 0 1 1h2Zm3-9H5a1 1 0 0 1-1-1V7a1 1 0 0 1 1-1h10a1 1 0 0 1 1 1v1a1 1 0 0 1-1 1Z"
+          clipRule="evenodd"
+        />
+      </svg>
+    );
+  }
+  if (icon === EIconsSet.Filter) {
+    return (
+      <svg xmlns="http://www.w3.org/2000/svg" width={24} height={24} fill="none">
+        <path
+          fill="currentColor"
+          fillRule="evenodd"
+          d="M6 2h11.093a3 3 0 0 1 2.242 4.993l-4.789 5.386v6.385c0 .296-.055.588-.162.863l-.09.202a2.382 2.382 0 0 1-3.195 1.065l-.894-.447a3 3 0 0 1-1.659-2.683V12.38L3.758 6.993a3 3 0 0 1-.75-1.773L3 5a3 3 0 0 1 3-3Zm11.093 2H6a1 1 0 0 0-.747 1.664l5.04 5.672a1 1 0 0 1 .253.664v5.764a1 1 0 0 0 .553.894l.894.448a.382.382 0 0 0 .553-.342V12a1 1 0 0 1 .253-.664l5.041-5.672A1 1 0 0 0 17.093 4Z"
+          clipRule="evenodd"
+        />
+      </svg>
+    );
+  }
 };
