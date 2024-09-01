@@ -13,7 +13,8 @@ export const registerUserAndCompany = async (data: SignUpFormData) => {
     const response = await axiosInstance.post('/auth/register', user);
     return response.status === 201;
   } catch (error: any) {
-    toast.error(error.response.data.error);
+    console.log(error);
+    toast.error(error.response.data.message);
   }
 };
 

@@ -7,7 +7,7 @@ const userSchema = new Schema(
     email: { type: String, required: true },
     password: { type: String, required: true },
     avatar: { type: String },
-    companyId: { type: String, required: true },
+    companyId: { type: Schema.Types.ObjectId, ref: 'Company', required: true },
     position: { type: String, enum: userPositionsDataTypes },
     birthday: { type: Date },
     level: { type: String },

@@ -33,8 +33,6 @@ export const SignUpSection = () => {
     mutationFn: registerUserAndCompany,
   });
 
-  console.log({ isSuccess });
-
   const onSubmit = async (data: SignUpFormData) => {
     mutate(data);
   };

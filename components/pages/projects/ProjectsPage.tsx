@@ -3,7 +3,7 @@ import styles from './projectsPage.module.scss';
 import imgSrc from '../../../public/projects-placeholder.png';
 import Image from 'next/image';
 import { useState } from 'react';
-import { useProjects } from '@/services';
+import { useProjects, useTasks } from '@/services';
 import { Topping } from '@/components/topping/Topping';
 import { Modal } from '@/components/ui/modal/Modal';
 import { AddProjectForm } from '@/components/forms/addProject/AddProjectForm';
@@ -22,9 +22,11 @@ export const ProjectsPage = () => {
   const [active, setActive] = useState<SelectedProject>();
   const [view, setView] = useState(EView.LIST);
 
-  const { data, isLoading } = useProjects({});
-
-  console.log({ data, isLoading });
+  const { data: projects, isLoading: isLoadingProjects } = useProjects({});
+  const { data: tasks, isLoading: isLoadingTasks } = useTasks({
+    projectId: active?._id,
+    enabled: !!active,
+  });
 
   const handleChoose = (value: SelectedProject) => {
     setActive(value);
@@ -45,20 +47,20 @@ export const ProjectsPage = () => {
             content={<AddProjectForm />}
           />
         </Topping>
-        {isLoading ? (
+        {isLoadingProjects ? (
           <div className={styles.loader}>
             <Preloader />
           </div>
         ) : (
           <div className={styles.container}>
-            {data && data.length ? (
+            {projects && projects.length ? (
               <>
-                <ChooseProject active={active} list={data} onChoose={handleChoose} />
+                <ChooseProject active={active} list={projects} onChoose={handleChoose} />
                 <Tasks
                   view={view}
-                  loading={true}
+                  loading={isLoadingTasks}
                   project={!!active}
-                  tasks={[]}
+                  tasks={tasks || []}
                   setView={(v: EView) => setView(v)}
                 />
               </>

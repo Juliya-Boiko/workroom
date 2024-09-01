@@ -3,7 +3,7 @@ import styles from '../common.module.scss';
 import { useEffect } from 'react';
 import { useForm, Controller } from 'react-hook-form';
 import { useEmployees } from '@/services';
-import { useMutation } from '@tanstack/react-query';
+import { useMutation, useQueryClient } from '@tanstack/react-query';
 import { getTomorrowDate } from '@/helpers';
 import { yupResolver } from '@hookform/resolvers/yup';
 import { addTaskSchema, AddTaskFormData } from '@/utils/schemas';
@@ -16,9 +16,13 @@ import { Picker } from '../../ui/picker/Picker';
 import { IDynamicComponent } from '@/interfaces';
 import { createTask } from '@/actions';
 
+import { useModalContext } from '@/components/providers/ModalProvider';
+import { QUERY_KEYS } from '@/constants';
+
 export const AddTaskForm = ({ slug }: IDynamicComponent) => {
-  // const queryClient = useQueryClient();
+  const queryClient = useQueryClient();
   const { data: employees } = useEmployees({});
+  const { closeModal } = useModalContext();
   const employeesOptions = employees
     ? employees.map(({ _id, name, avatar }) => ({ _id, name, avatar }))
     : [];
@@ -55,7 +59,8 @@ export const AddTaskForm = ({ slug }: IDynamicComponent) => {
     mutationFn: createTask,
     onSuccess: () => {
       console.log('Task created');
-      // queryClient.invalidateQueries({ queryKey: [QUERY_KEYS.PROJECTS] });
+      closeModal();
+      queryClient.invalidateQueries({ queryKey: [QUERY_KEYS.TASKS] });
     },
   });
 
@@ -67,7 +72,6 @@ export const AddTaskForm = ({ slug }: IDynamicComponent) => {
       projectId: slug,
       description: data.description || '',
     };
-    console.log(data);
     mutation.mutate(task);
   };
 

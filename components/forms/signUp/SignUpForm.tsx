@@ -102,9 +102,6 @@ export const SignUpForm = ({ activeStage, onNext, onPrev, onSubmit }: Props) => 
         <h2 className={styles.title}>{activeStage}</h2>
       </div>
       <form className={styles.form} onSubmit={handleSubmit(onSubmit)}>
-        <button type="button" onClick={() => console.log(errors)}>
-          Checj
-        </button>
         {activeStage === ESignStages.EnterYourEmail && (
           <EmailStage register={register} errors={errors} />
         )}

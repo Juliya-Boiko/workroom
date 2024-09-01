@@ -14,7 +14,9 @@ interface Props {
   setView: (v: EView) => void;
 }
 
-export const Tasks = ({ project, tasks, view, setView }: Props) => {
+export const Tasks = ({ project, tasks, view, loading, setView }: Props) => {
+  console.log({ tasks, loading });
+
   return (
     <section className={styles.tasks}>
       <div className={styles.header}>
@@ -31,15 +33,6 @@ export const Tasks = ({ project, tasks, view, setView }: Props) => {
                 <SvgHandler icon={icon} />
               </BtnIcon>
             ))}
-            {/* <BtnIcon title="List" active={view === EView.LIST} on>
-              <SvgHandler icon={EIconsSet.List} />
-            </BtnIcon>
-            <BtnIcon title="Columns" active={view === EView.COLUMNS}>
-              <SvgHandler icon={EIconsSet.Columns} />
-            </BtnIcon>
-            <BtnIcon title="Timeline" active={view === EView.TIMELINE}>
-              <SvgHandler icon={EIconsSet.Timeline} />
-            </BtnIcon> */}
           </div>
           <BtnIcon title="Filter">
             <SvgHandler icon={EIconsSet.Filter} />
@@ -55,12 +48,12 @@ export const Tasks = ({ project, tasks, view, setView }: Props) => {
         {!project || !tasks.length ? (
           <Image src={imgSrc} alt="Tasks" className={styles.image} />
         ) : (
-          <>
+          <div className={styles.wrapper}>
             <div className={styles.banner}>Active Tasks</div>
             <ul className={styles.list}>list</ul>
             <div className={styles.banner}>Backlog</div>
             <ul className={styles.list}>list</ul>
-          </>
+          </div>
         )}
 
         {/* {loading && <Preloader />} */}

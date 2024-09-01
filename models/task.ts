@@ -3,8 +3,8 @@ import { priorityDataTypes, taskStatusDataTypes } from '@/enums';
 
 const taskSchema = new Schema(
   {
-    projectId: { type: String, required: true },
-    assignee: { type: String, required: true },
+    projectId: { type: Schema.Types.ObjectId, ref: 'Project', required: true },
+    assignee: { type: Schema.Types.ObjectId, ref: 'User', required: true },
     name: { type: String, required: true },
     start: { type: Date, required: true },
     deadline: { type: Date, required: true },

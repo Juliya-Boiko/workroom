@@ -1,6 +1,6 @@
 'use client';
 import { useEffect } from 'react';
-import { useModal } from '@/services';
+import { useModalContext } from '@/components/providers/ModalProvider';
 import styles from './overlay.module.scss';
 
 interface Props {
@@ -8,7 +8,7 @@ interface Props {
 }
 
 export const Overlay = ({ children }: Props) => {
-  const { closeModal } = useModal();
+  const { closeModal } = useModalContext();
   const TARGET_ID = 'overlay';
 
   useEffect(() => {

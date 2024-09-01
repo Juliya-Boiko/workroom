@@ -1,7 +1,8 @@
 import type { Metadata } from 'next';
 import { nunitoSans } from '@/utils/fonts';
 import { ToastNotify } from '@/components/ToastNotify';
-import QueryProvider from '@/components/QueryProvider';
+import QueryProvider from '@/components/providers/QueryProvider';
+import ModalProvider from '@/components/providers/ModalProvider';
 import { ReactQueryDevtools } from '@tanstack/react-query-devtools';
 import '../styles/global.scss';
 
@@ -18,11 +19,13 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={nunitoSans.className}>
-        <QueryProvider>
-          <ToastNotify />
-          {children}
-          <ReactQueryDevtools />
-        </QueryProvider>
+        <ModalProvider>
+          <QueryProvider>
+            <ToastNotify />
+            {children}
+            <ReactQueryDevtools />
+          </QueryProvider>
+        </ModalProvider>
       </body>
     </html>
   );

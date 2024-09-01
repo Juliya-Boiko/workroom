@@ -1,10 +1,10 @@
 'use client';
 import styles from './modal.module.scss';
-import { useModal } from '@/services/useModal';
 import { EIconsSet } from '@/enums';
 import { SvgHandler } from '@/components/SvgHandler';
 import { Overlay } from '../overlay/Overlay';
 import { BtnIcon } from '../buttons/icon/BtnIcon';
+import { useModalContext } from '@/components/providers/ModalProvider';
 
 interface Props {
   title: string;
@@ -12,8 +12,8 @@ interface Props {
   content: string | JSX.Element | JSX.Element[];
 }
 
-export const Modal = ({ content, title, activator }: Props) => {
-  const { isModalOpen, openModal, closeModal } = useModal();
+export const Modal = ({ activator, title, content }: Props) => {
+  const { isModalOpen, openModal, closeModal } = useModalContext();
 
   return (
     <div className={styles.modal}>
