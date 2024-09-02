@@ -6,7 +6,7 @@ import { useEmployees } from '@/services';
 import { useMutation, useQueryClient } from '@tanstack/react-query';
 import { getTomorrowDate } from '@/helpers';
 import { yupResolver } from '@hookform/resolvers/yup';
-import { addTaskSchema, AddTaskFormData } from '@/utils/schemas';
+import { addTaskSchema, AddTaskFormData } from '@/schemas';
 import { InputField } from '@/components/ui/input/InputField';
 import { BtnPrimary } from '@/components/ui/buttons/primary/BtnPrimary';
 import { TextareaField } from '@/components/ui/textarea/TextareField';

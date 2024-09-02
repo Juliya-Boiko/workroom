@@ -4,7 +4,7 @@ import { useForm, Controller } from 'react-hook-form';
 import { useRouter } from 'next/navigation';
 import { useState } from 'react';
 import { yupResolver } from '@hookform/resolvers/yup';
-import { inviteSchema, InviteFormData } from '@/utils/schemas';
+import { inviteSchema, InviteFormData } from '@/schemas';
 import { InputField } from '@/components/ui/input/InputField';
 import { EIconsSet } from '@/enums';
 import { SelectDrop } from '@/components/ui/select/SelectDrop';

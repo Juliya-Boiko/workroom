@@ -1,3 +1,5 @@
+import { ProfilePage } from '@/components/pages/profile/ProfilePage';
+
 export default function Profile() {
-  return <div>Profile</div>;
+  return <ProfilePage />;
 }

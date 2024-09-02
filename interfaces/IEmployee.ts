@@ -1,8 +1,7 @@
 import { ELevelEmployee, EUserPosition } from '@/enums';
+import { IUserInfo } from './IUserInfo';
 
-export interface IEmployee {
-  name: string;
-  avatar: string | null;
+export interface IEmployee extends IUserInfo {
   birthday: string | null;
   email: string;
   level: ELevelEmployee | null;

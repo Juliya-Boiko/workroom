@@ -4,7 +4,7 @@ import { LoaderSkeleton } from '@/components/LoaderSkeleton';
 import { IUserInfo } from '@/interfaces';
 
 interface Props {
-  size: 's' | 'm' | 'l';
+  size: 's' | 'm' | 'l' | 'xl';
   user?: IUserInfo;
   loading?: boolean;
 }
@@ -24,12 +24,14 @@ export const Avatar = ({ size, user, loading }: Props) => {
     if (size === 's') return styles.avatarSmall;
     if (size === 'm') return styles.avatarDef;
     if (size === 'l') return styles.avatarLarge;
+    if (size === 'xl') return styles.avatarExtra;
   };
 
   const getHeight = () => {
     if (size === 's') return 24;
     if (size === 'm') return 30;
     if (size === 'l') return 50;
+    if (size === 'xl') return 64;
     return 30;
   };
 

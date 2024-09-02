@@ -6,7 +6,7 @@ import { useForm } from 'react-hook-form';
 import { useRouter } from 'next/navigation';
 import { yupResolver } from '@hookform/resolvers/yup';
 import { loginUser } from '@/actions';
-import { signInSchema, SignInFormData } from '@/utils/schemas';
+import { signInSchema, SignInFormData } from '@/schemas';
 import { InputField } from '@/components/ui/input/InputField';
 import { BtnPrimary } from '@/components/ui/buttons/primary/BtnPrimary';
 import { SvgHandler } from '@/components/SvgHandler';

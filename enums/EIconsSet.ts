@@ -23,4 +23,5 @@ export enum EIconsSet {
   List,
   Timeline,
   Filter,
+  Pensil,
 }

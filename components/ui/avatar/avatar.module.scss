@@ -21,3 +21,8 @@
   @include squareSize(50px);
   font-size: 16px;
 }
+
+.avatarExtra {
+  @include squareSize(64px);
+  font-size: 18px;
+}

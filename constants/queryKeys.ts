@@ -4,4 +4,5 @@ export const QUERY_KEYS = {
   PROJECTS: 'projects',
   EMPLOYEES: 'employees',
   TASKS: 'tasks',
+  PROFILE: 'profile',
 };

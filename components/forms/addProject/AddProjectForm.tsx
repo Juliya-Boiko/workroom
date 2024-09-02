@@ -7,7 +7,7 @@ import { useRouter } from 'next/navigation';
 import { yupResolver } from '@hookform/resolvers/yup';
 import { getTomorrowDate } from '@/helpers';
 import { createProject } from '@/actions';
-import { addProjectSchema, AddProjectFormData } from '@/utils/schemas';
+import { addProjectSchema, AddProjectFormData } from '@/schemas';
 import { priorityDataTypes } from '@/enums';
 import { InputField } from '@/components/ui/input/InputField';
 import { BtnPrimary } from '@/components/ui/buttons/primary/BtnPrimary';
