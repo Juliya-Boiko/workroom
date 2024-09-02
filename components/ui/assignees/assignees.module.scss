@@ -1,0 +1,13 @@
+.assignees {
+  position: relative;
+
+  .item {
+    @include flexContainer(row, center, center);
+    background-color: $white;
+    border-radius: 50%;
+    padding: 2px;
+    max-width: fit-content;
+    position: absolute;
+    top: 0;
+  }
+}

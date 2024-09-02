@@ -17,5 +17,14 @@ const projectSchema = new Schema(
   }
 );
 
+projectSchema.virtual('tasks', {
+  ref: 'Task',
+  localField: '_id',
+  foreignField: 'projectId',
+});
+
+projectSchema.set('toObject', { virtuals: true });
+projectSchema.set('toJSON', { virtuals: true });
+
 const Project = models.Project || model('Project', projectSchema);
 export default Project;

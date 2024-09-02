@@ -17,6 +17,7 @@ import { Picker } from '../../ui/picker/Picker';
 import { ROUTES } from '@/constants';
 import { Preloader } from '@/components/ui/preloader/Preloader';
 import { QUERY_KEYS } from '@/constants';
+import { useModalContext } from '@/components/providers/ModalProvider';
 
 const defaultValues = {
   name: '',
@@ -29,6 +30,7 @@ const defaultValues = {
 export const AddProjectForm = () => {
   const router = useRouter();
   const queryClient = useQueryClient();
+  const { closeModal } = useModalContext();
 
   const {
     control,
@@ -49,6 +51,7 @@ export const AddProjectForm = () => {
     mutationFn: createProject,
     onSuccess: (id: string) => {
       queryClient.invalidateQueries({ queryKey: [QUERY_KEYS.PROJECTS] });
+      closeModal();
       router.push(`${ROUTES.project}/${id}`);
     },
   });

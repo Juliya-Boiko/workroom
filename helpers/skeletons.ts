@@ -1,13 +1,18 @@
 import { EPriority } from '@/enums';
+import { IProjectInfo } from '@/interfaces';
 
-export const projectSectionSkeleton = [
+export const projectSectionSkeleton: IProjectInfo[] = [
   {
-    _id: '1',
     deadline: '',
     name: '',
     priority: EPriority.LOW,
     start: '',
-    assignee: [],
+    _id: '1',
+    tasks: {
+      all: 0,
+      active: 0,
+      assignee: [],
+    },
   },
   {
     _id: '2',
@@ -15,7 +20,11 @@ export const projectSectionSkeleton = [
     name: '',
     priority: EPriority.LOW,
     start: '',
-    assignee: [],
+    tasks: {
+      all: 0,
+      active: 0,
+      assignee: [],
+    },
   },
   {
     _id: '3',
@@ -23,7 +32,11 @@ export const projectSectionSkeleton = [
     name: '',
     priority: EPriority.LOW,
     start: '',
-    assignee: [],
+    tasks: {
+      all: 0,
+      active: 0,
+      assignee: [],
+    },
   },
 ];
 

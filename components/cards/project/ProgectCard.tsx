@@ -3,20 +3,18 @@ import Image from 'next/image';
 import thumb from '../../../public/project-thumb.svg';
 import { LoaderSkeleton } from '@/components/LoaderSkeleton';
 import { SvgHandler } from '@/components/SvgHandler';
-import { EIconsSet, EPriority } from '@/enums';
+import { EIconsSet } from '@/enums';
 import { BadgePriopity } from '@/components/ui/badges/priority/BadgePriority';
 import { formatDeadlineDate, formatDayDate } from '@/helpers';
+import { IProjectInfo } from '@/interfaces';
+import { Assignees } from '@/components/ui/assignees/Assignees';
 
 interface Props {
   loading: boolean;
-  deadline: string;
-  name: string;
-  priority: EPriority;
-  start: string;
-  assignee: string[];
+  project: IProjectInfo;
 }
 
-export const ProjectCard = ({ loading, deadline, name, start, priority }: Props) => {
+export const ProjectCard = ({ loading, project }: Props) => {
   return (
     <div className={styles.projectCard}>
       <div className={styles.main}>
@@ -26,9 +24,9 @@ export const ProjectCard = ({ loading, deadline, name, start, priority }: Props)
           <div className={styles.head}>
             <Image src={thumb} alt="Thumb" className={styles.image} />
             <div className={styles.block}>
-              <p className={styles.deadline}>Deadline: {formatDeadlineDate(deadline)}</p>
+              <p className={styles.deadline}>Deadline: {formatDeadlineDate(project.deadline)}</p>
               <p className={styles.title}>
-                <span className={styles.wrap}>{name}</span>
+                <span className={styles.wrap}>{project.name}</span>
               </p>
             </div>
           </div>
@@ -41,10 +39,10 @@ export const ProjectCard = ({ loading, deadline, name, start, priority }: Props)
             <div className={styles.date}>
               <SvgHandler icon={EIconsSet.Calendar} />
               <p>
-                <span className={styles.created}>Created</span> {formatDayDate(start)}
+                <span className={styles.created}>Created</span> {formatDayDate(project.start)}
               </p>
             </div>
-            <BadgePriopity label={priority} />
+            <BadgePriopity label={project.priority} />
           </div>
         )}
       </div>
@@ -57,15 +55,15 @@ export const ProjectCard = ({ loading, deadline, name, start, priority }: Props)
           <div className={styles.data}>
             <div>
               <p className={styles.subtitle}>All tasks</p>
-              <p className={styles.value}>34</p>
+              <p className={styles.value}>{project.tasks.all}</p>
             </div>
             <div>
               <p className={styles.subtitle}>Active tasks</p>
-              <p className={styles.value}>13</p>
+              <p className={styles.value}>{project.tasks.active}</p>
             </div>
             <div>
               <p className={styles.subtitle}>Assignees</p>
-              <div>avatars</div>
+              <Assignees assignees={project.tasks.assignee} />
             </div>
           </div>
         )}

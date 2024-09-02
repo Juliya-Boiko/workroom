@@ -31,14 +31,7 @@ export const ProjectsSection = () => {
         <ul className={styles.list}>
           {projectSectionSkeleton.map((el) => (
             <li key={el._id} className={styles.item}>
-              <ProjectCard
-                loading={isLoading}
-                name={el.name}
-                deadline={el.deadline}
-                priority={el.priority}
-                start={el.start}
-                assignee={el.assignee}
-              />
+              <ProjectCard loading={isLoading} project={el} />
             </li>
           ))}
         </ul>
@@ -57,17 +50,10 @@ export const ProjectsSection = () => {
       )}
       {data && data.length > 0 && (
         <ul className={styles.list}>
-          {data.map(({ _id, name, deadline, priority, start, assignee }) => (
-            <li key={_id} className={styles.item}>
-              <Link href={`${ROUTES.project}/${_id}`}>
-                <ProjectCard
-                  loading={isLoading}
-                  name={name}
-                  deadline={deadline}
-                  priority={priority}
-                  start={start}
-                  assignee={assignee}
-                />
+          {data.map((el) => (
+            <li key={el._id} className={styles.item}>
+              <Link href={`${ROUTES.project}/${el._id}`}>
+                <ProjectCard loading={isLoading} project={el} />
               </Link>
             </li>
           ))}
