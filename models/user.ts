@@ -12,6 +12,7 @@ const userSchema = new Schema(
     birthday: { type: Date },
     level: { type: String },
     location: { type: String },
+    profession: { type: String },
   },
   {
     timestamps: true,

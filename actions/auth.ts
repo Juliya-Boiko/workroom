@@ -1,6 +1,6 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import { axiosInstance } from '@/utils/axios';
-import { SignUpFormData, SignInFormData, InviteFormData } from '@/utils/schemas';
+import { SignUpFormData, SignInFormData, InviteFormData } from '@/schemas';
 import toast from 'react-hot-toast';
 
 export const registerUserAndCompany = async (data: SignUpFormData) => {

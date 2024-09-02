@@ -3,6 +3,7 @@ import styles from '../signUp/signUp.module.scss';
 import imgSrc from '../../../public/members.png';
 import Image from 'next/image';
 import { useState } from 'react';
+import { useModalContext } from '@/components/providers/ModalProvider';
 import { MembersStage } from '../signUp/stages';
 import { BtnPrimary } from '@/components/ui/buttons/primary/BtnPrimary';
 import { inviteUsers } from '@/actions';
@@ -10,6 +11,7 @@ import { inviteUsers } from '@/actions';
 export const AddEmployeeForm = () => {
   const [members, setMembers] = useState(['']);
   const [isDisabled, setDisabled] = useState(true);
+  const { closeModal } = useModalContext();
 
   const onAdd = () => {
     setMembers((prev) => [...prev, '']);
@@ -23,10 +25,10 @@ export const AddEmployeeForm = () => {
   };
 
   const onSubmit = async () => {
-    await inviteUsers(members);
-    // if (resp) {
-    //   onClose();
-    // }
+    const resp = await inviteUsers(members);
+    if (resp) {
+      closeModal();
+    }
   };
 
   return (

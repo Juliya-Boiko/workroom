@@ -15,7 +15,6 @@ import { ETaskStatus, priorityDataTypes } from '@/enums';
 import { Picker } from '../../ui/picker/Picker';
 import { IDynamicComponent } from '@/interfaces';
 import { createTask } from '@/actions';
-
 import { useModalContext } from '@/components/providers/ModalProvider';
 import { QUERY_KEYS } from '@/constants';
 
