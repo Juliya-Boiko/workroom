@@ -5,7 +5,7 @@ export interface IEmployee {
   avatar: string | null;
   birthday: string | null;
   email: string;
-  level: ELevelEmployee;
+  level: ELevelEmployee | null;
   location: string | null;
   position: EUserPosition;
   _id: string;

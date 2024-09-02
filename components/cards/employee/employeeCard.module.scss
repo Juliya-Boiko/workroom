@@ -1,0 +1,45 @@
+.emlpoyeeCard {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  background-color: $white;
+  border-radius: 24px;
+  padding: 24px;
+
+  .round {
+    @include flexContainer(row, center, center);
+    padding: 2px;
+    border: 2px solid $blue-1;
+    border-radius: 50%;
+  }
+
+  .user {
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  .name {
+    text-transform: capitalize;
+    font-weight: 700;
+  }
+
+  .position {
+    font-weight: 200;
+  }
+
+  @include onLaptop {
+    flex-direction: column;
+    background-color: $grey-5;
+
+    .user {
+      align-items: center;
+      text-align: center;
+    }
+    
+    .user, .name, .position, .badge {
+      width: 100%;
+    }
+  }
+}

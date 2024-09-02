@@ -1,4 +1,4 @@
-import { EPriority, EUserPosition } from '@/enums';
+import { ELevelEmployee, EPriority, EUserPosition } from '@/enums';
 import { IProjectInfo } from '@/interfaces';
 
 export const projectSectionSkeleton: IProjectInfo[] = [
@@ -46,9 +46,59 @@ export const employeeSectionSkeleton = [
     avatar: null,
     birthday: null,
     email: '',
+    level: ELevelEmployee.JUNIOR,
+    location: null,
+    name: 'name',
+    position: EUserPosition.EMPLOYEE,
+  },
+  {
+    _id: '2',
+    avatar: null,
+    birthday: null,
+    email: '',
+    level: ELevelEmployee.MIDDLE,
+    location: null,
+    name: 'name',
+    position: EUserPosition.EMPLOYEE,
+  },
+  {
+    _id: '3',
+    avatar: null,
+    birthday: null,
+    email: '',
+    level: ELevelEmployee.SENIOR,
+    location: null,
+    name: 'name',
+    position: EUserPosition.EMPLOYEE,
+  },
+  {
+    _id: '4',
+    avatar: null,
+    birthday: null,
+    email: '',
     level: null,
     location: null,
-    name: '',
+    name: 'name',
+    position: EUserPosition.EMPLOYEE,
+  },
+  {
+    _id: '5',
+    avatar: null,
+    birthday: null,
+    email: '',
+    level: ELevelEmployee.JUNIOR,
+    location: null,
+    name: 'name',
+    position: EUserPosition.EMPLOYEE,
+  },
+  {
+    _id: '6',
+    avatar: null,
+    birthday: null,
+    email: '',
+    level: ELevelEmployee.JUNIOR,
+    location: null,
+    name: 'name',
     position: EUserPosition.EMPLOYEE,
   },
 ];

@@ -8,6 +8,12 @@ interface Props {
 
 export const LoaderSkeleton = ({ height, circle }: Props) => {
   return (
-    <Skeleton containerClassName="flex-1" baseColor="#F4F9FD" height={height} circle={circle} />
+    <Skeleton
+      containerClassName="flex-1"
+      baseColor="#F4F9FD"
+      highlightColor="#E6EDF5"
+      height={height}
+      circle={circle}
+    />
   );
 };

@@ -10,18 +10,18 @@ import { BtnSecondary } from '@/components/ui/buttons/secondary/BtnSecondary';
 
 export const WorkloadSection = () => {
   const router = useRouter();
-  const { data, isLoading } = useEmployees({ take: 8 });
+  const { data: employees, isLoading } = useEmployees({ take: 8 });
 
   return (
     <section className={styles.workload}>
       <div className={styles.head}>
         <h2 className={styles.title}>Workload</h2>
         <BtnSecondary disabled={isLoading} onClick={() => router.push(ROUTES.employees)}>
-          <span>{data?.length ? 'View all' : 'Add new'}</span>
+          <span>{employees?.length ? 'View all' : 'Add new'}</span>
           <SvgHandler icon={EIconsSet.ChevronRight} />
         </BtnSecondary>
       </div>
-      <EmployeesGrid />
+      <EmployeesGrid loading={isLoading} employees={employees} />
     </section>
   );
 };
