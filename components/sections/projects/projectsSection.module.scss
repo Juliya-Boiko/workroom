@@ -2,7 +2,7 @@
 
   .head {
     @include flexContainer(row, center, space-between);
-    padding-bottom: 24px;
+    margin-bottom: 24px;
   }
 
   .title {
@@ -28,5 +28,11 @@
     max-width: 400px;
     height: auto;
     opacity: 0.5;
+  }
+
+  @include onLaptop {
+    .head {
+      padding-top: 8px;
+    }
   }
 }

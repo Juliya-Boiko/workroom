@@ -5,9 +5,10 @@ import styles from './overlay.module.scss';
 
 interface Props {
   children: string | JSX.Element | JSX.Element[];
+  onClose?: () => void;
 }
 
-export const Overlay = ({ children }: Props) => {
+export const Overlay = ({ children, onClose }: Props) => {
   const { closeModal } = useModalContext();
   const TARGET_ID = 'overlay';
 
@@ -16,6 +17,7 @@ export const Overlay = ({ children }: Props) => {
       const target = event.target as HTMLElement | null;
       if (target && target.id === TARGET_ID) {
         closeModal();
+        onClose?.();
       }
     };
 
