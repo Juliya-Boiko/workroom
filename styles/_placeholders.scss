@@ -1,6 +1,10 @@
 %heading-2 {
   font-weight: 700;
-  font-size: 22px;
+  font-size: 18px;
+  
+  @include onDesktop {
+    font-size: 22px;
+  }
 }
 
 %page-title {
@@ -18,4 +22,47 @@
   box-shadow: 0px 1px 2px 0px rgba(184,200,224,1);
   -webkit-box-shadow: 0px 1px 2px 0px rgba(184,200,224,1);
   -moz-box-shadow: 0px 1px 2px 0px rgba(184,200,224,1);
+}
+
+%secondary-action {
+  @include flexContainer(row, center, center);
+  position: relative;
+  max-width: fit-content;
+  color: $blue-1;
+  gap: 4px;
+  padding: 8px 0;
+  transition: all 250ms ease-in-out;
+    &::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: calc(100% - 8px);
+    height: 2px;
+    border-radius: 1px;
+    display: block;
+    opacity: 0;
+    transition: all 250ms ease-in-out;
+    background-color: $blue-1;
+  }
+
+  &:hover {
+    &::after {
+      opacity: 1;
+    }
+  }
+
+  &:active {
+    color: $blue-3;
+    &::after {
+      background-color: $blue-3;
+    }
+  }
+
+  &:disabled {
+    color: $grey-1;
+    &::after {
+      opacity: 0;
+    }
+  }
 }

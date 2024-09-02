@@ -96,11 +96,15 @@
   }
 
   .data {
-    @include flexContainer(row, center, space-between);
+    @include flexContainer(row, flex-start, space-between);
     text-align: center;
     @include onTablet {
       padding: 0;
     }
+  }
+
+  .stretch {
+    height: 100%;
   }
 
   .subtitle {
@@ -110,6 +114,8 @@
   }
 
   .value {
+    @include flexContainer(row, center, center);
     font-weight: 700;
+    min-height: 28px;
   }
 }

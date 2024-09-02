@@ -55,11 +55,11 @@ export const ProjectCard = ({ loading, project }: Props) => {
           <div className={styles.data}>
             <div>
               <p className={styles.subtitle}>All tasks</p>
-              <p className={styles.value}>{project.tasks.all}</p>
+              <div className={styles.value}>{project.tasks.all}</div>
             </div>
             <div>
               <p className={styles.subtitle}>Active tasks</p>
-              <p className={styles.value}>{project.tasks.active}</p>
+              <div className={styles.value}>{project.tasks.active}</div>
             </div>
             <div>
               <p className={styles.subtitle}>Assignees</p>

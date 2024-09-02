@@ -1,13 +1,29 @@
 .assignees {
   position: relative;
+  height: 28px;
+  display: flex;
+  align-items: center;
 
   .item {
     @include flexContainer(row, center, center);
-    background-color: $white;
     border-radius: 50%;
-    padding: 2px;
+    border: 2px solid $white;
     max-width: fit-content;
-    position: absolute;
+    position: relative;
     top: 0;
+  }
+
+  .count {
+    min-width: 28px;
+    min-height: 28px;
+    // @include squareSize(28px);
+    @include flexContainer(row, center, center);
+    border-radius: 50%;
+    position: relative;
+    font-size: 12px;
+    top: 0;
+    border: 2px solid $white;
+    color: $white;
+    background-color: $blue-1;
   }
 }

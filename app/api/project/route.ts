@@ -1,9 +1,10 @@
+/* eslint-disable @typescript-eslint/no-unused-vars */
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import Project from '@/models/project';
 import { NextRequest, NextResponse } from 'next/server';
 import { connectToMongoDB } from '@/utils/database';
 import { decode } from '@/utils/jwt';
-// import Task from '@/models/task';
+import Task from '@/models/task';
 import { ETaskStatus } from '@/enums';
 import { IAssignee, IProject } from '@/interfaces';
 
@@ -38,8 +39,8 @@ export async function POST(request: NextRequest) {
 }
 
 export async function GET(request: NextRequest) {
-  // const url = new URL(request.url);
-  // const take = url.searchParams.get('take');
+  const url = new URL(request.url);
+  const take = url.searchParams.get('take');
   try {
     const token = request.cookies.get('workroom')?.value;
     if (!token) {
@@ -50,6 +51,7 @@ export async function GET(request: NextRequest) {
     const projectsWithTasks: IResponse[] = await Project.find({ companyId })
       .sort({ createdAt: 'desc' })
       .select('deadline name priority start')
+      .limit(Number(take))
       .populate({
         path: 'tasks',
         match: { projectId: { $exists: true } },
@@ -78,8 +80,6 @@ export async function GET(request: NextRequest) {
       };
     });
 
-    // // .limit(Number(take));
-    // console.log(formatted);
     return NextResponse.json(formatted, { status: 200 });
   } catch (error: any) {
     return NextResponse.json({ message: error.message }, { status: 500 });

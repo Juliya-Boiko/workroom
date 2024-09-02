@@ -1,23 +1,26 @@
 .header {
   @include flexContainer(row, center, space-between);
   padding: 24px 12px 0 12px;
-  @include onTablet {
-    padding: 24px 48px 0 48px;
-  }
-  @include onLaptop {
-    padding: 0 32px;
-  }
-
+ 
   .company {
     display: none;
-    @include onLaptop {
-      display: block;
-    }
   }
 
   .user {
     display: flex;
     align-items: center;
     gap: 24px;
+  }
+
+   @include onTablet {
+    padding: 24px 48px 0 48px;
+  }
+
+   @include onLaptop {
+    padding: 0 0 0 32px;
+
+    .company {
+      display: block;
+    }
   }
 }

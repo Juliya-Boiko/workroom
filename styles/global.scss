@@ -56,6 +56,10 @@ body {
   color: $dark;
   background-color: $grey-5;
   line-height: 1;
+  font-size: 14px;
+  @include onTablet {
+    font-size: 16px;
+  }
 }
 
 .appLayout {

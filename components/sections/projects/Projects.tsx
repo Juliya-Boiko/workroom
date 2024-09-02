@@ -1,7 +1,7 @@
 'use client';
 import styles from './projectsSection.module.scss';
 import Image from 'next/image';
-import imgSrc from '../../../public/projects-placeholder.png';
+import imgSrc from '../../../public/placeholder-1.png';
 import Link from 'next/link';
 import { useRouter } from 'next/navigation';
 import { useProjects } from '@/services';
@@ -9,7 +9,6 @@ import { SvgHandler } from '@/components/SvgHandler';
 import { EIconsSet } from '@/enums';
 import { ProjectCard } from '@/components/cards/project/ProgectCard';
 import { BtnSecondary } from '@/components/ui/buttons/secondary/BtnSecondary';
-import { BtnPrimary } from '@/components/ui/buttons/primary/BtnPrimary';
 import { projectSectionSkeleton } from '@/helpers';
 import { ROUTES } from '@/constants';
 
@@ -22,8 +21,8 @@ export const ProjectsSection = () => {
     <section className={styles.section}>
       <div className={styles.head}>
         <h2 className={styles.title}>Projects</h2>
-        <BtnSecondary onClick={() => router.push(ROUTES.projects)}>
-          <span>View all</span>
+        <BtnSecondary disabled={isLoading} onClick={() => router.push(ROUTES.projects)}>
+          <span>{data?.length ? 'View all' : 'Add project'}</span>
           <SvgHandler icon={EIconsSet.ChevronRight} />
         </BtnSecondary>
       </div>
@@ -38,14 +37,8 @@ export const ProjectsSection = () => {
       )}
       {data && !data.length && (
         <div className={styles.placeholder}>
-          <Image src={imgSrc} alt="No projects" className={styles.image} />
-          <p className={styles.text}>
-            There are no projects yet <br /> Let&apos;s add them
-          </p>
-          <BtnPrimary onClick={() => router.push(ROUTES.projects)}>
-            <SvgHandler icon={EIconsSet.Plus} />
-            <span>Add project</span>
-          </BtnPrimary>
+          <p>You dont have projects yet</p>
+          <Image src={imgSrc} alt="Employees" className={styles.image} />
         </div>
       )}
       {data && data.length > 0 && (

@@ -1,4 +1,4 @@
-import { EPriority } from '@/enums';
+import { EPriority, EUserPosition } from '@/enums';
 import { IProjectInfo } from '@/interfaces';
 
 export const projectSectionSkeleton: IProjectInfo[] = [
@@ -40,17 +40,15 @@ export const projectSectionSkeleton: IProjectInfo[] = [
   },
 ];
 
-export const chooseSectionSkeleton: { _id: string; name: string }[] = [
-  // {
-  //   _id: '1',
-  //   name: 'Medical App (iOS native)',
-  // },
-  // {
-  //   _id: '2',
-  //   name: 'Food Delivery Service',
-  // },
-  // {
-  //   _id: '3',
-  //   name: 'Fortune website',
-  // },
+export const employeeSectionSkeleton = [
+  {
+    _id: '1',
+    avatar: null,
+    birthday: null,
+    email: '',
+    level: null,
+    location: null,
+    name: '',
+    position: EUserPosition.EMPLOYEE,
+  },
 ];

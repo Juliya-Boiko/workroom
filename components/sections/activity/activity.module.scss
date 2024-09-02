@@ -1,0 +1,20 @@
+.events {
+  .head {
+    @include flexContainer(row, center, space-between);
+    margin-bottom: 24px; 
+  }
+
+  .title {
+    @extend %heading-2;
+  }
+
+  @include onLaptop {
+    background-color: $white;
+    border-radius: 24px;
+    padding: 8px 16px 12px 16px;
+  }
+
+  @include onDesktop {
+    padding: 20px 24px 24px 24px;
+  }
+}

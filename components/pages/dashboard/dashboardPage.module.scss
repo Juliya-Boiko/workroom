@@ -1,10 +1,39 @@
 .dashboardPage {
   padding: 24px 12px;
-  @include onTablet {
-    padding: 48px;
-  }
 
   .container {
     padding: 24px 0;
+    display: flex;
+    flex-direction: column;
+    gap: 48px;
+  }
+
+  .today {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 8px;
+    border-radius: 14px;
+    background-color: $grey-6;
+  }
+  
+  @include onTablet {
+    padding: 48px;
+
+    .today {
+      padding: 12px;
+    }
+  }
+
+  @include onLaptop {
+    padding: 48px 0 0 32px;
+
+    .container {
+      padding: 24px 0 0 0;
+      display: grid;
+      grid-template-columns: 2fr 1fr;
+      grid-template-rows: repeat(2, 1fr);
+      gap: 24px;
+    }
   }
 }
