@@ -18,7 +18,11 @@ export const EmployeeCard = ({ user, loading }: Props) => {
           borderColor: loading ? '#F4F9FD' : '#3F8CFF',
         }}
       >
-        <Avatar loading={loading} size="l" user={{ name: user.name, avatar: user.avatar }} />
+        <Avatar
+          loading={loading}
+          size="l"
+          user={loading ? undefined : { name: user.name, avatar: user.avatar }}
+        />
       </div>
       <div className={styles.user}>
         <p className={styles.name}>{loading ? <LoaderSkeleton height={14} /> : user.name}</p>

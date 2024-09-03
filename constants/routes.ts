@@ -11,6 +11,7 @@ export const ROUTES = {
   employees: '/employees',
   projects: '/projects',
   project: '/project',
+  events: '/events',
 };
 
 export type RoutesType = typeof ROUTES;
