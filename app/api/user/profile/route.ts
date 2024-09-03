@@ -25,3 +25,23 @@ export async function GET(request: NextRequest) {
     return NextResponse.json({ message: error.message }, { status: 500 });
   }
 }
+
+export async function PATCH(request: NextRequest) {
+  try {
+    const token = request.cookies.get('workroom')?.value;
+    if (!token) {
+      return NextResponse.json({ message: 'Token null or expired' }, { status: 403 });
+    }
+    const { id } = await decode(token);
+    if (!id) {
+      return NextResponse.json({ message: 'Find user error' }, { status: 400 });
+    }
+    const reqBody = await request.json();
+    const user = await User.findByIdAndUpdate(id, reqBody, { new: true }).select(
+      'name avatar position -_id'
+    );
+    return NextResponse.json(user, { status: 200 });
+  } catch (error: any) {
+    return NextResponse.json({ message: error.message }, { status: 500 });
+  }
+}

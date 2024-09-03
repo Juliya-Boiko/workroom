@@ -4,3 +4,4 @@ export * from './IEmployee';
 export * from './IDynamicPage';
 export * from './ITask';
 export * from './IProfile';
+export * from './ILocations';

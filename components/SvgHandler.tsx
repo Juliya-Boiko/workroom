@@ -295,7 +295,7 @@ export const SvgHandler = ({ icon }: { icon: EIconsSet }) => {
     return (
       <svg xmlns="http://www.w3.org/2000/svg" width={24} height={24} fill="none">
         <path
-          fill="#7D8592"
+          fill="currentColor"
           fillRule="evenodd"
           d="M12 2c-4.426 0-8 3.696-8 8.238 0 2.371 1.798 5.703 5.362 10.154l.31.384a3 3 0 0 0 4.657.006C18.099 16.152 20 12.693 20 10.238 20 5.696 16.426 2 12 2Zm0 2c3.306 0 6 2.786 6 6.238 0 1.845-1.73 4.993-5.222 9.28a1 1 0 0 1-1.552-.001l-.304-.378C7.63 15.03 6 12.01 6 10.24 6 6.785 8.694 4 12 4Zm0 2a4 4 0 1 0 0 8 4 4 0 0 0 0-8Zm0 2a2 2 0 1 1 0 4 2 2 0 0 1 0-4Z"
           clipRule="evenodd"

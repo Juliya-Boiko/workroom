@@ -8,6 +8,7 @@ import { SvgHandler } from '@/components/SvgHandler';
 import { EIconsSet } from '@/enums';
 
 interface Props {
+  expanded?: boolean;
   label: string;
   value: Date | null;
   disabled?: boolean;
@@ -28,7 +29,7 @@ const CustomInput = forwardRef<HTMLButtonElement, CustomInputProps>(({ value, on
 
 CustomInput.displayName = 'CustomInput';
 
-export const PickerDate = ({ label, value, disabled, onChange }: Props) => {
+export const PickerDate = ({ expanded, label, value, disabled, onChange }: Props) => {
   const handleDateChange = (data: Date | null): void => {
     if (data) {
       onChange(data);
@@ -39,6 +40,11 @@ export const PickerDate = ({ label, value, disabled, onChange }: Props) => {
     <div className={`${styles.picker} ${disabled ? styles.pickerDis : ''}`}>
       <span className={styles.label}>{label}</span>
       <DatePicker
+        showMonthDropdown={expanded}
+        showYearDropdown={expanded}
+        dropdownMode="select"
+        yearDropdownItemNumber={15}
+        scrollableYearDropdown={expanded}
         disabled={disabled}
         dateFormat="dd/MM/yyyy"
         showPopperArrow={false}

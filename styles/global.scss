@@ -91,6 +91,10 @@ body {
   color: $dark !important;
 }
 
+.react-datepicker__header {
+  padding: 16px 0 !important;
+}
+
 .react-datepicker__day--selected {
   background: $blue-1 !important;
 }
@@ -101,4 +105,13 @@ body {
 
 .react-datepicker__day--keyboard-selected {
   background-color: $white !important;
+}
+
+.react-datepicker__month-select, .react-datepicker__year-select {
+  margin: 12px 0;
+  padding: 4px;
+  border-radius: 4px;
+  &:focus {
+    outline: 1px solid $blue-1;
+  }
 }

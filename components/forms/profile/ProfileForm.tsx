@@ -1,8 +1,10 @@
-/* eslint-disable @typescript-eslint/no-unused-vars */
 'use client';
 import styles from './profileForm.module.scss';
+import { useEffect, useState } from 'react';
 import { useProfile, useCompany } from '@/services';
 import { useForm, Controller } from 'react-hook-form';
+import { useMutation, useQueryClient } from '@tanstack/react-query';
+import { updateProfile } from '@/actions';
 import { yupResolver } from '@hookform/resolvers/yup';
 import { profileSchema, ProfileFormData } from '@/schemas';
 import { Avatar } from '@/components/ui/avatar/Avatar';
@@ -10,26 +12,30 @@ import { BtnIcon } from '@/components/ui/buttons/icon/BtnIcon';
 import { SvgHandler } from '@/components/SvgHandler';
 import { EIconsSet, EUserPosition } from '@/enums';
 import { InputField } from '@/components/ui/input/InputField';
-import { useEffect, useState } from 'react';
 import { PickerDate } from '@/components/ui/pickerDate/PickerDate';
 import { PickerLocation } from '@/components/ui/pickerLocation/PickerLocation';
+import { BtnPrimary } from '@/components/ui/buttons/primary/BtnPrimary';
+import { QUERY_KEYS } from '@/constants';
 
 export const ProfileForm = () => {
   const [isDisabled, setIsDisabled] = useState(true);
   const { data: user, isLoading } = useProfile();
   const { data: company } = useCompany();
+  const queryClient = useQueryClient();
 
   const {
     register,
     handleSubmit,
     reset,
+    watch,
     control,
+    setValue,
     formState: { errors, isDirty, isValid, isSubmitting },
   } = useForm({
     resolver: yupResolver(profileSchema),
     mode: 'onChange',
   });
-  console.log(user, company);
+  // console.log(user, company);
 
   useEffect(() => {
     if (user && company) {
@@ -44,8 +50,26 @@ export const ProfileForm = () => {
     }
   }, [company, reset, user]);
 
+  const location = watch('location');
+
+  const handleApprove = (v: string) => {
+    setValue('location', v);
+  };
+
+  const { mutate, isPending } = useMutation({
+    mutationFn: updateProfile,
+    onSuccess: (data) => {
+      queryClient.invalidateQueries({ queryKey: [QUERY_KEYS.USER, QUERY_KEYS.PROFILE] });
+      queryClient.setQueryData([QUERY_KEYS.USER], data);
+    },
+  });
+
+  const onSubmit = async (data: ProfileFormData) => {
+    mutate(data);
+  };
+
   return (
-    <form action="" className={styles.profileForm}>
+    <form action="" className={styles.profileForm} onSubmit={handleSubmit(onSubmit)}>
       <div className={styles.user}>
         <div className={styles.wrapper}>
           <div
@@ -60,7 +84,7 @@ export const ProfileForm = () => {
               <Avatar size="xl" user={{ name: user?.name || '', avatar: user?.avatar || null }} />
             )}
           </div>
-          <BtnIcon tonal title="Edit">
+          <BtnIcon tonal title="Edit" onClick={() => setIsDisabled(false)}>
             <SvgHandler icon={EIconsSet.Pensil} />
           </BtnIcon>
         </div>
@@ -69,7 +93,6 @@ export const ProfileForm = () => {
           name="name"
           disabled={isDisabled}
           register={register}
-          placeholder="John Doe"
           errors={errors.name}
         />
       </div>
@@ -81,24 +104,16 @@ export const ProfileForm = () => {
             name="company"
             disabled={isDisabled}
             register={register}
-            placeholder="Company Name"
             errors={errors.company}
           />
         )}
-        <PickerLocation />
-        <InputField
-          label="location"
-          name="location"
-          disabled={isDisabled}
-          register={register}
-          iconPosition="end"
-          icon={EIconsSet.Location}
-        />
+        <PickerLocation value={location} disabled={isDisabled} onApprove={handleApprove} />
         <Controller
           control={control}
           name="birthday"
           render={({ field }) => (
             <PickerDate
+              expanded
               disabled={isDisabled}
               label="Birthday Date"
               value={field.value}
@@ -114,16 +129,18 @@ export const ProfileForm = () => {
           name="email"
           disabled={isDisabled}
           register={register}
-          placeholder="youremail@gmail.com"
           errors={errors.email}
         />
-        <InputField
-          label="Mobile Number"
-          name="phone"
-          disabled={isDisabled}
-          register={register}
-          placeholder=""
-        />
+        <InputField label="Mobile Number" name="phone" disabled={isDisabled} register={register} />
+        {!isDisabled && (
+          <BtnPrimary
+            type="submit"
+            spread
+            disabled={!isDirty || !isValid || isSubmitting || isPending}
+          >
+            Update profile
+          </BtnPrimary>
+        )}
       </div>
     </form>
   );

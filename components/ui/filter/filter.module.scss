@@ -1,0 +1,73 @@
+.filter {
+  width: 100%;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+ 
+  .label {
+    display: inline-block;
+    padding-left: 6px;
+    font-weight: bold;
+    font-size: 14px;
+    text-transform: capitalize;
+  }
+
+  .btnOpen {
+    @include flexContainer(row, center, flex-start);
+    @extend %shadow-xs;
+    gap: 8px;
+    background-color: $white;
+    border: none;
+    outline: 1px solid $grey-7;
+    border-radius: 14px;
+    height: 48px;
+    width: 100%;
+    font-size: 16px;
+    color: $grey-3;
+    text-align: start;
+    padding: 0 18px;
+  }
+
+  .input {
+    background-color: $white;
+    border: none;
+    outline: 1px solid $grey-7;
+    border-radius: 14px;
+    height: 48px;
+    width: 100%;
+    font-size: 16px;
+    color: $grey-3;
+    padding: 0 18px;
+    @extend %shadow-xs;
+
+    &::placeholder {
+      font-size: 14px;
+      color: $grey-3;
+      text-transform: capitalize;
+    }
+  }
+
+  .list {
+    @extend %shadow-xs;
+    position: absolute;
+    top: 86px;
+    left: 0;
+    padding: 18px;
+    border-radius: 14px;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    width: 100%;
+    background-color: $white;
+  }
+
+  .item {
+    padding: 8px;
+    cursor: pointer;
+    &:hover {
+      color: $blue-1;
+    }
+  }
+}
+
