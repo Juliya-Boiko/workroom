@@ -14,4 +14,4 @@ export const getEmployees = async (take?: number): Promise<IEmployee[]> => {
 export const getProfile = async (): Promise<IEmployee> => {
   const response = await axiosInstance.get('/user/profile');
   return response.data;
-}
+};

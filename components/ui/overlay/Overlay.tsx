@@ -26,7 +26,7 @@ export const Overlay = ({ children, onClose }: Props) => {
     return () => {
       window.removeEventListener('mousedown', handleClick);
     };
-  }, [closeModal]);
+  }, [closeModal, onClose]);
 
   return (
     <div id={TARGET_ID} className={styles.overlay}>

@@ -33,6 +33,8 @@ export async function POST(request: NextRequest) {
       birthday: null,
       level: null,
       location: null,
+      profession: reqBody.userPosition === EUserPosition.EMPLOYEE ? reqBody.profession : null,
+      phone: null,
     };
 
     let initToken = '';

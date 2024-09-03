@@ -16,7 +16,7 @@ export async function GET(request: NextRequest) {
     if (!id) {
       return NextResponse.json({ message: 'Find user error' }, { status: 400 });
     }
-    const user = await User.findById(id).select('name avatar -_id');
+    const user = await User.findById(id).select('name avatar position -_id');
     if (!user) {
       return NextResponse.json({ message: `User with not found` }, { status: 400 });
     }

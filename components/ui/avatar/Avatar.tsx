@@ -1,11 +1,13 @@
 import styles from './avatar.module.scss';
 import Image from 'next/image';
 import { LoaderSkeleton } from '@/components/LoaderSkeleton';
-import { IUserInfo } from '@/interfaces';
 
 interface Props {
   size: 's' | 'm' | 'l' | 'xl';
-  user?: IUserInfo;
+  user?: {
+    name: string;
+    avatar: string | null;
+  };
   loading?: boolean;
 }
 

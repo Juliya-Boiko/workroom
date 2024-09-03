@@ -9,7 +9,7 @@ import { registerUserAndCompany } from '@/actions';
 import { signStagesDataTypes, ESignStages, EIconsSet } from '@/enums';
 import { Logo } from '../logo/Logo';
 import { SignUpForm } from '../forms/signUp/SignUpForm';
-import { SignUpFormData } from '@/utils/schemas';
+import { SignUpFormData } from '@/schemas';
 import { BtnPrimary } from '../ui/buttons/primary/BtnPrimary';
 import { SvgHandler } from '../SvgHandler';
 import { ROUTES } from '@/constants';

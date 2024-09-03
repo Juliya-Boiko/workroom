@@ -1,11 +1,5 @@
 .form {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  width: 100%;
-  gap: 48px;
   @include onTablet {
     width: 400px;
   }
-  
 }

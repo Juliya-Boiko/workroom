@@ -1,7 +1,5 @@
 import * as yup from 'yup';
-import {
-  invitePositionDataTypes,
-} from '@/enums';
+import { EUserPosition, invitePositionDataTypes } from '@/enums';
 
 export const inviteSchema = yup.object().shape({
   email: yup.string().trim().email().required('Email is required field'),
@@ -24,6 +22,11 @@ export const inviteSchema = yup.object().shape({
     .trim()
     .oneOf(invitePositionDataTypes)
     .default(invitePositionDataTypes[0]),
+  profession: yup.string().when('userPosition', {
+    is: EUserPosition.EMPLOYEE,
+    then: (schema) => schema.required('Profession is required for employees'),
+    otherwise: (schema) => schema.trim().nullable(),
+  }),
 });
 
 export type InviteFormData = yup.InferType<typeof inviteSchema>;

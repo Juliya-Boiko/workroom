@@ -43,9 +43,6 @@
     width: 100%;
     padding: 48px 24px;
     @include flexContainer(column, center, center);
-    @include onTablet {
-      padding: 96px 24px;
-    }
     @include onLaptop {
       width: 50%;
     }

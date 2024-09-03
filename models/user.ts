@@ -13,6 +13,7 @@ const userSchema = new Schema(
     level: { type: String },
     location: { type: String },
     profession: { type: String },
+    phone: { type: String },
   },
   {
     timestamps: true,

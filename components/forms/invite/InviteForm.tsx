@@ -1,12 +1,13 @@
 'use client';
 import styles from '../common.module.scss';
+import inviteStyles from './invite.module.scss';
 import { useForm, Controller } from 'react-hook-form';
 import { useRouter } from 'next/navigation';
 import { useState } from 'react';
 import { yupResolver } from '@hookform/resolvers/yup';
 import { inviteSchema, InviteFormData } from '@/schemas';
 import { InputField } from '@/components/ui/input/InputField';
-import { EIconsSet } from '@/enums';
+import { EIconsSet, EUserPosition } from '@/enums';
 import { SelectDrop } from '@/components/ui/select/SelectDrop';
 import { registerUser } from '@/actions';
 import { invitePositionDataTypes } from '@/enums';
@@ -27,11 +28,13 @@ export const InviteForm = ({ companyId, email }: Props) => {
     confirmPassword: '',
     name: '',
     userPosition: invitePositionDataTypes[0],
+    profession: '',
   };
 
   const {
     register,
     control,
+    watch,
     handleSubmit,
     formState: { errors, isDirty, isValid, isSubmitting },
   } = useForm({
@@ -39,6 +42,8 @@ export const InviteForm = ({ companyId, email }: Props) => {
     resolver: yupResolver(inviteSchema),
     mode: 'onChange',
   });
+
+  const position = watch('userPosition');
 
   const toggleType = () => {
     if (typePassword === 'password') {
@@ -54,7 +59,7 @@ export const InviteForm = ({ companyId, email }: Props) => {
   };
 
   return (
-    <form className={styles.form} onSubmit={handleSubmit(onSubmit)}>
+    <form className={`${styles.form} ${inviteStyles.form}`} onSubmit={handleSubmit(onSubmit)}>
       <InputField
         label="Email Address"
         name="email"
@@ -77,6 +82,15 @@ export const InviteForm = ({ companyId, email }: Props) => {
           )}
         />
       </div>
+      {position === EUserPosition.EMPLOYEE && (
+        <InputField
+          label="Profession"
+          name="profession"
+          register={register}
+          placeholder="Designer"
+          errors={errors.profession}
+        />
+      )}
       <InputField
         label="Name"
         name="name"
@@ -88,6 +102,7 @@ export const InviteForm = ({ companyId, email }: Props) => {
         label="Password"
         type={typePassword}
         name="password"
+        placeholder="Enter password"
         register={register}
         iconPosition="end"
         icon={EIconsSet.Eye}

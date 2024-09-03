@@ -8,50 +8,10 @@ import * as yup from 'yup';
 
 export const profileSchema = yup.object({
   name: yup.string().trim().required('Name is required'),
-  // userPosition: yup
-  //   .string()
-  //   .trim()
-  //   .oneOf(userPositionsDataTypes)
-  //   .default(userPositionsDataTypes[0]),
-
-  // email: yup.string().trim().email().required('Email is required field'),
-  // password: yup
-  //   .string()
-  //   .trim()
-  //   .matches(/^(?=.*[A-Z])[A-Za-z\d]{5,10}$/, {
-  //     excludeEmptyString: true,
-  //     message: 'Min 5, max 10, contain 1capital letter',
-  //   })
-  //   .required('Password is required field'),
-  // email: yup.string().trim().email().required('Email is required field'),
-  // password: yup
-  //   .string()
-  //   .trim()
-  //   .matches(/^(?=.*[A-Z])[A-Za-z\d]{5,10}$/, {
-  //     excludeEmptyString: true,
-  //     message: 'Min 5, max 10, contain 1capital letter',
-  //   })
-  //   .required('Password is required field'),
-  // confirmPassword: yup
-  //   .string()
-  //   .trim()
-  //   .oneOf([yup.ref('password')], 'Passwords must match')
-  //   .required('Confirm password is required field'),
-
-  // usingGoal: yup.string().trim().oneOf(usingGoalsDataTypes).default(usingGoalsDataTypes[0]),
-  // userPosition: yup
-  //   .string()
-  //   .trim()
-  //   .oneOf(userPositionsDataTypes)
-  //   .default(userPositionsDataTypes[0]),
-  // companyName: yup.string().trim().required('Company name is required'),
-  // direction: yup
-  //   .string()
-  //   .trim()
-  //   .oneOf(businessDirectionDataTypes)
-  //   .default(businessDirectionDataTypes[0]),
-  // companySize: yup.string().trim().oneOf(companySizeDataTypes).default(companySizeDataTypes[0]),
-  // members: yup.array().of(yup.string().trim().email()).required('Name is required'),
+  location: yup.string().trim().nullable().optional().default(null),
+  birthday: yup.date().nullable().optional().default(null),
+  email: yup.string().trim().email().required('Email is required field'),
+  phone: yup.string().trim().nullable().optional().default(null),
 });
 
 export type ProfileFormData = yup.InferType<typeof profileSchema>;
