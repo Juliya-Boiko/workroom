@@ -9,7 +9,8 @@ import { EIconsSet } from '@/enums';
 
 interface Props {
   label: string;
-  value: Date;
+  value: Date | null;
+  disabled?: boolean;
   onChange: (v: Date) => void;
 }
 
@@ -27,22 +28,23 @@ const CustomInput = forwardRef<HTMLButtonElement, CustomInputProps>(({ value, on
 
 CustomInput.displayName = 'CustomInput';
 
-export const Picker = ({ label, value, onChange }: Props) => {
-  const handleDateChange = (data: Date | null) => {
+export const PickerDate = ({ label, value, disabled, onChange }: Props) => {
+  const handleDateChange = (data: Date | null): void => {
     if (data) {
       onChange(data);
     }
   };
 
   return (
-    <div className={styles.picker}>
+    <div className={`${styles.picker} ${disabled ? styles.pickerDis : ''}`}>
       <span className={styles.label}>{label}</span>
       <DatePicker
+        disabled={disabled}
         dateFormat="dd/MM/yyyy"
         showPopperArrow={false}
         calendarStartDay={1}
         selected={value}
-        minDate={subDays(value, 0)}
+        minDate={value ? subDays(value, 0) : undefined}
         onChange={handleDateChange}
         customInput={<CustomInput />}
         popperContainer={({ children }) => <div>{children}</div>}

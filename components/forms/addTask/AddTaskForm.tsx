@@ -12,7 +12,7 @@ import { BtnPrimary } from '@/components/ui/buttons/primary/BtnPrimary';
 import { TextareaField } from '@/components/ui/textarea/TextareField';
 import { SelectDrop } from '@/components/ui/select/SelectDrop';
 import { ETaskStatus, priorityDataTypes } from '@/enums';
-import { Picker } from '../../ui/picker/Picker';
+import { PickerDate } from '../../ui/pickerDate/PickerDate';
 import { IDynamicComponent } from '@/interfaces';
 import { createTask } from '@/actions';
 import { useModalContext } from '@/components/providers/ModalProvider';
@@ -106,14 +106,14 @@ export const AddTaskForm = ({ slug }: IDynamicComponent) => {
           control={control}
           name="start"
           render={({ field }) => (
-            <Picker label="Start date" value={field.value} onChange={field.onChange} />
+            <PickerDate label="Start date" value={field.value} onChange={field.onChange} />
           )}
         />
         <Controller
           control={control}
           name="deadline"
           render={({ field }) => (
-            <Picker label="Deadline" value={field.value} onChange={field.onChange} />
+            <PickerDate label="Deadline" value={field.value} onChange={field.onChange} />
           )}
         />
       </div>

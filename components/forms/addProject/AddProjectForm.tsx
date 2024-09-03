@@ -13,7 +13,7 @@ import { InputField } from '@/components/ui/input/InputField';
 import { BtnPrimary } from '@/components/ui/buttons/primary/BtnPrimary';
 import { TextareaField } from '@/components/ui/textarea/TextareField';
 import { SelectDrop } from '@/components/ui/select/SelectDrop';
-import { Picker } from '../../ui/picker/Picker';
+import { PickerDate } from '../../ui/pickerDate/PickerDate';
 import { ROUTES } from '@/constants';
 import { Preloader } from '@/components/ui/preloader/Preloader';
 import { QUERY_KEYS } from '@/constants';
@@ -84,14 +84,14 @@ export const AddProjectForm = () => {
               control={control}
               name="start"
               render={({ field }) => (
-                <Picker label="Start date" value={field.value} onChange={field.onChange} />
+                <PickerDate label="Start date" value={field.value} onChange={field.onChange} />
               )}
             />
             <Controller
               control={control}
               name="deadline"
               render={({ field }) => (
-                <Picker label="Deadline" value={field.value} onChange={field.onChange} />
+                <PickerDate label="Deadline" value={field.value} onChange={field.onChange} />
               )}
             />
           </div>

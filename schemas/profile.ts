@@ -1,10 +1,4 @@
 import * as yup from 'yup';
-// import {
-//   usingGoalsDataTypes,
-//   userPositionsDataTypes,
-//   businessDirectionDataTypes,
-//   companySizeDataTypes,
-// } from '@/enums';
 
 export const profileSchema = yup.object({
   name: yup.string().trim().required('Name is required'),
@@ -12,6 +6,7 @@ export const profileSchema = yup.object({
   birthday: yup.date().nullable().optional().default(null),
   email: yup.string().trim().email().required('Email is required field'),
   phone: yup.string().trim().nullable().optional().default(null),
+  company: yup.string().trim(),
 });
 
 export type ProfileFormData = yup.InferType<typeof profileSchema>;

@@ -28,3 +28,11 @@
     outline-color: $grey-7;
   }
 }
+
+.pickerDis {
+  color: $grey-8;
+  .btnPicker {
+    color: $grey-8;
+    outline-color: $grey-1 !important;
+  }
+}

@@ -7,5 +7,6 @@ export interface IEmployee extends IUserInfo {
   level: ELevelEmployee | null;
   location: string | null;
   _id: string;
-  phone: string | null;
+  phone?: string | null;
+  profession: string | null;
 }
