@@ -1,0 +1,11 @@
+.badgeTimer {
+  @include flexContainer(row, center, center);
+  gap: 4px;
+  height: 36px;
+  padding: 0 8px;
+  font-weight: 700;
+  font-size: 12px;
+  color: $grey-3;
+  border-radius: 8px;
+  background-color: $grey-5;
+}

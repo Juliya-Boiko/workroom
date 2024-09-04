@@ -351,4 +351,16 @@ export const SvgHandler = ({ icon }: { icon: EIconsSet }) => {
       </svg>
     );
   }
+  if (icon === EIconsSet.Clock) {
+    return (
+      <svg xmlns="http://www.w3.org/2000/svg" width={24} height={24} fill="none">
+        <path
+          fill="#7D8592"
+          fillRule="evenodd"
+          d="M12 20a8 8 0 1 0 0-16 8 8 0 0 0 0 16Zm.993-11.117A1 1 0 0 0 11 9v3.75l.007.12a1 1 0 0 0 .608.803l3 1.25.11.039a1 1 0 0 0 1.198-.577l.039-.11a1 1 0 0 0-.577-1.198L13 12.083V9l-.007-.117Z"
+          clipRule="evenodd"
+        />
+      </svg>
+    );
+  }
 };

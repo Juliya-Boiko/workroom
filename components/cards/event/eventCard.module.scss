@@ -20,4 +20,10 @@
   .wrapper {
     @include flexContainer(row, center, space-between);
   }
+
+  .name {
+    &::first-letter {
+      text-transform: capitalize;
+    }
+  }
 }

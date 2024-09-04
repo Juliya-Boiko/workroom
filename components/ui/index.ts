@@ -3,6 +3,7 @@ export * from './avatar/Avatar';
 export * from './badges/level/BadgeLevel';
 export * from './badges/priority/BadgePriority';
 export * from './badges/task/BadgeTask';
+export * from './badges/timer/BadgeTimer';
 export * from './buttons/icon/BtnIcon';
 export * from './buttons/primary/BtnPrimary';
 export * from './buttons/secondary/BtnSecondary';
