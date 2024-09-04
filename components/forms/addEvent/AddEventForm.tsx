@@ -12,6 +12,7 @@ import {
   BtnPrimary,
   PickerTime,
 } from '@/components/ui';
+import { useEffect } from 'react';
 
 const defaultValues = {
   name: '',
@@ -27,6 +28,9 @@ export const AddEventForm = () => {
   const {
     control,
     register,
+    watch,
+    getValues,
+    setValue,
     handleSubmit,
     formState: { errors, isDirty, isValid, isSubmitting },
   } = useForm({
@@ -34,6 +38,20 @@ export const AddEventForm = () => {
     resolver: yupResolver(addEventSchema),
     mode: 'onChange',
   });
+
+  const time = watch('time');
+
+  useEffect(() => {
+    const handleChange = () => {
+      const values = getValues('date');
+      const date = new Date(values);
+      const [hours, minutes] = time.split(':');
+      date.setHours(+hours);
+      date.setMinutes(+minutes);
+      setValue('date', date);
+    };
+    handleChange();
+  }, [getValues, setValue, time]);
 
   const onSubmit = async (v: AddEventFormData) => create(v);
 

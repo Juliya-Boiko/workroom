@@ -40,15 +40,36 @@ export const getEstimate = (start: Date, end: Date) => {
   return `${days}d ${hours}h`;
 };
 
-export const getEventDateTime = (value: Date) => {
+const getIsToday = (value: Date) => {
   const today = new Date().toLocaleDateString();
   const eventDay = new Date(value).toLocaleDateString();
-
   const date1 = moment(today, 'DD.MM.YYYY');
   const date2 = moment(eventDay, 'DD.MM.YYYY');
-  const daysDifference = date2.diff(date1, 'days');
+  return date2.diff(date1, 'days');
+};
+
+export const getEventDateTime = (value: Date) => {
+  const daysDifference = getIsToday(value);
   if (!daysDifference) return 'Today';
   if (daysDifference === 1) return 'Tomorrow';
-  console.log({ daysDifference });
-  return eventDay;
+  return new Date(value).toLocaleDateString();
+};
+
+export const getEventTimer = (date: Date, time: string) => {
+  const daysDifference = getIsToday(date);
+  if (!daysDifference) {
+    const eventDate = moment(date);
+    const [hours, minutes] = time.split(':');
+    eventDate.set({ hour: +hours, minute: +minutes });
+    const now = moment();
+    const hoursLeft = eventDate.diff(now, 'hours');
+    if (hoursLeft) {
+      return `${hoursLeft} h`;
+    } else {
+      const minutesLeft = eventDate.diff(now, 'minutes');
+      return `${minutesLeft} m`;
+    }
+  } else {
+    return `${daysDifference} d`;
+  }
 };

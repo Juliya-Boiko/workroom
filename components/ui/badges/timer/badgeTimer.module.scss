@@ -2,6 +2,7 @@
   @include flexContainer(row, center, center);
   gap: 4px;
   height: 36px;
+  min-width: 72px;
   padding: 0 8px;
   font-weight: 700;
   font-size: 12px;

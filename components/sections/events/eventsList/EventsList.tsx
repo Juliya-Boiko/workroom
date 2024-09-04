@@ -13,7 +13,8 @@ interface Props {
 export const EventsList = ({ loading, events }: Props) => {
   return (
     <ul className={styles.eventsList}>
-      {loading && eventSectionSkeleton.map((el) => <EventCard key={el._id} event={el} />)}
+      {loading &&
+        eventSectionSkeleton.map((el) => <EventCard loading={loading} key={el._id} event={el} />)}
       {events && events.length > 0 && events.map((el) => <EventCard key={el._id} event={el} />)}
       {events && !events.length && (
         <li className={styles.placeholder}>
