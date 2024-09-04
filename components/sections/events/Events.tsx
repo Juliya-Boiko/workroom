@@ -6,21 +6,24 @@ import { SvgHandler } from '@/components/SvgHandler';
 import { EIconsSet } from '@/enums';
 import { BtnSecondary } from '@/components/ui/buttons/secondary/BtnSecondary';
 import { EventsList } from './eventsList/EventsList';
+import { useEvents } from '@/services';
 
 export const EventsSection = () => {
+  const { data: events, isLoading } = useEvents({});
   const router = useRouter();
-  const data = [];
+
+  console.log({ events, isLoading });
 
   return (
     <section className={styles.events}>
       <div className={styles.head}>
         <h2 className={styles.title}>Events</h2>
-        <BtnSecondary onClick={() => router.push(ROUTES.events)}>
-          <span>{data?.length ? 'View all' : 'Add event'}</span>
+        <BtnSecondary disabled={isLoading} onClick={() => router.push(ROUTES.events)}>
+          <span>{events?.length ? 'View all' : 'Add event'}</span>
           <SvgHandler icon={EIconsSet.ChevronRight} />
         </BtnSecondary>
       </div>
-      <EventsList />
+      <EventsList loading={isLoading} events={events} />
     </section>
   );
 };

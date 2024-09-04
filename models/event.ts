@@ -4,6 +4,7 @@ import { categoryEventDataTypes, priorityDataTypes } from '@/enums';
 const eventSchema = new Schema(
   {
     name: { type: String, required: true },
+    userId: { type: Schema.Types.ObjectId, ref: 'User', required: true },
     category: { type: String, enum: categoryEventDataTypes, required: true },
     priority: { type: String, enum: priorityDataTypes, required: true },
     date: { type: Date, required: true },

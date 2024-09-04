@@ -25,4 +25,8 @@ export enum EIconsSet {
   Filter,
   Pensil,
   Location,
+  Buildings,
+  Meetings,
+  Gift,
+  CirclesTriangle,
 }

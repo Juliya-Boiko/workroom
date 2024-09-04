@@ -1,4 +1,4 @@
-import { ELevelEmployee, EPriority, EUserPosition } from '@/enums';
+import { ECategoryEvent, ELevelEmployee, EPriority, EUserPosition } from '@/enums';
 import { IProjectInfo } from '@/interfaces';
 
 export const projectSectionSkeleton: IProjectInfo[] = [
@@ -100,5 +100,35 @@ export const employeeSectionSkeleton = [
     location: null,
     name: 'name',
     position: EUserPosition.EMPLOYEE,
+  },
+];
+
+export const eventSectionSkeleton = [
+  {
+    _id: '1',
+    time: '',
+    priority: EPriority.LOW,
+    name: '',
+    description: '',
+    date: new Date(),
+    category: ECategoryEvent.OTHER,
+  },
+  {
+    _id: '2',
+    time: '',
+    priority: EPriority.LOW,
+    name: '',
+    description: '',
+    date: new Date(),
+    category: ECategoryEvent.OTHER,
+  },
+  {
+    _id: '3',
+    time: '',
+    priority: EPriority.LOW,
+    name: '',
+    description: '',
+    date: new Date(),
+    category: ECategoryEvent.OTHER,
   },
 ];

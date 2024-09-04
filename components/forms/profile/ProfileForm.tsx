@@ -12,8 +12,8 @@ import { BtnIcon } from '@/components/ui/buttons/icon/BtnIcon';
 import { SvgHandler } from '@/components/SvgHandler';
 import { EIconsSet, EUserPosition } from '@/enums';
 import { InputField } from '@/components/ui/input/InputField';
-import { PickerDate } from '@/components/ui/pickerDate/PickerDate';
-import { PickerLocation } from '@/components/ui/pickerLocation/PickerLocation';
+import { PickerDate } from '@/components/ui/pickers/date/PickerDate';
+import { PickerLocation } from '@/components/ui/pickers/location/PickerLocation';
 import { BtnPrimary } from '@/components/ui/buttons/primary/BtnPrimary';
 import { QUERY_KEYS } from '@/constants';
 

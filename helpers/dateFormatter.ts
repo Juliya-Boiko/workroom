@@ -1,3 +1,4 @@
+import moment from 'moment';
 import { TODAY_OPTIONS, DATE_LOCALE } from '@/constants';
 
 export const formatDeadlineDate = (value: string) => {
@@ -37,4 +38,17 @@ export const getEstimate = (start: Date, end: Date) => {
   const days = Math.floor(diffInMs / millisecondsInADay) + 1;
   const hours = Math.floor((diffInMs % millisecondsInADay) / millisecondsInAnHour);
   return `${days}d ${hours}h`;
+};
+
+export const getEventDateTime = (value: Date) => {
+  const today = new Date().toLocaleDateString();
+  const eventDay = new Date(value).toLocaleDateString();
+
+  const date1 = moment(today, 'DD.MM.YYYY');
+  const date2 = moment(eventDay, 'DD.MM.YYYY');
+  const daysDifference = date2.diff(date1, 'days');
+  if (!daysDifference) return 'Today';
+  if (daysDifference === 1) return 'Tomorrow';
+  console.log({ daysDifference });
+  return eventDay;
 };

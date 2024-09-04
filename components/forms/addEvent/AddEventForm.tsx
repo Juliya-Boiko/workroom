@@ -1,25 +1,28 @@
 'use client';
+import moment from 'moment';
 import { useForm, Controller } from 'react-hook-form';
+import { useEventsMutation } from '@/services';
 import { yupResolver } from '@hookform/resolvers/yup';
-import { addEventSchema, AddEventFormData } from '@/schemas';
+import { AddEventFormData, addEventSchema } from '@/schemas';
 import { categoryEventDataTypes, ECategoryEvent, priorityDataTypes } from '@/enums';
 import { InputField } from '@/components/ui/input/InputField';
 import { SelectDrop } from '@/components/ui/select/SelectDrop';
-import { PickerDate } from '../../ui/pickerDate/PickerDate';
+import { PickerDate } from '@/components/ui/pickers/date/PickerDate';
 import { TextareaField } from '@/components/ui/textarea/TextareField';
 import { BtnPrimary } from '@/components/ui/buttons/primary/BtnPrimary';
-import { PickerTime } from '@/components/ui/pickerTime/PickerTime';
+import { PickerTime } from '@/components/ui/pickers/time/PickerTime';
 
 const defaultValues = {
   name: '',
   category: ECategoryEvent.BIRTHDAY,
   priority: priorityDataTypes[0],
   date: new Date(),
-  time: new Date(),
+  time: moment().format('HH:mm'),
   description: '',
 };
 
 export const AddEventForm = () => {
+  const { create, isCreating } = useEventsMutation();
   const {
     control,
     register,
@@ -31,10 +34,7 @@ export const AddEventForm = () => {
     mode: 'onChange',
   });
 
-  const onSubmit = async (data: AddEventFormData) => {
-    console.log(data);
-    // mutate(values);
-  };
+  const onSubmit = async (v: AddEventFormData) => create(v);
 
   return (
     <form onSubmit={handleSubmit(onSubmit)}>
@@ -87,7 +87,7 @@ export const AddEventForm = () => {
         register={register}
         placeholder="Add some description of the event"
       />
-      <BtnPrimary type="submit" disabled={!isDirty || !isValid || isSubmitting}>
+      <BtnPrimary type="submit" disabled={!isDirty || !isValid || isSubmitting || isCreating}>
         Save Event
       </BtnPrimary>
     </form>

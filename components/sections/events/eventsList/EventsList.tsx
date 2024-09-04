@@ -1,14 +1,26 @@
 import styles from './eventsList.module.scss';
 import imgSrc from '../../../../public/placeholder-2.png';
 import Image from 'next/image';
+import { IEvent } from '@/interfaces/IEvent';
+import { eventSectionSkeleton } from '@/helpers';
+import { EventCard } from '@/components/cards/event/EventsCard';
 
-export const EventsList = () => {
+interface Props {
+  loading: boolean;
+  events?: IEvent[];
+}
+
+export const EventsList = ({ loading, events }: Props) => {
   return (
     <ul className={styles.eventsList}>
-      <li className={styles.placeholder}>
-        <p>You dont have events yet</p>
-        <Image src={imgSrc} alt="Employees" className={styles.image} />
-      </li>
+      {loading && eventSectionSkeleton.map((el) => <EventCard key={el._id} event={el} />)}
+      {events && events.length > 0 && events.map((el) => <EventCard key={el._id} event={el} />)}
+      {events && !events.length && (
+        <li className={styles.placeholder}>
+          <p>You dont have events yet</p>
+          <Image src={imgSrc} alt="Employees" className={styles.image} />
+        </li>
+      )}
     </ul>
   );
 };

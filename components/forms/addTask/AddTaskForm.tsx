@@ -12,7 +12,7 @@ import { BtnPrimary } from '@/components/ui/buttons/primary/BtnPrimary';
 import { TextareaField } from '@/components/ui/textarea/TextareField';
 import { SelectDrop } from '@/components/ui/select/SelectDrop';
 import { ETaskStatus, priorityDataTypes } from '@/enums';
-import { PickerDate } from '../../ui/pickerDate/PickerDate';
+import { PickerDate } from '@/components/ui/pickers/date/PickerDate';
 import { IDynamicComponent } from '@/interfaces';
 import { createTask } from '@/actions';
 import { useModalContext } from '@/components/providers/ModalProvider';

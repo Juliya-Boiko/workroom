@@ -5,3 +5,4 @@ export * from './IDynamicPage';
 export * from './ITask';
 export * from './IProfile';
 export * from './ILocations';
+export * from './IEvent';

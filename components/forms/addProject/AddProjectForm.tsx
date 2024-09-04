@@ -13,7 +13,7 @@ import { InputField } from '@/components/ui/input/InputField';
 import { BtnPrimary } from '@/components/ui/buttons/primary/BtnPrimary';
 import { TextareaField } from '@/components/ui/textarea/TextareField';
 import { SelectDrop } from '@/components/ui/select/SelectDrop';
-import { PickerDate } from '../../ui/pickerDate/PickerDate';
+import { PickerDate } from '@/components/ui/pickers/date/PickerDate';
 import { ROUTES } from '@/constants';
 import { Preloader } from '@/components/ui/preloader/Preloader';
 import { QUERY_KEYS } from '@/constants';

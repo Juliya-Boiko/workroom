@@ -6,7 +6,7 @@ export const addEventSchema = yup.object({
   category: yup.string().trim().oneOf(categoryEventDataTypes).default(categoryEventDataTypes[0]),
   priority: yup.string().trim().oneOf(priorityDataTypes).default(priorityDataTypes[0]),
   date: yup.date().default(new Date()).required('Date is required field'),
-  time: yup.date().default(new Date()).required('Time is required field'),
+  time: yup.string().required('Time is required field'),
   description: yup.string().trim(),
 });
 

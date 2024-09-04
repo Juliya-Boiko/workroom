@@ -4,3 +4,4 @@ export * from './useProjects';
 export * from './useEmployees';
 export * from './useTasks';
 export * from './useProfile';
+export * from './useEvent';
