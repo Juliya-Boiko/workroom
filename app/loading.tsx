@@ -1,4 +1,4 @@
-import { Preloader } from '@/components/ui/preloader/Preloader';
+import { Preloader } from '@/components/ui';
 
 const Loading = () => (
   <div className="loadingPage">

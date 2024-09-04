@@ -10,10 +10,9 @@ import { signStagesDataTypes, ESignStages, EIconsSet } from '@/enums';
 import { Logo } from '../logo/Logo';
 import { SignUpForm } from '../forms/signUp/SignUpForm';
 import { SignUpFormData } from '@/schemas';
-import { BtnPrimary } from '../ui/buttons/primary/BtnPrimary';
+import { BtnPrimary, Preloader } from '../ui';
 import { SvgHandler } from '../SvgHandler';
 import { ROUTES } from '@/constants';
-import { Preloader } from '../ui/preloader/Preloader';
 
 export const SignUpSection = () => {
   const [activeStage, setActiveStages] = useState(ESignStages.EnterYourEmail);

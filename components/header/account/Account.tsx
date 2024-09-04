@@ -4,7 +4,7 @@ import Link from 'next/link';
 import { useState, useEffect, useRef } from 'react';
 import { useUser } from '@/services';
 import { SvgHandler } from '@/components/SvgHandler';
-import { Avatar } from '@/components/ui/avatar/Avatar';
+import { Avatar } from '@/components/ui';
 import { EIconsSet } from '@/enums';
 import { Logout } from '@/components/Logout';
 import { ROUTES } from '@/constants';

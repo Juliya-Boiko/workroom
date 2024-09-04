@@ -1,7 +1,6 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import styles from '../signUp.module.scss';
-import { InputField } from '@/components/ui/input/InputField';
-import { SelectDrop } from '@/components/ui/select/SelectDrop';
+import { InputField, SelectDrop } from '@/components/ui';
 import { Controller } from 'react-hook-form';
 import { usingGoalsDataTypes, userPositionsDataTypes } from '@/enums';
 

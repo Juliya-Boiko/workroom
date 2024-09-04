@@ -1,3 +1,4 @@
+'use client';
 import styles from './filter.module.scss';
 import { useRef } from 'react';
 import { ICountry, ICity } from '@/interfaces';

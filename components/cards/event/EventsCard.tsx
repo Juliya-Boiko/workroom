@@ -1,6 +1,6 @@
 import { IEvent } from '@/interfaces/IEvent';
 import styles from './eventCard.module.scss';
-import { BadgePriopity } from '@/components/ui/badges/priority/BadgePriority';
+import { BadgePriopity } from '@/components/ui';
 import { eventsType, getEventDateTime } from '@/helpers';
 
 interface Props {

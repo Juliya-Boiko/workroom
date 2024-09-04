@@ -1,9 +1,7 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import styles from '../signUp.module.scss';
 import { Controller } from 'react-hook-form';
-import { RadioTab } from '@/components/ui/radio/Radio';
-import { InputField } from '@/components/ui/input/InputField';
-import { SelectDrop } from '@/components/ui/select/SelectDrop';
+import { RadioTab, InputField, SelectDrop } from '@/components/ui';
 import { businessDirectionDataTypes, companySizeDataTypes } from '@/enums';
 
 interface Props {

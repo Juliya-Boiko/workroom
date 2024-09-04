@@ -1,7 +1,6 @@
 import styles from './employeeCard.module.scss';
 import { IEmployee } from '@/interfaces';
-import { Avatar } from '@/components/ui/avatar/Avatar';
-import { BadgeLevel } from '@/components/ui/badges/level/BadgeLevel';
+import { BadgeLevel, Avatar } from '@/components/ui';
 import { LoaderSkeleton } from '@/components/LoaderSkeleton';
 
 interface Props {

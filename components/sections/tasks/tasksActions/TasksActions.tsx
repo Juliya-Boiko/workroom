@@ -1,5 +1,5 @@
 import styles from './tasksActions.module.scss';
-import { BtnIcon } from '@/components/ui/buttons/icon/BtnIcon';
+import { BtnIcon } from '@/components/ui';
 import { SvgHandler } from '@/components/SvgHandler';
 import { EIconsSet, EView, viewDataTypes } from '@/enums';
 

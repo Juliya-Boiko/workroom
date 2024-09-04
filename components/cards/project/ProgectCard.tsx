@@ -4,10 +4,9 @@ import thumb from '../../../public/project-thumb.svg';
 import { LoaderSkeleton } from '@/components/LoaderSkeleton';
 import { SvgHandler } from '@/components/SvgHandler';
 import { EIconsSet } from '@/enums';
-import { BadgePriopity } from '@/components/ui/badges/priority/BadgePriority';
+import { BadgePriopity, Assignees } from '@/components/ui';
 import { formatDeadlineDate, formatDayDate } from '@/helpers';
 import { IProjectInfo } from '@/interfaces';
-import { Assignees } from '@/components/ui/assignees/Assignees';
 
 interface Props {
   loading: boolean;

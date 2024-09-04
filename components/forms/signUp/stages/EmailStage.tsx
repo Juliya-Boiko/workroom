@@ -1,9 +1,9 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 'use client';
-import { InputField } from '@/components/ui/input/InputField';
+import styles from '../signUp.module.scss';
+import { InputField } from '@/components/ui';
 import { useState } from 'react';
 import { EIconsSet } from '@/enums';
-import styles from '../signUp.module.scss';
 
 interface Props {
   register: any;

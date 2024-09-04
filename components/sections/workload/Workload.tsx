@@ -6,7 +6,7 @@ import { ROUTES } from '@/constants';
 import { SvgHandler } from '@/components/SvgHandler';
 import { EIconsSet } from '@/enums';
 import { EmployeesGrid } from './employeesGrid/EmployeesGrid';
-import { BtnSecondary } from '@/components/ui/buttons/secondary/BtnSecondary';
+import { BtnSecondary } from '@/components/ui';
 
 export const WorkloadSection = () => {
   const router = useRouter();

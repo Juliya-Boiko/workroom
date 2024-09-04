@@ -6,12 +6,10 @@ import { useRouter } from 'next/navigation';
 import { useState } from 'react';
 import { yupResolver } from '@hookform/resolvers/yup';
 import { inviteSchema, InviteFormData } from '@/schemas';
-import { InputField } from '@/components/ui/input/InputField';
+import { InputField, SelectDrop, BtnPrimary } from '@/components/ui';
 import { EIconsSet, EUserPosition } from '@/enums';
-import { SelectDrop } from '@/components/ui/select/SelectDrop';
 import { registerUser } from '@/actions';
 import { invitePositionDataTypes } from '@/enums';
-import { BtnPrimary } from '@/components/ui/buttons/primary/BtnPrimary';
 import { ROUTES } from '@/constants';
 
 interface Props {

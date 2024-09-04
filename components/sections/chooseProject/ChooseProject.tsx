@@ -5,6 +5,7 @@ import { EIconsSet } from '@/enums';
 import { useState } from 'react';
 import Link from 'next/link';
 import { ROUTES } from '@/constants';
+
 interface SelectedProject {
   _id: string;
   name: string;

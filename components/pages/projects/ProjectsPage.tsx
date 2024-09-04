@@ -5,13 +5,11 @@ import Image from 'next/image';
 import { useState } from 'react';
 import { useProjects, useTasks } from '@/services';
 import { Topping } from '@/components/topping/Topping';
-import { Modal } from '@/components/ui/modal/Modal';
+import { Modal, BtnPrimary, Preloader } from '@/components/ui';
 import { AddProjectForm } from '@/components/forms/addProject/AddProjectForm';
 import { EIconsSet, EView } from '@/enums';
 import { SvgHandler } from '@/components/SvgHandler';
-import { BtnPrimary } from '@/components/ui/buttons/primary/BtnPrimary';
 import { ChooseProject } from '@/components/sections/chooseProject/ChooseProject';
-import { Preloader } from '@/components/ui/preloader/Preloader';
 import { Tasks } from '@/components/sections/tasks/Tasks';
 
 interface SelectedProject {

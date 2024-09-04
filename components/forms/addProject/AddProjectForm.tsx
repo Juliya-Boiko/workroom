@@ -9,15 +9,17 @@ import { getTomorrowDate } from '@/helpers';
 import { createProject } from '@/actions';
 import { addProjectSchema, AddProjectFormData } from '@/schemas';
 import { priorityDataTypes } from '@/enums';
-import { InputField } from '@/components/ui/input/InputField';
-import { BtnPrimary } from '@/components/ui/buttons/primary/BtnPrimary';
-import { TextareaField } from '@/components/ui/textarea/TextareField';
-import { SelectDrop } from '@/components/ui/select/SelectDrop';
-import { PickerDate } from '@/components/ui/pickers/date/PickerDate';
 import { ROUTES } from '@/constants';
-import { Preloader } from '@/components/ui/preloader/Preloader';
 import { QUERY_KEYS } from '@/constants';
 import { useModalContext } from '@/components/providers/ModalProvider';
+import {
+  InputField,
+  BtnPrimary,
+  TextareaField,
+  SelectDrop,
+  PickerDate,
+  Preloader,
+} from '@/components/ui';
 
 const defaultValues = {
   name: '',

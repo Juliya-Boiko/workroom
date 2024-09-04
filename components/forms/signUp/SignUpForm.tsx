@@ -5,8 +5,7 @@ import { useState, useEffect } from 'react';
 import { yupResolver } from '@hookform/resolvers/yup';
 import { signUpSchema, SignUpFormData } from '@/schemas';
 import { EmailStage, CompanyStage, UserStage, MembersStage } from './stages';
-import { BtnPrimary } from '@/components/ui/buttons/primary/BtnPrimary';
-import { BtnSecondary } from '@/components/ui/buttons/secondary/BtnSecondary';
+import { BtnPrimary, BtnSecondary } from '@/components/ui';
 import { SvgHandler } from '@/components/SvgHandler';
 import {
   usingGoalsDataTypes,

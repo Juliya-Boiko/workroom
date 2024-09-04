@@ -8,7 +8,7 @@ import { useProjects } from '@/services';
 import { SvgHandler } from '@/components/SvgHandler';
 import { EIconsSet } from '@/enums';
 import { ProjectCard } from '@/components/cards/project/ProgectCard';
-import { BtnSecondary } from '@/components/ui/buttons/secondary/BtnSecondary';
+import { BtnSecondary } from '@/components/ui';
 import { projectSectionSkeleton } from '@/helpers';
 import { ROUTES } from '@/constants';
 

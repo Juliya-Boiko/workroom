@@ -7,15 +7,17 @@ import { useMutation, useQueryClient } from '@tanstack/react-query';
 import { updateProfile } from '@/actions';
 import { yupResolver } from '@hookform/resolvers/yup';
 import { profileSchema, ProfileFormData } from '@/schemas';
-import { Avatar } from '@/components/ui/avatar/Avatar';
-import { BtnIcon } from '@/components/ui/buttons/icon/BtnIcon';
 import { SvgHandler } from '@/components/SvgHandler';
 import { EIconsSet, EUserPosition } from '@/enums';
-import { InputField } from '@/components/ui/input/InputField';
-import { PickerDate } from '@/components/ui/pickers/date/PickerDate';
-import { PickerLocation } from '@/components/ui/pickers/location/PickerLocation';
-import { BtnPrimary } from '@/components/ui/buttons/primary/BtnPrimary';
 import { QUERY_KEYS } from '@/constants';
+import {
+  Avatar,
+  BtnIcon,
+  InputField,
+  PickerDate,
+  PickerLocation,
+  BtnPrimary,
+} from '@/components/ui';
 
 export const ProfileForm = () => {
   const [isDisabled, setIsDisabled] = useState(true);
@@ -35,7 +37,6 @@ export const ProfileForm = () => {
     resolver: yupResolver(profileSchema),
     mode: 'onChange',
   });
-  // console.log(user, company);
 
   useEffect(() => {
     if (user && company) {

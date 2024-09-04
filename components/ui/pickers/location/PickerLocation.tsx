@@ -1,3 +1,4 @@
+'use client';
 import styles from './pickerLocation.module.scss';
 import { useEffect, useState } from 'react';
 import { BtnIcon } from '../../buttons/icon/BtnIcon';

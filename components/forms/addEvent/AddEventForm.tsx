@@ -5,12 +5,14 @@ import { useEventsMutation } from '@/services';
 import { yupResolver } from '@hookform/resolvers/yup';
 import { AddEventFormData, addEventSchema } from '@/schemas';
 import { categoryEventDataTypes, ECategoryEvent, priorityDataTypes } from '@/enums';
-import { InputField } from '@/components/ui/input/InputField';
-import { SelectDrop } from '@/components/ui/select/SelectDrop';
-import { PickerDate } from '@/components/ui/pickers/date/PickerDate';
-import { TextareaField } from '@/components/ui/textarea/TextareField';
-import { BtnPrimary } from '@/components/ui/buttons/primary/BtnPrimary';
-import { PickerTime } from '@/components/ui/pickers/time/PickerTime';
+import {
+  InputField,
+  SelectDrop,
+  PickerDate,
+  TextareaField,
+  BtnPrimary,
+  PickerTime,
+} from '@/components/ui';
 
 const defaultValues = {
   name: '',

@@ -7,12 +7,10 @@ import { useRouter } from 'next/navigation';
 import { yupResolver } from '@hookform/resolvers/yup';
 import { loginUser } from '@/actions';
 import { signInSchema, SignInFormData } from '@/schemas';
-import { InputField } from '@/components/ui/input/InputField';
-import { BtnPrimary } from '@/components/ui/buttons/primary/BtnPrimary';
+import { InputField, BtnPrimary, CheckField } from '@/components/ui';
 import { SvgHandler } from '@/components/SvgHandler';
 import { EIconsSet } from '@/enums';
 import { ROUTES } from '@/constants';
-import { CheckField } from '@/components/ui/checkbox/CheckField';
 
 export const SignInForm = () => {
   const [typePassword, setTypePassword] = useState('password');
