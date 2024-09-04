@@ -1,7 +1,7 @@
 'use client';
+import styles from './overlay.module.scss';
 import { useEffect } from 'react';
 import { useModalContext } from '@/components/providers/ModalProvider';
-import styles from './overlay.module.scss';
 
 interface Props {
   children: string | JSX.Element | JSX.Element[];

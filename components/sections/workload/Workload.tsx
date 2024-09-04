@@ -1,8 +1,7 @@
 'use client';
 import styles from './workload.module.scss';
 import { useRouter } from 'next/navigation';
-import { useEmployees } from '@/services';
-import { ROUTES } from '@/constants';
+import { useEmployees, ROUTES } from '@/utils';
 import { SvgHandler } from '@/components/SvgHandler';
 import { EIconsSet } from '@/typings';
 import { EmployeesGrid } from './employeesGrid/EmployeesGrid';

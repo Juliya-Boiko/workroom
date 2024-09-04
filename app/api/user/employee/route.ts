@@ -1,9 +1,9 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import User from '@/models/user';
-import { NextRequest, NextResponse } from 'next/server';
-import { connectToMongoDB } from '@/utils/database';
-import { decode } from '@/utils/jwt';
+import { decode } from '@/libs/jwt';
+import { connectToMongoDB } from '@/libs/database';
 import { EUserPosition } from '@/typings';
+import { NextRequest, NextResponse } from 'next/server';
 
 connectToMongoDB();
 

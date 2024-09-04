@@ -1,9 +1,8 @@
 'use client';
 import moment from 'moment';
 import { useForm, Controller } from 'react-hook-form';
-import { useEventsMutation } from '@/services';
+import { useEventsMutation, AddEventFormData, addEventSchema } from '@/utils';
 import { yupResolver } from '@hookform/resolvers/yup';
-import { AddEventFormData, addEventSchema } from '@/schemas';
 import { categoryEventDataTypes, ECategoryEvent, priorityDataTypes } from '@/typings';
 import {
   InputField,

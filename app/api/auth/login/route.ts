@@ -1,9 +1,9 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import User from '@/models/user';
-import { genToken } from '@/utils/jwt';
+import { genToken } from '@/libs/jwt';
+import { comparePassword } from '@/libs/bcrypt';
+import { connectToMongoDB } from '@/libs/database';
 import { NextRequest, NextResponse } from 'next/server';
-import { comparePassword } from '@/utils/bcrypt';
-import { connectToMongoDB } from '@/utils/database';
 
 connectToMongoDB();
 

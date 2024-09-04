@@ -1,10 +1,10 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import User from '@/models/user';
 import Company from '@/models/company';
+import { decode } from '@/libs/jwt';
+import { connectToMongoDB } from '@/libs/database';
+import { sendInviteEmails } from '@/utils';
 import { NextRequest, NextResponse } from 'next/server';
-import { connectToMongoDB } from '@/utils/database';
-import { sendInviteEmails } from '@/helpers';
-import { decode } from '@/utils/jwt';
 
 connectToMongoDB();
 

@@ -1,12 +1,11 @@
 'use client';
 import styles from './events.module.scss';
 import { useRouter } from 'next/navigation';
-import { ROUTES } from '@/constants';
+import { useEvents, ROUTES } from '@/utils';
 import { SvgHandler } from '@/components/SvgHandler';
 import { EIconsSet } from '@/typings';
 import { BtnSecondary } from '@/components/ui';
 import { EventsList } from './eventsList/EventsList';
-import { useEvents } from '@/services';
 
 export const EventsSection = () => {
   const { data: events, isLoading } = useEvents({});

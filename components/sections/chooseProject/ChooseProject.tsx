@@ -1,10 +1,10 @@
 'use client';
-import { SvgHandler } from '@/components/SvgHandler';
 import styles from './chooseProject.module.scss';
-import { EIconsSet } from '@/typings';
-import { useState } from 'react';
 import Link from 'next/link';
-import { ROUTES } from '@/constants';
+import { useState } from 'react';
+import { SvgHandler } from '@/components/SvgHandler';
+import { EIconsSet } from '@/typings';
+import { ROUTES } from '@/utils';
 
 interface SelectedProject {
   _id: string;

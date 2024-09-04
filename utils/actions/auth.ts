@@ -1,7 +1,7 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
-import { axiosInstance } from '@/utils/axios';
-import { SignUpFormData, SignInFormData, InviteFormData } from '@/schemas';
 import toast from 'react-hot-toast';
+import { axiosInstance } from '@/libs/axios';
+import { SignUpFormData, SignInFormData, InviteFormData } from '@/utils';
 
 export const registerUserAndCompany = async (data: SignUpFormData) => {
   const filteredMembers = data.members.filter((el) => el);

@@ -1,5 +1,5 @@
-import { genInviteToken } from '@/utils/jwt';
-import { ROUTES } from '@/constants';
+import { genInviteToken } from '@/libs/jwt';
+import { ROUTES } from '@/utils';
 
 export const createInviteMemberUrl = (companyId: string, email: string) => {
   const inviteToken = genInviteToken(companyId, email);

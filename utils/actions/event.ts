@@ -1,6 +1,6 @@
+import { axiosInstance } from '@/libs/axios';
 import { IEvent } from '@/typings';
-import { AddEventFormData } from '@/schemas';
-import { axiosInstance } from '@/utils/axios';
+import { AddEventFormData } from '@/utils';
 
 export const createEvent = async (data: AddEventFormData) => {
   const response = await axiosInstance.post('/event', data);

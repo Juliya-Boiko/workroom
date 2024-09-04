@@ -1,6 +1,6 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
+import { connectToMongoDB } from '@/libs/database';
 import { NextResponse } from 'next/server';
-import { connectToMongoDB } from '@/utils/database';
 
 connectToMongoDB();
 

@@ -1,6 +1,5 @@
 import { useQuery } from '@tanstack/react-query';
-import { QUERY_KEYS } from '@/constants';
-import { getCompanyInfo } from '@/actions';
+import { getCompanyInfo, QUERY_KEYS } from '@/utils';
 
 export const useCompany = () => {
   return useQuery({

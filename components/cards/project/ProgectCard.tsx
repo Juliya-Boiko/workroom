@@ -1,11 +1,11 @@
 import styles from './projectCard.module.scss';
 import Image from 'next/image';
 import thumb from '../../../public/project-thumb.svg';
+import { formatDeadlineDate, formatDayDate } from '@/utils';
 import { LoaderSkeleton } from '@/components/LoaderSkeleton';
 import { SvgHandler } from '@/components/SvgHandler';
 import { EIconsSet, IProjectInfo } from '@/typings';
 import { BadgePriopity, Assignees } from '@/components/ui';
-import { formatDeadlineDate, formatDayDate } from '@/helpers';
 
 interface Props {
   loading: boolean;

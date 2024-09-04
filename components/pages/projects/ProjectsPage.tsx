@@ -3,7 +3,7 @@ import styles from './projectsPage.module.scss';
 import imgSrc from '../../../public/projects-placeholder.png';
 import Image from 'next/image';
 import { useState } from 'react';
-import { useProjects, useTasks } from '@/services';
+import { useProjects, useTasks } from '@/utils';
 import { Topping } from '@/components/topping/Topping';
 import { Modal, BtnPrimary, Preloader } from '@/components/ui';
 import { AddProjectForm } from '@/components/forms/addProject/AddProjectForm';

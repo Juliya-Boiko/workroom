@@ -1,4 +1,4 @@
-import { axiosInstance } from '@/utils/axios';
+import { axiosInstance } from '@/libs/axios';
 import { ICreateTask, ITask } from '@/typings';
 
 export const createTask = async (data: ICreateTask) => {

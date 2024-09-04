@@ -1,8 +1,8 @@
-import { ITask } from '@/typings';
 import styles from './tasksList.module.scss';
-import { TaskSkeleton } from '@/components/cards/task/TaskSkeleton/TaskSkeleton';
 import Link from 'next/link';
-import { ROUTES } from '@/constants';
+import { ROUTES } from '@/utils';
+import { ITask } from '@/typings';
+import { TaskSkeleton } from '@/components/cards/task/TaskSkeleton/TaskSkeleton';
 import { TaskCard } from '@/components/cards/task/TaskCard';
 
 interface Props {

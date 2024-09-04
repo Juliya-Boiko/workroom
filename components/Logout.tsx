@@ -1,8 +1,8 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 'use client';
-import { axiosInstance } from '@/utils/axios';
+import { axiosInstance } from '@/libs/axios';
 import { useRouter } from 'next/navigation';
-import { ROUTES } from '@/constants';
+import { ROUTES } from '@/utils';
 import toast from 'react-hot-toast';
 
 interface Props {

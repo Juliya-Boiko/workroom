@@ -1,12 +1,12 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import User from '@/models/user';
 import Company from '@/models/company';
-import { hashPassword } from '@/utils/bcrypt';
-import { genToken } from '@/utils/jwt';
-import { NextRequest, NextResponse } from 'next/server';
-import { connectToMongoDB } from '@/utils/database';
-import { sendRegistrationEmail, sendInviteEmails } from '@/helpers';
+import { hashPassword } from '@/libs/bcrypt';
+import { genToken } from '@/libs/jwt';
+import { connectToMongoDB } from '@/libs/database';
+import { sendRegistrationEmail, sendInviteEmails } from '@/utils';
 import { EUserPosition } from '@/typings';
+import { NextRequest, NextResponse } from 'next/server';
 
 connectToMongoDB();
 

@@ -1,4 +1,4 @@
-import { axiosInstance } from '@/utils/axios';
+import { axiosInstance } from '@/libs/axios';
 
 export const getCompanyInfo = async () => {
   const response = await axiosInstance.get('/company/info');

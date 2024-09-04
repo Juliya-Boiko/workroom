@@ -5,7 +5,7 @@ import { BtnIcon } from '../../buttons/icon/BtnIcon';
 import { SvgHandler } from '@/components/SvgHandler';
 import { EIconsSet, ICountry, ICity } from '@/typings';
 import { Overlay } from '../../overlay/Overlay';
-import { countriesSet, citiesSet } from '../../../../utils/location';
+import { countriesSet, citiesSet } from '@/libs/location';
 import { BtnPrimary } from '../../buttons/primary/BtnPrimary';
 import { Filter } from '../../filter/Filter';
 

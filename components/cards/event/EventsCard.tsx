@@ -1,7 +1,7 @@
-import { IEvent } from '@/typings';
 import styles from './eventCard.module.scss';
+import { eventsType, getEventDateTime } from '@/utils';
+import { IEvent } from '@/typings';
 import { BadgePriopity } from '@/components/ui';
-import { eventsType, getEventDateTime } from '@/helpers';
 
 interface Props {
   event: IEvent;

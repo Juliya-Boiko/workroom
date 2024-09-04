@@ -2,12 +2,11 @@
 import styles from './account.module.scss';
 import Link from 'next/link';
 import { useState, useEffect, useRef } from 'react';
-import { useUser } from '@/services';
+import { useUser, ROUTES } from '@/utils';
 import { SvgHandler } from '@/components/SvgHandler';
 import { Avatar } from '@/components/ui';
 import { EIconsSet } from '@/typings';
 import { Logout } from '@/components/Logout';
-import { ROUTES } from '@/constants';
 
 export const Account = () => {
   const [open, setOpen] = useState(false);

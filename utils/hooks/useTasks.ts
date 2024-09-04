@@ -1,6 +1,5 @@
 import { useQuery } from '@tanstack/react-query';
-import { QUERY_KEYS } from '@/constants';
-import { getTasks } from '@/actions';
+import { getTasks, QUERY_KEYS } from '@/utils';
 
 interface Props {
   projectId: string | undefined;

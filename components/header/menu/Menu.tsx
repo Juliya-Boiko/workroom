@@ -1,13 +1,13 @@
 'use client';
 import styles from './menu.module.scss';
 import Link from 'next/link';
+import { useState } from 'react';
+import { navRoutes } from '@/utils';
 import { SvgHandler } from '@/components/SvgHandler';
 import { BtnIcon, Overlay } from '@/components/ui';
 import { EIconsSet } from '@/typings';
 import { Logo } from '@/components/logo/Logo';
-import { navRoutes } from '@/constants';
 import { Company } from '../company/Company';
-import { useState } from 'react';
 
 export const Menu = () => {
   const [openMenu, setOpenMenu] = useState(false);

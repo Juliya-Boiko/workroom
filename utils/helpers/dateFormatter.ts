@@ -1,5 +1,5 @@
 import moment from 'moment';
-import { TODAY_OPTIONS, DATE_LOCALE } from '@/constants';
+import { TODAY_OPTIONS, DATE_LOCALE } from '@/utils';
 
 export const formatDeadlineDate = (value: string) => {
   if (value) {

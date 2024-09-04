@@ -5,14 +5,12 @@ import imgSrc from '../../public/placeholder-1.png';
 import { useState } from 'react';
 import { useRouter } from 'next/navigation';
 import { useMutation } from '@tanstack/react-query';
-import { registerUserAndCompany } from '@/actions';
+import { registerUserAndCompany, SignUpFormData, ROUTES } from '@/utils';
 import { signStagesDataTypes, ESignStages, EIconsSet } from '@/typings';
 import { Logo } from '../logo/Logo';
 import { SignUpForm } from '../forms/signUp/SignUpForm';
-import { SignUpFormData } from '@/schemas';
 import { BtnPrimary, Preloader } from '../ui';
 import { SvgHandler } from '../SvgHandler';
-import { ROUTES } from '@/constants';
 
 export const SignUpSection = () => {
   const [activeStage, setActiveStages] = useState(ESignStages.EnterYourEmail);

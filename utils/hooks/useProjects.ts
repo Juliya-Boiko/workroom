@@ -1,6 +1,5 @@
 import { useQuery } from '@tanstack/react-query';
-import { QUERY_KEYS } from '@/constants';
-import { getProjects } from '@/actions';
+import { getProjects, QUERY_KEYS } from '@/utils';
 
 export const useProjects = ({ take }: { take?: number }) => {
   return useQuery({

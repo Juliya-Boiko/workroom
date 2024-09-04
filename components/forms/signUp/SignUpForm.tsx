@@ -3,7 +3,7 @@ import styles from './signUp.module.scss';
 import { useForm } from 'react-hook-form';
 import { useState, useEffect } from 'react';
 import { yupResolver } from '@hookform/resolvers/yup';
-import { signUpSchema, SignUpFormData } from '@/schemas';
+import { signUpSchema, SignUpFormData } from '@/utils';
 import { EmailStage, CompanyStage, UserStage, MembersStage } from './stages';
 import { BtnPrimary, BtnSecondary } from '@/components/ui';
 import { SvgHandler } from '@/components/SvgHandler';

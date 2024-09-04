@@ -1,8 +1,8 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import User from '@/models/user';
+import { decode } from '@/libs/jwt';
+import { connectToMongoDB } from '@/libs/database';
 import { NextRequest, NextResponse } from 'next/server';
-import { connectToMongoDB } from '@/utils/database';
-import { decode } from '@/utils/jwt';
 
 connectToMongoDB();
 

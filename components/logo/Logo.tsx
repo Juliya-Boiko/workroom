@@ -1,7 +1,7 @@
 /* eslint-disable max-len */
 import Link from 'next/link';
 import styles from './logo.module.scss';
-import { ROUTES } from '@/constants';
+import { ROUTES } from '@/utils';
 
 interface Props {
   cropped?: boolean;

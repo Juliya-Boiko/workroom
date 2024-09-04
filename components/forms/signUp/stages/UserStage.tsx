@@ -1,8 +1,8 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import styles from '../signUp.module.scss';
+import { usingGoalsDataTypes, userPositionsDataTypes } from '@/typings';
 import { InputField, SelectDrop } from '@/components/ui';
 import { Controller } from 'react-hook-form';
-import { usingGoalsDataTypes, userPositionsDataTypes } from '@/typings';
 
 interface Props {
   register: any;

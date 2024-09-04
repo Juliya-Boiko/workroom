@@ -4,13 +4,11 @@ import Image from 'next/image';
 import imgSrc from '../../../public/placeholder-1.png';
 import Link from 'next/link';
 import { useRouter } from 'next/navigation';
-import { useProjects } from '@/services';
+import { useProjects, projectSectionSkeleton, ROUTES } from '@/utils';
 import { SvgHandler } from '@/components/SvgHandler';
 import { EIconsSet } from '@/typings';
 import { ProjectCard } from '@/components/cards/project/ProgectCard';
 import { BtnSecondary } from '@/components/ui';
-import { projectSectionSkeleton } from '@/helpers';
-import { ROUTES } from '@/constants';
 
 export const ProjectsSection = () => {
   const router = useRouter();

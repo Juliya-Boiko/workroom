@@ -3,7 +3,7 @@ import styles from './sidebat.module.scss';
 import Link from 'next/link';
 import { useState } from 'react';
 import { usePathname } from 'next/navigation';
-import { navRoutes } from '@/constants';
+import { navRoutes } from '@/utils';
 import { Logo } from '../logo/Logo';
 import { SvgHandler } from '../SvgHandler';
 import { Logout } from '../Logout';

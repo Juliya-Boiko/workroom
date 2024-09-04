@@ -1,15 +1,13 @@
 'use client';
 import styles from '../common.module.scss';
 import inviteStyles from './invite.module.scss';
-import { useForm, Controller } from 'react-hook-form';
-import { useRouter } from 'next/navigation';
 import { useState } from 'react';
+import { useRouter } from 'next/navigation';
+import { useForm, Controller } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
-import { inviteSchema, InviteFormData } from '@/schemas';
+import { inviteSchema, InviteFormData, registerUser, ROUTES } from '@/utils';
 import { InputField, SelectDrop, BtnPrimary } from '@/components/ui';
 import { EIconsSet, EUserPosition, invitePositionDataTypes } from '@/typings';
-import { registerUser } from '@/actions';
-import { ROUTES } from '@/constants';
 
 interface Props {
   companyId: string;

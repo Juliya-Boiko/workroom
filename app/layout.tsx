@@ -1,5 +1,5 @@
 import type { Metadata } from 'next';
-import { nunitoSans } from '@/utils/fonts';
+import { nunitoSans } from '@/libs/fonts';
 import { ToastNotify } from '@/components/ToastNotify';
 import QueryProvider from '@/components/providers/QueryProvider';
 import ModalProvider from '@/components/providers/ModalProvider';

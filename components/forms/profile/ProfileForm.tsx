@@ -1,15 +1,19 @@
 'use client';
 import styles from './profileForm.module.scss';
 import { useEffect, useState } from 'react';
-import { useProfile, useCompany } from '@/services';
 import { useForm, Controller } from 'react-hook-form';
 import { useMutation, useQueryClient } from '@tanstack/react-query';
-import { updateProfile } from '@/actions';
 import { yupResolver } from '@hookform/resolvers/yup';
-import { profileSchema, ProfileFormData } from '@/schemas';
 import { SvgHandler } from '@/components/SvgHandler';
 import { EIconsSet, EUserPosition } from '@/typings';
-import { QUERY_KEYS } from '@/constants';
+import {
+  useProfile,
+  useCompany,
+  updateProfile,
+  profileSchema,
+  ProfileFormData,
+  QUERY_KEYS,
+} from '@/utils';
 import {
   Avatar,
   BtnIcon,

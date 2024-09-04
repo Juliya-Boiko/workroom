@@ -1,6 +1,6 @@
 'use server';
-import { sendEmail } from '@/utils/smtp';
-import { registerUserEmailBody, inviteUserEmailBody } from '@/constants';
+import { sendEmail } from '@/libs/smtp';
+import { registerUserEmailBody, inviteUserEmailBody } from '@/utils';
 import { createInviteMemberUrl } from './urlFormatter';
 
 interface RegisterProps {

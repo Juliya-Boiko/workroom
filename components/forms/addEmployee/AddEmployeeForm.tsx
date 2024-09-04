@@ -4,9 +4,9 @@ import imgSrc from '../../../public/members.png';
 import Image from 'next/image';
 import { useState } from 'react';
 import { useModalContext } from '@/components/providers/ModalProvider';
+import { inviteUsers } from '@/utils';
 import { MembersStage } from '../signUp/stages';
 import { BtnPrimary } from '@/components/ui';
-import { inviteUsers } from '@/actions';
 
 export const AddEmployeeForm = () => {
   const [members, setMembers] = useState(['']);

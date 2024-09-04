@@ -1,6 +1,6 @@
 'use client';
 import styles from './company.module.scss';
-import { useCompany } from '@/services';
+import { useCompany } from '@/utils';
 
 export const Company = () => {
   const { data } = useCompany();
