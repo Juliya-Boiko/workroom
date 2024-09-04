@@ -1,5 +1,5 @@
 import { ProjectPage } from '@/components/pages/project/ProjectPage';
-import { IDynamicPage } from '@/interfaces';
+import { IDynamicPage } from '@/typings';
 
 export default function Project({ params }: IDynamicPage) {
   const { slug } = params;

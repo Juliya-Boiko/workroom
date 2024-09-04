@@ -1,4 +1,4 @@
-import { EUserPosition } from '@/enums';
+import { EUserPosition } from '../enums';
 
 export interface IUserInfo {
   name: string;

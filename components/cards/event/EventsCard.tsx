@@ -1,4 +1,4 @@
-import { IEvent } from '@/interfaces/IEvent';
+import { IEvent } from '@/typings';
 import styles from './eventCard.module.scss';
 import { BadgePriopity } from '@/components/ui';
 import { eventsType, getEventDateTime } from '@/helpers';

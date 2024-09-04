@@ -1,7 +1,7 @@
 'use client';
 import { SvgHandler } from '@/components/SvgHandler';
 import styles from './chooseProject.module.scss';
-import { EIconsSet } from '@/enums';
+import { EIconsSet } from '@/typings';
 import { useState } from 'react';
 import Link from 'next/link';
 import { ROUTES } from '@/constants';

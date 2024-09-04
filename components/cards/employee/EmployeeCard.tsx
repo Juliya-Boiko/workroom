@@ -1,5 +1,5 @@
 import styles from './employeeCard.module.scss';
-import { IEmployee } from '@/interfaces';
+import { IEmployee } from '@/typings';
 import { BadgeLevel, Avatar } from '@/components/ui';
 import { LoaderSkeleton } from '@/components/LoaderSkeleton';
 

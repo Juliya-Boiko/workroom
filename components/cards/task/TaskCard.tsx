@@ -1,6 +1,6 @@
 import styles from './taskCard.module.scss';
 import { getEstimate } from '@/helpers';
-import { ITask } from '@/interfaces';
+import { ITask } from '@/typings';
 import { BadgePriopity, BadgeTask, Avatar } from '@/components/ui';
 
 interface Props {

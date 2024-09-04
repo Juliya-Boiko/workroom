@@ -1,5 +1,4 @@
-import { ECategoryEvent, ELevelEmployee, EPriority, EUserPosition } from '@/enums';
-import { IProjectInfo } from '@/interfaces';
+import { ECategoryEvent, ELevelEmployee, EPriority, EUserPosition, IProjectInfo } from '@/typings';
 
 export const projectSectionSkeleton: IProjectInfo[] = [
   {

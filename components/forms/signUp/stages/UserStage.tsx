@@ -2,7 +2,7 @@
 import styles from '../signUp.module.scss';
 import { InputField, SelectDrop } from '@/components/ui';
 import { Controller } from 'react-hook-form';
-import { usingGoalsDataTypes, userPositionsDataTypes } from '@/enums';
+import { usingGoalsDataTypes, userPositionsDataTypes } from '@/typings';
 
 interface Props {
   register: any;

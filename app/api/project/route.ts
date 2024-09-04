@@ -1,12 +1,9 @@
-/* eslint-disable @typescript-eslint/no-unused-vars */
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import Project from '@/models/project';
 import { NextRequest, NextResponse } from 'next/server';
 import { connectToMongoDB } from '@/utils/database';
 import { decode } from '@/utils/jwt';
-import Task from '@/models/task';
-import { ETaskStatus } from '@/enums';
-import { IAssignee, IProject } from '@/interfaces';
+import { ETaskStatus, IAssignee, IProject } from '@/typings';
 
 connectToMongoDB();
 

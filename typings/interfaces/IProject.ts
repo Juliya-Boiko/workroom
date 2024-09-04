@@ -1,5 +1,6 @@
-import { EPriority } from '@/enums';
+import { EPriority } from '../enums';
 import { IAssignee } from './IUserInfo';
+
 export interface IProject {
   deadline: string;
   name: string;

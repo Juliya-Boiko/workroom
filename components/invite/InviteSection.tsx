@@ -2,7 +2,7 @@ import styles from './invite.module.scss';
 import Image from 'next/image';
 import imgSrc from '../../public/sign-in.png';
 import { decodeInvite } from '@/utils/jwt';
-import { IDynamicComponent } from '@/interfaces';
+import { IDynamicComponent } from '@/typings';
 import { Logo } from '../logo/Logo';
 import { InviteForm } from '../forms/invite/InviteForm';
 

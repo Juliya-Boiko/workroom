@@ -2,7 +2,7 @@ import styles from './inputfield.module.scss';
 import { UseFormRegister, FieldValues, Path } from 'react-hook-form';
 import { HTMLInputTypeAttribute } from 'react';
 import { SvgHandler } from '@/components/SvgHandler';
-import { EIconsSet } from '@/enums';
+import { EIconsSet } from '@/typings';
 
 type InputFieldProps<T extends FieldValues> = {
   label: string;

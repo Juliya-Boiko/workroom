@@ -1,6 +1,6 @@
 import { SvgHandler } from '@/components/SvgHandler';
 import { BtnIcon } from '@/components/ui';
-import { EIconsSet } from '@/enums';
+import { EIconsSet } from '@/typings';
 
 export const Notifications = () => {
   return (

@@ -1,4 +1,4 @@
-import { EIconsSet } from '@/enums';
+import { EIconsSet } from '@/typings';
 
 export const ROUTES = {
   dashboard: '/',

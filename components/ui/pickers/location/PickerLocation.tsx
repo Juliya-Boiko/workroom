@@ -3,10 +3,9 @@ import styles from './pickerLocation.module.scss';
 import { useEffect, useState } from 'react';
 import { BtnIcon } from '../../buttons/icon/BtnIcon';
 import { SvgHandler } from '@/components/SvgHandler';
-import { EIconsSet } from '@/enums';
+import { EIconsSet, ICountry, ICity } from '@/typings';
 import { Overlay } from '../../overlay/Overlay';
 import { countriesSet, citiesSet } from '../../../../utils/location';
-import { ICountry, ICity } from '@/interfaces';
 import { BtnPrimary } from '../../buttons/primary/BtnPrimary';
 import { Filter } from '../../filter/Filter';
 

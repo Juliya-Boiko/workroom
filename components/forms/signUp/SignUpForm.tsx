@@ -15,7 +15,7 @@ import {
   businessDirectionDataTypes,
   companySizeDataTypes,
   EIconsSet,
-} from '@/enums';
+} from '@/typings';
 
 interface Props {
   activeStage: ESignStages;

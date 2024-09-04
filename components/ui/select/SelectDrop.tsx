@@ -3,8 +3,7 @@ import styles from './selectDrop.module.scss';
 import { useEffect, useRef, useState } from 'react';
 import { SvgHandler } from '@/components/SvgHandler';
 import { Avatar } from '../avatar/Avatar';
-import { EIconsSet } from '@/enums';
-import { IEmployee } from '@/interfaces';
+import { EIconsSet, IEmployee } from '@/typings';
 
 type UserType = Pick<IEmployee, '_id' | 'name' | 'avatar'>;
 interface Props {

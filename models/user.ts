@@ -1,5 +1,5 @@
 import { model, models, Schema } from 'mongoose';
-import { userPositionsDataTypes } from '@/enums/EUserPosition';
+import { userPositionsDataTypes } from '@/typings';
 
 const userSchema = new Schema(
   {

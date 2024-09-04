@@ -1,7 +1,7 @@
 import styles from './eventsList.module.scss';
 import imgSrc from '../../../../public/placeholder-2.png';
 import Image from 'next/image';
-import { IEvent } from '@/interfaces/IEvent';
+import { IEvent } from '@/typings';
 import { eventSectionSkeleton } from '@/helpers';
 import { EventCard } from '@/components/cards/event/EventsCard';
 

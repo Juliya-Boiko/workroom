@@ -4,7 +4,7 @@ import { useRouter } from 'next/navigation';
 import { useEmployees } from '@/services';
 import { ROUTES } from '@/constants';
 import { SvgHandler } from '@/components/SvgHandler';
-import { EIconsSet } from '@/enums';
+import { EIconsSet } from '@/typings';
 import { EmployeesGrid } from './employeesGrid/EmployeesGrid';
 import { BtnSecondary } from '@/components/ui';
 

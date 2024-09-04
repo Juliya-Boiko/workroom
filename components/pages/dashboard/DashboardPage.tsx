@@ -5,7 +5,7 @@ import { ProjectsSection } from '@/components/sections/projects/Projects';
 import { EventsSection } from '@/components/sections/events/Events';
 import { Topping } from '@/components/topping/Topping';
 import { SvgHandler } from '@/components/SvgHandler';
-import { EIconsSet } from '@/enums';
+import { EIconsSet } from '@/typings';
 import { formatDayDate } from '@/helpers';
 
 export const DashboardPage = () => {

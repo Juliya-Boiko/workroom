@@ -1,5 +1,5 @@
 import * as yup from 'yup';
-import { categoryEventDataTypes, priorityDataTypes } from '@/enums';
+import { categoryEventDataTypes, priorityDataTypes } from '@/typings';
 
 export const addEventSchema = yup.object({
   name: yup.string().trim().required('Name is required field'),

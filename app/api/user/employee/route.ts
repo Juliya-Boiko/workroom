@@ -3,7 +3,7 @@ import User from '@/models/user';
 import { NextRequest, NextResponse } from 'next/server';
 import { connectToMongoDB } from '@/utils/database';
 import { decode } from '@/utils/jwt';
-import { EUserPosition } from '@/enums';
+import { EUserPosition } from '@/typings';
 
 connectToMongoDB();
 

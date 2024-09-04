@@ -8,7 +8,7 @@ import { yupResolver } from '@hookform/resolvers/yup';
 import { getTomorrowDate } from '@/helpers';
 import { createProject } from '@/actions';
 import { addProjectSchema, AddProjectFormData } from '@/schemas';
-import { priorityDataTypes } from '@/enums';
+import { priorityDataTypes } from '@/typings';
 import { ROUTES } from '@/constants';
 import { QUERY_KEYS } from '@/constants';
 import { useModalContext } from '@/components/providers/ModalProvider';

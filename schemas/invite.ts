@@ -1,5 +1,5 @@
 import * as yup from 'yup';
-import { EUserPosition, invitePositionDataTypes } from '@/enums';
+import { EUserPosition, invitePositionDataTypes } from '@/typings';
 
 export const inviteSchema = yup.object().shape({
   email: yup.string().trim().email().required('Email is required field'),

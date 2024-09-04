@@ -7,7 +7,7 @@ import { useProjects, useTasks } from '@/services';
 import { Topping } from '@/components/topping/Topping';
 import { Modal, BtnPrimary, Preloader } from '@/components/ui';
 import { AddProjectForm } from '@/components/forms/addProject/AddProjectForm';
-import { EIconsSet, EView } from '@/enums';
+import { EIconsSet, EView } from '@/typings';
 import { SvgHandler } from '@/components/SvgHandler';
 import { ChooseProject } from '@/components/sections/chooseProject/ChooseProject';
 import { Tasks } from '@/components/sections/tasks/Tasks';

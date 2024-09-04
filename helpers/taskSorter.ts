@@ -1,5 +1,4 @@
-import { ITask } from '@/interfaces';
-import { ETaskStatus } from '@/enums';
+import { ETaskStatus, ITask } from '@/typings';
 
 interface SortedTasks {
   active: ITask[];

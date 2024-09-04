@@ -1,4 +1,4 @@
-import { IEvent } from '@/interfaces/IEvent';
+import { IEvent } from '@/typings';
 import { AddEventFormData } from '@/schemas';
 import { axiosInstance } from '@/utils/axios';
 

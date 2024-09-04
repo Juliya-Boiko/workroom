@@ -1,6 +1,6 @@
 import { SvgHandler } from '@/components/SvgHandler';
 import styles from './badge.module.scss';
-import { EPriority, EPrioritySet } from '@/enums';
+import { EPriority, EPrioritySet } from '@/typings';
 
 interface Props {
   label: EPriority;

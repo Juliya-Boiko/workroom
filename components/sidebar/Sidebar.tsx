@@ -7,7 +7,7 @@ import { navRoutes } from '@/constants';
 import { Logo } from '../logo/Logo';
 import { SvgHandler } from '../SvgHandler';
 import { Logout } from '../Logout';
-import { EIconsSet } from '@/enums';
+import { EIconsSet } from '@/typings';
 
 export const Sidebar = () => {
   const [open, setOpen] = useState(true);

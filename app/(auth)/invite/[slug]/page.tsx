@@ -1,5 +1,5 @@
 import { InviteSection } from '@/components/invite/InviteSection';
-import { IDynamicPage } from '@/interfaces';
+import { IDynamicPage } from '@/typings';
 
 export default async function Invite({ params }: IDynamicPage) {
   const { slug } = params;

@@ -3,7 +3,7 @@ import Image from 'next/image';
 import imgSrc from '../../../../public/placeholder-1.png';
 import { employeeSectionSkeleton } from '@/helpers';
 import { EmployeeCard } from '@/components/cards/employee/EmployeeCard';
-import { IEmployee } from '@/interfaces';
+import { IEmployee } from '@/typings';
 
 interface Props {
   loading: boolean;

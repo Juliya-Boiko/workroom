@@ -1,5 +1,5 @@
 import { axiosInstance } from '@/utils/axios';
-import { ICreateTask, ITask } from '@/interfaces';
+import { ICreateTask, ITask } from '@/typings';
 
 export const createTask = async (data: ICreateTask) => {
   const response = await axiosInstance.post('/task', data);

@@ -1,4 +1,4 @@
-import { ELevelEmployee } from '@/enums';
+import { ELevelEmployee } from '../enums';
 import { IUserInfo } from './IUserInfo';
 
 export interface IEmployee extends IUserInfo {

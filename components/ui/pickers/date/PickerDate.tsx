@@ -5,7 +5,7 @@ import DatePicker from 'react-datepicker';
 import { subDays } from 'date-fns';
 import { forwardRef } from 'react';
 import { SvgHandler } from '@/components/SvgHandler';
-import { EIconsSet } from '@/enums';
+import { EIconsSet } from '@/typings';
 
 interface Props {
   expanded?: boolean;

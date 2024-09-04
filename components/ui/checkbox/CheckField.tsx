@@ -1,6 +1,6 @@
 import styles from './checkfield.module.scss';
 import { SvgHandler } from '@/components/SvgHandler';
-import { EIconsSet } from '@/enums';
+import { EIconsSet } from '@/typings';
 
 interface Props {
   name: string;

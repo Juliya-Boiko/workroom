@@ -6,7 +6,7 @@ import { useState } from 'react';
 import { useRouter } from 'next/navigation';
 import { useMutation } from '@tanstack/react-query';
 import { registerUserAndCompany } from '@/actions';
-import { signStagesDataTypes, ESignStages, EIconsSet } from '@/enums';
+import { signStagesDataTypes, ESignStages, EIconsSet } from '@/typings';
 import { Logo } from '../logo/Logo';
 import { SignUpForm } from '../forms/signUp/SignUpForm';
 import { SignUpFormData } from '@/schemas';

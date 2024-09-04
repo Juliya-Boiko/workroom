@@ -9,7 +9,7 @@ import { loginUser } from '@/actions';
 import { signInSchema, SignInFormData } from '@/schemas';
 import { InputField, BtnPrimary, CheckField } from '@/components/ui';
 import { SvgHandler } from '@/components/SvgHandler';
-import { EIconsSet } from '@/enums';
+import { EIconsSet } from '@/typings';
 import { ROUTES } from '@/constants';
 
 export const SignInForm = () => {

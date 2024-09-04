@@ -1,4 +1,4 @@
-import { ECategoryEvent, EPriority } from '@/enums';
+import { ECategoryEvent, EPriority } from '../enums';
 
 export interface IEvent {
   category: ECategoryEvent;

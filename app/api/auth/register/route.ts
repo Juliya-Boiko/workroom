@@ -6,7 +6,7 @@ import { genToken } from '@/utils/jwt';
 import { NextRequest, NextResponse } from 'next/server';
 import { connectToMongoDB } from '@/utils/database';
 import { sendRegistrationEmail, sendInviteEmails } from '@/helpers';
-import { EUserPosition } from '@/enums';
+import { EUserPosition } from '@/typings';
 
 connectToMongoDB();
 

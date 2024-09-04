@@ -1,5 +1,5 @@
 import styles from './assignees.module.scss';
-import { IAssignee } from '@/interfaces';
+import { IAssignee } from '@/typings';
 import { Avatar } from '../avatar/Avatar';
 
 interface Props {

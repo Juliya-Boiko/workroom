@@ -3,7 +3,7 @@ import styles from './events.module.scss';
 import { useRouter } from 'next/navigation';
 import { ROUTES } from '@/constants';
 import { SvgHandler } from '@/components/SvgHandler';
-import { EIconsSet } from '@/enums';
+import { EIconsSet } from '@/typings';
 import { BtnSecondary } from '@/components/ui';
 import { EventsList } from './eventsList/EventsList';
 import { useEvents } from '@/services';

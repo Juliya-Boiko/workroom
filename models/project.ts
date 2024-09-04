@@ -1,5 +1,5 @@
 import { model, models, Schema } from 'mongoose';
-import { priorityDataTypes } from '@/enums';
+import { priorityDataTypes } from '@/typings';
 
 const projectSchema = new Schema(
   {

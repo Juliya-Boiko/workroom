@@ -1,6 +1,5 @@
 import { model, models, Schema } from 'mongoose';
-import { businessDirectionDataTypes } from '@/enums/EBusinessDirection';
-import { companySizeDataTypes } from '@/enums/ECompanySize';
+import { businessDirectionDataTypes, companySizeDataTypes } from '@/typings';
 
 const companySchema = new Schema(
   {

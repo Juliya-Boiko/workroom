@@ -1,7 +1,7 @@
 import styles from './tasksActions.module.scss';
 import { BtnIcon } from '@/components/ui';
 import { SvgHandler } from '@/components/SvgHandler';
-import { EIconsSet, EView, viewDataTypes } from '@/enums';
+import { EIconsSet, EView, viewDataTypes } from '@/typings';
 
 interface Props {
   view: EView;

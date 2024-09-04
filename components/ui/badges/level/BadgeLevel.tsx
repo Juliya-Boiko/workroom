@@ -1,5 +1,5 @@
 import styles from './badge.module.scss';
-import { ELevelEmployee } from '@/enums';
+import { ELevelEmployee } from '@/typings';
 
 interface Props {
   label: ELevelEmployee;

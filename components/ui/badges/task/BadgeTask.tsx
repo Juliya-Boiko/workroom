@@ -1,5 +1,5 @@
 import styles from './badge.module.scss';
-import { ETaskStatus } from '@/enums';
+import { ETaskStatus } from '@/typings';
 
 interface Props {
   label: ETaskStatus;

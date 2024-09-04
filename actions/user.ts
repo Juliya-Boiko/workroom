@@ -1,5 +1,5 @@
 import { axiosInstance } from '@/utils/axios';
-import { IUserInfo, IEmployee } from '@/interfaces';
+import { IUserInfo, IEmployee } from '@/typings';
 import { ProfileFormData } from '@/schemas';
 
 export const getUserInfo = async (): Promise<IUserInfo> => {

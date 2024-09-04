@@ -1,5 +1,5 @@
 /* eslint-disable max-len */
-import { EIconsSet } from '@/enums/EIconsSet';
+import { EIconsSet } from '@/typings';
 
 export const SvgHandler = ({ icon }: { icon: EIconsSet }) => {
   if (icon === EIconsSet.ArrowDown) {

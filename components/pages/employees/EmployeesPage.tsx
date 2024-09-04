@@ -1,7 +1,7 @@
 import { Topping } from '@/components/topping/Topping';
 import { Modal, BtnPrimary } from '@/components/ui';
 import { AddEmployeeForm } from '@/components/forms/addEmployee/AddEmployeeForm';
-import { EIconsSet } from '@/enums';
+import { EIconsSet } from '@/typings';
 import { SvgHandler } from '@/components/SvgHandler';
 
 export const EmployeesPage = () => {

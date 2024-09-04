@@ -7,9 +7,8 @@ import { useState } from 'react';
 import { yupResolver } from '@hookform/resolvers/yup';
 import { inviteSchema, InviteFormData } from '@/schemas';
 import { InputField, SelectDrop, BtnPrimary } from '@/components/ui';
-import { EIconsSet, EUserPosition } from '@/enums';
+import { EIconsSet, EUserPosition, invitePositionDataTypes } from '@/typings';
 import { registerUser } from '@/actions';
-import { invitePositionDataTypes } from '@/enums';
 import { ROUTES } from '@/constants';
 
 interface Props {

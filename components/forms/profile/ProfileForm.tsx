@@ -8,7 +8,7 @@ import { updateProfile } from '@/actions';
 import { yupResolver } from '@hookform/resolvers/yup';
 import { profileSchema, ProfileFormData } from '@/schemas';
 import { SvgHandler } from '@/components/SvgHandler';
-import { EIconsSet, EUserPosition } from '@/enums';
+import { EIconsSet, EUserPosition } from '@/typings';
 import { QUERY_KEYS } from '@/constants';
 import {
   Avatar,

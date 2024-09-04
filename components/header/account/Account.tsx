@@ -5,7 +5,7 @@ import { useState, useEffect, useRef } from 'react';
 import { useUser } from '@/services';
 import { SvgHandler } from '@/components/SvgHandler';
 import { Avatar } from '@/components/ui';
-import { EIconsSet } from '@/enums';
+import { EIconsSet } from '@/typings';
 import { Logout } from '@/components/Logout';
 import { ROUTES } from '@/constants';
 

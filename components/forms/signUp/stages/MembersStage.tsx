@@ -1,7 +1,7 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import styles from '../signUp.module.scss';
 import { BtnSecondary } from '@/components/ui';
-import { EIconsSet } from '@/enums';
+import { EIconsSet } from '@/typings';
 import { SvgHandler } from '@/components/SvgHandler';
 
 interface Props {

@@ -1,5 +1,5 @@
 import * as yup from 'yup';
-import { priorityDataTypes } from '@/enums';
+import { priorityDataTypes } from '@/typings';
 
 export const addProjectSchema = yup.object({
   name: yup.string().trim().required('Name is required field'),

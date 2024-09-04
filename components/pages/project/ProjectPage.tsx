@@ -1,8 +1,7 @@
 import { Topping } from '@/components/topping/Topping';
 import { Modal, BtnPrimary } from '@/components/ui';
 import { AddTaskForm } from '@/components/forms/addTask/AddTaskForm';
-import { IDynamicComponent } from '@/interfaces';
-import { EIconsSet } from '@/enums';
+import { EIconsSet, IDynamicComponent } from '@/typings';
 import { SvgHandler } from '@/components/SvgHandler';
 
 export const ProjectPage = ({ slug }: IDynamicComponent) => {

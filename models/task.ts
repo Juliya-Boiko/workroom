@@ -1,5 +1,5 @@
 import { model, models, Schema } from 'mongoose';
-import { priorityDataTypes, taskStatusDataTypes } from '@/enums';
+import { priorityDataTypes, taskStatusDataTypes } from '@/typings';
 
 const taskSchema = new Schema(
   {

@@ -1,4 +1,4 @@
-import { ECategoryEvent, EIconsSet } from '@/enums';
+import { ECategoryEvent, EIconsSet } from '@/typings';
 
 export const eventsType = (v: ECategoryEvent) => {
   if (v === ECategoryEvent.BIRTHDAY)

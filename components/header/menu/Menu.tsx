@@ -3,7 +3,7 @@ import styles from './menu.module.scss';
 import Link from 'next/link';
 import { SvgHandler } from '@/components/SvgHandler';
 import { BtnIcon, Overlay } from '@/components/ui';
-import { EIconsSet } from '@/enums';
+import { EIconsSet } from '@/typings';
 import { Logo } from '@/components/logo/Logo';
 import { navRoutes } from '@/constants';
 import { Company } from '../company/Company';

@@ -6,7 +6,7 @@ import Link from 'next/link';
 import { useRouter } from 'next/navigation';
 import { useProjects } from '@/services';
 import { SvgHandler } from '@/components/SvgHandler';
-import { EIconsSet } from '@/enums';
+import { EIconsSet } from '@/typings';
 import { ProjectCard } from '@/components/cards/project/ProgectCard';
 import { BtnSecondary } from '@/components/ui';
 import { projectSectionSkeleton } from '@/helpers';

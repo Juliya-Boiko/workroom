@@ -1,5 +1,5 @@
 import { model, models, Schema } from 'mongoose';
-import { categoryEventDataTypes, priorityDataTypes } from '@/enums';
+import { categoryEventDataTypes, priorityDataTypes } from '@/typings';
 
 const eventSchema = new Schema(
   {

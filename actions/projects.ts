@@ -1,5 +1,5 @@
 import { axiosInstance } from '@/utils/axios';
-import { IProjectInfo } from '@/interfaces';
+import { IProjectInfo } from '@/typings';
 import { AddProjectFormData } from '@/schemas';
 
 export const getProjects = async (take?: number): Promise<IProjectInfo[]> => {

@@ -4,7 +4,7 @@ import {
   userPositionsDataTypes,
   businessDirectionDataTypes,
   companySizeDataTypes,
-} from '@/enums';
+} from '@/typings';
 
 export const signUpSchema = yup.object().shape({
   email: yup.string().trim().email().required('Email is required field'),

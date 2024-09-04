@@ -4,7 +4,7 @@ import { useForm, Controller } from 'react-hook-form';
 import { useEventsMutation } from '@/services';
 import { yupResolver } from '@hookform/resolvers/yup';
 import { AddEventFormData, addEventSchema } from '@/schemas';
-import { categoryEventDataTypes, ECategoryEvent, priorityDataTypes } from '@/enums';
+import { categoryEventDataTypes, ECategoryEvent, priorityDataTypes } from '@/typings';
 import {
   InputField,
   SelectDrop,

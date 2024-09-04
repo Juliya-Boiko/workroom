@@ -1,4 +1,4 @@
-import { EIconsSet } from '@/enums/EIconsSet';
+import { EIconsSet } from './EIconsSet';
 
 export enum EPriority {
   LOW = 'Low',

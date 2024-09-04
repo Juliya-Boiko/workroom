@@ -3,7 +3,7 @@
 import styles from '../signUp.module.scss';
 import { InputField } from '@/components/ui';
 import { useState } from 'react';
-import { EIconsSet } from '@/enums';
+import { EIconsSet } from '@/typings';
 
 interface Props {
   register: any;

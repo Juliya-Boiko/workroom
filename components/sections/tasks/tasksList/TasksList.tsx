@@ -1,4 +1,4 @@
-import { ITask } from '@/interfaces';
+import { ITask } from '@/typings';
 import styles from './tasksList.module.scss';
 import { TaskSkeleton } from '@/components/cards/task/TaskSkeleton/TaskSkeleton';
 import Link from 'next/link';

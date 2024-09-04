@@ -1,6 +1,6 @@
 'use client';
 import styles from './modal.module.scss';
-import { EIconsSet } from '@/enums';
+import { EIconsSet } from '@/typings';
 import { SvgHandler } from '@/components/SvgHandler';
 import { Overlay } from '../overlay/Overlay';
 import { BtnIcon } from '../buttons/icon/BtnIcon';

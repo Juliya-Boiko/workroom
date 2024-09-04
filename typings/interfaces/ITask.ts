@@ -1,5 +1,6 @@
-import { EPriority, ETaskStatus } from '@/enums';
+import { EPriority, ETaskStatus } from '../enums';
 import { IAssignee } from './IUserInfo';
+
 export interface ICreateTask {
   name: string;
   start: Date;
