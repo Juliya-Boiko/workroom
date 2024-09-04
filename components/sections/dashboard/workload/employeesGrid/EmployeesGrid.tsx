@@ -1,6 +1,6 @@
 import styles from './employeesGrid.module.scss';
 import Image from 'next/image';
-import imgSrc from '../../../../public/placeholder-1.png';
+import imgSrc from '../../../../../public/placeholder-1.png';
 import { employeeSectionSkeleton } from '@/utils';
 import { EmployeeCard } from '@/components/cards/employee/EmployeeCard';
 import { IEmployee } from '@/typings';

@@ -4,7 +4,13 @@ import { EIconsSet } from '@/typings';
 export const SvgHandler = ({ icon }: { icon: EIconsSet }) => {
   if (icon === EIconsSet.ArrowDown) {
     return (
-      <svg xmlns="http://www.w3.org/2000/svg" width={24} height={24} fill="none">
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        width={24}
+        height={24}
+        fill="none"
+        className="svg-min-size"
+      >
         <path
           fill="currentColor"
           d="m12.613 19.79.094-.083 5-5a1 1 0 0 0-1.32-1.497l-.094.083L13 16.585V5a1 1 0 0 0-1.993-.117L11 5v11.585l-3.293-3.292a1 1 0 0 0-1.32-.083l-.094.083a1 1 0 0 0-.083 1.32l.083.094 5 5a1 1 0 0 0 1.32.083Z"
@@ -14,7 +20,13 @@ export const SvgHandler = ({ icon }: { icon: EIconsSet }) => {
   }
   if (icon === EIconsSet.ArrowUp) {
     return (
-      <svg xmlns="http://www.w3.org/2000/svg" width={24} height={24} fill="none">
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        width={24}
+        height={24}
+        fill="none"
+        className="svg-min-size"
+      >
         <path
           fill="currentColor"
           d="m12.613 4.21.094.083 5 5a1 1 0 0 1-1.32 1.497l-.094-.083L13 7.415V19a1 1 0 0 1-1.993.117L11 19V7.415l-3.293 3.292a1 1 0 0 1-1.32.083l-.094-.083a1 1 0 0 1-.083-1.32l.083-.094 5-5a1 1 0 0 1 1.32-.083Z"
@@ -24,14 +36,26 @@ export const SvgHandler = ({ icon }: { icon: EIconsSet }) => {
   }
   if (icon === EIconsSet.Circle) {
     return (
-      <svg xmlns="http://www.w3.org/2000/svg" width={24} height={24} fill="none">
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        width={24}
+        height={24}
+        fill="none"
+        className="svg-min-size"
+      >
         <circle cx={12} cy={12} r={5} fill="currentColor" />
       </svg>
     );
   }
   if (icon === EIconsSet.Checkbox) {
     return (
-      <svg xmlns="http://www.w3.org/2000/svg" width={14} height={10} fill="none">
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        width={14}
+        height={10}
+        fill="none"
+        className="svg-min-size"
+      >
         <path
           fill="#3F8CFF"
           fillRule="evenodd"
@@ -43,7 +67,13 @@ export const SvgHandler = ({ icon }: { icon: EIconsSet }) => {
   }
   if (icon === EIconsSet.ChevronDown) {
     return (
-      <svg xmlns="http://www.w3.org/2000/svg" width={24} height={24} fill="none">
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        width={24}
+        height={24}
+        fill="none"
+        className="svg-min-size"
+      >
         <path
           fill="currentColor"
           d="M16.707 9.293a1 1 0 0 1 .083 1.32l-.083.094-4 4a1 1 0 0 1-1.32.083l-.094-.083-4-4a1 1 0 0 1 1.32-1.497l.094.083L12 12.585l3.293-3.292a1 1 0 0 1 1.32-.083l.094.083Z"
@@ -53,7 +83,13 @@ export const SvgHandler = ({ icon }: { icon: EIconsSet }) => {
   }
   if (icon === EIconsSet.ArrowRight) {
     return (
-      <svg xmlns="http://www.w3.org/2000/svg" width={24} height={24} fill="none">
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        width={24}
+        height={24}
+        fill="none"
+        className="svg-min-size"
+      >
         <path
           fill="currentColor"
           fillRule="evenodd"
@@ -65,7 +101,13 @@ export const SvgHandler = ({ icon }: { icon: EIconsSet }) => {
   }
   if (icon === EIconsSet.Eye) {
     return (
-      <svg xmlns="http://www.w3.org/2000/svg" width={24} height={24} fill="none">
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        width={24}
+        height={24}
+        fill="none"
+        className="svg-min-size"
+      >
         <path
           fill="#7D8592"
           fillRule="evenodd"
@@ -77,7 +119,13 @@ export const SvgHandler = ({ icon }: { icon: EIconsSet }) => {
   }
   if (icon === EIconsSet.ArrowLeft) {
     return (
-      <svg xmlns="http://www.w3.org/2000/svg" width={24} height={24} fill="none">
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        width={24}
+        height={24}
+        fill="none"
+        className="svg-min-size"
+      >
         <path
           fill="currentColor"
           fillRule="evenodd"
@@ -89,7 +137,13 @@ export const SvgHandler = ({ icon }: { icon: EIconsSet }) => {
   }
   if (icon === EIconsSet.Plus) {
     return (
-      <svg xmlns="http://www.w3.org/2000/svg" width={24} height={24} fill="none">
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        width={24}
+        height={24}
+        fill="none"
+        className="svg-min-size"
+      >
         <path
           fill="currentColor"
           fillRule="evenodd"
@@ -101,7 +155,13 @@ export const SvgHandler = ({ icon }: { icon: EIconsSet }) => {
   }
   if (icon === EIconsSet.Settings) {
     return (
-      <svg xmlns="http://www.w3.org/2000/svg" width={24} height={24} fill="none">
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        width={24}
+        height={24}
+        fill="none"
+        className="svg-min-size"
+      >
         <path
           fill="#0A1629"
           fillRule="evenodd"
@@ -113,7 +173,13 @@ export const SvgHandler = ({ icon }: { icon: EIconsSet }) => {
   }
   if (icon === EIconsSet.Logout) {
     return (
-      <svg xmlns="http://www.w3.org/2000/svg" width={24} height={24} fill="none">
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        width={24}
+        height={24}
+        fill="none"
+        className="svg-min-size"
+      >
         <path
           fill="currentColor"
           fillRule="evenodd"
@@ -125,7 +191,13 @@ export const SvgHandler = ({ icon }: { icon: EIconsSet }) => {
   }
   if (icon === EIconsSet.Dashboard) {
     return (
-      <svg xmlns="http://www.w3.org/2000/svg" width={24} height={24} fill="none">
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        width={24}
+        height={24}
+        fill="none"
+        className="svg-min-size"
+      >
         <path
           fill="currentColor"
           fillRule="evenodd"
@@ -137,7 +209,13 @@ export const SvgHandler = ({ icon }: { icon: EIconsSet }) => {
   }
   if (icon === EIconsSet.Calendar) {
     return (
-      <svg xmlns="http://www.w3.org/2000/svg" width={24} height={24} fill="none">
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        width={24}
+        height={24}
+        fill="none"
+        className="svg-min-size"
+      >
         <path
           fill="currentColor"
           fillRule="evenodd"
@@ -149,7 +227,13 @@ export const SvgHandler = ({ icon }: { icon: EIconsSet }) => {
   }
   if (icon === EIconsSet.Projects) {
     return (
-      <svg xmlns="http://www.w3.org/2000/svg" width={24} height={24} fill="none">
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        width={24}
+        height={24}
+        fill="none"
+        className="svg-min-size"
+      >
         <path
           fill="currentColor"
           fillRule="evenodd"
@@ -161,7 +245,13 @@ export const SvgHandler = ({ icon }: { icon: EIconsSet }) => {
   }
   if (icon === EIconsSet.Persons) {
     return (
-      <svg xmlns="http://www.w3.org/2000/svg" width={24} height={24} fill="none">
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        width={24}
+        height={24}
+        fill="none"
+        className="svg-min-size"
+      >
         <path
           fill="currentColor"
           fillRule="evenodd"
@@ -173,7 +263,13 @@ export const SvgHandler = ({ icon }: { icon: EIconsSet }) => {
   }
   if (icon === EIconsSet.Bell) {
     return (
-      <svg xmlns="http://www.w3.org/2000/svg" width={24} height={24} fill="none">
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        width={24}
+        height={24}
+        fill="none"
+        className="svg-min-size"
+      >
         <path
           fill="currentColor"
           fillRule="evenodd"
@@ -197,7 +293,13 @@ export const SvgHandler = ({ icon }: { icon: EIconsSet }) => {
   }
   if (icon === EIconsSet.Cross) {
     return (
-      <svg xmlns="http://www.w3.org/2000/svg" width={24} height={24} fill="none">
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        width={24}
+        height={24}
+        fill="none"
+        className="svg-min-size"
+      >
         <path
           fill="currentColor"
           fillRule="evenodd"
@@ -209,7 +311,13 @@ export const SvgHandler = ({ icon }: { icon: EIconsSet }) => {
   }
   if (icon === EIconsSet.CalendarInput) {
     return (
-      <svg xmlns="http://www.w3.org/2000/svg" width={24} height={24} fill="none">
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        width={24}
+        height={24}
+        fill="none"
+        className="svg-min-size"
+      >
         <path
           fill="currentColor"
           fillRule="evenodd"
@@ -221,7 +329,13 @@ export const SvgHandler = ({ icon }: { icon: EIconsSet }) => {
   }
   if (icon === EIconsSet.ChevronRight) {
     return (
-      <svg xmlns="http://www.w3.org/2000/svg" width={24} height={24} fill="none">
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        width={24}
+        height={24}
+        fill="none"
+        className="svg-min-size"
+      >
         <path
           fill="currentColor"
           fillRule="evenodd"
@@ -233,7 +347,13 @@ export const SvgHandler = ({ icon }: { icon: EIconsSet }) => {
   }
   if (icon === EIconsSet.Columns) {
     return (
-      <svg xmlns="http://www.w3.org/2000/svg" width={24} height={24} fill="none">
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        width={24}
+        height={24}
+        fill="none"
+        className="svg-min-size"
+      >
         <path
           fill="currentColor"
           fillRule="evenodd"
@@ -245,7 +365,13 @@ export const SvgHandler = ({ icon }: { icon: EIconsSet }) => {
   }
   if (icon === EIconsSet.List) {
     return (
-      <svg xmlns="http://www.w3.org/2000/svg" width={24} height={24} fill="none">
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        width={24}
+        height={24}
+        fill="none"
+        className="svg-min-size"
+      >
         <path
           fill="currentColor"
           fillRule="evenodd"
@@ -257,7 +383,13 @@ export const SvgHandler = ({ icon }: { icon: EIconsSet }) => {
   }
   if (icon === EIconsSet.Timeline) {
     return (
-      <svg xmlns="http://www.w3.org/2000/svg" width={24} height={24} fill="none">
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        width={24}
+        height={24}
+        fill="none"
+        className="svg-min-size"
+      >
         <path
           fill="currentColor"
           fillRule="evenodd"
@@ -269,7 +401,13 @@ export const SvgHandler = ({ icon }: { icon: EIconsSet }) => {
   }
   if (icon === EIconsSet.Filter) {
     return (
-      <svg xmlns="http://www.w3.org/2000/svg" width={24} height={24} fill="none">
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        width={24}
+        height={24}
+        fill="none"
+        className="svg-min-size"
+      >
         <path
           fill="currentColor"
           fillRule="evenodd"
@@ -281,7 +419,13 @@ export const SvgHandler = ({ icon }: { icon: EIconsSet }) => {
   }
   if (icon === EIconsSet.Pensil) {
     return (
-      <svg xmlns="http://www.w3.org/2000/svg" width={24} height={24} fill="none">
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        width={24}
+        height={24}
+        fill="none"
+        className="svg-min-size"
+      >
         <path
           fill="currentColor"
           fillRule="evenodd"
@@ -293,7 +437,13 @@ export const SvgHandler = ({ icon }: { icon: EIconsSet }) => {
   }
   if (icon === EIconsSet.Location) {
     return (
-      <svg xmlns="http://www.w3.org/2000/svg" width={24} height={24} fill="none">
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        width={24}
+        height={24}
+        fill="none"
+        className="svg-min-size"
+      >
         <path
           fill="currentColor"
           fillRule="evenodd"
@@ -305,7 +455,13 @@ export const SvgHandler = ({ icon }: { icon: EIconsSet }) => {
   }
   if (icon === EIconsSet.Buildings) {
     return (
-      <svg xmlns="http://www.w3.org/2000/svg" width={24} height={24} fill="none">
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        width={24}
+        height={24}
+        fill="none"
+        className="svg-min-size"
+      >
         <path
           fill="#3F8CFF"
           fillRule="evenodd"
@@ -317,7 +473,13 @@ export const SvgHandler = ({ icon }: { icon: EIconsSet }) => {
   }
   if (icon === EIconsSet.Meetings) {
     return (
-      <svg xmlns="http://www.w3.org/2000/svg" width={24} height={24} fill="none">
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        width={24}
+        height={24}
+        fill="none"
+        className="svg-min-size"
+      >
         <path
           fill="#FDC748"
           fillRule="evenodd"
@@ -329,7 +491,13 @@ export const SvgHandler = ({ icon }: { icon: EIconsSet }) => {
   }
   if (icon === EIconsSet.Gift) {
     return (
-      <svg xmlns="http://www.w3.org/2000/svg" width={24} height={24} fill="none">
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        width={24}
+        height={24}
+        fill="none"
+        className="svg-min-size"
+      >
         <path
           fill="#DE92EB"
           fillRule="evenodd"
@@ -341,7 +509,13 @@ export const SvgHandler = ({ icon }: { icon: EIconsSet }) => {
   }
   if (icon === EIconsSet.CirclesTriangle) {
     return (
-      <svg xmlns="http://www.w3.org/2000/svg" width={24} height={24} fill="none">
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        width={24}
+        height={24}
+        fill="none"
+        className="svg-min-size"
+      >
         <path
           fill="#6D5DD3"
           fillRule="evenodd"
@@ -353,7 +527,13 @@ export const SvgHandler = ({ icon }: { icon: EIconsSet }) => {
   }
   if (icon === EIconsSet.Clock) {
     return (
-      <svg xmlns="http://www.w3.org/2000/svg" width={24} height={24} fill="none">
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        width={24}
+        height={24}
+        fill="none"
+        className="svg-min-size"
+      >
         <path
           fill="#7D8592"
           fillRule="evenodd"

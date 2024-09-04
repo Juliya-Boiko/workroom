@@ -1,5 +1,5 @@
 import styles from './activityList.module.scss';
-import imgSrc from '../../../../public/placeholder-2.png';
+import imgSrc from '../../../../../public/placeholder-2.png';
 import Image from 'next/image';
 
 export const ActivityList = () => {

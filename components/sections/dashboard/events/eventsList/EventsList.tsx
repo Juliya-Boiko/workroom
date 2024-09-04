@@ -1,5 +1,5 @@
 import styles from './eventsList.module.scss';
-import imgSrc from '../../../../public/placeholder-2.png';
+import imgSrc from '../../../../../public/placeholder-2.png';
 import Image from 'next/image';
 import { IEvent } from '@/typings';
 import { eventSectionSkeleton } from '@/utils';

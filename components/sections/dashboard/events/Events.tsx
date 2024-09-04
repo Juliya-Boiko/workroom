@@ -11,8 +11,6 @@ export const EventsSection = () => {
   const { data: events, isLoading } = useEvents({ take: 3 });
   const router = useRouter();
 
-  console.log({ events, isLoading });
-
   return (
     <section className={styles.events}>
       <div className={styles.head}>

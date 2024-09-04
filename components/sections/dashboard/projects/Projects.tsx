@@ -1,7 +1,7 @@
 'use client';
 import styles from './projectsSection.module.scss';
 import Image from 'next/image';
-import imgSrc from '../../../public/placeholder-1.png';
+import imgSrc from '../../../../public/placeholder-1.png';
 import Link from 'next/link';
 import { useRouter } from 'next/navigation';
 import { useProjects, projectSectionSkeleton, ROUTES } from '@/utils';

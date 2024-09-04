@@ -21,6 +21,7 @@
 
   .wrapper {
     @include flexContainer(row, center, space-between);
+    gap: 8px;
     padding: 4px;
   }
 

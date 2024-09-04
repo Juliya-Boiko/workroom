@@ -1,5 +1,6 @@
 .topping {
   @include flexContainer(row, center, space-between);
+  gap: 16px;
 
   .title {
     font-size: 28px;
