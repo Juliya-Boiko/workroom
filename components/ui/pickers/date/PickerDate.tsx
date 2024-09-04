@@ -2,7 +2,7 @@
 import 'react-datepicker/dist/react-datepicker.css';
 import styles from './picker.module.scss';
 import DatePicker from 'react-datepicker';
-import { subDays } from 'date-fns';
+// import { subDays } from 'date-fns';
 import { forwardRef } from 'react';
 import { SvgHandler } from '@/components/SvgHandler';
 import { EIconsSet } from '@/typings';
@@ -50,7 +50,7 @@ export const PickerDate = ({ expanded, label, value, disabled, onChange }: Props
         showPopperArrow={false}
         calendarStartDay={1}
         selected={value}
-        minDate={value ? subDays(value, 0) : undefined}
+        // minDate={value ? subDays(value, 0) : undefined}
         onChange={handleDateChange}
         customInput={<CustomInput />}
         popperContainer={({ children }) => <div>{children}</div>}

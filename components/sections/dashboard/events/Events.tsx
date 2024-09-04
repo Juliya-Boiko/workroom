@@ -8,7 +8,7 @@ import { BtnSecondary } from '@/components/ui';
 import { EventsList } from './eventsList/EventsList';
 
 export const EventsSection = () => {
-  const { data: events, isLoading } = useEvents({ take: 3 });
+  const { data: events, isLoading } = useEvents(3);
   const router = useRouter();
 
   return (

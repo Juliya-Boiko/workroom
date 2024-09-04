@@ -21,7 +21,7 @@
 
   .wrapper {
     @include flexContainer(row, center, space-between);
-    gap: 8px;
+    gap: 16px;
     padding: 4px;
   }
 
@@ -33,9 +33,23 @@
 
   .name {
     font-weight: 700;
+    overflow: hidden;
+    display: -webkit-box;
+    line-clamp: 2; 
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
     &::first-letter {
       text-transform: capitalize;
     }
+  }
+
+  .description {
+    overflow: hidden;
+    display: -webkit-box;
+    line-clamp: 2; 
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    color: $grey-3;
   }
 
   .date {

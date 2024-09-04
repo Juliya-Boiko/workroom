@@ -7,9 +7,7 @@ import { Preloader } from '@/components/ui';
 import { EventCard } from '@/components/cards/event/EventsCard';
 
 export const EventsGrid = () => {
-  const { data: events, isLoading } = useEvents({ take: 8 });
-
-  console.log(events, isLoading);
+  const { data: events, isLoading } = useEvents(8);
 
   return (
     <section className={styles.eventsGrid}>
@@ -27,7 +25,7 @@ export const EventsGrid = () => {
       {events && events.length && (
         <ul className={styles.list}>
           {events.map((el) => (
-            <EventCard key={el._id} event={el} />
+            <EventCard key={el._id} event={el} expanded />
           ))}
         </ul>
       )}

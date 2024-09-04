@@ -525,7 +525,7 @@ export const SvgHandler = ({ icon }: { icon: EIconsSet }) => {
       </svg>
     );
   }
-  if (icon === EIconsSet.Clock) {
+  if (icon === EIconsSet.ClockFilled) {
     return (
       <svg
         xmlns="http://www.w3.org/2000/svg"
@@ -538,6 +538,24 @@ export const SvgHandler = ({ icon }: { icon: EIconsSet }) => {
           fill="#7D8592"
           fillRule="evenodd"
           d="M12 20a8 8 0 1 0 0-16 8 8 0 0 0 0 16Zm.993-11.117A1 1 0 0 0 11 9v3.75l.007.12a1 1 0 0 0 .608.803l3 1.25.11.039a1 1 0 0 0 1.198-.577l.039-.11a1 1 0 0 0-.577-1.198L13 12.083V9l-.007-.117Z"
+          clipRule="evenodd"
+        />
+      </svg>
+    );
+  }
+  if (icon === EIconsSet.ClockOutlined) {
+    return (
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        width={24}
+        height={24}
+        fill="none"
+        className="svg-min-size"
+      >
+        <path
+          fill="currentColor"
+          fillRule="evenodd"
+          d="M12 2C6.477 2 2 6.477 2 12s4.477 10 10 10 10-4.477 10-10S17.523 2 12 2Zm0 2a8 8 0 1 1 0 16 8 8 0 0 1 0-16Zm.993 2.883A1 1 0 0 0 11 7v5.25l.009.13a1 1 0 0 0 .59.786l4 1.75.11.04a1 1 0 0 0 1.207-.555l.04-.11a1 1 0 0 0-.555-1.207L13 11.596V7l-.007-.117Z"
           clipRule="evenodd"
         />
       </svg>

@@ -1,8 +1,10 @@
 'use client';
 import 'react-datetime/css/react-datetime.css';
-// import styles from './pickerTime.module.scss';
+import styles from './pickerTime.module.scss';
 import Datetime from 'react-datetime';
 import moment, { Moment } from 'moment';
+import { SvgHandler } from '@/components/SvgHandler';
+import { EIconsSet } from '@/typings';
 
 interface Props {
   value: string;
@@ -17,17 +19,17 @@ export const PickerTime = ({ value, onChange }: Props) => {
   };
 
   return (
-    <div className="custom-datetime">
-      <p>Time</p>
+    <div className={`custom-datetime ${styles.picker}`}>
+      <p className={styles.label}>Time</p>
       <Datetime
         value={value}
         dateFormat={false}
         timeFormat="HH:mm"
         renderInput={(props, openCalendar) => {
           return (
-            <button type="button" onClick={() => openCalendar()}>
-              button
-              {value}
+            <button type="button" className={styles.pickBtn} onClick={() => openCalendar()}>
+              <span>{value}</span>
+              <SvgHandler icon={EIconsSet.ClockOutlined} />
             </button>
           );
         }}

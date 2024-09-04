@@ -11,7 +11,7 @@ interface Props {
 export const BadgeTimer = ({ date, time }: Props) => {
   return (
     <div className={styles.badgeTimer}>
-      <SvgHandler icon={EIconsSet.Clock} />
+      <SvgHandler icon={EIconsSet.ClockFilled} />
       <span>{getEventTimer(date, time)}</span>
     </div>
   );

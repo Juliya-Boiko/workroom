@@ -8,9 +8,10 @@ import { LoaderSkeleton } from '@/components/LoaderSkeleton';
 interface Props {
   loading?: boolean;
   event: IEvent;
+  expanded?: boolean;
 }
 
-export const EventCard = ({ loading, event }: Props) => {
+export const EventCard = ({ loading, event, expanded }: Props) => {
   const category = eventsType(event.category);
 
   return (
@@ -25,10 +26,17 @@ export const EventCard = ({ loading, event }: Props) => {
         <div className={styles.wrapper}>
           <p className={styles.title}>
             <SvgHandler icon={category.icon} />
-            <span className={styles.name}>{event.name}</span>
+            <span title={event.name} className={styles.name}>
+              {event.name}
+            </span>
           </p>
           <BadgePriopity label={event.priority} />
         </div>
+      )}
+      {expanded && (
+        <p title={event.description} className={styles.description}>
+          {event.description}
+        </p>
       )}
       {loading ? (
         <LoaderSkeleton height={44} />

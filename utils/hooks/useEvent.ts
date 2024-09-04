@@ -14,13 +14,9 @@ export const useEventsMutation = () => {
   return { create, isCreating };
 };
 
-interface Props {
-  take?: number;
-}
-
-export const useEvents = ({ take }: Props) => {
+export const useEvents = (take: number) => {
   return useQuery({
-    queryKey: [QUERY_KEYS.EVENTS],
+    queryKey: [QUERY_KEYS.EVENTS, take],
     queryFn: () => getEvents(take),
   });
 };

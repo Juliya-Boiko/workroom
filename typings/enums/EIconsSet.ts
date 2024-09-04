@@ -29,5 +29,6 @@ export enum EIconsSet {
   Meetings,
   Gift,
   CirclesTriangle,
-  Clock,
+  ClockFilled,
+  ClockOutlined,
 }
