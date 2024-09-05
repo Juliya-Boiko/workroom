@@ -1,10 +1,23 @@
 .avatar {
   @include flexContainer(row, center, center);
-  position: relative;
   border-radius: 50%;
   overflow: hidden;
   color: $white;
+  background-color: $white;
+}
+
+.bordered {
+  padding: 2px;
+  border: 2px solid $blue-1;
+  border-radius: 50%;
+}
+
+.wrapper {
+  @include flexContainer(row, center, center);
   background-color: $blue-1;
+  position: relative;
+  border-radius: 50%;
+  overflow: hidden;
 }
 
 .avatarSmall {
@@ -26,3 +39,4 @@
   @include squareSize(64px);
   font-size: 18px;
 }
+

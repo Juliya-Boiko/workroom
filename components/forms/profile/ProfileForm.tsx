@@ -77,18 +77,12 @@ export const ProfileForm = () => {
     <form action="" className={styles.profileForm} onSubmit={handleSubmit(onSubmit)}>
       <div className={styles.user}>
         <div className={styles.wrapper}>
-          <div
-            className={styles.avatar}
-            style={{
-              borderColor: isLoading ? '#F4F9FD' : '#3F8CFF',
-            }}
-          >
-            {isLoading && !user ? (
-              <Avatar loading={isLoading} size="xl" />
-            ) : (
-              <Avatar size="xl" user={{ name: user?.name || '', avatar: user?.avatar || null }} />
-            )}
-          </div>
+          <Avatar
+            loading={isLoading}
+            bordered
+            size="xl"
+            user={{ name: user?.name || '', avatar: user?.avatar || null }}
+          />
           <BtnIcon tonal title="Edit" onClick={() => setIsDisabled(false)}>
             <SvgHandler icon={EIconsSet.Pensil} />
           </BtnIcon>

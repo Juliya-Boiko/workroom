@@ -6,13 +6,6 @@
   border-radius: 24px;
   padding: 24px;
 
-  .round {
-    @include flexContainer(row, center, center);
-    padding: 2px;
-    border: 2px solid $blue-1;
-    border-radius: 50%;
-  }
-
   .user {
     flex-grow: 1;
     display: flex;

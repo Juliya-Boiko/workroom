@@ -9,9 +9,10 @@ interface Props {
     avatar: string | null;
   };
   loading?: boolean;
+  bordered?: boolean;
 }
 
-export const Avatar = ({ size, user, loading }: Props) => {
+export const Avatar = ({ size, user, loading, bordered }: Props) => {
   const getInitials = () =>
     user && user.name
       ? user.name
@@ -38,13 +39,18 @@ export const Avatar = ({ size, user, loading }: Props) => {
   };
 
   return (
-    <>
-      {loading && !user ? (
+    <div
+      className={`${styles.avatar} ${bordered ? styles.bordered : ''}`}
+      style={{
+        borderColor: loading ? '#F4F9FD' : '#3F8CFF',
+      }}
+    >
+      {loading ? (
         <div className={getSizeStyles()}>
           <LoaderSkeleton circle height={getHeight()} />
         </div>
       ) : (
-        <div className={`${styles.avatar} ${getSizeStyles()}`}>
+        <div className={`${styles.wrapper} ${getSizeStyles()}`}>
           {user?.avatar ? (
             <Image src={user.avatar} fill alt={user.name} />
           ) : (
@@ -52,6 +58,6 @@ export const Avatar = ({ size, user, loading }: Props) => {
           )}
         </div>
       )}
-    </>
+    </div>
   );
 };
