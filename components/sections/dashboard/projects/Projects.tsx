@@ -1,56 +1,26 @@
 'use client';
 import styles from './projectsSection.module.scss';
-import Image from 'next/image';
-import imgSrc from '../../../../public/placeholder-1.png';
-import Link from 'next/link';
 import { useRouter } from 'next/navigation';
-import { useProjects, projectSectionSkeleton, ROUTES } from '@/utils';
+import { useProjects, ROUTES } from '@/utils';
 import { SvgHandler } from '@/components/SvgHandler';
 import { EIconsSet } from '@/typings';
-import { ProjectCard } from '@/components/cards/project/ProgectCard';
 import { BtnSecondary } from '@/components/ui';
+import { ProjectsList } from './progectsList/ProjectsList';
 
 export const ProjectsSection = () => {
   const router = useRouter();
-
-  const { data, isLoading } = useProjects(3);
-  console.log({ data, isLoading });
+  const { data: projects, isLoading } = useProjects(4);
 
   return (
     <section className={styles.section}>
       <div className={styles.head}>
         <h2 className={styles.title}>Projects</h2>
         <BtnSecondary disabled={isLoading} onClick={() => router.push(ROUTES.projects)}>
-          <span>{data?.length ? 'View all' : 'Add project'}</span>
+          <span>{projects?.length ? 'View all' : 'Add project'}</span>
           <SvgHandler icon={EIconsSet.ChevronRight} />
         </BtnSecondary>
       </div>
-      {isLoading && (
-        <ul className={styles.list}>
-          {projectSectionSkeleton.map((el) => (
-            <li key={el._id} className={styles.item}>
-              <ProjectCard loading={isLoading} project={el} />
-            </li>
-          ))}
-        </ul>
-      )}
-      {/* {data && !data.length && (
-        <div className={styles.placeholder}>
-          <p>You dont have projects yet</p>
-          <Image src={imgSrc} alt="Employees" className={styles.image} />
-        </div>
-      )}
-      {data && data.length > 0 && (
-        <ul className={styles.list}>
-          {data.map((el) => (
-            <li key={el._id} className={styles.item}>
-              <Link href={`${ROUTES.project}/${el._id}`}>
-                <ProjectCard loading={isLoading} project={el} />
-              </Link>
-            </li>
-          ))}
-        </ul>
-      )} */}
+      <ProjectsList loading={isLoading} projects={projects} />
     </section>
   );
 };

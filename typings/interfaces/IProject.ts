@@ -2,10 +2,11 @@ import { EPriority } from '../enums';
 import { IAssignee } from './IUserInfo';
 
 export interface IProject {
+  image: string;
   deadline: string;
   name: string;
   priority: EPriority;
-  start: string;
+  createdAt: string;
   _id: string;
 }
 

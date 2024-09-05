@@ -1,18 +1,20 @@
 import styles from './projectCard.module.scss';
 import Image from 'next/image';
-import thumb from '../../../public/project-thumb.svg';
-import { formatDeadlineDate, formatDayDate } from '@/utils';
+// import thumb from '../../../public/project-thumb.svg';
+import { formatDeadlineDate, formatDayDate, thumbSrc } from '@/utils';
 import { LoaderSkeleton } from '@/components/LoaderSkeleton';
 import { SvgHandler } from '@/components/SvgHandler';
 import { EIconsSet, IProjectInfo } from '@/typings';
 import { BadgePriopity, Assignees } from '@/components/ui';
 
 interface Props {
-  loading: boolean;
+  loading?: boolean;
   project: IProjectInfo;
 }
 
 export const ProjectCard = ({ loading, project }: Props) => {
+  const imgSrc = thumbSrc(project.image);
+
   return (
     <div className={styles.projectCard}>
       <div className={styles.main}>
@@ -20,7 +22,7 @@ export const ProjectCard = ({ loading, project }: Props) => {
           <LoaderSkeleton height={48} />
         ) : (
           <div className={styles.head}>
-            <Image src={thumb} alt="Thumb" className={styles.image} />
+            <Image src={imgSrc} alt="Thumb" width={48} height={48} className={styles.image} />
             <div className={styles.block}>
               <p className={styles.deadline}>Deadline: {formatDeadlineDate(project.deadline)}</p>
               <p className={styles.title}>
@@ -37,7 +39,7 @@ export const ProjectCard = ({ loading, project }: Props) => {
             <div className={styles.date}>
               <SvgHandler icon={EIconsSet.Calendar} />
               <p>
-                <span className={styles.created}>Created</span> {formatDayDate(project.start)}
+                <span className={styles.created}>Created</span> {formatDayDate(project.createdAt)}
               </p>
             </div>
             <BadgePriopity label={project.priority} />
@@ -61,7 +63,11 @@ export const ProjectCard = ({ loading, project }: Props) => {
             </div>
             <div>
               <p className={styles.subtitle}>Assignees</p>
-              <Assignees assignees={project.tasks.assignee} />
+              {project.tasks.assignee.length ? (
+                <Assignees assignees={project.tasks.assignee} />
+              ) : (
+                '-'
+              )}
             </div>
           </div>
         )}

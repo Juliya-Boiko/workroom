@@ -9,10 +9,6 @@
     @extend %heading-2;
   }
 
-  .link {
-    @extend %secondary-action;
-  }
-
   @include onLaptop {
     background-color: $white;
     border-radius: 24px;

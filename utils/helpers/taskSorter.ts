@@ -1,5 +1,4 @@
 import { ETaskStatus, ITask } from '@/typings';
-
 interface SortedTasks {
   active: ITask[];
   backlog: ITask[];
