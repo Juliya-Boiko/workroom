@@ -1,24 +1,20 @@
 'use client';
 import styles from './selectImage.module.scss';
 import Image from 'next/image';
-import { useEffect, useState } from 'react';
-import { projectThumbsDataTypes } from '@/utils';
+import { projectThumbsDataTypes, IMAGE_THUMB_STARTS } from '@/utils';
 import { UploadThumb } from '@/components/ui';
 import { StaticImageData } from 'next/image';
 
 type SelectedImageType = [string, StaticImageData | File];
+
 interface Props {
-  value: string | File | null;
-  onChange: (v: [string, StaticImageData | File]) => void;
+  value: string | SelectedImageType;
+  onChange: (v: SelectedImageType) => void;
 }
 
-export const SelectImage = ({ value,  onChange }: Props) => {
-  const [selected, setSelected] = useState<SelectedImageType>(projectThumbsDataTypes[0]);
-
+export const SelectImage = ({ value, onChange }: Props) => {
   const handleUpload = (v: File) => {
-    setSelected(['', v]);
-    onChange(v);
-    console.log({ selected });
+    onChange([v.name, v]);
   };
 
   const handleChange = (v: SelectedImageType) => {
@@ -35,13 +31,17 @@ export const SelectImage = ({ value,  onChange }: Props) => {
         {projectThumbsDataTypes.map((el) => (
           <li
             key={el[0]}
-            className={`${styles.item} ${selected[0] === el[0] ? styles.selected : ''}`}
+            className={`${styles.item} ${value[0] === el[0] ? styles.selected : ''}`}
             onClick={() => handleChange(el)}
           >
             <Image alt={el[0]} src={el[1]} />
           </li>
         ))}
-        <li className={`${styles.upload} ${!selected[0] ? styles.selected : ''}`}>
+        <li
+          className={`
+            ${styles.upload} ${!value[0].includes(IMAGE_THUMB_STARTS) ? styles.selected : ''}
+          `}
+        >
           <UploadThumb value={null} onChange={handleUpload} />
         </li>
       </ul>

@@ -17,3 +17,5 @@ export const projectThumbs = {
 };
 
 export const projectThumbsDataTypes = Object.entries(projectThumbs);
+
+export const IMAGE_THUMB_STARTS = 'thumb';

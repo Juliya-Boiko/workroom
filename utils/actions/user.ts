@@ -1,6 +1,5 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import { axiosInstance } from '@/libs/axios';
-import { uploadToCloudinary } from '@/libs/cloudinary';
 import { IUserInfo, IEmployee } from '@/typings';
 import { ProfileFormData, uploadImage } from '@/utils';
 

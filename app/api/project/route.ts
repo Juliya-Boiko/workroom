@@ -6,7 +6,6 @@ import { ETaskStatus, IAssignee, IProject } from '@/typings';
 import { NextRequest, NextResponse } from 'next/server';
 
 connectToMongoDB();
-
 export interface IResponse extends IProject {
   tasks: {
     status: ETaskStatus;

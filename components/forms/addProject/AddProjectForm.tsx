@@ -2,18 +2,17 @@
 import styles from '../common.module.scss';
 import { useEffect } from 'react';
 import { useForm, Controller } from 'react-hook-form';
-import { useMutation, useQueryClient } from '@tanstack/react-query';
 import { useModalContext } from '@/components/providers/ModalProvider';
 import { useRouter } from 'next/navigation';
 import { yupResolver } from '@hookform/resolvers/yup';
 import { priorityDataTypes } from '@/typings';
 import {
   getTomorrowDate,
-  createProject,
   addProjectSchema,
   AddProjectFormData,
   ROUTES,
-  QUERY_KEYS,
+  projectThumbsDataTypes,
+  useProjectsMutation,
 } from '@/utils';
 import {
   InputField,
@@ -31,13 +30,13 @@ const defaultValues = {
   deadline: getTomorrowDate(new Date()),
   priority: priorityDataTypes[0],
   description: '',
+  image: projectThumbsDataTypes[0],
 };
 
 export const AddProjectForm = () => {
   const router = useRouter();
-  const queryClient = useQueryClient();
   const { closeModal } = useModalContext();
-
+  const { create, isCreating } = useProjectsMutation();
   const {
     control,
     register,
@@ -53,17 +52,14 @@ export const AddProjectForm = () => {
 
   const startDate = watch('start');
 
-  const { mutate, isPending } = useMutation({
-    mutationFn: createProject,
-    onSuccess: (id: string) => {
-      queryClient.invalidateQueries({ queryKey: [QUERY_KEYS.PROJECTS] });
-      closeModal();
-      router.push(`${ROUTES.project}/${id}`);
-    },
-  });
-
   const onSubmit = async (values: AddProjectFormData) => {
-    mutate(values);
+    create(values, {
+      onSuccess: (id) => {
+        console.log(id);
+        closeModal();
+        router.push(`${ROUTES.project}/${id}`);
+      },
+    });
   };
 
   useEffect(() => {
@@ -72,7 +68,7 @@ export const AddProjectForm = () => {
 
   return (
     <>
-      {isPending ? (
+      {isCreating ? (
         <div className={styles.preloader}>
           <Preloader />
         </div>
