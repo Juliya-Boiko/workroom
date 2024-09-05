@@ -1,18 +1,19 @@
+/* eslint-disable @typescript-eslint/no-unused-vars */
 'use client';
 import styles from './profileForm.module.scss';
 import { useEffect, useState } from 'react';
 import { useForm, Controller } from 'react-hook-form';
-import { useMutation, useQueryClient } from '@tanstack/react-query';
 import { yupResolver } from '@hookform/resolvers/yup';
+import { uploadToCloudinary } from '@/libs/cloudinary';
 import { SvgHandler } from '@/components/SvgHandler';
 import { EIconsSet, EUserPosition } from '@/typings';
+import { Upload } from '@/components/upload/Upload';
 import {
   useProfile,
   useCompany,
-  updateProfile,
   profileSchema,
   ProfileFormData,
-  QUERY_KEYS,
+  useProfileMutation,
 } from '@/utils';
 import {
   Avatar,
@@ -27,7 +28,7 @@ export const ProfileForm = () => {
   const [isDisabled, setIsDisabled] = useState(true);
   const { data: user, isLoading } = useProfile();
   const { data: company } = useCompany();
-  const queryClient = useQueryClient();
+  const { update, isUpdating } = useProfileMutation();
 
   const {
     register,
@@ -56,33 +57,38 @@ export const ProfileForm = () => {
   }, [company, reset, user]);
 
   const location = watch('location');
+  const avatar = watch('avatar');
+  const name = watch('name');
 
   const handleApprove = (v: string) => {
     setValue('location', v);
   };
 
-  const { mutate, isPending } = useMutation({
-    mutationFn: updateProfile,
-    onSuccess: (data) => {
-      queryClient.invalidateQueries({ queryKey: [QUERY_KEYS.USER, QUERY_KEYS.PROFILE] });
-      queryClient.setQueryData([QUERY_KEYS.USER], data);
-    },
-  });
-
   const onSubmit = async (data: ProfileFormData) => {
-    mutate(data);
+    update(data);
+    setIsDisabled(true);
   };
 
   return (
     <form action="" className={styles.profileForm} onSubmit={handleSubmit(onSubmit)}>
       <div className={styles.user}>
         <div className={styles.wrapper}>
-          <Avatar
-            loading={isLoading}
-            bordered
-            size="xl"
-            user={{ name: user?.name || '', avatar: user?.avatar || null }}
-          />
+          {isDisabled ? (
+            <Avatar
+              loading={isLoading}
+              bordered
+              size="xl"
+              user={{ name: user?.name || '', avatar: user?.avatar || null }}
+            />
+          ) : (
+            <Controller
+              control={control}
+              name="avatar"
+              render={({ field }) => (
+                <Upload value={field.value} name={name} onChange={field.onChange} />
+              )}
+            />
+          )}
           <BtnIcon tonal title="Edit" onClick={() => setIsDisabled(false)}>
             <SvgHandler icon={EIconsSet.Pensil} />
           </BtnIcon>
@@ -135,7 +141,7 @@ export const ProfileForm = () => {
           <BtnPrimary
             type="submit"
             spread
-            disabled={!isDirty || !isValid || isSubmitting || isPending}
+            disabled={!isDirty || !isValid || isSubmitting || isUpdating}
           >
             Update profile
           </BtnPrimary>

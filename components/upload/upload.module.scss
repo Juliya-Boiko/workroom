@@ -1,0 +1,18 @@
+.upload {
+  position: relative;
+
+  .input {
+    display: none;
+  }
+
+  .btnPlus {
+    @include flexContainer(row, center, center);
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    background-color: $white;
+    color: $blue-1;
+    border-radius: 50%;
+    outline: 1px dashed $blue-1;
+  }
+}

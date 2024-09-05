@@ -1,6 +1,7 @@
 import * as yup from 'yup';
 
 export const profileSchema = yup.object({
+  avatar: yup.mixed(),
   name: yup.string().trim().required('Name is required'),
   location: yup.string().trim().nullable().optional().default(null),
   birthday: yup.date().nullable().optional().default(null),
