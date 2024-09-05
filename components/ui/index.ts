@@ -19,3 +19,4 @@ export * from './preloader/Preloader';
 export * from './radio/Radio';
 export * from './select/SelectDrop';
 export * from './textarea/TextareField';
+export * from './upload/avatar/UploadAvatar';

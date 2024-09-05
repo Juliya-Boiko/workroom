@@ -7,7 +7,22 @@ cloudinary.config({
   api_secret: process.env.CLOUDINARY_API_SECRET,
 });
 
-export const uploadToCloudinary = async (fileUri: string, fileName: string) => {
+type CloudinaryUploadResult = {
+  secure_url: string;
+};
+
+type CloudinaryError = {
+  message: string;
+};
+
+type UploadResponse =
+  | { success: true; result: CloudinaryUploadResult }
+  | { success: false; error: CloudinaryError };
+
+export const uploadToCloudinary = async (
+  fileUri: string,
+  fileName: string
+): Promise<UploadResponse> => {
   return new Promise((resolve, reject) => {
     cloudinary.uploader
       .upload(fileUri, {

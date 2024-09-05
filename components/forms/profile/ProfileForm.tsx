@@ -1,13 +1,10 @@
-/* eslint-disable @typescript-eslint/no-unused-vars */
 'use client';
 import styles from './profileForm.module.scss';
 import { useEffect, useState } from 'react';
 import { useForm, Controller } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
-import { uploadToCloudinary } from '@/libs/cloudinary';
 import { SvgHandler } from '@/components/SvgHandler';
 import { EIconsSet, EUserPosition } from '@/typings';
-import { Upload } from '@/components/upload/Upload';
 import {
   useProfile,
   useCompany,
@@ -22,6 +19,7 @@ import {
   PickerDate,
   PickerLocation,
   BtnPrimary,
+  UploadAvatar,
 } from '@/components/ui';
 
 export const ProfileForm = () => {
@@ -57,7 +55,6 @@ export const ProfileForm = () => {
   }, [company, reset, user]);
 
   const location = watch('location');
-  const avatar = watch('avatar');
   const name = watch('name');
 
   const handleApprove = (v: string) => {
@@ -85,7 +82,7 @@ export const ProfileForm = () => {
               control={control}
               name="avatar"
               render={({ field }) => (
-                <Upload value={field.value} name={name} onChange={field.onChange} />
+                <UploadAvatar value={field.value} name={name} onChange={field.onChange} />
               )}
             />
           )}

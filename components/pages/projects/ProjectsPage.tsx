@@ -1,6 +1,7 @@
+/* eslint-disable @typescript-eslint/no-unused-vars */
 'use client';
 import styles from './projectsPage.module.scss';
-import imgSrc from '../../../public/projects-placeholder.png';
+import imgSrc from '../../../public/placeholder-1.png';
 import Image from 'next/image';
 import { useState } from 'react';
 import { useProjects, useTasks } from '@/utils';
@@ -21,7 +22,7 @@ export const ProjectsPage = () => {
   const [active, setActive] = useState<SelectedProject>();
   const [view, setView] = useState(EView.LIST);
 
-  const { data: projects, isLoading: isLoadingProjects } = useProjects({});
+  const { data: projects, isLoading: isLoadingProjects } = useProjects();
   const { data: tasks, isLoading: isLoadingTasks } = useTasks({
     projectId: active?._id,
     enabled: !!active,
@@ -45,31 +46,29 @@ export const ProjectsPage = () => {
           content={<AddProjectForm />}
         />
       </Topping>
-      {isLoadingProjects ? (
+      {isLoadingProjects && (
         <div className={styles.loader}>
           <Preloader />
         </div>
-      ) : (
-        <div className={styles.container}>
-          {projects && projects.length ? (
-            <>
-              <ChooseProject active={active} list={projects} onChoose={handleChoose} />
-              <Tasks
-                view={view}
-                loading={isLoadingTasks}
-                project={!!active}
-                tasks={tasks || []}
-                setView={(v: EView) => setView(v)}
-              />
-            </>
-          ) : (
-            <div className={styles.placeholder}>
-              <Image src={imgSrc} alt="Projects" className={styles.image} />
-              <p>You dont have projects yet</p>
-            </div>
-          )}
-        </div>
       )}
+      <div className={styles.container}>
+        {projects && !projects.length && (
+          <div className={styles.placeholder}>
+            <p>You dont have projects yet</p>
+            <Image src={imgSrc} alt="Projects" className={styles.image} />
+          </div>
+        )}
+      </div>
+      {/* 
+        <ChooseProject active={active} list={projects} onChoose={handleChoose} />
+        <Tasks
+          view={view}
+          loading={isLoadingTasks}
+          project={!!active}
+          tasks={tasks || []}
+          setView={(v: EView) => setView(v)}
+        />
+      */}
     </div>
   );
 };

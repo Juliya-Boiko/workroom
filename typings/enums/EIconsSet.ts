@@ -31,4 +31,5 @@ export enum EIconsSet {
   CirclesTriangle,
   ClockFilled,
   ClockOutlined,
+  Upload,
 }

@@ -3,8 +3,8 @@
 import styles from './upload.module.scss';
 import { useState, ChangeEvent } from 'react';
 import { EIconsSet } from '@/typings';
-import { SvgHandler } from '../SvgHandler';
-import { Avatar } from '../ui';
+import { SvgHandler } from '../../../SvgHandler';
+import { Avatar } from '../..';
 
 interface Props {
   value: any;
@@ -12,7 +12,7 @@ interface Props {
   onChange: (v: any) => void;
 }
 
-export const Upload = ({ value, name, onChange }: Props) => {
+export const UploadAvatar = ({ value, name, onChange }: Props) => {
   const [imagePreview, setImagePreview] = useState<string | null>(null);
 
   const user = {

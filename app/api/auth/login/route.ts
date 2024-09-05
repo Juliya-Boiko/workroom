@@ -11,7 +11,6 @@ export async function POST(request: NextRequest) {
   try {
     const reqBody = await request.json();
     const { email, password } = reqBody;
-
     const user = await User.findOne({ email });
 
     if (!user) {
@@ -22,7 +21,6 @@ export async function POST(request: NextRequest) {
         { status: 400 }
       );
     }
-
     const validPassword = await comparePassword(password, user.password);
     if (!validPassword) {
       return NextResponse.json(
@@ -32,20 +30,16 @@ export async function POST(request: NextRequest) {
         { status: 403 }
       );
     }
-
     const token = genToken(user._id, user.companyId);
-
     const response = NextResponse.json(
       {
         message: 'Login successful',
       },
       { status: 200 }
     );
-
     response.cookies.set('workroom', token, {
       httpOnly: true,
     });
-
     return response;
   } catch (error: any) {
     return NextResponse.json({ message: error.message }, { status: 500 });

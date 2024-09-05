@@ -23,6 +23,7 @@ import {
   PickerDate,
   Preloader,
 } from '@/components/ui';
+import { SelectImage } from './selectImage/SelectImage';
 
 const defaultValues = {
   name: '',
@@ -120,6 +121,7 @@ export const AddProjectForm = () => {
             register={register}
             placeholder="Add some description of the project"
           />
+          <SelectImage />
           <div>
             <BtnPrimary type="submit" disabled={!isDirty || !isValid || isSubmitting}>
               Save Project
