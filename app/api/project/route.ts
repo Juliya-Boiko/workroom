@@ -46,7 +46,7 @@ export async function GET(request: NextRequest) {
 
     const projectsWithTasks: IResponse[] = await Project.find({ companyId })
       .sort({ createdAt: 'desc' })
-      .select('deadline name priority start')
+      .select('deadline name priority start image')
       .limit(Number(take))
       .populate({
         path: 'tasks',
@@ -75,9 +75,9 @@ export async function GET(request: NextRequest) {
         },
       };
     });
-
     return NextResponse.json(formatted, { status: 200 });
   } catch (error: any) {
+    console.log(error);
     return NextResponse.json({ message: error.message }, { status: 500 });
   }
 }

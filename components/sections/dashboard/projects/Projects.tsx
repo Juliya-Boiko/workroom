@@ -13,7 +13,8 @@ import { BtnSecondary } from '@/components/ui';
 export const ProjectsSection = () => {
   const router = useRouter();
 
-  const { data, isLoading } = useProjects({ take: 3 });
+  const { data, isLoading } = useProjects(3);
+  console.log({ data, isLoading });
 
   return (
     <section className={styles.section}>
@@ -33,7 +34,7 @@ export const ProjectsSection = () => {
           ))}
         </ul>
       )}
-      {data && !data.length && (
+      {/* {data && !data.length && (
         <div className={styles.placeholder}>
           <p>You dont have projects yet</p>
           <Image src={imgSrc} alt="Employees" className={styles.image} />
@@ -49,7 +50,7 @@ export const ProjectsSection = () => {
             </li>
           ))}
         </ul>
-      )}
+      )} */}
     </section>
   );
 };
