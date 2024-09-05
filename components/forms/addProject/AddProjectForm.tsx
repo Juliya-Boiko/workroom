@@ -121,7 +121,11 @@ export const AddProjectForm = () => {
             register={register}
             placeholder="Add some description of the project"
           />
-          <SelectImage />
+          <Controller
+            control={control}
+            name="image"
+            render={({ field }) => <SelectImage value={field.value} onChange={field.onChange} />}
+          />
           <div>
             <BtnPrimary type="submit" disabled={!isDirty || !isValid || isSubmitting}>
               Save Project

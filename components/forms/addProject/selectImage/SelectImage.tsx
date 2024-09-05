@@ -1,15 +1,29 @@
-/* eslint-disable @typescript-eslint/no-unused-vars */
 'use client';
 import styles from './selectImage.module.scss';
 import Image from 'next/image';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { projectThumbsDataTypes } from '@/utils';
-import { SvgHandler } from '@/components/SvgHandler';
-import { EIconsSet } from '@/typings';
+import { UploadThumb } from '@/components/ui';
+import { StaticImageData } from 'next/image';
 
-export const SelectImage = () => {
-  const [selected, setSelected] = useState(projectThumbsDataTypes[0]);
-  console.log(projectThumbsDataTypes);
+type SelectedImageType = [string, StaticImageData | File];
+interface Props {
+  value: string | File | null;
+  onChange: (v: [string, StaticImageData | File]) => void;
+}
+
+export const SelectImage = ({ value,  onChange }: Props) => {
+  const [selected, setSelected] = useState<SelectedImageType>(projectThumbsDataTypes[0]);
+
+  const handleUpload = (v: File) => {
+    setSelected(['', v]);
+    onChange(v);
+    console.log({ selected });
+  };
+
+  const handleChange = (v: SelectedImageType) => {
+    onChange(v);
+  };
 
   return (
     <div className={styles.selectImage}>
@@ -22,15 +36,13 @@ export const SelectImage = () => {
           <li
             key={el[0]}
             className={`${styles.item} ${selected[0] === el[0] ? styles.selected : ''}`}
-            onClick={() => setSelected(el)}
+            onClick={() => handleChange(el)}
           >
             <Image alt={el[0]} src={el[1]} />
           </li>
         ))}
-        <li className={styles.upload}>
-          <label htmlFor="upload-logo">
-            <SvgHandler icon={EIconsSet.Upload} />
-          </label>
+        <li className={`${styles.upload} ${!selected[0] ? styles.selected : ''}`}>
+          <UploadThumb value={null} onChange={handleUpload} />
         </li>
       </ul>
     </div>

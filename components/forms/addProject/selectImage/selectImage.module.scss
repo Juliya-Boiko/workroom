@@ -24,16 +24,6 @@
     padding-top: 12px;
   }
 
-  .item {
-    border-radius: 10px;
-    overflow: hidden;
-    border: 2px solid transparent;
-  }
-
-  .selected {
-    border-color: $blue-1;
-  }
-
   .upload {
     @include squareSize(48px);
     @include flexContainer(row, center, center);
@@ -42,7 +32,14 @@
     border: 2px dashed $blue-1;
   }
 
-  // @include onTablet {
-    
-  // }
+  .item {
+    border-radius: 10px;
+    overflow: hidden;
+    border: 2px solid transparent;
+  }
+
+  .selected {
+    border-style: solid;
+    border-color: $blue-1;
+  }
 }

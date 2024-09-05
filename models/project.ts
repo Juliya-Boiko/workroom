@@ -10,6 +10,7 @@ const projectSchema = new Schema(
     deadline: { type: Date, required: true },
     description: { type: String },
     priority: { type: String, enum: priorityDataTypes, required: true },
+    image: { type: String },
   },
   {
     timestamps: true,
