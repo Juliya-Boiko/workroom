@@ -1,5 +1,5 @@
 import { axiosInstance } from '@/libs/axios';
-import { IProjectInfo } from '@/typings';
+import { IProjectInfo, IProjectDetails } from '@/typings';
 import { AddProjectFormData, uploadImage, IMAGE_THUMB_STARTS } from '@/utils';
 
 export const getProjects = async (take?: number): Promise<IProjectInfo[]> => {
@@ -14,5 +14,10 @@ export const createProject = async (data: AddProjectFormData): Promise<string> =
     image = uploaded;
   }
   const response = await axiosInstance.post('/project', { ...data, image });
+  return response.data;
+};
+
+export const getProjectById = async (id: string): Promise<IProjectDetails> => {
+  const response = await axiosInstance.get(`/project/${id}`);
   return response.data;
 };

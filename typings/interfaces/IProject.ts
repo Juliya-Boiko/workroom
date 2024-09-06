@@ -17,3 +17,8 @@ export interface IProjectInfo extends IProject {
     assignee: IAssignee[];
   };
 }
+
+export interface IProjectDetails extends IProject {
+  description: string;
+  start: string;
+}

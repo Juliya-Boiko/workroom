@@ -1,17 +1,23 @@
+'use client';
+import styles from './projectPage.module.scss';
+import { useProject } from '@/utils';
 import { Topping } from '@/components/topping/Topping';
-import { Modal, BtnPrimary } from '@/components/ui';
+import { Modal, BtnPrimary, Preloader } from '@/components/ui';
 import { AddTaskForm } from '@/components/forms/addTask/AddTaskForm';
 import { EIconsSet, IDynamicComponent } from '@/typings';
 import { SvgHandler } from '@/components/SvgHandler';
+import { ProjectInfo } from '@/components/sections/project/projectInfo/ProjectInfo';
 
 export const ProjectPage = ({ slug }: IDynamicComponent) => {
+  const { data: project, isLoading } = useProject(slug);
+
   return (
-    <div>
-      <Topping title="Project">
+    <div className={styles.projectPage}>
+      <Topping title={project?.name || ''}>
         <Modal
           title="Add task"
           activator={
-            <BtnPrimary>
+            <BtnPrimary disabled={isLoading}>
               <SvgHandler icon={EIconsSet.Plus} />
               <span>Add Task</span>
             </BtnPrimary>
@@ -19,6 +25,17 @@ export const ProjectPage = ({ slug }: IDynamicComponent) => {
           content={<AddTaskForm slug={slug} />}
         />
       </Topping>
+      {isLoading && (
+        <div className={styles.loader}>
+          <Preloader />
+        </div>
+      )}
+      {project && (
+        <div className={styles.container}>
+          <ProjectInfo project={project} />
+          <div>table</div>
+        </div>
+      )}
     </div>
   );
 };

@@ -2,14 +2,11 @@
 import User from '@/models/user';
 import { connectToMongoDB } from '@/libs/database';
 import { NextRequest, NextResponse } from 'next/server';
+import { IDynamicRoute } from '@/typings';
 
 connectToMongoDB();
 
-interface Params {
-  params: { id: string };
-}
-
-export async function GET(request: NextRequest, { params }: Params) {
+export async function GET(request: NextRequest, { params }: IDynamicRoute) {
   const { id } = params;
   try {
     const token = request.cookies.get('workroom')?.value;
@@ -23,7 +20,7 @@ export async function GET(request: NextRequest, { params }: Params) {
   }
 }
 
-export async function PATCH(request: NextRequest, { params }: Params) {
+export async function PATCH(request: NextRequest, { params }: IDynamicRoute) {
   try {
     const { id } = params;
     const token = request.cookies.get('workroom')?.value;

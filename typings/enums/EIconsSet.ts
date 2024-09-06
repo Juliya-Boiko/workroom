@@ -33,4 +33,6 @@ export enum EIconsSet {
   ClockOutlined,
   Upload,
   Picker,
+  AttachLink,
+  AttachFile,
 }

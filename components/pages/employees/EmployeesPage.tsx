@@ -15,8 +15,6 @@ export const EmployeesPage = () => {
   const [view, setView] = useState(viewEmployeesDataTypes[0]);
   const { data: employees, isLoading } = useEmployees();
 
-  // console.log({ employees, isLoading });
-
   return (
     <div className={styles.employeesPage}>
       <Topping title="Employees">

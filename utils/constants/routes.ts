@@ -13,6 +13,7 @@ export const ROUTES = {
   projects: '/projects',
   project: '/project',
   events: '/events',
+  editProject: '/edit-project',
 };
 
 export type RoutesType = typeof ROUTES;
