@@ -67,7 +67,7 @@ export const ProfileForm = () => {
   };
 
   return (
-    <form action="" className={styles.profileForm} onSubmit={handleSubmit(onSubmit)}>
+    <form className={styles.profileForm} onSubmit={handleSubmit(onSubmit)}>
       <div className={styles.user}>
         <div className={styles.wrapper}>
           {isDisabled ? (

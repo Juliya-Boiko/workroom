@@ -3,3 +3,5 @@ export enum ELevelEmployee {
   MIDDLE = 'Middle',
   SENIOR = 'Senior',
 }
+
+export const levelEmployeeDataTypes = Object.values(ELevelEmployee);

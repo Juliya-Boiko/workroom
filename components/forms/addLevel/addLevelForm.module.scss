@@ -1,0 +1,33 @@
+.form {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.badgeWrapper {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.containter {
+  @include flexContainer(row, center, space-between);
+  @extend %shadow-xs;
+  padding: 0 18px;
+  background-color: $white;
+  outline: 1px solid $grey-7;
+  border-radius: 14px;
+  height: 48px;
+  width: 100%;
+  font-size: 16px;
+  color: $grey-3;
+}
+
+.loader {
+  width: 100%;
+}
+
+.btnPick {
+  @include flexContainer(row, center, center);
+  color: $blue-1;
+}

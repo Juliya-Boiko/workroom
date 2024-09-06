@@ -1,20 +1,22 @@
 'use client';
+import { EmployeeInfo } from '@/components/sections/employee/info/EmployeeInfo';
 import styles from './employeePage.module.scss';
 import { Topping } from '@/components/topping/Topping';
-import { ProfileForm } from '@/components/forms/profile/ProfileForm';
 import { IDynamicComponent } from '@/typings';
-import { useEmployee } from '@/utils';
+import { useEmployee, useCompany } from '@/utils';
 
 export const EmployeePage = ({ slug }: IDynamicComponent) => {
   const { data: user, isLoading } = useEmployee(slug);
+  const { data: company } = useCompany();
 
-  console.log({ isLoading, data });
+  // console.log({ isLoading, user });
 
   return (
     <div className={styles.employeePage}>
       <Topping title="Employee’s Profile"></Topping>
       <div className={styles.container}>
-        profile
+        <EmployeeInfo company={company} user={user} loading={isLoading} />
+        <div>table</div>
       </div>
     </div>
   );

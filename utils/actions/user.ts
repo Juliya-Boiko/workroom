@@ -1,6 +1,6 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import { axiosInstance } from '@/libs/axios';
-import { IUserInfo, IEmployee } from '@/typings';
+import { IUserInfo, IEmployee, ELevelEmployee } from '@/typings';
 import { ProfileFormData, uploadImage } from '@/utils';
 
 export const getUserInfo = async (): Promise<IUserInfo> => {
@@ -26,5 +26,18 @@ export const getEmployees = async (take?: number): Promise<IEmployee[]> => {
 
 export const getEmployeeById = async (id: string): Promise<IEmployee> => {
   const response = await axiosInstance.get(`/user/employee/${id}`);
+  return response.data;
+};
+
+interface UpdateLevelProps {
+  id: string;
+  level: ELevelEmployee;
+}
+
+export const updateLevelEmployee = async ({
+  id,
+  level,
+}: UpdateLevelProps): Promise<{ level: ELevelEmployee }> => {
+  const response = await axiosInstance.patch(`/user/employee/${id}`, { level });
   return response.data;
 };

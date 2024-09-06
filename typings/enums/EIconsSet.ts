@@ -32,4 +32,5 @@ export enum EIconsSet {
   ClockFilled,
   ClockOutlined,
   Upload,
+  Picker,
 }
