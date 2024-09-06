@@ -20,3 +20,10 @@ export const viewDataTypes = [
     icon: EIconsSet.Timeline,
   },
 ];
+
+export enum EViewEmployees {
+  LIST = 'List',
+  ACTIVITY = 'Activity',
+}
+
+export const viewEmployeesDataTypes = Object.values(EViewEmployees);

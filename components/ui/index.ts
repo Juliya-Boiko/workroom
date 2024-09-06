@@ -21,3 +21,4 @@ export * from './select/SelectDrop';
 export * from './textarea/TextareField';
 export * from './upload/avatar/UploadAvatar';
 export * from './upload/thumb/UploadThumb';
+export * from './tabs/TabsSlide';
