@@ -11,16 +11,18 @@ interface Props {
 export const EmployeeCard = ({ user, loading }: Props) => {
   return (
     <li className={styles.emlpoyeeCard}>
-      <Avatar
-        loading={loading}
-        size="l"
-        bordered
-        user={loading ? undefined : { name: user.name, avatar: user.avatar }}
-      />
+      <div>
+        <Avatar
+          loading={loading}
+          size="l"
+          bordered
+          user={loading ? undefined : { name: user.name, avatar: user.avatar }}
+        />
+      </div>
       <div className={styles.user}>
         <p className={styles.name}>{loading ? <LoaderSkeleton height={14} /> : user.name}</p>
         <p className={styles.position}>
-          {loading ? <LoaderSkeleton height={14} /> : user.position}
+          {loading ? <LoaderSkeleton height={14} /> : user.profession}
         </p>
         {loading ? (
           <div className={styles.badge}>

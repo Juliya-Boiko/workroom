@@ -8,5 +8,5 @@ export interface IEmployee extends IUserInfo {
   location: string | null;
   _id: string;
   phone?: string | null;
-  profession?: string | null;
+  profession: string | null;
 }

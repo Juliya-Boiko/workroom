@@ -1,0 +1,25 @@
+.employeesPage {
+  padding: 24px 12px;
+
+  .mobileHidden {
+    display: none;
+  }
+
+  .wrapper {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+  }
+
+  @include onTablet {
+    padding: 24px 48px;
+  }
+
+  @include onLaptop {
+    padding: 32px 0 0 32px;
+
+    .mobileHidden {
+      display: block;
+    }
+  }
+}
