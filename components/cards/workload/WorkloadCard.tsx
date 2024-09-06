@@ -4,13 +4,13 @@ import { BadgeLevel, Avatar } from '@/components/ui';
 import { LoaderSkeleton } from '@/components/LoaderSkeleton';
 
 interface Props {
-  loading: boolean;
+  loading?: boolean;
   user: IEmployee;
 }
 
 export const WorkloadCard = ({ user, loading }: Props) => {
   return (
-    <li className={styles.emlpoyeeCard}>
+    <div className={styles.emlpoyeeCard}>
       <div>
         <Avatar
           loading={loading}
@@ -32,6 +32,6 @@ export const WorkloadCard = ({ user, loading }: Props) => {
           user.level && <BadgeLevel label={user.level} />
         )}
       </div>
-    </li>
+    </div>
   );
 };

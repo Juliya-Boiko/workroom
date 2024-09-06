@@ -10,6 +10,7 @@ import { Modal, BtnPrimary, BtnIcon, TabsSlide, Preloader } from '@/components/u
 import { AddEmployeeForm } from '@/components/forms/addEmployee/AddEmployeeForm';
 import { SvgHandler } from '@/components/SvgHandler';
 import { EmployeesTable } from '@/components/sections/employees/table/EmployeesTable';
+import { EmployeesActivity } from '@/components/sections/employees/activity/EmployeesActivity';
 
 export const EmployeesPage = () => {
   const [view, setView] = useState(viewEmployeesDataTypes[0]);
@@ -55,7 +56,7 @@ export const EmployeesPage = () => {
         (view === EViewEmployees.LIST ? (
           <EmployeesTable view={view} onChange={(v) => setView(v)} employees={employees} />
         ) : (
-          <div>activity</div>
+          <EmployeesActivity view={view} onChange={(v) => setView(v)} employees={employees} />
         ))}
     </div>
   );

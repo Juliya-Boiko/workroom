@@ -16,14 +16,18 @@ export const EmployeesGrid = ({ loading, employees }: Props) => {
       {loading && (
         <ul className={styles.employeesGrid}>
           {employeeSectionSkeleton.map((el) => (
-            <WorkloadCard key={el._id} loading={loading} user={el} />
+            <li key={el._id}>
+              <WorkloadCard loading={loading} user={el} />
+            </li>
           ))}
         </ul>
       )}
       {employees && employees.length > 0 && (
         <ul className={styles.employeesGrid}>
           {employees.map((el) => (
-            <WorkloadCard key={el._id} loading={loading} user={el} />
+            <li key={el._id}>
+              <WorkloadCard loading={loading} user={el} />
+            </li>
           ))}
         </ul>
       )}
