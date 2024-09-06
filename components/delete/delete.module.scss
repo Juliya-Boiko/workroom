@@ -1,0 +1,21 @@
+.btnDelete {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 12px;
+  border-radius: 14px;
+  background-color: $white;
+  transition: all 250ms ease-in-out;
+  text-transform: capitalize;
+  color: $red-1;
+  font-weight: 700;
+  line-height: 1.2;
+
+  &:hover {
+    background-color: rgba($red-rgb, 0.1);
+  }
+
+  &:active {
+    background-color: rgba($red-rgb, 0.3);
+  }
+}

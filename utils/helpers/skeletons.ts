@@ -5,8 +5,9 @@ export const projectSectionSkeleton: IProjectInfo[] = [
     deadline: '',
     name: '',
     priority: EPriority.LOW,
-    start: '',
     _id: '1',
+    image: 'thumb1',
+    createdAt: new Date().toLocaleString(),
     tasks: {
       all: 0,
       active: 0,
@@ -18,7 +19,8 @@ export const projectSectionSkeleton: IProjectInfo[] = [
     deadline: '',
     name: '',
     priority: EPriority.LOW,
-    start: '',
+    image: 'thumb1',
+    createdAt: new Date().toLocaleString(),
     tasks: {
       all: 0,
       active: 0,
@@ -30,7 +32,8 @@ export const projectSectionSkeleton: IProjectInfo[] = [
     deadline: '',
     name: '',
     priority: EPriority.LOW,
-    start: '',
+    image: 'thumb1',
+    createdAt: new Date().toLocaleString(),
     tasks: {
       all: 0,
       active: 0,
@@ -49,6 +52,7 @@ export const employeeSectionSkeleton = [
     location: null,
     name: 'name',
     position: EUserPosition.EMPLOYEE,
+    profession: '',
   },
   {
     _id: '2',
@@ -59,6 +63,7 @@ export const employeeSectionSkeleton = [
     location: null,
     name: 'name',
     position: EUserPosition.EMPLOYEE,
+    profession: '',
   },
   {
     _id: '3',
@@ -69,6 +74,7 @@ export const employeeSectionSkeleton = [
     location: null,
     name: 'name',
     position: EUserPosition.EMPLOYEE,
+    profession: '',
   },
   {
     _id: '4',
@@ -79,6 +85,7 @@ export const employeeSectionSkeleton = [
     location: null,
     name: 'name',
     position: EUserPosition.EMPLOYEE,
+    profession: '',
   },
   {
     _id: '5',
@@ -89,6 +96,7 @@ export const employeeSectionSkeleton = [
     location: null,
     name: 'name',
     position: EUserPosition.EMPLOYEE,
+    profession: '',
   },
   {
     _id: '6',
@@ -99,6 +107,7 @@ export const employeeSectionSkeleton = [
     location: null,
     name: 'name',
     position: EUserPosition.EMPLOYEE,
+    profession: '',
   },
 ];
 

@@ -1,7 +1,7 @@
 .employeesPage {
   padding: 24px 12px;
 
-  .mobileHidden {
+  .tabletHidden {
     display: none;
   }
 
@@ -37,10 +37,6 @@
   @include onTablet {
     padding: 24px 48px;
 
-    .mobileHidden {
-      display: block;
-    }
-
     .loader {
       padding-top: 96px;
     }
@@ -48,5 +44,9 @@
 
   @include onLaptop {
     padding: 32px 0 0 32px;
+
+    .tabletHidden {
+      display: block;
+    }
   }
 }

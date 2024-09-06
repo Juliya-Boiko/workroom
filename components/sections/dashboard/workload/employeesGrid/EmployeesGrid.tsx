@@ -2,7 +2,7 @@ import styles from './employeesGrid.module.scss';
 import Image from 'next/image';
 import imgSrc from '../../../../../public/placeholder-1.png';
 import { employeeSectionSkeleton } from '@/utils';
-import { EmployeeCard } from '@/components/cards/employee/EmployeeCard';
+import { WorkloadCard } from '@/components/cards/workload/WorkloadCard';
 import { IEmployee } from '@/typings';
 
 interface Props {
@@ -16,14 +16,14 @@ export const EmployeesGrid = ({ loading, employees }: Props) => {
       {loading && (
         <ul className={styles.employeesGrid}>
           {employeeSectionSkeleton.map((el) => (
-            <EmployeeCard key={el._id} loading={loading} user={el} />
+            <WorkloadCard key={el._id} loading={loading} user={el} />
           ))}
         </ul>
       )}
       {employees && employees.length > 0 && (
         <ul className={styles.employeesGrid}>
           {employees.map((el) => (
-            <EmployeeCard key={el._id} loading={loading} user={el} />
+            <WorkloadCard key={el._id} loading={loading} user={el} />
           ))}
         </ul>
       )}

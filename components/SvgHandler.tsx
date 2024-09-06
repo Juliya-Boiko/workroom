@@ -615,4 +615,28 @@ export const SvgHandler = ({ icon }: { icon: EIconsSet }) => {
       </svg>
     );
   }
+  if (icon === EIconsSet.Dots) {
+    return (
+      <svg xmlns="http://www.w3.org/2000/svg" width={24} height={24} fill="none">
+        <path
+          fill="currentColor"
+          fillRule="evenodd"
+          d="M14 5a2 2 0 1 1-4 0 2 2 0 0 1 4 0Zm0 7a2 2 0 1 1-4 0 2 2 0 0 1 4 0Zm-2 9a2 2 0 1 0 0-4 2 2 0 0 0 0 4Z"
+          clipRule="evenodd"
+        />
+      </svg>
+    );
+  }
+  if (icon === EIconsSet.Delete) {
+    return (
+      <svg xmlns="http://www.w3.org/2000/svg" width={24} height={24} fill="none">
+        <path
+          fill="#F65160"
+          fillRule="evenodd"
+          d="M14 1a3 3 0 0 1 2.995 2.824L17 4v1h4a1 1 0 0 1 .117 1.993L21 7h-1v13a3 3 0 0 1-2.824 2.995L17 23H7a3 3 0 0 1-2.995-2.824L4 20V7H3a1 1 0 0 1-.117-1.993L3 5h4V4a3 3 0 0 1 2.824-2.995L10 1h4ZM6 7v13a1 1 0 0 0 .883.993L7 21h10a1 1 0 0 0 .993-.883L18 20V7H6Zm9-2H9V4l.007-.117A1 1 0 0 1 10 3h4l.117.007A1 1 0 0 1 15 4v1Zm-5 5a1 1 0 0 1 .993.883L11 11v6a1 1 0 0 1-1.993.117L9 17v-6a1 1 0 0 1 1-1Zm4.993.883A1 1 0 0 0 13 11v6l.007.117A1 1 0 0 0 15 17v-6l-.007-.117Z"
+          clipRule="evenodd"
+        />
+      </svg>
+    );
+  }
 };

@@ -23,3 +23,4 @@ export * from './upload/avatar/UploadAvatar';
 export * from './upload/thumb/UploadThumb';
 export * from './tabs/TabsSlide';
 export * from './upload/attach/UploadAttach';
+export * from './options/Options';

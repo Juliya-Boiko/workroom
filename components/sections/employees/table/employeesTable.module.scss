@@ -8,9 +8,19 @@
     padding: 24px 0;
   }
 
-  @include onTablet {
+  .list {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+  }
+
+  @include onLaptop {
     .filters {
       display: none;
+    }
+
+    .list {
+      padding-top: 24px;
     }
   }
 }

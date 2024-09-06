@@ -28,7 +28,7 @@ export async function PATCH(request: NextRequest, { params }: IDynamicRoute) {
       return NextResponse.json({ message: 'Token null or expired' }, { status: 403 });
     }
     const reqBody = await request.json();
-    const employee = await User.findByIdAndUpdate(id, reqBody, { new: true }).select('level -_id');
+    const employee = await User.findByIdAndUpdate(id, reqBody, { new: true }).select('level');
     return NextResponse.json(employee, { status: 200 });
   } catch (error: any) {
     console.log('PATCH ERROR', error);

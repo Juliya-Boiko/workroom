@@ -11,7 +11,7 @@ export const useEmployees = (take?: number) => {
 
 export const useEmployee = (id: string) => {
   return useQuery({
-    queryKey: [QUERY_KEYS.EMPLOYEE],
+    queryKey: [QUERY_KEYS.EMPLOYEE, id],
     queryFn: () => getEmployeeById(id),
   });
 };
@@ -21,8 +21,8 @@ export const useEmployeeMutation = () => {
 
   const { mutate: updateLevel, isPending: isUpdatingLevel } = useMutation({
     mutationFn: updateLevelEmployee,
-    onSuccess: ({ level }) => {
-      queryClient.setQueryData([QUERY_KEYS.EMPLOYEE], (prev: IEmployee) => ({
+    onSuccess: ({ level, _id }) => {
+      queryClient.setQueryData([QUERY_KEYS.EMPLOYEE, _id], (prev: IEmployee) => ({
         ...prev,
         level,
       }));

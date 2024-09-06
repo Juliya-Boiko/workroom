@@ -37,7 +37,7 @@ interface UpdateLevelProps {
 export const updateLevelEmployee = async ({
   id,
   level,
-}: UpdateLevelProps): Promise<{ level: ELevelEmployee }> => {
+}: UpdateLevelProps): Promise<{ level: ELevelEmployee; _id: string }> => {
   const response = await axiosInstance.patch(`/user/employee/${id}`, { level });
   return response.data;
 };

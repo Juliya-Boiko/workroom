@@ -35,4 +35,6 @@ export enum EIconsSet {
   Picker,
   AttachLink,
   AttachFile,
+  Dots,
+  Delete,
 }

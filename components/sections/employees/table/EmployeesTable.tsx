@@ -2,8 +2,7 @@ import styles from './employeesTable.module.scss';
 import { TabsSlide, BtnIcon } from '@/components/ui';
 import { EIconsSet, viewEmployeesDataTypes, EViewEmployees, IEmployee } from '@/typings';
 import { SvgHandler } from '@/components/SvgHandler';
-import Link from 'next/link';
-import { ROUTES } from '@/utils';
+import { EmployeeCard } from '@/components/cards/employee/EmployeeCard';
 
 interface Props {
   view: EViewEmployees;
@@ -20,11 +19,9 @@ export const EmployeesTable = ({ view, onChange, employees }: Props) => {
           <SvgHandler icon={EIconsSet.Filter} />
         </BtnIcon>
       </div>
-      <ul>
+      <ul className={styles.list}>
         {employees.map((el) => (
-          <li key={el._id}>
-            <Link href={`${ROUTES.employee}/${el._id}`}>{el.name}</Link>
-          </li>
+          <EmployeeCard key={el._id} employee={el} />
         ))}
       </ul>
     </section>

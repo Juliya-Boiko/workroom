@@ -3,7 +3,7 @@ import styles from './employeesPage.module.scss';
 import Image from 'next/image';
 import imgSrc from '../../../public/placeholder-1.png';
 import { useState } from 'react';
-import { viewEmployeesDataTypes, EIconsSet } from '@/typings';
+import { viewEmployeesDataTypes, EIconsSet, EViewEmployees } from '@/typings';
 import { useEmployees } from '@/utils';
 import { Topping } from '@/components/topping/Topping';
 import { Modal, BtnPrimary, BtnIcon, TabsSlide, Preloader } from '@/components/ui';
@@ -17,12 +17,12 @@ export const EmployeesPage = () => {
 
   return (
     <div className={styles.employeesPage}>
-      <Topping title="Employees">
-        <div className={styles.mobileHidden}>
+      <Topping title={`Employees ${employees?.length ? `(${employees.length})` : ''}`}>
+        <div className={styles.tabletHidden}>
           <TabsSlide options={viewEmployeesDataTypes} value={view} onChange={(v) => setView(v)} />
         </div>
         <div className={styles.wrapper}>
-          <div className={styles.mobileHidden}>
+          <div className={styles.tabletHidden}>
             <BtnIcon title="Filter">
               <SvgHandler icon={EIconsSet.Filter} />
             </BtnIcon>
@@ -50,9 +50,13 @@ export const EmployeesPage = () => {
           <Image src={imgSrc} alt="Projects" className={styles.image} />
         </div>
       )}
-      {employees && employees.length > 0 && (
-        <EmployeesTable view={view} onChange={(v) => setView(v)} employees={employees} />
-      )}
+      {employees &&
+        employees.length > 0 &&
+        (view === EViewEmployees.LIST ? (
+          <EmployeesTable view={view} onChange={(v) => setView(v)} employees={employees} />
+        ) : (
+          <div>activity</div>
+        ))}
     </div>
   );
 };
