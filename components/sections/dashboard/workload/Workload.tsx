@@ -9,7 +9,7 @@ import { BtnSecondary } from '@/components/ui';
 
 export const WorkloadSection = () => {
   const router = useRouter();
-  const { data: employees, isLoading } = useEmployees({ take: 8 });
+  const { data: employees, isLoading } = useEmployees(8);
 
   return (
     <section className={styles.workload}>

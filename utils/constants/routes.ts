@@ -9,6 +9,7 @@ export const ROUTES = {
   settings: '/profile',
   calendar: '/calendar',
   employees: '/employees',
+  employee: '/employee',
   projects: '/projects',
   project: '/project',
   events: '/events',

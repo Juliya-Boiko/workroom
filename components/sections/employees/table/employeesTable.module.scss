@@ -1,0 +1,16 @@
+.employeesTable {
+
+  .filters {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+    padding: 24px 0;
+  }
+
+  @include onTablet {
+    .filters {
+      display: none;
+    }
+  }
+}

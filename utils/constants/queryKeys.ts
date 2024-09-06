@@ -3,6 +3,7 @@ export const QUERY_KEYS = {
   COMPANY: 'company',
   PROJECTS: 'projects',
   EMPLOYEES: 'employees',
+  EMPLOYEE: 'employee',
   TASKS: 'tasks',
   PROFILE: 'profile',
   EVENTS: 'events',

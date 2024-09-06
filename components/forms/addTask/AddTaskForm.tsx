@@ -18,7 +18,7 @@ import {
 
 export const AddTaskForm = ({ slug }: IDynamicComponent) => {
   const queryClient = useQueryClient();
-  const { data: employees } = useEmployees({});
+  const { data: employees } = useEmployees();
   const { closeModal } = useModalContext();
   const employeesOptions = employees
     ? employees.map(({ _id, name, avatar }) => ({ _id, name, avatar }))

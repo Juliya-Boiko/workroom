@@ -11,15 +11,42 @@
     gap: 16px;
   }
 
-  @include onTablet {
-    padding: 24px 48px;
+  .loader {
+    width: 100%;
+    padding-top: 48px;
+    display: flex;
+    justify-content: center;
   }
 
-  @include onLaptop {
-    padding: 32px 0 0 32px;
+  .placeholder {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    padding-top: 24px;
+    color: $grey-7;
+  }
+
+  .image {
+    width: 100%;
+    max-width: 400px;
+    height: auto;
+    opacity: 0.5;
+  }
+
+  @include onTablet {
+    padding: 24px 48px;
 
     .mobileHidden {
       display: block;
     }
+
+    .loader {
+      padding-top: 96px;
+    }
+  }
+
+  @include onLaptop {
+    padding: 32px 0 0 32px;
   }
 }
