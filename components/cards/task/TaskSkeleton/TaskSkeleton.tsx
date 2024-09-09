@@ -7,16 +7,16 @@ export const TaskSkeleton = () => {
   return (
     <ul className={styles.list}>
       {items.map((el) => (
-        <>
-          <li key={el} className={`${styles.item} ${styles.itemMulti}`}>
+        <div key={el}>
+          <li className={`${styles.item} ${styles.itemMulti}`}>
             <LoaderSkeleton height={24} />
             <LoaderSkeleton height={24} />
             <LoaderSkeleton height={30} />
           </li>
-          <li key={el} className={`${styles.item} ${styles.itemSingle}`}>
+          <li className={`${styles.item} ${styles.itemSingle}`}>
             <LoaderSkeleton height={60} />
           </li>
-        </>
+        </div>
       ))}
     </ul>
   );

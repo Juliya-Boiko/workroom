@@ -8,7 +8,6 @@ interface Props {
 }
 
 export const TaskCard = ({ task }: Props) => {
-  console.log(task);
   return (
     <div className={styles.taskCard}>
       <div className={styles.name}>
