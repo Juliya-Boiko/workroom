@@ -70,16 +70,6 @@ export const ProjectsPage = () => {
           </>
         )}
       </div>
-      {/* 
-        <ChooseProject active={active} list={projects} onChoose={handleChoose} />
-        <Tasks
-          view={view}
-          loading={isLoadingTasks}
-          project={!!active}
-          tasks={tasks || []}
-          setView={(v: EView) => setView(v)}
-        />
-      */}
     </div>
   );
 };

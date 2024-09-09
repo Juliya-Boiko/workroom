@@ -3,7 +3,7 @@ import { getProjects, getProjectById, createProject, QUERY_KEYS } from '@/utils'
 
 export const useProjects = (take?: number) => {
   return useQuery({
-    queryKey: [QUERY_KEYS.PROJECTS],
+    queryKey: [QUERY_KEYS.PROJECTS, take],
     queryFn: () => getProjects(take),
   });
 };
@@ -24,7 +24,7 @@ export const useProjectsMutation = () => {
 
 export const useProject = (id: string) => {
   return useQuery({
-    queryKey: [QUERY_KEYS.PROJECT],
+    queryKey: [QUERY_KEYS.PROJECT, id],
     queryFn: () => getProjectById(id),
   });
 };
