@@ -26,16 +26,16 @@ export const Tasks = ({ project, tasks, view, loading, setView }: Props) => {
         {!loading && !project && (
           <>
             <p className={styles.text}>Choose project to review tasks</p>
-            <Image src={imgSrc} alt="Tasks" className={styles.image} />
+            <Image src={imgSrc} alt="Tasks" priority className={styles.image} />
           </>
         )}
         {!loading && project && !tasks.length && (
           <>
             <p className={styles.text}>You dont have tasks in this project</p>
-            <Image src={imgSrc} alt="Tasks" className={styles.image} />
+            <Image src={imgSrc} alt="Tasks" priority className={styles.image} />
           </>
         )}
-        {loading && view === EView.LIST && (
+        {loading && (
           <div className={styles.wrapper}>
             <div className={styles.banner}>Active Tasks</div>
             <TasksList loading={loading} tasks={sortedTasks.active} />
@@ -51,7 +51,11 @@ export const Tasks = ({ project, tasks, view, loading, setView }: Props) => {
             <TasksList loading={loading} tasks={sortedTasks.backlog} />
           </div>
         )}
-        {tasks.length > 0 && view === EView.COLUMNS && <TasksColumns />}
+        {tasks.length > 0 && view === EView.COLUMNS && (
+          <div className={styles.wrapper}>
+            <TasksColumns loading={loading} tasks={tasks} />
+          </div>
+        )}
       </div>
     </section>
   );

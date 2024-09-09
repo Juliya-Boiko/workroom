@@ -1,5 +1,5 @@
 import { useQuery, useQueryClient, useMutation } from '@tanstack/react-query';
-import { getTasks, createTask, QUERY_KEYS } from '@/utils';
+import { getTasks, createTask, updateTask, QUERY_KEYS } from '@/utils';
 
 interface Props {
   projectId: string | undefined;
@@ -24,5 +24,12 @@ export const useTasksMutation = () => {
     },
   });
 
-  return { create, isCreating };
+  const { mutate: update, isPending: isUpdating } = useMutation({
+    mutationFn: updateTask,
+    onSuccess: () => {
+      queryClient.invalidateQueries({ queryKey: [QUERY_KEYS.TASKS] });
+    },
+  });
+
+  return { create, isCreating, update, isUpdating };
 };
