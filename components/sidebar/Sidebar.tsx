@@ -1,5 +1,5 @@
 'use client';
-import styles from './sidebat.module.scss';
+import styles from './sidebar.module.scss';
 import Link from 'next/link';
 import { useState } from 'react';
 import { usePathname } from 'next/navigation';
@@ -18,7 +18,7 @@ export const Sidebar = () => {
   };
 
   return (
-    <aside className={styles.sidebar} style={{ width: open ? '200px' : 'auto' }}>
+    <aside className={`${styles.sidebar} ${open ? 'expanded' : 'minified'}`}>
       <div className={styles.top}>
         <button
           type="button"

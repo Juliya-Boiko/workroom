@@ -1,8 +1,4 @@
 .chooseProject {
-  @include onLaptop {
-    width: 265px;
-    height: 100%;
-  }
 
   .title {
     display: none;
@@ -120,5 +116,10 @@
     &:hover {
       font-weight: 700;
     }
+  }
+
+  @include onLaptop {
+    width: 200px;
+    height: 100%;
   }
 }

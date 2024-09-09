@@ -2,7 +2,6 @@
 import styles from '../common.module.scss';
 import { useEffect } from 'react';
 import { useForm, Controller } from 'react-hook-form';
-import { useMutation, useQueryClient } from '@tanstack/react-query';
 import { useModalContext } from '@/components/providers/ModalProvider';
 import { yupResolver } from '@hookform/resolvers/yup';
 import { ETaskStatus, priorityDataTypes, IDynamicComponent } from '@/typings';
@@ -12,14 +11,14 @@ import {
   getTomorrowDate,
   addTaskSchema,
   AddTaskFormData,
-  createTask,
-  QUERY_KEYS,
+  useTasksMutation,
 } from '@/utils';
 
 export const AddTaskForm = ({ slug }: IDynamicComponent) => {
-  const queryClient = useQueryClient();
+  const { create, isCreating } = useTasksMutation();
   const { data: employees } = useEmployees();
   const { closeModal } = useModalContext();
+
   const employeesOptions = employees
     ? employees.map(({ _id, name, avatar }) => ({ _id, name, avatar }))
     : [];
@@ -52,15 +51,6 @@ export const AddTaskForm = ({ slug }: IDynamicComponent) => {
 
   const startDate = watch('start');
 
-  const mutation = useMutation({
-    mutationFn: createTask,
-    onSuccess: () => {
-      console.log('Task created');
-      closeModal();
-      queryClient.invalidateQueries({ queryKey: [QUERY_KEYS.TASKS] });
-    },
-  });
-
   const onSubmit = async (data: AddTaskFormData) => {
     const task = {
       ...data,
@@ -69,11 +59,12 @@ export const AddTaskForm = ({ slug }: IDynamicComponent) => {
       projectId: slug,
       description: data.description || '',
     };
-    mutation.mutate(task);
+    create(task);
+    closeModal();
   };
 
   useEffect(() => {
-    setValue('deadline', getTomorrowDate(startDate));
+    setValue('deadline', startDate);
   }, [setValue, startDate]);
 
   return (
@@ -132,7 +123,7 @@ export const AddTaskForm = ({ slug }: IDynamicComponent) => {
         placeholder="Add some description of the project"
       />
       <div>
-        <BtnPrimary type="submit" disabled={!isDirty || !isValid || isSubmitting}>
+        <BtnPrimary type="submit" disabled={!isDirty || !isValid || isSubmitting || isCreating}>
           Save Task
         </BtnPrimary>
       </div>

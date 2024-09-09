@@ -24,6 +24,13 @@
     opacity: 0.5;
   }
 
+  .container {
+    padding-top: 24px;
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+  }
+
   @include onTablet {
     padding: 24px 48px;
     .loader {
@@ -33,10 +40,11 @@
 
   @include onLaptop {
     padding: 32px 0 0 32px;
-  }
 
-  .container {
-    padding-top: 24px;
+    .container {
+      display: grid;
+      grid-template-columns: 200px 1fr;
+    }
   }
 }
 

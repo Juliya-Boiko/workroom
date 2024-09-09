@@ -1,4 +1,3 @@
-/* eslint-disable @typescript-eslint/no-unused-vars */
 'use client';
 import styles from './projectsPage.module.scss';
 import imgSrc from '../../../public/placeholder-1.png';
@@ -10,7 +9,7 @@ import { Modal, BtnPrimary, Preloader } from '@/components/ui';
 import { AddProjectForm } from '@/components/forms/addProject/AddProjectForm';
 import { EIconsSet, EView } from '@/typings';
 import { SvgHandler } from '@/components/SvgHandler';
-import { ChooseProject } from '@/components/sections/chooseProject/ChooseProject';
+import { ChooseProject } from '@/components/sections/projects/chooseProject/ChooseProject';
 import { Tasks } from '@/components/sections/tasks/Tasks';
 
 interface SelectedProject {
@@ -57,6 +56,18 @@ export const ProjectsPage = () => {
             <p>You dont have projects yet</p>
             <Image src={imgSrc} alt="Projects" className={styles.image} />
           </div>
+        )}
+        {projects && projects.length > 0 && (
+          <>
+            <ChooseProject active={active} list={projects} onChoose={handleChoose} />
+            <Tasks
+              view={view}
+              loading={isLoadingTasks}
+              project={!!active}
+              tasks={tasks || []}
+              setView={(v: EView) => setView(v)}
+            />
+          </>
         )}
       </div>
       {/* 

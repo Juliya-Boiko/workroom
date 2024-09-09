@@ -70,6 +70,26 @@ body {
   }
 }
 
+.expanded {
+  width: 200px;
+}
+
+.expanded + .appMain {
+  @include onLaptop {
+    padding-left: 200px;
+  }
+}
+
+.minified {
+  width: auto;
+}
+
+.minified + .appMain {
+  @include onLaptop {
+    padding-left: 80px;
+  }
+}
+
 .appMain {
   width: 100%;
 }
