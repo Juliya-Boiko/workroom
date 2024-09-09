@@ -5,6 +5,7 @@ import { taskSorter } from '@/utils';
 import { EView, ITask } from '@/typings';
 import { TasksActions } from './tasksActions/TasksActions';
 import { TasksList } from './tasksList/TasksList';
+import { TasksColumns } from './tasksColumns/TasksColumns';
 
 interface Props {
   view: EView;
@@ -34,7 +35,7 @@ export const Tasks = ({ project, tasks, view, loading, setView }: Props) => {
             <Image src={imgSrc} alt="Tasks" className={styles.image} />
           </>
         )}
-        {loading && (
+        {loading && view === EView.LIST && (
           <div className={styles.wrapper}>
             <div className={styles.banner}>Active Tasks</div>
             <TasksList loading={loading} tasks={sortedTasks.active} />
@@ -42,7 +43,7 @@ export const Tasks = ({ project, tasks, view, loading, setView }: Props) => {
             <TasksList loading={loading} tasks={sortedTasks.backlog} />
           </div>
         )}
-        {tasks.length && (
+        {tasks.length > 0 && view === EView.LIST && (
           <div className={styles.wrapper}>
             <div className={styles.banner}>Active Tasks</div>
             <TasksList loading={loading} tasks={sortedTasks.active} />
@@ -50,6 +51,7 @@ export const Tasks = ({ project, tasks, view, loading, setView }: Props) => {
             <TasksList loading={loading} tasks={sortedTasks.backlog} />
           </div>
         )}
+        {tasks.length > 0 && view === EView.COLUMNS && <TasksColumns />}
       </div>
     </section>
   );
