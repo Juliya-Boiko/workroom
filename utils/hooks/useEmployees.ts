@@ -26,6 +26,7 @@ export const useEmployeeMutation = () => {
         ...prev,
         level,
       }));
+      queryClient.invalidateQueries({ queryKey: [QUERY_KEYS.EMPLOYEES] });
     },
   });
 

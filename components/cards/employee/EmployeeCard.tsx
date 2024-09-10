@@ -1,10 +1,11 @@
-import { Avatar, BadgeLevel, Options } from '@/components/ui';
 import styles from './employeeCard.module.scss';
-import { ECardEmployeeOptions, IEmployee, EIconsSet } from '@/typings';
+import Link from 'next/link';
 import { formatDayDate, ROUTES } from '@/utils';
+import { Avatar, BadgeLevel } from '@/components/ui';
 import { SvgHandler } from '@/components/SvgHandler';
 import { Delete } from '@/components/delete/Delete';
-import Link from 'next/link';
+import { IEmployee, EIconsSet } from '@/typings';
+import { EmployeeCardOptions } from './options/EmployeeCardOptions';
 
 interface Props {
   employee: IEmployee;
@@ -15,17 +16,6 @@ export const EmployeeCard = ({ employee }: Props) => {
     name: employee.name,
     avatar: employee.avatar,
   };
-
-  const options = [
-    {
-      value: ECardEmployeeOptions.VIEW,
-      action: () => console.log('view'),
-    },
-    {
-      value: ECardEmployeeOptions.DELETE,
-      action: () => console.log('delete'),
-    },
-  ];
 
   return (
     <li className={styles.employeeCard}>
@@ -63,7 +53,7 @@ export const EmployeeCard = ({ employee }: Props) => {
         <Delete />
       </div>
       <div className={styles.dropdown}>
-        <Options options={options} />
+        <EmployeeCardOptions id={employee._id} />
       </div>
     </li>
   );

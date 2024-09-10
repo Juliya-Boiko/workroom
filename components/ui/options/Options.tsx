@@ -1,7 +1,6 @@
 'use client';
 import styles from './options.module.scss';
 import { useEffect, useState, useRef } from 'react';
-import { BtnIcon } from '../buttons/icon/BtnIcon';
 import { EIconsSet } from '@/typings';
 import { SvgHandler } from '@/components/SvgHandler';
 
@@ -35,9 +34,14 @@ export const Options = ({ options }: Props) => {
 
   return (
     <div ref={ref} className={styles.options}>
-      <BtnIcon title="Options" tonal onClick={() => setOpen((prev) => !prev)}>
+      <button
+        title="Options"
+        type="button"
+        className={`${styles.toggleBtn} ${open ? styles.btnActive : ''}`}
+        onClick={() => setOpen((prev) => !prev)}
+      >
         <SvgHandler icon={EIconsSet.Dots} />
-      </BtnIcon>
+      </button>
       {open && (
         <ul className={styles.list}>
           {options.map(({ value, action }) => (

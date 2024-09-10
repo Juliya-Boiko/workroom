@@ -1,19 +1,27 @@
 .options {
   position: relative;
 
+  .toggleBtn {
+    display: flex;
+  }
+
+  .btnActive {
+    color: $blue-1;
+  }
+
   .list {
     @extend %shadow-xs;
-    padding: 12px;
+    padding: 8px;
     position: absolute;
-    top: 54px;
+    top: 32px;
     right: 0;
     z-index: 2;
     border-radius: 14px;
-    background-color: $grey-5;
+    background-color: $white;
   }
 
   .item {
-    padding: 8px 12px;
+    padding: 8px 16px;
     border-radius: 8px;
     transition: all 250ms ease-in-out;
     cursor: pointer;
