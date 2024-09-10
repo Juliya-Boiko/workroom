@@ -25,7 +25,7 @@ export const UploadThumb = ({ onChange }: Props) => {
   return (
     <label htmlFor="upload-thumb" className={styles.uploadThumb}>
       {imagePreview ? (
-        <Image alt="Project Logo" src={imagePreview} fill />
+        <Image alt="Project Logo" src={imagePreview} fill sizes="100%" />
       ) : (
         <SvgHandler icon={EIconsSet.Upload} />
       )}

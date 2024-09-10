@@ -52,7 +52,7 @@ export const Avatar = ({ size, user, loading, bordered }: Props) => {
       ) : (
         <div className={`${styles.wrapper} ${getSizeStyles()}`}>
           {user?.avatar ? (
-            <Image src={user.avatar} fill alt={user.name} />
+            <Image src={user.avatar} fill alt={user.name} sizes="100%" />
           ) : (
             <span className={styles.initials}>{getInitials()}</span>
           )}

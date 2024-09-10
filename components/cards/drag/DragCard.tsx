@@ -9,11 +9,11 @@ interface Props {
 }
 
 export const DragCard = ({ task, loading }: Props) => {
-  console.log(task);
   const user = {
     name: task.assignee.name,
     avatar: task.assignee.avatar,
   };
+
   return (
     <div className={styles.dragCard}>
       <p className={styles.name}>{loading ? <LoaderSkeleton height={16} /> : task.name}</p>

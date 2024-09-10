@@ -7,7 +7,7 @@ export const ActivityList = () => {
     <ul className={styles.activityList}>
       <li className={styles.placeholder}>
         <p>You dont have any activity yet</p>
-        <Image src={imgSrc} alt="Employees" className={styles.image} />
+        <Image src={imgSrc} alt="Employees" priority className={styles.image} />
       </li>
     </ul>
   );
