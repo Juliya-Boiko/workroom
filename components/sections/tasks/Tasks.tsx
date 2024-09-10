@@ -52,9 +52,7 @@ export const Tasks = ({ project, tasks, view, loading, setView }: Props) => {
           </div>
         )}
         {tasks.length > 0 && view === EView.COLUMNS && (
-          <div className={styles.wrapper}>
-            <TasksColumns loading={loading} tasks={tasks} />
-          </div>
+          <TasksColumns loading={loading} tasks={tasks} />
         )}
       </div>
     </section>

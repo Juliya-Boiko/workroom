@@ -1,8 +1,10 @@
 'use client';
 import styles from './tasksColumns.module.scss';
+import { useState, useEffect } from 'react';
+import { useTasksMutation } from '@/utils';
 import { DragDropContext, Droppable, Draggable, type DropResult } from '@hello-pangea/dnd';
 import { ETaskStatus, ITask } from '@/typings';
-import { useTasksMutation } from '@/utils';
+import { DragCard } from '@/components/cards/drag/DragCard';
 
 interface Props {
   tasks: ITask[];
@@ -28,85 +30,73 @@ const groupTasksByStatus = (tasks: ITask[]): GroupedTasks => {
 
 export const TasksColumns = ({ tasks, loading }: Props) => {
   const { update, isUpdating } = useTasksMutation();
-  const groupedTasks = groupTasksByStatus(tasks);
-  const columnsRender = Object.entries(groupedTasks);
+  const [groupedTasks, setGroupedTasks] = useState<GroupedTasks>(groupTasksByStatus(tasks));
+
+  useEffect(() => {
+    setGroupedTasks(groupTasksByStatus(tasks));
+  }, [tasks]);
 
   const onDragEnd = (result: DropResult) => {
     const { destination, source, draggableId } = result;
     if (!destination) return;
     if (destination.droppableId === source.droppableId && destination.index === source.index)
       return;
+
+    const draggedTask = groupedTasks[source.droppableId as ETaskStatus][source.index];
+
+    const updatedTasks = { ...groupedTasks };
+
+    updatedTasks[source.droppableId as ETaskStatus].splice(source.index, 1);
+
+    updatedTasks[destination.droppableId as ETaskStatus].splice(destination.index, 0, {
+      ...draggedTask,
+      status: destination.droppableId as ETaskStatus,
+    });
+
+    setGroupedTasks(updatedTasks);
+
     const data = {
       _id: draggableId,
       update: {
         status: destination.droppableId as ETaskStatus,
       },
     };
+
     update(data);
   };
 
   const showLoader = loading || isUpdating;
 
+  const columnsRender = Object.entries(groupedTasks);
+
   return (
     <DragDropContext onDragEnd={onDragEnd}>
       <div className={styles.tasksColumns}>
-        {showLoader &&
-          columnsRender.map(([name, tasks]) => (
-            <div
-              key={name}
-              style={{
-                margin: '0 16px',
-                padding: '16px',
-                background: '#f0f0f0',
-                width: '45%',
-              }}
-            >
-              <h3>{name}</h3>
-              {tasks.map((item) => (
-                <div key={item._id}>loading...</div>
-              ))}
-            </div>
-          ))}
-        {!showLoader &&
-          columnsRender.map(([name, tasks]) => (
-            <Droppable key={name} droppableId={name}>
-              {(provided) => (
-                <div
-                  {...provided.droppableProps}
-                  ref={provided.innerRef}
-                  style={{
-                    margin: '0 16px',
-                    padding: '16px',
-                    background: '#f0f0f0',
-                    width: '45%',
-                  }}
-                >
-                  <h3>{name}</h3>
-                  {tasks.map((item, index) => (
-                    <Draggable key={item._id} draggableId={item._id} index={index}>
-                      {(provided) => (
-                        <div
-                          ref={provided.innerRef}
-                          {...provided.draggableProps}
-                          {...provided.dragHandleProps}
-                          style={{
-                            padding: '8px',
-                            marginBottom: '8px',
-                            backgroundColor: '#fff',
-                            border: '1px solid #ddd',
-                            ...provided.draggableProps.style,
-                          }}
-                        >
-                          {item.name}
-                        </div>
-                      )}
-                    </Draggable>
-                  ))}
-                  {provided.placeholder}
-                </div>
-              )}
-            </Droppable>
-          ))}
+        {columnsRender.map(([name, tasks]) => (
+          <Droppable key={name} droppableId={name}>
+            {(provided) => (
+              <div {...provided.droppableProps} ref={provided.innerRef}>
+                <p className={styles.title}>
+                  <div className={styles.titleWrapper}>{name}</div>
+                </p>
+                {tasks.map((item: ITask, index) => (
+                  <Draggable key={item._id} draggableId={item._id} index={index}>
+                    {(provided) => (
+                      <div
+                        ref={provided.innerRef}
+                        {...provided.draggableProps}
+                        {...provided.dragHandleProps}
+                      >
+                        <DragCard loading={showLoader} task={item} />
+                      </div>
+                    )}
+                  </Draggable>
+                ))}
+                {provided.placeholder}
+              </div>
+            )}
+          </Droppable>
+        ))}
       </div>
     </DragDropContext>
   );

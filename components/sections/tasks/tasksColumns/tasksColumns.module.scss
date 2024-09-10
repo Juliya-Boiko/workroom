@@ -1,5 +1,24 @@
 .tasksColumns {
   display: flex;
-  // flex-direction: column;
+  flex-direction: column;
   gap: 24px;
+
+  .title {
+    font-weight: 700;
+    border-radius: 24px;
+    padding: 4px;
+    background-color: $white;
+  }
+
+  .titleWrapper {
+    padding: 12px;
+    text-align: center;
+    border-radius: 24px;
+    background-color: $grey-5;
+  }
+
+  @include onTablet {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+  }
 }
