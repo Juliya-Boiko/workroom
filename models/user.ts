@@ -1,3 +1,4 @@
+import Task from './task';
 import { model, models, Schema } from 'mongoose';
 import { userPositionsDataTypes } from '@/typings';
 
@@ -20,6 +21,15 @@ const userSchema = new Schema(
     versionKey: false,
   }
 );
+
+userSchema.virtual('tasks', {
+  ref: Task,
+  localField: '_id',
+  foreignField: 'assignee',
+});
+
+userSchema.set('toObject', { virtuals: true });
+userSchema.set('toJSON', { virtuals: true });
 
 const User = models.User || model('User', userSchema);
 export default User;

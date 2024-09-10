@@ -1,4 +1,4 @@
-import { ELevelEmployee } from '../enums';
+import { ELevelEmployee, TaskCountsType } from '../enums';
 import { IUserInfo } from './IUserInfo';
 
 export interface IEmployee extends IUserInfo {
@@ -9,4 +9,5 @@ export interface IEmployee extends IUserInfo {
   _id: string;
   phone?: string | null;
   profession: string | null;
+  tasks?: TaskCountsType;
 }

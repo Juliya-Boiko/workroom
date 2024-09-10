@@ -11,7 +11,6 @@ interface Props {
 }
 
 export const EmployeeCard = ({ employee }: Props) => {
-  console.log(employee);
   const user = {
     name: employee.name,
     avatar: employee.avatar,
