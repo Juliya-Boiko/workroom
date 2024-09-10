@@ -183,6 +183,41 @@ body {
       border-radius: 8px;
       overflow: hidden;
       position: relative;
-  } 
+    } 
+  }
 }
+
+// CALENDAR
+
+.fc .fc-toolbar.fc-header-toolbar {
+  padding-top: 16px;
+}
+
+.fc-theme-standard td, .fc-theme-standard th, .fc-theme-standard .fc-scrollgrid {
+  border: none;
+}
+
+.fc table, .fc .fc-toolbar-title {
+  font-size: inherit !important;
+}
+
+.fc .fc-button-primary {
+  background-color: $white;
+  border: none;
+  color: $blue-1;
+}
+
+.fc .fc-col-header-cell-cushion {
+  padding: 12px;
+}
+
+.fc {
+  tr {
+    &:not(:last-child) {
+      border-bottom: 1px solid $grey-6;
+    }
+    td {
+      border-left: 1px solid $grey-6;
+    }
+  }
 }
