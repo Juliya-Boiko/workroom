@@ -38,3 +38,16 @@ export const decodeInvite = async (token: string) => {
     throw new Error(error.message);
   }
 };
+
+export const isValidToken = (token: string) => {
+  const currentTime = Math.floor(Date.now() / 1000);
+  try {
+    const base64Url = token.split('.')[1];
+    const base64 = base64Url.replace(/-/g, '+').replace(/_/g, '/');
+    const { exp } = JSON.parse(Buffer.from(base64, 'base64').toString());
+    return exp > currentTime;
+  } catch (err) {
+    console.log('isValidToken error', err);
+    return false;
+  }
+};

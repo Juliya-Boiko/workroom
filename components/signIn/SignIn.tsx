@@ -13,7 +13,7 @@ export const SignInSection = () => (
       <h1 className={styles.heading}>
         Your place to work <br /> Plan. Create. Control.
       </h1>
-      <Image src={imgSrc} alt="Workroom" className={styles.image} />
+      <Image src={imgSrc} priority alt="Workroom" className={styles.image} />
     </div>
     <div className={styles.wrapper}>
       <h1 className={styles.title}>Sign In to Woorkroom</h1>
