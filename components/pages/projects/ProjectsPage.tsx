@@ -54,7 +54,7 @@ export const ProjectsPage = () => {
         {projects && !projects.length && (
           <div className={styles.placeholder}>
             <p>You dont have projects yet</p>
-            <Image src={imgSrc} alt="Projects" className={styles.image} />
+            <Image src={imgSrc} priority alt="Projects" className={styles.image} />
           </div>
         )}
         {projects && projects.length > 0 && (

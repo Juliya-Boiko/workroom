@@ -9,9 +9,10 @@ import { ProjectCard } from '@/components/cards/project/ProgectCard';
 interface Props {
   loading: boolean;
   projects?: IProjectInfo[];
+  placeholder: string;
 }
 
-export const ProjectsList = ({ loading, projects }: Props) => {
+export const ProjectsList = ({ loading, projects, placeholder }: Props) => {
   return (
     <ul className={styles.list}>
       {loading &&
@@ -22,7 +23,7 @@ export const ProjectsList = ({ loading, projects }: Props) => {
         ))}
       {projects && !projects.length && (
         <li className={styles.placeholder}>
-          <p>You dont have projects yet</p>
+          <p>{placeholder}</p>
           <Image src={imgSrc} alt="Projects" className={styles.image} />
         </li>
       )}

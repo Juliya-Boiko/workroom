@@ -10,7 +10,7 @@ export * from './buttons/secondary/BtnSecondary';
 export * from './checkbox/CheckField';
 export * from './filter/Filter';
 export * from './input/InputField';
-export * from './input/PasswordInputField/PasswordInputField';
+export * from './input/passwordInputField/PasswordInputField';
 export * from './modal/Modal';
 export * from './overlay/Overlay';
 export * from './pickers/date/PickerDate';

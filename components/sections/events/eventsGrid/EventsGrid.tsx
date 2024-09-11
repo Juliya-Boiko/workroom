@@ -19,7 +19,7 @@ export const EventsGrid = () => {
       {events && !events.length && (
         <div className={styles.placeholder}>
           <p>You dont have events yet</p>
-          <Image src={imgSrc} alt="Employees" className={styles.image} />
+          <Image src={imgSrc} priority alt="Employees" className={styles.image} />
         </div>
       )}
       {events && events.length && (

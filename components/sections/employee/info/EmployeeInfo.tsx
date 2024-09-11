@@ -4,6 +4,7 @@ import { Avatar } from '@/components/ui';
 import { SvgHandler } from '@/components/SvgHandler';
 import { AddLevelForm } from '@/components/forms/addLevel/AddLevelForm';
 import { LoaderSkeleton } from '@/components/LoaderSkeleton';
+import { formatDayDate } from '@/utils';
 
 interface Props {
   company?: string;
@@ -59,7 +60,7 @@ export const EmployeeInfo = ({ user, loading, company }: Props) => {
             <LoaderSkeleton height={48} />
           ) : (
             <div className={styles.containter}>
-              <span>{user?.birthday?.toDateString()}</span>
+              <span>{user?.birthday ? formatDayDate(user?.birthday.toString()) : ''}</span>
               <SvgHandler icon={EIconsSet.CalendarInput} />
             </div>
           )}

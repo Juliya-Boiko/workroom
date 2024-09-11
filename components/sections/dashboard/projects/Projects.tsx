@@ -20,7 +20,11 @@ export const ProjectsSection = () => {
           <SvgHandler icon={EIconsSet.ChevronRight} />
         </BtnSecondary>
       </div>
-      <ProjectsList loading={isLoading} projects={projects} />
+      <ProjectsList
+        loading={isLoading}
+        projects={projects}
+        placeholder="You dont have projects yet"
+      />
     </section>
   );
 };

@@ -1,6 +1,6 @@
 import styles from './employeeCard.module.scss';
 import Link from 'next/link';
-import { formatDayDate, ROUTES } from '@/utils';
+import { formatDayDate, getFullYears, ROUTES } from '@/utils';
 import { Avatar, BadgeLevel } from '@/components/ui';
 import { SvgHandler } from '@/components/SvgHandler';
 import { Delete } from '@/components/delete/Delete';
@@ -12,6 +12,7 @@ interface Props {
 }
 
 export const EmployeeCard = ({ employee }: Props) => {
+  console.log(employee);
   const user = {
     name: employee.name,
     avatar: employee.avatar,
@@ -36,7 +37,7 @@ export const EmployeeCard = ({ employee }: Props) => {
         </div>
         <div className={styles.wrapper}>
           <p className={styles.subtitle}>Full age</p>
-          <p>{employee.birthday ? formatDayDate(employee.birthday.toString()) : '-'}</p>
+          <p>{employee.birthday ? getFullYears(employee.birthday.toString()) : '-'}</p>
         </div>
       </div>
       <div className={styles.wrapper}>

@@ -34,7 +34,7 @@ export const EmployeesGrid = ({ loading, employees }: Props) => {
       {!loading && !employees?.length && (
         <div className={styles.placeholder}>
           <p>You dont have employees yet</p>
-          <Image src={imgSrc} alt="Employees" className={styles.image} />
+          <Image src={imgSrc} priority alt="Employees" className={styles.image} />
         </div>
       )}
     </>

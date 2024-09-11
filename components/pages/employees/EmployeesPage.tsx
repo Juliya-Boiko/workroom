@@ -48,7 +48,7 @@ export const EmployeesPage = () => {
       {employees && !employees.length && (
         <div className={styles.placeholder}>
           <p>You dont have employees yet</p>
-          <Image src={imgSrc} alt="Projects" className={styles.image} />
+          <Image src={imgSrc} priority alt="Projects" className={styles.image} />
         </div>
       )}
       {employees &&

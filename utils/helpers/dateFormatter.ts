@@ -73,3 +73,22 @@ export const getEventTimer = (date: Date, time: string) => {
     return `${daysDifference} d`;
   }
 };
+
+export const getFullYears = (day: string) => {
+  const birthday = new Date(day);
+  const currentDate = new Date();
+
+  let fullYears = currentDate.getFullYear() - birthday.getFullYear();
+
+  const currentMonth = currentDate.getMonth();
+  const birthdayMonth = birthday.getMonth();
+
+  if (
+    currentMonth < birthdayMonth ||
+    (currentMonth === birthdayMonth && currentDate.getDate() < birthday.getDate())
+  ) {
+    fullYears--;
+  }
+
+  return fullYears;
+};

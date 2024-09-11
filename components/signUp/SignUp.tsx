@@ -42,7 +42,12 @@ export const SignUpSection = () => {
             <Preloader />
           ) : (
             <>
-              <Image src={imgSrc} alt="You are successfully registered!" className={styles.image} />
+              <Image
+                src={imgSrc}
+                priority
+                alt="You are successfully registered!"
+                className={styles.image}
+              />
               <h3 className={styles.title}>You are successfully registered!</h3>
               <BtnPrimary onClick={() => router.push(ROUTES.dashboard)}>
                 <span>Let&apos;s Start</span>
