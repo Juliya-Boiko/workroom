@@ -7,7 +7,7 @@ export const signInSchema = yup.object({
     .trim()
     .matches(/^(?=.*[A-Z])[A-Za-z\d]{5,10}$/, {
       excludeEmptyString: true,
-      message: 'Min 5, max 10, contain 1capital letter, without spaces',
+      message: 'Min 5, max 10, contain 1 capital letter, without spaces',
     })
     .required('Password is required field'),
 });

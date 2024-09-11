@@ -5,6 +5,7 @@ import { hashPassword } from '@/libs/bcrypt';
 import { genToken } from '@/libs/jwt';
 import { connectToMongoDB } from '@/libs/database';
 import { sendRegistrationEmail, sendInviteEmails } from '@/utils';
+import { userPositionsDataTypes } from '@/typings';
 import { EUserPosition } from '@/typings';
 import { NextRequest, NextResponse } from 'next/server';
 
@@ -27,7 +28,7 @@ export async function POST(request: NextRequest) {
     const initUser = {
       name: reqBody.name,
       email: reqBody.email,
-      position: reqBody.userPosition,
+      position: reqBody.userPosition ? reqBody.userPosition : userPositionsDataTypes[0],
       password: hashPass,
       avatar: null,
       birthday: null,

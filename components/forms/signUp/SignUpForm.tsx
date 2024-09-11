@@ -92,6 +92,12 @@ export const SignUpForm = ({ activeStage, onNext, onPrev, onSubmit }: Props) => 
     setValue('members', [...values]);
   };
 
+  const handleDelete = (idx: number) => {
+    const values = getValues('members');
+    const updated = [...values.slice(0, idx), ...values.slice(idx + 1)];
+    setValue('members', [...updated]);
+  };
+
   return (
     <div className={styles.signUp}>
       <div className={styles.steps}>
@@ -111,7 +117,12 @@ export const SignUpForm = ({ activeStage, onNext, onPrev, onSubmit }: Props) => 
           <CompanyStage register={register} errors={errors} control={control} />
         )}
         {activeStage === ESignStages.InviteTeamMembers && (
-          <MembersStage members={members} onAdd={handleAddMember} onChange={handleChange} />
+          <MembersStage
+            members={members}
+            onAdd={handleAddMember}
+            onDelete={handleDelete}
+            onChange={handleChange}
+          />
         )}
         <div className={styles.actions}>
           {activeStage !== ESignStages.EnterYourEmail && (

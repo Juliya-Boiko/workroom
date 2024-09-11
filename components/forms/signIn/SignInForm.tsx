@@ -46,16 +46,6 @@ export const SignInForm = () => {
         register={register}
         errors={errors.password}
       />
-      {/* <InputField
-        label="Password"
-        type={typePassword}
-        name="password"
-        register={register}
-        iconPosition="end"
-        icon={EIconsSet.Eye}
-        errors={errors.password}
-        onIconClick={toggleType}
-      /> */}
       <div className={styles.wrapper}>
         <div className={styles.remember}>
           <CheckField name="remember" value={remember} onChange={toggleRemember} />

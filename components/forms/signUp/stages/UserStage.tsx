@@ -1,6 +1,6 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import styles from '../signUp.module.scss';
-import { usingGoalsDataTypes, userPositionsDataTypes } from '@/typings';
+import { usingGoalsDataTypes } from '@/typings';
 import { InputField, SelectDrop } from '@/components/ui';
 import { Controller } from 'react-hook-form';
 
@@ -19,20 +19,6 @@ export const UserStage = ({ register, errors, control }: Props) => (
       placeholder="John Doe"
       errors={errors.name}
     />
-    <div className={styles.optionWrapper}>
-      <p className={styles.label}>What describes you best?</p>
-      <Controller
-        control={control}
-        name="userPosition"
-        render={({ field }) => (
-          <SelectDrop
-            options={userPositionsDataTypes}
-            value={field.value}
-            onChange={field.onChange}
-          />
-        )}
-      />
-    </div>
     <div className={styles.optionWrapper}>
       <p className={styles.label}>Why will you use the service?</p>
       <Controller
