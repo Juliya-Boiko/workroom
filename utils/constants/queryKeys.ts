@@ -8,4 +8,5 @@ export const QUERY_KEYS = {
   TASKS: 'tasks',
   PROFILE: 'profile',
   EVENTS: 'events',
+  CALENDAR: 'calendar',
 };

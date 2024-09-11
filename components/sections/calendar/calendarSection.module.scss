@@ -3,3 +3,27 @@
   background-color: $white;
   overflow: hidden;
 }
+
+.event {
+  position: relative;
+  font-size: 12px;
+  padding: 8px 8px 8px 12px;
+
+  .title {
+    max-width: 100%;
+    overflow: hidden;
+    display: -webkit-box;
+    line-clamp: 1; 
+    -webkit-line-clamp: 1;
+    -webkit-box-orient: vertical;
+  }
+
+  .line {
+    position: absolute;
+    top: 4px;
+    left: 4px;
+    height: calc(100% - 8px);
+    width: 2px;
+    border-radius: 2px;
+  }
+}

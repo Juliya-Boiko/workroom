@@ -193,6 +193,12 @@ body {
   padding-top: 16px;
 }
 
+.fc .fc-scrollgrid {
+  thead {
+    display: none;
+  }
+}
+
 .fc-theme-standard td, .fc-theme-standard th, .fc-theme-standard .fc-scrollgrid {
   border: none;
 }
@@ -204,7 +210,15 @@ body {
 .fc .fc-button-primary {
   background-color: $white;
   border: none;
+  outline: none;
   color: $blue-1;
+
+  &:hover, &:active, &:focus, &:not(:disabled):active {
+    outline: none;
+    color: $blue-1;
+    background-color: transparent;
+    box-shadow: none;
+  }
 }
 
 .fc .fc-col-header-cell-cushion {
@@ -220,4 +234,16 @@ body {
       border-left: 1px solid $grey-6;
     }
   }
+}
+
+.fc .fc-daygrid-event-harness-abs {
+  max-width: 100%;
+}
+
+.fc .fc-highlight {
+  background-color: $white;
+}
+
+.fc .fc-popover {
+  max-width: 320px;
 }

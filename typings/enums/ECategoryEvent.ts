@@ -1,6 +1,6 @@
 export enum ECategoryEvent {
   CORPORATE = 'Corporate',
-  BIRTHDAY = 'Birtday',
+  BIRTHDAY = 'Birthday',
   MEETING = 'Meeting',
   OTHER = 'Other',
 }

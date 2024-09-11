@@ -4,9 +4,10 @@ import { EPriority, EPrioritySet } from '@/typings';
 
 interface Props {
   label: EPriority;
+  crop?: boolean;
 }
 
-export const BadgePriopity = ({ label }: Props) => {
+export const BadgePriopity = ({ label, crop }: Props) => {
   const getStyles = () => {
     if (label === EPriority.HIGH) {
       return styles.badgeHigh;
@@ -20,7 +21,7 @@ export const BadgePriopity = ({ label }: Props) => {
   return (
     <div className={`${styles.badge} ${getStyles()}`}>
       <SvgHandler icon={EPrioritySet[label]} />
-      <span>{label}</span>
+      {!crop && <span>{label}</span>}
     </div>
   );
 };

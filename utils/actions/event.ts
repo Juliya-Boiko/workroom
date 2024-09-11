@@ -11,3 +11,8 @@ export const getEvents = async (take?: number): Promise<IEvent[]> => {
   const response = await axiosInstance.get(`/event?take=${take}`);
   return response.data;
 };
+
+export const getCalendarEvents = async (): Promise<IEvent[]> => {
+  const response = await axiosInstance.get(`/event/calendar`);
+  return response.data;
+};
