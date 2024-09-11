@@ -21,3 +21,7 @@ export const getProjectById = async (id: string): Promise<IProjectDetails> => {
   const response = await axiosInstance.get(`/project/${id}`);
   return response.data;
 };
+
+export const deleteProject = async (id: string) => {
+  await axiosInstance.delete(`/project/${id}`);
+};

@@ -13,15 +13,6 @@
     justify-content: space-between;
   }
 
-  .link {
-    @include flexContainer(row, center, center);
-    transition: all 250ms ease-in-out;
-    
-    &:hover {
-      color: $blue-1;
-    }
-  }
-
   .description {
     display: flex;
     flex-direction: column;

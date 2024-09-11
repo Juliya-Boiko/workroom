@@ -14,7 +14,12 @@ import {
   useTasksMutation,
 } from '@/utils';
 
-export const AddTaskForm = ({ slug }: IDynamicComponent) => {
+export interface Props extends IDynamicComponent {
+  start?: string;
+  deadline?: string;
+}
+
+export const AddTaskForm = ({ slug, start, deadline }: Props) => {
   const { create, isCreating } = useTasksMutation();
   const { data: employees } = useEmployees();
   const { closeModal } = useModalContext();
@@ -95,14 +100,26 @@ export const AddTaskForm = ({ slug }: IDynamicComponent) => {
           control={control}
           name="start"
           render={({ field }) => (
-            <PickerDate label="Start date" value={field.value} onChange={field.onChange} />
+            <PickerDate
+              label="Start date"
+              minDate={start}
+              maxDate={deadline}
+              value={field.value}
+              onChange={field.onChange}
+            />
           )}
         />
         <Controller
           control={control}
           name="deadline"
           render={({ field }) => (
-            <PickerDate label="Deadline" value={field.value} onChange={field.onChange} />
+            <PickerDate
+              label="Deadline"
+              minDate={start}
+              maxDate={deadline}
+              value={field.value}
+              onChange={field.onChange}
+            />
           )}
         />
       </div>

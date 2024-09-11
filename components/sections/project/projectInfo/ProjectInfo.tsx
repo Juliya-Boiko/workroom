@@ -1,29 +1,23 @@
 import styles from './projectInfo.module.scss';
-import Link from 'next/link';
 import Image from 'next/image';
 import { EIconsSet, IProjectDetails } from '@/typings';
-import { formatDayDate, ROUTES, thumbSrc } from '@/utils';
+import { formatDayDate, thumbSrc } from '@/utils';
 import { BadgePriopity, UploadAttach } from '@/components/ui';
 import { SvgHandler } from '@/components/SvgHandler';
+import { ProjectInfoOptions } from './ProjectInfoOptions/ProjectInfoOptions';
 
 interface Props {
   project: IProjectDetails;
 }
 
 export const ProjectInfo = ({ project }: Props) => {
-  console.log(project);
   const imgSrc = thumbSrc(project.image);
+
   return (
     <section className={styles.projectInfo}>
       <div className={styles.edit}>
         <Image alt={project.name} src={imgSrc} width={48} height={48} />
-        <Link
-          title="Edit project"
-          href={`${ROUTES.editProject}/${project._id}`}
-          className={styles.link}
-        >
-          <SvgHandler icon={EIconsSet.Pensil} />
-        </Link>
+        <ProjectInfoOptions id={project._id} />
       </div>
       {project.description && (
         <div className={styles.description}>

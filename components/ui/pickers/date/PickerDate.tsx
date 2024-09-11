@@ -2,7 +2,7 @@
 import 'react-datepicker/dist/react-datepicker.css';
 import styles from './picker.module.scss';
 import DatePicker from 'react-datepicker';
-// import { subDays } from 'date-fns';
+import { subDays } from 'date-fns';
 import { forwardRef } from 'react';
 import { SvgHandler } from '@/components/SvgHandler';
 import { EIconsSet } from '@/typings';
@@ -12,6 +12,8 @@ interface Props {
   label: string;
   value: Date | null;
   disabled?: boolean;
+  minDate?: Date | string | null;
+  maxDate?: Date | string | null;
   onChange: (v: Date) => void;
 }
 
@@ -29,7 +31,15 @@ const CustomInput = forwardRef<HTMLButtonElement, CustomInputProps>(({ value, on
 
 CustomInput.displayName = 'CustomInput';
 
-export const PickerDate = ({ expanded, label, value, disabled, onChange }: Props) => {
+export const PickerDate = ({
+  expanded,
+  label,
+  value,
+  minDate,
+  maxDate,
+  disabled,
+  onChange,
+}: Props) => {
   const handleDateChange = (data: Date | null): void => {
     if (data) {
       onChange(data);
@@ -50,7 +60,8 @@ export const PickerDate = ({ expanded, label, value, disabled, onChange }: Props
         showPopperArrow={false}
         calendarStartDay={1}
         selected={value}
-        // minDate={value ? subDays(value, 0) : undefined}
+        minDate={minDate ? subDays(minDate, 0) : undefined}
+        maxDate={maxDate ? subDays(maxDate, 0) : undefined}
         onChange={handleDateChange}
         customInput={<CustomInput />}
         popperContainer={({ children }) => <div>{children}</div>}

@@ -50,26 +50,24 @@ export const ProjectsPage = () => {
           <Preloader />
         </div>
       )}
-      <div className={styles.container}>
-        {projects && !projects.length && (
-          <div className={styles.placeholder}>
-            <p>You dont have projects yet</p>
-            <Image src={imgSrc} priority alt="Projects" className={styles.image} />
-          </div>
-        )}
-        {projects && projects.length > 0 && (
-          <>
-            <ChooseProject active={active} list={projects} onChoose={handleChoose} />
-            <Tasks
-              view={view}
-              loading={isLoadingTasks}
-              project={!!active}
-              tasks={tasks || []}
-              setView={(v: EView) => setView(v)}
-            />
-          </>
-        )}
-      </div>
+      {projects && !projects.length && (
+        <div className={styles.placeholder}>
+          <p>You dont have projects yet</p>
+          <Image src={imgSrc} priority alt="Projects" className={styles.image} />
+        </div>
+      )}
+      {projects && projects.length > 0 && (
+        <div className={styles.container}>
+          <ChooseProject active={active} list={projects} onChoose={handleChoose} />
+          <Tasks
+            view={view}
+            loading={isLoadingTasks}
+            project={!!active}
+            tasks={tasks || []}
+            setView={(v: EView) => setView(v)}
+          />
+        </div>
+      )}
     </div>
   );
 };

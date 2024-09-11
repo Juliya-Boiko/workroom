@@ -1,6 +1,5 @@
 'use client';
 import styles from '../common.module.scss';
-import { useEffect } from 'react';
 import { useForm, Controller } from 'react-hook-form';
 import { useModalContext } from '@/components/providers/ModalProvider';
 import { useRouter } from 'next/navigation';
@@ -41,7 +40,6 @@ export const AddProjectForm = () => {
     control,
     register,
     watch,
-    setValue,
     handleSubmit,
     formState: { errors, isDirty, isValid, isSubmitting },
   } = useForm({
@@ -61,10 +59,6 @@ export const AddProjectForm = () => {
       },
     });
   };
-
-  useEffect(() => {
-    setValue('deadline', getTomorrowDate(startDate));
-  }, [setValue, startDate]);
 
   return (
     <>
@@ -86,14 +80,24 @@ export const AddProjectForm = () => {
               control={control}
               name="start"
               render={({ field }) => (
-                <PickerDate label="Start date" value={field.value} onChange={field.onChange} />
+                <PickerDate
+                  label="Start date"
+                  value={field.value}
+                  onChange={field.onChange}
+                  minDate={field.value}
+                />
               )}
             />
             <Controller
               control={control}
               name="deadline"
               render={({ field }) => (
-                <PickerDate label="Deadline" value={field.value} onChange={field.onChange} />
+                <PickerDate
+                  label="Deadline"
+                  minDate={startDate}
+                  value={field.value}
+                  onChange={field.onChange}
+                />
               )}
             />
           </div>

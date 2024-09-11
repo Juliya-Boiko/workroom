@@ -28,7 +28,7 @@ export const ProjectPage = ({ slug }: IDynamicComponent) => {
               <span>Add Task</span>
             </BtnPrimary>
           }
-          content={<AddTaskForm slug={slug} />}
+          content={<AddTaskForm slug={slug} start={project?.start} deadline={project?.deadline} />}
         />
       </Topping>
       {isLoading && (
