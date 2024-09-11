@@ -6,25 +6,9 @@
   border-radius: 24px;
   overflow: hidden;
   @extend %shadow-s;
-  @include onLaptop {
-    flex-direction: row;
-  }
-  @include onDesktop {
-    max-width: 1600px;
-  }
-
+  
   .container {
     display: none;
-    @include onLaptop {
-    @include flexContainer(column, center, space-between);
-      min-height: 100%;
-      width: 50%;
-      align-self: stretch;
-      padding: 48px 24px;
-      gap: 48px;
-      background-color: $blue-1;
-      color: $white;
-    }
   }
 
   .heading {
@@ -43,12 +27,6 @@
     width: 100%;
     padding: 48px 24px;
     @include flexContainer(column, center, center);
-    @include onTablet {
-      padding: 96px 24px;
-    }
-    @include onLaptop {
-      width: 50%;
-    }
   }
 
   .title {
@@ -66,5 +44,35 @@
     &:hover {
       color: $blue-2;
     }
+  }
+
+  @include onTablet {
+    .wrapper {
+      padding: 96px 24px;
+    }
+  }
+
+  @include onLaptop {
+    flex-direction: row;
+    max-height: 800px;
+
+    .container {
+      @include flexContainer(column, center, space-between);
+      min-height: 100%;
+      width: 50%;
+      align-self: stretch;
+      padding-top: 48px;
+      gap: 48px;
+      background-color: $blue-1;
+      color: $white;
+    }
+
+    .wrapper {
+      width: 50%;
+    }
+  }
+
+  @include onDesktop {
+    max-width: 1600px;
   }
 }

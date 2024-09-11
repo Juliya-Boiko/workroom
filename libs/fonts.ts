@@ -5,5 +5,4 @@ export const nunitoSans = Nunito_Sans({
   style: ['normal'],
   subsets: ['latin'],
   display: 'swap',
-  adjustFontFallback: false,
 });

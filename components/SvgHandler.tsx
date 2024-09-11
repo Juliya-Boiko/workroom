@@ -49,13 +49,7 @@ export const SvgHandler = ({ icon }: { icon: EIconsSet }) => {
   }
   if (icon === EIconsSet.Checkbox) {
     return (
-      <svg
-        xmlns="http://www.w3.org/2000/svg"
-        width={14}
-        height={10}
-        fill="none"
-        className="svg-min-size"
-      >
+      <svg xmlns="http://www.w3.org/2000/svg" width={14} height={10} fill="none">
         <path
           fill="#3F8CFF"
           fillRule="evenodd"
