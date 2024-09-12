@@ -1,7 +1,7 @@
 'use client';
 import styles from './tasksColumns.module.scss';
 import { useState, useEffect } from 'react';
-import { useTasksMutation } from '@/utils';
+import { useTasksMutation } from '@/services';
 import { DragDropContext, Droppable, Draggable, type DropResult } from '@hello-pangea/dnd';
 import { ETaskStatus, ITask } from '@/typings';
 import { DragCard } from '@/components/cards/drag/DragCard';

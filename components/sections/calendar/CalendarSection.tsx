@@ -6,7 +6,8 @@ import timeGridPlugin from '@fullcalendar/timegrid';
 import interactionPlugin from '@fullcalendar/interaction';
 // import { DateSelectArg, EventClickArg } from '@fullcalendar/core';
 import { useState, useEffect } from 'react';
-import { useCalendarEvents, eventsType } from '@/utils';
+import { useCalendarEvents } from '@/services';
+import { eventsType } from '@/utils';
 import { ECategoryEvent, EPriority } from '@/typings';
 import { BadgePriopity } from '@/components/ui';
 

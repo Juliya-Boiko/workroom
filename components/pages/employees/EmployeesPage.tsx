@@ -4,7 +4,7 @@ import Image from 'next/image';
 import imgSrc from '../../../public/placeholder-1.png';
 import { useState } from 'react';
 import { viewEmployeesDataTypes, EIconsSet, EViewEmployees } from '@/typings';
-import { useEmployees } from '@/utils';
+import { useEmployees } from '@/services';
 import { Topping } from '@/components/topping/Topping';
 import { Modal, BtnPrimary, BtnIcon, TabsSlide, Preloader } from '@/components/ui';
 import { AddEmployeeForm } from '@/components/forms/addEmployee/AddEmployeeForm';

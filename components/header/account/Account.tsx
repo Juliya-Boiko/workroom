@@ -2,7 +2,8 @@
 import styles from './account.module.scss';
 import Link from 'next/link';
 import { useState, useEffect, useRef } from 'react';
-import { useUser, ROUTES } from '@/utils';
+import { useUser } from '@/services';
+import { ROUTES } from '@/utils';
 import { SvgHandler } from '@/components/SvgHandler';
 import { Avatar } from '@/components/ui';
 import { EIconsSet } from '@/typings';

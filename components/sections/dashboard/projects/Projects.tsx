@@ -1,7 +1,8 @@
 'use client';
 import styles from './projectsSection.module.scss';
 import { useRouter } from 'next/navigation';
-import { useProjects, ROUTES } from '@/utils';
+import { useProjects } from '@/services';
+import { ROUTES } from '@/utils';
 import { SvgHandler } from '@/components/SvgHandler';
 import { EIconsSet } from '@/typings';
 import { BtnSecondary } from '@/components/ui';

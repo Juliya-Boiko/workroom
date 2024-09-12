@@ -1,7 +1,7 @@
 'use client';
 import styles from './taskStatusDrop.module.scss';
 import { useState, useRef, useEffect } from 'react';
-import { useTasksMutation } from '@/utils';
+import { useTasksMutation } from '@/services';
 import { EIconsSet, ETaskStatus, taskStatusDataTypes } from '@/typings';
 import { SvgHandler } from '@/components/SvgHandler';
 

@@ -3,6 +3,7 @@ import styles from '../common.module.scss';
 import { useForm, Controller } from 'react-hook-form';
 import { useModalContext } from '@/components/providers/ModalProvider';
 import { useRouter } from 'next/navigation';
+import { useProjectsMutation } from '@/services';
 import { yupResolver } from '@hookform/resolvers/yup';
 import { priorityDataTypes } from '@/typings';
 import {
@@ -11,7 +12,6 @@ import {
   AddProjectFormData,
   ROUTES,
   projectThumbsDataTypes,
-  useProjectsMutation,
 } from '@/utils';
 import {
   InputField,

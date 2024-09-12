@@ -31,10 +31,15 @@ export const AddEmployeeForm = () => {
     }
   };
 
+  const handleDelete = (idx: number) => {
+    const updated = [...members.slice(0, idx), ...members.slice(idx + 1)];
+    setMembers(updated);
+  };
+
   return (
     <div className={styles.signUp}>
       <Image alt="Add members" src={imgSrc} className={styles.image} />
-      <MembersStage members={members} onAdd={onAdd} onChange={onChange} />
+      <MembersStage members={members} onAdd={onAdd} onChange={onChange} onDelete={handleDelete} />
       <div className={styles.approveBtn}>
         <BtnPrimary type="button" disabled={isDisabled} onClick={onSubmit}>
           Approve

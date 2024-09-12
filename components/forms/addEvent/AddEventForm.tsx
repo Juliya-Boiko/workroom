@@ -2,8 +2,9 @@
 import moment from 'moment';
 import commonStyles from '../common.module.scss';
 import { useForm, Controller } from 'react-hook-form';
+import { useEventsMutation } from '@/services';
 import { useModalContext } from '@/components/providers/ModalProvider';
-import { useEventsMutation, AddEventFormData, addEventSchema } from '@/utils';
+import { AddEventFormData, addEventSchema } from '@/utils';
 import { yupResolver } from '@hookform/resolvers/yup';
 import { categoryEventDataTypes, ECategoryEvent, priorityDataTypes } from '@/typings';
 import {

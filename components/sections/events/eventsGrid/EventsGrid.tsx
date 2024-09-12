@@ -2,7 +2,7 @@
 import styles from './eventsGrid.module.scss';
 import Image from 'next/image';
 import imgSrc from '../../../../public/placeholder-1.png';
-import { useEvents } from '@/utils';
+import { useEvents } from '@/services';
 import { Preloader } from '@/components/ui';
 import { EventCard } from '@/components/cards/event/EventsCard';
 

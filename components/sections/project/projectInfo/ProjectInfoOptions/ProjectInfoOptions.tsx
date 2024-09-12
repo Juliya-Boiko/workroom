@@ -2,7 +2,8 @@
 import { useState } from 'react';
 import { useRouter } from 'next/navigation';
 import { Options, Confirm } from '@/components/ui';
-import { ROUTES, useProjectsMutation } from '@/utils';
+import { useProjectsMutation } from '@/services';
+import { ROUTES } from '@/utils';
 
 export const ProjectInfoOptions = ({ id }: { id: string }) => {
   const [showConfirm, setShowConfirm] = useState(false);

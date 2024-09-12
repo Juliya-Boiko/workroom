@@ -1,7 +1,8 @@
 'use client';
 import styles from './events.module.scss';
 import { useRouter } from 'next/navigation';
-import { useEvents, ROUTES } from '@/utils';
+import { ROUTES } from '@/utils';
+import { useEvents } from '@/services';
 import { SvgHandler } from '@/components/SvgHandler';
 import { EIconsSet } from '@/typings';
 import { BtnSecondary } from '@/components/ui';

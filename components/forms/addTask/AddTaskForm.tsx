@@ -6,13 +6,8 @@ import { useModalContext } from '@/components/providers/ModalProvider';
 import { yupResolver } from '@hookform/resolvers/yup';
 import { ETaskStatus, priorityDataTypes, IDynamicComponent } from '@/typings';
 import { InputField, BtnPrimary, TextareaField, SelectDrop, PickerDate } from '@/components/ui';
-import {
-  useEmployees,
-  getTomorrowDate,
-  addTaskSchema,
-  AddTaskFormData,
-  useTasksMutation,
-} from '@/utils';
+import { useEmployees, useTasksMutation } from '@/services';
+import { getTomorrowDate, addTaskSchema, AddTaskFormData } from '@/utils';
 
 export interface Props extends IDynamicComponent {
   start?: string;

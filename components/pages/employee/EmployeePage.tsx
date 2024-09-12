@@ -3,7 +3,7 @@ import { EmployeeInfo } from '@/components/sections/employee/info/EmployeeInfo';
 import styles from './employeePage.module.scss';
 import { Topping } from '@/components/topping/Topping';
 import { IDynamicComponent } from '@/typings';
-import { useEmployee, useCompany, useProjects } from '@/utils';
+import { useEmployee, useCompany, useProjects } from '@/services';
 import { ProjectsList } from '@/components/sections/dashboard/projects/progectsList/ProjectsList';
 
 export const EmployeePage = ({ slug }: IDynamicComponent) => {

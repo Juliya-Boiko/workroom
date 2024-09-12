@@ -5,13 +5,8 @@ import { useForm, Controller } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
 import { SvgHandler } from '@/components/SvgHandler';
 import { EIconsSet, EUserPosition } from '@/typings';
-import {
-  useProfile,
-  useCompany,
-  profileSchema,
-  ProfileFormData,
-  useProfileMutation,
-} from '@/utils';
+import { profileSchema, ProfileFormData } from '@/utils';
+import { useProfile, useCompany, useProfileMutation } from '@/services';
 import {
   Avatar,
   BtnIcon,

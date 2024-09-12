@@ -1,7 +1,7 @@
 'use client';
 import styles from './projectPage.module.scss';
 import { useState } from 'react';
-import { useProject, useTasks } from '@/utils';
+import { useProject, useTasks } from '@/services';
 import { Topping } from '@/components/topping/Topping';
 import { Modal, BtnPrimary, Preloader } from '@/components/ui';
 import { AddTaskForm } from '@/components/forms/addTask/AddTaskForm';

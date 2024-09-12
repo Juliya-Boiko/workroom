@@ -1,5 +1,5 @@
-import { Avatar, BadgePriopity } from '@/components/ui';
 import styles from './dragCard.module.scss';
+import { Avatar, BadgePriopity } from '@/components/ui';
 import { ITask } from '@/typings';
 import { LoaderSkeleton } from '../../LoaderSkeleton';
 

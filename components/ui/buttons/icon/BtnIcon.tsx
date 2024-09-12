@@ -16,8 +16,9 @@ export const BtnIcon = ({ type, title, children, tonal, active, disabled, onClic
     <button
       type={type ? type : 'button'}
       title={title}
-      // eslint-disable-next-line max-len
-      className={`${styles.button} ${tonal ? styles.btnTonal : styles.btnDef} ${active ? styles.active : ''}`}
+      className={`
+        ${styles.button} ${tonal ? styles.btnTonal : styles.btnDef} ${active ? styles.active : ''}
+      `}
       disabled={disabled}
       onClick={onClick}
     >

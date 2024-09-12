@@ -1,12 +1,13 @@
 'use client';
 import styles from './taskPage.module.scss';
-import { useTask, useProject, ROUTES } from '@/utils';
+import Link from 'next/link';
+import { ROUTES } from '@/utils';
+import { useTask, useProject } from '@/services';
 import { EIconsSet, IDynamicComponent } from '@/typings';
 import { Topping } from '@/components/topping/Topping';
 import { TaskDetails } from '@/components/sections/task/taskDetails/TaskDetails';
 import { TaskInfo } from '@/components/sections/task/taskInfo/TaskInfo';
 import { ProjectInfo } from '@/components/sections/project/projectInfo/ProjectInfo';
-import Link from 'next/link';
 import { SvgHandler } from '@/components/SvgHandler';
 
 export const TaskPage = ({ slug }: IDynamicComponent) => {
