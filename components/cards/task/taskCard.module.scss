@@ -61,7 +61,10 @@
   }
 
   .estimate {
-     @include onLaptop {
+    @include onLaptop {
+      display: none;
+    }
+    @include onDesktop {
       @include flexContainer (column, center, flex-start);
     }
   }

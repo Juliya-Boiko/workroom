@@ -4,7 +4,7 @@ import { useRouter } from 'next/navigation';
 import { Options, Confirm } from '@/components/ui';
 import { ROUTES, useTasksMutation } from '@/utils';
 
-export const TaskDetailsOptions = ({ id, projectId }: { id: string, projectId: string }) => {
+export const TaskDetailsOptions = ({ id, projectId }: { id: string; projectId: string }) => {
   const [showConfirm, setShowConfirm] = useState(false);
   const { remove } = useTasksMutation();
   const router = useRouter();

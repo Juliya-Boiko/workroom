@@ -633,4 +633,22 @@ export const SvgHandler = ({ icon }: { icon: EIconsSet }) => {
       </svg>
     );
   }
+  if (icon === EIconsSet.Search) {
+    return (
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        width={24}
+        height={24}
+        fill="none"
+        className="svg-min-size"
+      >
+        <path
+          fill="currentColor"
+          fillRule="evenodd"
+          d="M11.5 3a8.5 8.5 0 1 0 5.257 15.18l.403.394 3.133 3.133.094.083a1 1 0 0 0 1.32-1.497l-3.14-3.141-.395-.385A8.5 8.5 0 0 0 11.5 3Zm0 2a6.5 6.5 0 1 1 0 13 6.5 6.5 0 0 1 0-13Z"
+          clipRule="evenodd"
+        />
+      </svg>
+    );
+  }
 };

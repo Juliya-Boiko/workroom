@@ -76,9 +76,9 @@ export const TasksColumns = ({ tasks, loading }: Props) => {
           <Droppable key={name} droppableId={name}>
             {(provided) => (
               <div {...provided.droppableProps} ref={provided.innerRef}>
-                <p className={styles.title}>
+                <div className={styles.title}>
                   <div className={styles.titleWrapper}>{name}</div>
-                </p>
+                </div>
                 {tasks.map((item: ITask, index) => (
                   <Draggable key={item._id} draggableId={item._id} index={index}>
                     {(provided) => (

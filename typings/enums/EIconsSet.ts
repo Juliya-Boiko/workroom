@@ -37,4 +37,5 @@ export enum EIconsSet {
   AttachFile,
   Dots,
   Delete,
+  Search,
 }

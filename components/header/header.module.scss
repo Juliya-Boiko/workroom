@@ -2,7 +2,7 @@
   @include flexContainer(row, center, space-between);
   padding: 24px 12px 0 12px;
  
-  .company {
+  .search {
     display: none;
   }
 
@@ -14,13 +14,13 @@
 
    @include onTablet {
     padding: 24px 48px 0 48px;
+
+    .search {
+      display: block;
+    }
   }
 
    @include onLaptop {
     padding: 0 0 0 32px;
-
-    .company {
-      display: block;
-    }
   }
 }

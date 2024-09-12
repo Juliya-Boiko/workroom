@@ -10,4 +10,5 @@ export const QUERY_KEYS = {
   PROFILE: 'profile',
   EVENTS: 'events',
   CALENDAR: 'calendar',
+  SEARCH: 'search',
 };
