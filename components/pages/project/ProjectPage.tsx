@@ -12,7 +12,10 @@ import { Tasks } from '@/components/sections/tasks/Tasks';
 
 export const ProjectPage = ({ slug }: IDynamicComponent) => {
   const [view, setView] = useState(EView.LIST);
-  const { data: project, isLoading } = useProject(slug);
+  const { data: project, isLoading } = useProject({
+    projectId: slug,
+    enabled: true,
+  });
   const { data: tasks, isLoading: isLoadingTasks } = useTasks({
     projectId: project?._id,
     enabled: !!project?._id,

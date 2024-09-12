@@ -21,3 +21,12 @@ export const updateTask = async (data: UpdateTaskProps) => {
   const response = await axiosInstance.patch(`/task/${data._id}`, data.update);
   return response.data;
 };
+
+export const getTaskById = async (id: string): Promise<ITask> => {
+  const response = await axiosInstance.get(`/task/${id}`);
+  return response.data;
+};
+
+export const deleteTask = async (id: string) => {
+  await axiosInstance.delete(`/task/${id}`);
+};

@@ -4,7 +4,7 @@ import { EIconsSet, IProjectDetails } from '@/typings';
 import { formatDayDate, thumbSrc } from '@/utils';
 import { BadgePriopity, UploadAttach } from '@/components/ui';
 import { SvgHandler } from '@/components/SvgHandler';
-import { ProjectInfoOptions } from './ProjectInfoOptions/ProjectInfoOptions';
+import { ProjectInfoOptions } from './projectInfoOptions/ProjectInfoOptions';
 
 interface Props {
   project: IProjectDetails;

@@ -1,0 +1,33 @@
+.taskDetails {
+ display: flex;
+ flex-direction: column;
+ gap: 24px;
+
+  .head {
+    @include flexContainer(row, center, space-between);
+  }
+
+  .title {
+    font-weight: 700;
+    font-size: 16px;
+  }
+
+  .block {
+    display: flex;
+    align-items: center;
+    gap: 24px;
+  }
+
+  .container {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+    padding: 24px;
+    border-radius: 24px;
+    background-color: $white;
+  }
+
+  .subtitle {
+    font-weight: 700;
+  }
+}

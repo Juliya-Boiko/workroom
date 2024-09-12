@@ -17,7 +17,7 @@ export const createProject = async (data: AddProjectFormData): Promise<string> =
   return response.data;
 };
 
-export const getProjectById = async (id: string): Promise<IProjectDetails> => {
+export const getProjectById = async (id?: string): Promise<IProjectDetails> => {
   const response = await axiosInstance.get(`/project/${id}`);
   return response.data;
 };

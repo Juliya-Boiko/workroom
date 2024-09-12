@@ -14,6 +14,7 @@ export const ROUTES = {
   project: '/project',
   events: '/events',
   editProject: '/edit-project',
+  task: '/task',
 };
 
 export type RoutesType = typeof ROUTES;

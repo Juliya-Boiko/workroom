@@ -19,7 +19,7 @@ export const TasksList = ({ loading, tasks }: Props) => {
         <ul className={styles.list}>
           {tasks.map((el) => (
             <li key={el._id}>
-              <Link href={`${ROUTES.project}/${el.projectId}`}>
+              <Link href={`${ROUTES.task}/${el._id}`}>
                 <TaskCard task={el} />
               </Link>
             </li>
