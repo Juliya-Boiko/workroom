@@ -18,3 +18,10 @@ export interface ITask extends Omit<ICreateTask, 'assignee'> {
   projectId: string;
   assignee: IAssignee;
 }
+
+export interface IUpdateTask {
+  _id: string;
+  update: {
+    status?: ETaskStatus;
+  };
+}

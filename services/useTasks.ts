@@ -2,7 +2,7 @@ import { useQuery, useQueryClient, useMutation } from '@tanstack/react-query';
 import { getTasks, createTask, updateTask, getTaskById, deleteTask, QUERY_KEYS } from '@/utils';
 
 interface Props {
-  projectId: string | undefined;
+  projectId: string;
   enabled: boolean;
 }
 

@@ -4,11 +4,9 @@ import { TODAY_OPTIONS, DATE_LOCALE } from '@/utils';
 export const formatDeadlineDate = (value: string) => {
   if (value) {
     const date = new Date(value);
-
     const day = String(date.getDate()).padStart(2, '0');
     const month = String(date.getMonth() + 1).padStart(2, '0');
     const year = date.getFullYear();
-
     const formattedDate = `${day}.${month}.${year}`;
     return formattedDate;
   }
@@ -31,10 +29,8 @@ export const getEstimate = (start: Date, end: Date) => {
   const date1 = new Date(start);
   const date2 = new Date(end);
   const diffInMs: number = date2.getTime() - date1.getTime();
-
   const millisecondsInAnHour = 1000 * 60 * 60;
   const millisecondsInADay = millisecondsInAnHour * 24;
-
   const days = Math.floor(diffInMs / millisecondsInADay) + 1;
   const hours = Math.floor((diffInMs % millisecondsInADay) / millisecondsInAnHour);
   return `${days}d ${hours}h`;
@@ -77,18 +73,14 @@ export const getEventTimer = (date: Date, time: string) => {
 export const getFullYears = (day: string) => {
   const birthday = new Date(day);
   const currentDate = new Date();
-
   let fullYears = currentDate.getFullYear() - birthday.getFullYear();
-
   const currentMonth = currentDate.getMonth();
   const birthdayMonth = birthday.getMonth();
-
   if (
     currentMonth < birthdayMonth ||
     (currentMonth === birthdayMonth && currentDate.getDate() < birthday.getDate())
   ) {
     fullYears--;
   }
-
   return fullYears;
 };

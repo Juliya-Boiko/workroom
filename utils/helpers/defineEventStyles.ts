@@ -1,6 +1,6 @@
 import { ECategoryEvent, EIconsSet } from '@/typings';
 
-export const eventsType = (v: ECategoryEvent) => {
+export const defineEventStyles = (v: ECategoryEvent) => {
   if (v === ECategoryEvent.BIRTHDAY)
     return {
       color: '#DE92EB',

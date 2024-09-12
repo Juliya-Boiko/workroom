@@ -1,7 +1,7 @@
 'use server';
 import { sendEmail } from '@/libs/smtp';
 import { registerUserEmailBody, inviteUserEmailBody } from '@/utils';
-import { createInviteMemberUrl } from './urlFormatter';
+import { generateInviteUrl } from './generateInviteUrl';
 
 interface RegisterProps {
   name: string;
@@ -27,7 +27,7 @@ interface InviteProps {
 export const sendInviteEmails = async ({ name, companyId, companyName, members }: InviteProps) => {
   const inviteMembers = members.map(async (memberEmail: string) => {
     if (!!memberEmail) {
-      const link = createInviteMemberUrl(companyId, memberEmail);
+      const link = generateInviteUrl(companyId, memberEmail);
 
       await sendEmail({
         to: memberEmail,

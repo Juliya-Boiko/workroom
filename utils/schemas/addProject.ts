@@ -5,8 +5,8 @@ import { StaticImageData } from 'next/image';
 
 export const addProjectSchema = yup.object({
   name: yup.string().trim().required('Name is required field'),
-  start: yup.date().default(new Date()).required(),
-  deadline: yup.date().default(new Date()).required(),
+  start: yup.date().default(new Date()).required('Start date is required field'),
+  deadline: yup.date().default(new Date()).required('Deadline is required field'),
   priority: yup.string().trim().oneOf(priorityDataTypes).default(priorityDataTypes[0]),
   description: yup.string().trim(),
   image: yup.mixed<[string, StaticImageData | File]>().default(projectThumbsDataTypes[0]),

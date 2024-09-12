@@ -1,5 +1,5 @@
 import styles from './eventCard.module.scss';
-import { eventsType, getEventDateTime } from '@/utils';
+import { defineEventStyles, getEventDateTime } from '@/utils';
 import { IEvent } from '@/typings';
 import { BadgePriopity, BadgeTimer } from '@/components/ui';
 import { SvgHandler } from '@/components/SvgHandler';
@@ -12,7 +12,7 @@ interface Props {
 }
 
 export const EventCard = ({ loading, event, expanded }: Props) => {
-  const category = eventsType(event.category);
+  const category = defineEventStyles(event.category);
 
   return (
     <li className={styles.eventCard}>

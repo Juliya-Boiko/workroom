@@ -50,7 +50,6 @@ export const inviteUsers = async (data: string[]) => {
     } else {
       toast.success(response.data.message);
     }
-    console.log(response.data);
     return response.status === 200;
   } catch (error: any) {
     console.log(error);

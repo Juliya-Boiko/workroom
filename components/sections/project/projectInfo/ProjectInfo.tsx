@@ -1,7 +1,7 @@
 import styles from './projectInfo.module.scss';
 import Image from 'next/image';
 import { EIconsSet, IProjectDetails } from '@/typings';
-import { formatDayDate, thumbSrc } from '@/utils';
+import { formatDayDate, defineImageSrc } from '@/utils';
 import { BadgePriopity, UploadAttach, Assignees } from '@/components/ui';
 import { SvgHandler } from '@/components/SvgHandler';
 import { ProjectInfoOptions } from './projectInfoOptions/ProjectInfoOptions';
@@ -12,7 +12,7 @@ interface Props {
 }
 
 export const ProjectInfo = ({ project, editable }: Props) => {
-  const imgSrc = thumbSrc(project.image);
+  const imgSrc = defineImageSrc(project.image);
   return (
     <section className={styles.projectInfo}>
       <div className={styles.edit}>

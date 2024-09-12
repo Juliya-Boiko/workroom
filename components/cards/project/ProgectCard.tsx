@@ -1,6 +1,6 @@
 import styles from './projectCard.module.scss';
 import Image from 'next/image';
-import { formatDeadlineDate, formatDayDate, thumbSrc } from '@/utils';
+import { formatDeadlineDate, formatDayDate, defineImageSrc } from '@/utils';
 import { LoaderSkeleton } from '@/components/LoaderSkeleton';
 import { SvgHandler } from '@/components/SvgHandler';
 import { EIconsSet, IProjectInfo } from '@/typings';
@@ -12,7 +12,7 @@ interface Props {
 }
 
 export const ProjectCard = ({ loading, project }: Props) => {
-  const imgSrc = thumbSrc(project.image);
+  const imgSrc = defineImageSrc(project.image);
 
   return (
     <div className={styles.projectCard}>

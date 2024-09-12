@@ -35,7 +35,7 @@ export const signUpSchema = yup.object().shape({
     .oneOf(businessDirectionDataTypes)
     .default(businessDirectionDataTypes[0]),
   companySize: yup.string().trim().oneOf(companySizeDataTypes).default(companySizeDataTypes[0]),
-  members: yup.array().of(yup.string().trim().email()).required('Name is required'),
+  members: yup.array().of(yup.string().trim().email()).default([]),
 });
 
 export type SignUpFormData = yup.InferType<typeof signUpSchema>;

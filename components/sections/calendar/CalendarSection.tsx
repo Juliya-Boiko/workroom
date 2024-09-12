@@ -7,7 +7,7 @@ import interactionPlugin from '@fullcalendar/interaction';
 // import { DateSelectArg, EventClickArg } from '@fullcalendar/core';
 import { useState, useEffect } from 'react';
 import { useCalendarEvents } from '@/services';
-import { eventsType } from '@/utils';
+import { defineEventStyles } from '@/utils';
 import { ECategoryEvent, EPriority } from '@/typings';
 import { BadgePriopity } from '@/components/ui';
 
@@ -52,7 +52,9 @@ export const CalendarSection = () => {
       <div className={styles.event}>
         <div
           className={styles.line}
-          style={{ backgroundColor: eventsType(eventInfo.event.extendedProps.category).color }}
+          style={{
+            backgroundColor: defineEventStyles(eventInfo.event.extendedProps.category).color,
+          }}
         />
         <div className={styles.title}>{eventInfo.event.title}</div>
         <BadgePriopity crop label={priority} />

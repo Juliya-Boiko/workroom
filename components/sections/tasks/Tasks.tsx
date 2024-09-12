@@ -1,7 +1,7 @@
 import styles from './tasks.module.scss';
 import imgSrc from '../../../public/tasks-placeholder.png';
 import Image from 'next/image';
-import { taskSorter } from '@/utils';
+import { sortTasksByStatus } from '@/utils';
 import { EView, ITask } from '@/typings';
 import { TasksActions } from './tasksActions/TasksActions';
 import { TasksList } from './tasksList/TasksList';
@@ -16,7 +16,7 @@ interface Props {
 }
 
 export const Tasks = ({ project, tasks, view, loading, setView }: Props) => {
-  const sortedTasks = taskSorter(tasks);
+  const sortedTasks = sortTasksByStatus(tasks);
 
   return (
     <section className={styles.tasks}>

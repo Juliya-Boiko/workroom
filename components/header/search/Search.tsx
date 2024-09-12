@@ -3,7 +3,7 @@ import styles from './search.module.scss';
 import Link from 'next/link';
 import Image from 'next/image';
 import { useState, ChangeEvent, useEffect, useRef } from 'react';
-import { thumbSrc, ROUTES } from '@/utils';
+import { defineImageSrc, ROUTES } from '@/utils';
 import { useSearch } from '@/services';
 import { BadgeTask } from '@/components/ui';
 import { SvgHandler } from '@/components/SvgHandler';
@@ -63,7 +63,7 @@ export const Search = () => {
                       className={styles.link}
                       onClick={() => setValue('')}
                     >
-                      <Image src={thumbSrc(el.image)} alt="Thumb" width={30} height={30} />
+                      <Image src={defineImageSrc(el.image)} alt="Thumb" width={30} height={30} />
                       <span>{el.name}</span>
                     </Link>
                   </li>

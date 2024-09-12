@@ -1,10 +1,11 @@
 import { ETaskStatus, ITask } from '@/typings';
+
 interface SortedTasks {
   active: ITask[];
   backlog: ITask[];
 }
 
-export const taskSorter = (tasks: ITask[]) =>
+export const sortTasksByStatus = (tasks: ITask[]) =>
   tasks.reduce<SortedTasks>(
     (result, item) => {
       if (item.status === ETaskStatus.DONE) {
