@@ -1,7 +1,7 @@
 import { axiosInstance } from '@/libs/axios';
 import { ETaskStatus, ICreateTask, ITask } from '@/typings';
 
-export const createTask = async (data: ICreateTask) => {
+export const createTask = async (data: ICreateTask): Promise<{ projectId: string }> => {
   const response = await axiosInstance.post('/task', data);
   return response.data;
 };

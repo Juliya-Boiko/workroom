@@ -1,6 +1,5 @@
 import styles from './projectCard.module.scss';
 import Image from 'next/image';
-// import thumb from '../../../public/project-thumb.svg';
 import { formatDeadlineDate, formatDayDate, thumbSrc } from '@/utils';
 import { LoaderSkeleton } from '@/components/LoaderSkeleton';
 import { SvgHandler } from '@/components/SvgHandler';
@@ -63,11 +62,7 @@ export const ProjectCard = ({ loading, project }: Props) => {
             </div>
             <div>
               <p className={styles.subtitle}>Assignees</p>
-              {project.tasks.assignee.length ? (
-                <Assignees assignees={project.tasks.assignee} />
-              ) : (
-                '-'
-              )}
+              <Assignees assignees={project.tasks.assignee} />
             </div>
           </div>
         )}

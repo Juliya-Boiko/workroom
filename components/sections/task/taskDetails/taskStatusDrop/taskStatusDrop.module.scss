@@ -1,0 +1,47 @@
+.taskStatusDrop {
+  position: relative;
+  font-weight: bold;
+  font-size: 12px;
+
+  .badge {
+    @include flexContainer(row, center, space-between);
+    height: 30px;
+    cursor: pointer;
+    border-radius: 8px;
+    padding: 0 14px;
+    gap: 8px;
+    min-width: 124px;
+  }
+
+  .list {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    position: absolute;
+    top: 32px;
+    right: 0;
+    border-radius: 8px;
+    overflow: hidden;
+    background-color: $white;
+  }
+
+  .item {
+    padding: 8px 14px;
+    cursor: pointer;
+  }
+}
+
+.default {
+  color: $grey-3;
+  background-color: rgba($grey-3-rgb, 0.14);
+}
+
+.progress {
+  color: $blue-1;
+  background-color: rgba($blue-1-rgb, 0.14);
+}
+
+.done {
+  color: $green-1;
+  background-color: rgba($green-1-rgb, 0.14);
+}

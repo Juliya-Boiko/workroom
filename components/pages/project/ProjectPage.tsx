@@ -41,7 +41,7 @@ export const ProjectPage = ({ slug }: IDynamicComponent) => {
       )}
       {project && (
         <div className={styles.container}>
-          <ProjectInfo project={project} />
+          <ProjectInfo editable project={project} />
           <Tasks
             view={view}
             project={!!project._id}

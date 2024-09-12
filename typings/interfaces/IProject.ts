@@ -18,7 +18,7 @@ export interface IProjectInfo extends IProject {
   };
 }
 
-export interface IProjectDetails extends IProject {
+export interface IProjectDetails extends IProjectInfo {
   description: string;
   start: string;
 }

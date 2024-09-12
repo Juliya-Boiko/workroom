@@ -7,6 +7,10 @@ interface Props {
 }
 
 export const Assignees = ({ assignees }: Props) => {
+  if (!assignees.length) {
+    return <span>-</span>;
+  }
+
   const cropped = assignees.slice(0, 3);
 
   return (

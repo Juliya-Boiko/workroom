@@ -21,6 +21,9 @@
 
   .title {
     font-weight: 700;
+    &::first-letter {
+      text-transform: capitalize;
+    }
   }
 
   .wrapper {

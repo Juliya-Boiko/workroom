@@ -1,12 +1,20 @@
 .taskPage {
   padding: 24px 12px;
 
-  .loader {
-    width: 100%;
-    padding-top: 48px;
+  .link {
     display: flex;
-    justify-content: center;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 24px;
+    color: $blue-1;
   }
+
+  // .loader {
+  //   width: 100%;
+  //   padding-top: 48px;
+  //   display: flex;
+  //   justify-content: center;
+  // }
 
   .container {
     display: flex;
@@ -15,21 +23,33 @@
     padding-top: 24px;
   }
 
+  .projectInfo {
+    display: none;
+  }
+
   @include onTablet {
     padding: 24px 48px;
 
-    .loader {
-      padding-top: 96px;
+    .container {
+      display: grid;
+      grid-template-columns: 1fr 200px;
     }
+
+    // .loader {
+    //   padding-top: 96px;
+    // }
+
   }
 
   @include onLaptop {
     padding: 32px 0 0 32px;
 
+    .projectInfo {
+      display: block;
+    }
+
     .container {
-      display: grid;
-      grid-template-columns: 264px 1fr;
-      gap: 24px;
+      grid-template-columns: 200px 1fr 200px;
     }
   }
 }

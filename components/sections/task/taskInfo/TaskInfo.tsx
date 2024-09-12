@@ -1,16 +1,23 @@
 import styles from './taskInfo.module.scss';
-import { ITask } from '@/typings';
-import { BadgePriopity } from '@/components/ui';
+import { formatDayDate } from '@/utils';
+import { ITask, EIconsSet } from '@/typings';
+import { Avatar, BadgePriopity } from '@/components/ui';
+import { SvgHandler } from '@/components/SvgHandler';
 
 export const TaskInfo = ({ task }: { task: ITask }) => {
-  console.log(task)
+  const user = {
+    name: task.assignee.name,
+    avatar: task.assignee.avatar,
+  };
+
   return (
     <section className={styles.taskInfo}>
       <h5 className={styles.title}>TaskInfo</h5>
       <div className={styles.wrapper}>
         <p className={styles.subtitle}>Assigned</p>
-        <div>
-
+        <div className={styles.assignee}>
+          <Avatar size="s" user={user} />
+          <span>{task.assignee.name}</span>
         </div>
       </div>
       <div className={styles.wrapper}>
@@ -19,20 +26,13 @@ export const TaskInfo = ({ task }: { task: ITask }) => {
       </div>
       <div className={styles.wrapper}>
         <p className={styles.subtitle}>Dead Line</p>
+        <p>{formatDayDate(task.deadline.toString())}</p>
       </div>
-      <div>
-        <p>Created May 28, 2020</p>
+      <div className={styles.created}>
+        <SvgHandler icon={EIconsSet.Calendar} />
+        <span>Created</span>
+        <span>{formatDayDate(task.createdAt.toString())}</span>
       </div>
-      {/* <div className={styles.head}>
-        
-        <div className={styles.block}>
-        </div>
-      </div>
-      <div className={styles.container}>
-        <p className={styles.subtitle}>Description</p>
-        <div className={styles.description}>{task.description}</div>
-        <p className={styles.subtitle}>Attachments (3)</p>
-      </div> */}
     </section>
   );
 };

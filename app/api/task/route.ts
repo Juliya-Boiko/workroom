@@ -25,7 +25,7 @@ export async function POST(request: NextRequest) {
       { $push: { assignee: savedTask.assignee } },
       { new: true, useFindAndModify: false }
     );
-    return NextResponse.json({ message: 'Task created' }, { status: 201 });
+    return NextResponse.json({ projectId: reqBody.projectId }, { status: 201 });
   } catch (error: any) {
     return NextResponse.json({ message: error.message }, { status: 500 });
   }

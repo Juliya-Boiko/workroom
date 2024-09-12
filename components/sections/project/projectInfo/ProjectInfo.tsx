@@ -2,26 +2,27 @@ import styles from './projectInfo.module.scss';
 import Image from 'next/image';
 import { EIconsSet, IProjectDetails } from '@/typings';
 import { formatDayDate, thumbSrc } from '@/utils';
-import { BadgePriopity, UploadAttach } from '@/components/ui';
+import { BadgePriopity, UploadAttach, Assignees } from '@/components/ui';
 import { SvgHandler } from '@/components/SvgHandler';
 import { ProjectInfoOptions } from './projectInfoOptions/ProjectInfoOptions';
 
 interface Props {
+  editable?: boolean;
   project: IProjectDetails;
 }
 
-export const ProjectInfo = ({ project }: Props) => {
+export const ProjectInfo = ({ project, editable }: Props) => {
   const imgSrc = thumbSrc(project.image);
-
   return (
     <section className={styles.projectInfo}>
       <div className={styles.edit}>
         <Image alt={project.name} src={imgSrc} width={48} height={48} />
-        <ProjectInfoOptions id={project._id} />
+        {editable && <ProjectInfoOptions id={project._id} />}
       </div>
+      {!editable && <p className={styles.title}>{project.name}</p>}
       {project.description && (
         <div className={styles.description}>
-          <p className={styles.title}>Description</p>
+          {editable && <p className={styles.title}>Description</p>}
           <p>{project.description}</p>
         </div>
       )}
@@ -39,7 +40,7 @@ export const ProjectInfo = ({ project }: Props) => {
       </div>
       <div className={styles.wrapper}>
         <p className={styles.subtitle}>Assignees</p>
-        <div>-</div>
+        <Assignees assignees={project.tasks.assignee} />
       </div>
       <div className={styles.created}>
         <SvgHandler icon={EIconsSet.Calendar} />

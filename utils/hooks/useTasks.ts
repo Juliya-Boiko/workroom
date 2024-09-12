@@ -19,8 +19,9 @@ export const useTasksMutation = () => {
 
   const { mutate: create, isPending: isCreating } = useMutation({
     mutationFn: createTask,
-    onSuccess: () => {
+    onSuccess: ({ projectId }: { projectId: string }) => {
       queryClient.invalidateQueries({ queryKey: [QUERY_KEYS.TASKS] });
+      queryClient.invalidateQueries({ queryKey: [QUERY_KEYS.PROJECT, projectId] });
     },
   });
 

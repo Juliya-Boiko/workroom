@@ -1,7 +1,8 @@
 import styles from './taskDetails.module.scss';
 import { ITask } from '@/typings';
 import { TaskDetailsOptions } from './taskDetailsOptions/TaskDetailsOptions';
-import { BadgeTask, UploadAttach } from '@/components/ui';
+import { TaskStatusDrop } from './taskStatusDrop/TaskStatusDrop';
+import { UploadAttach } from '@/components/ui';
 
 export const TaskDetails = ({ task }: { task: ITask }) => {
   return (
@@ -9,7 +10,7 @@ export const TaskDetails = ({ task }: { task: ITask }) => {
       <div className={styles.head}>
         <h5 className={styles.title}>TaskDetails</h5>
         <div className={styles.block}>
-          <BadgeTask label={task.status} />
+          <TaskStatusDrop id={task._id} status={task.status} />
           <TaskDetailsOptions id={task._id} projectId={task.projectId} />
         </div>
       </div>
