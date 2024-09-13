@@ -4,7 +4,7 @@ import { EIconsSet, IProjectDetails } from '@/typings';
 import { formatDayDate, defineImageSrc } from '@/utils';
 import { BadgePriopity, UploadAttach, Assignees } from '@/components/ui';
 import { SvgHandler } from '@/components/SvgHandler';
-import { ProjectInfoOptions } from './projectInfoOptions/ProjectInfoOptions';
+import { OptionsProjectInfo } from './optionsProjectInfo/OptionsProjectInfo';
 
 interface Props {
   editable?: boolean;
@@ -17,7 +17,7 @@ export const ProjectInfo = ({ project, editable }: Props) => {
     <section className={styles.projectInfo}>
       <div className={styles.edit}>
         <Image alt={project.name} src={imgSrc} width={48} height={48} />
-        {editable && <ProjectInfoOptions id={project._id} />}
+        {editable && <OptionsProjectInfo id={project._id} />}
       </div>
       {!editable && <p className={styles.title}>{project.name}</p>}
       {project.description && (

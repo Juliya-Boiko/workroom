@@ -4,7 +4,7 @@ import { useState } from 'react';
 import { UseFormRegister, FieldValues, Path } from 'react-hook-form';
 import { SvgHandler } from '@/components/SvgHandler';
 import { EIconsSet } from '@/typings';
-import { InputField } from '../InputField';
+import { InputField } from '../text/InputField';
 
 type Props<T extends FieldValues> = {
   label: string;

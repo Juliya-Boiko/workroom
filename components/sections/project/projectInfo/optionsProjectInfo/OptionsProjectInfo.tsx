@@ -5,7 +5,7 @@ import { Options, Confirm } from '@/components/ui';
 import { useProjectsMutation } from '@/services';
 import { ROUTES } from '@/utils';
 
-export const ProjectInfoOptions = ({ id }: { id: string }) => {
+export const OptionsProjectInfo = ({ id }: { id: string }) => {
   const [showConfirm, setShowConfirm] = useState(false);
   const { remove } = useProjectsMutation();
   const router = useRouter();
