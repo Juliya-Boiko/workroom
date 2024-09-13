@@ -13,9 +13,9 @@
 }
 
 %shadow-s {
-  box-shadow: 0px 6px 58px 0px rgba($grey-2-rgb,0.4);
-  -webkit-box-shadow: 0px 6px 58px 0px rgba($grey-2-rgb,0.4);
-  -moz-box-shadow: 0px 6px 58px 0px rgba($grey-2-rgb,0.4);
+  box-shadow: 0px 6px 58px rgba($grey-2-rgb, 0.1036);
+  -webkit-box-shadow: 0px 6px 58px rgba($grey-2-rgb, 0.1036);
+  -moz-box-shadow: 0px 6px 58px rgba($grey-2-rgb, 0.1036);
 }
 
 %shadow-xs {

@@ -1,9 +1,9 @@
 .button {
   @include squareSize(48px);
   @include flexContainer(row, center, center);
+  @extend %shadow-s;
   border-radius: 14px;
   transition: all 250ms ease-in-out;
-  @extend %shadow-xs;
 
   &:hover{
     color: $blue-1;
