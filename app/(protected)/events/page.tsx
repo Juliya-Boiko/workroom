@@ -1,4 +1,4 @@
-import { EventsPage } from '@/components/pages/events/EventsPage';
+import { EventsPage } from '@/components/containers/events/EventsPage';
 
 export default function Events() {
   return <EventsPage />;

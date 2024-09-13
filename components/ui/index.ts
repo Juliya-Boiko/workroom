@@ -26,3 +26,4 @@ export * from './tabs/TabsSlide';
 export * from './upload/attach/UploadAttach';
 export * from './options/Options';
 export * from './confirm/Confirm';
+export * from './logo/Logo';

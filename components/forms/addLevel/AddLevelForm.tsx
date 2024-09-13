@@ -28,7 +28,7 @@ export const AddLevelForm = ({ id, level, loading }: Props) => {
 
   const onSubmit = async (data: AddLevelFormData) => {
     if (id) {
-      updateLevel({ level: data.level, id });
+      updateLevel({ _id: id, level: data.level });
       setShowForm(false);
     }
   };

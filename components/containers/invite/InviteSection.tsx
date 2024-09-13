@@ -3,8 +3,8 @@ import Image from 'next/image';
 import imgSrc from '../../public/auth.png';
 import { decodeInvite } from '@/libs/jwt';
 import { IDynamicComponent } from '@/typings';
-import { Logo } from '../logo/Logo';
-import { InviteForm } from '../forms/invite/InviteForm';
+import { Logo } from '@/components/ui/logo/Logo';
+import { InviteForm } from '@/components/forms/invite/InviteForm';
 
 export const InviteSection = async ({ slug }: IDynamicComponent) => {
   const { companyId, email } = await decodeInvite(slug);

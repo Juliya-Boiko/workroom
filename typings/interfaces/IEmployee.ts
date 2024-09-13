@@ -11,3 +11,8 @@ export interface IEmployee extends IUserInfo {
   profession: string | null;
   tasks?: TaskCountsType;
 }
+
+export interface IUpdateEmployee {
+  _id: string;
+  level: ELevelEmployee;
+}

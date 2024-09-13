@@ -7,10 +7,9 @@ import { useRouter } from 'next/navigation';
 import { useMutation } from '@tanstack/react-query';
 import { registerUserAndCompany, SignUpFormData, ROUTES } from '@/utils';
 import { signStagesDataTypes, ESignStages, EIconsSet } from '@/typings';
-import { Logo } from '../logo/Logo';
-import { SignUpForm } from '../forms/signUp/SignUpForm';
-import { BtnPrimary, Preloader } from '../ui';
-import { SvgHandler } from '../SvgHandler';
+import { SignUpForm } from '../../forms/signUp/SignUpForm';
+import { BtnPrimary, Preloader, Logo } from '../../ui';
+import { SvgHandler } from '../../SvgHandler';
 
 export const SignUpSection = () => {
   const [activeStage, setActiveStages] = useState(ESignStages.EnterYourEmail);

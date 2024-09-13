@@ -6,3 +6,4 @@ export * from './sortTasksByStatus';
 export * from './defineEventStyles';
 export * from './uploadImage';
 export * from './defineImageSrc';
+export * from './handleError';

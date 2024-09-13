@@ -4,7 +4,7 @@ import Link from 'next/link';
 import { useState } from 'react';
 import { usePathname } from 'next/navigation';
 import { navRoutes } from '@/utils';
-import { Logo } from '../logo/Logo';
+import { Logo } from '../ui';
 import { SvgHandler } from '../SvgHandler';
 import { Logout } from '../Logout';
 import { EIconsSet } from '@/typings';

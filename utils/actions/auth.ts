@@ -1,7 +1,6 @@
-/* eslint-disable @typescript-eslint/no-explicit-any */
 import toast from 'react-hot-toast';
 import { axiosInstance } from '@/libs/axios';
-import { SignUpFormData, SignInFormData, InviteFormData } from '@/utils';
+import { handleError, SignUpFormData, SignInFormData, InviteFormData } from '@/utils';
 
 export const registerUserAndCompany = async (data: SignUpFormData) => {
   const filteredMembers = data.members.filter((el) => el);
@@ -12,9 +11,8 @@ export const registerUserAndCompany = async (data: SignUpFormData) => {
   try {
     const response = await axiosInstance.post('/auth/register', user);
     return response.status === 201;
-  } catch (error: any) {
-    console.log(error);
-    toast.error(error.response.data.message);
+  } catch (error: unknown) {
+    handleError(error, 'registerUserAndCompany');
   }
 };
 
@@ -22,9 +20,8 @@ export const loginUser = async (data: SignInFormData) => {
   try {
     const response = await axiosInstance.post('/auth/login', data);
     return response.status === 200;
-  } catch (error: any) {
-    console.log(error);
-    toast.error(error.response.data.message);
+  } catch (error: unknown) {
+    handleError(error, 'loginUser');
   }
 };
 
@@ -36,8 +33,8 @@ export const registerUser = async (data: InviteType) => {
   try {
     const response = await axiosInstance.post('/auth/register', data);
     return response.status === 201;
-  } catch (error: any) {
-    toast.error(error.response.data.error);
+  } catch (error: unknown) {
+    handleError(error, 'registerUser');
   }
 };
 
@@ -51,8 +48,7 @@ export const inviteUsers = async (data: string[]) => {
       toast.success(response.data.message);
     }
     return response.status === 200;
-  } catch (error: any) {
-    console.log(error);
-    toast.error(error.response.data.message);
+  } catch (error: unknown) {
+    handleError(error, 'inviteUsers');
   }
 };

@@ -4,9 +4,8 @@ import Link from 'next/link';
 import { useState } from 'react';
 import { navRoutes } from '@/utils';
 import { SvgHandler } from '@/components/SvgHandler';
-import { BtnIcon, Overlay } from '@/components/ui';
+import { BtnIcon, Overlay, Logo } from '@/components/ui';
 import { EIconsSet } from '@/typings';
-import { Logo } from '@/components/logo/Logo';
 import { Company } from '../company/Company';
 
 export const Menu = () => {

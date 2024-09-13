@@ -1,4 +1,4 @@
-import { TaskPage } from '@/components/pages/task/TaskPage';
+import { TaskPage } from '@/components/containers/task/TaskPage';
 import { IDynamicPage } from '@/typings';
 
 export default function Task({ params }: IDynamicPage) {
