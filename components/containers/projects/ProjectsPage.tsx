@@ -23,7 +23,7 @@ export const ProjectsPage = () => {
 
   const { data: projects, isLoading: isLoadingProjects } = useProjects();
   const { data: tasks, isLoading: isLoadingTasks } = useTasks({
-    projectId: active?._id,
+    projectId: active?._id || '',
     enabled: !!active,
   });
 
