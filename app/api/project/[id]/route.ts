@@ -34,22 +34,24 @@ export async function GET(request: NextRequest, { params }: IDynamicRoute) {
           select: 'name avatar',
         },
       })
-      .lean();
-    const allTasks = project.tasks;
-    const activeTasks = allTasks.filter((task) => task.status !== ETaskStatus.DONE);
-    const users = allTasks.map((task) => task.assignee);
-    const assignee = users.filter(
-      (user, index, self) => index === self.findIndex((u) => u._id === user._id)
-    );
-    const data = {
-      ...project,
-      tasks: {
-        all: allTasks.length,
-        active: activeTasks.length,
-        assignee,
-      },
-    };
-    return NextResponse.json(data, { status: 200 });
+      .lean<IResponse>();
+    if (project) {
+      const allTasks = project.tasks;
+      const activeTasks = allTasks.filter((task) => task.status !== ETaskStatus.DONE);
+      const users = allTasks.map((task) => task.assignee);
+      const assignee = users.filter(
+        (user, index, self) => index === self.findIndex((u) => u._id === user._id)
+      );
+      const data = {
+        ...project,
+        tasks: {
+          all: allTasks.length,
+          active: activeTasks.length,
+          assignee,
+        },
+      };
+      return NextResponse.json(data, { status: 200 });
+    }
   } catch (error: any) {
     console.log(error);
     return NextResponse.json({ message: error.message }, { status: 500 });
