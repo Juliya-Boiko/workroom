@@ -3,6 +3,7 @@ import {
   getUserInfo,
   loginUser,
   registerUserAndCompany,
+  registerUser,
   handleError,
   QUERY_KEYS,
   ROUTES,
@@ -40,5 +41,22 @@ export const useUserMutations = () => {
     },
   });
 
-  return { registerOwner, isSuccessRegisterOwner, isRegistering, login, isSuccessLogin };
+  const { mutate: registerMember } = useMutation({
+    mutationFn: registerUser,
+    onError: (error: unknown) => {
+      handleError(error, `An error occurred in registerMember`);
+    },
+    onSuccess: () => {
+      router.push(ROUTES.dashboard);
+    },
+  });
+
+  return {
+    registerOwner,
+    isSuccessRegisterOwner,
+    isRegistering,
+    login,
+    isSuccessLogin,
+    registerMember,
+  };
 };

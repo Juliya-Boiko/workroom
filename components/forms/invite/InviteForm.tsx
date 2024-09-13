@@ -2,10 +2,10 @@
 import styles from '../common.module.scss';
 import inviteStyles from './invite.module.scss';
 import { useState } from 'react';
-import { useRouter } from 'next/navigation';
 import { useForm, Controller } from 'react-hook-form';
+import { useUserMutations } from '@/services';
 import { yupResolver } from '@hookform/resolvers/yup';
-import { inviteSchema, InviteFormData, registerUser, ROUTES } from '@/utils';
+import { inviteSchema, InviteFormData } from '@/utils';
 import { InputField, SelectDrop, BtnPrimary } from '@/components/ui';
 import { EIconsSet, EUserPosition, invitePositionDataTypes } from '@/typings';
 
@@ -16,7 +16,7 @@ interface Props {
 
 export const InviteForm = ({ companyId, email }: Props) => {
   const [typePassword, setTypePassword] = useState('password');
-  const router = useRouter();
+  const { registerMember } = useUserMutations();
   const defaultValues = {
     email,
     password: '',
@@ -49,8 +49,7 @@ export const InviteForm = ({ companyId, email }: Props) => {
   };
 
   const onSubmit = async (data: InviteFormData) => {
-    const resp = await registerUser({ ...data, companyId });
-    if (resp) router.push(ROUTES.dashboard);
+    registerMember({ ...data, companyId });
   };
 
   return (

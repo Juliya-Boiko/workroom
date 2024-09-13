@@ -22,12 +22,8 @@ interface InviteType extends InviteFormData {
 }
 
 export const registerUser = async (data: InviteType) => {
-  try {
-    const response = await axiosInstance.post('/auth/register', data);
-    return response.status === 201;
-  } catch (error: unknown) {
-    handleError(error, 'registerUser');
-  }
+  const response = await axiosInstance.post('/auth/register', data);
+  return response.status === 201;
 };
 
 export const inviteUsers = async (data: string[]) => {
