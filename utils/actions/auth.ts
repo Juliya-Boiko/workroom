@@ -13,12 +13,8 @@ export const registerUserAndCompany = async (data: SignUpFormData) => {
 };
 
 export const loginUser = async (data: SignInFormData) => {
-  try {
-    const response = await axiosInstance.post('/auth/login', data);
-    return response.status === 200;
-  } catch (error: unknown) {
-    handleError(error, 'loginUser');
-  }
+  const response = await axiosInstance.post('/auth/login', data);
+  return response.status === 200;
 };
 
 interface InviteType extends InviteFormData {

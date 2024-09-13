@@ -1,5 +1,13 @@
 import { useQuery, useMutation } from '@tanstack/react-query';
-import { getUserInfo, registerUserAndCompany, handleError, QUERY_KEYS } from '@/utils';
+import {
+  getUserInfo,
+  loginUser,
+  registerUserAndCompany,
+  handleError,
+  QUERY_KEYS,
+  ROUTES,
+} from '@/utils';
+import { useRouter } from 'next/navigation';
 
 export const useUser = () => {
   return useQuery({
@@ -9,6 +17,8 @@ export const useUser = () => {
 };
 
 export const useUserMutations = () => {
+  const router = useRouter();
+
   const {
     mutate: registerOwner,
     isSuccess: isSuccessRegisterOwner,
@@ -20,5 +30,15 @@ export const useUserMutations = () => {
     },
   });
 
-  return { registerOwner, isSuccessRegisterOwner, isRegistering };
+  const { mutate: login, isSuccess: isSuccessLogin } = useMutation({
+    mutationFn: loginUser,
+    onError: (error: unknown) => {
+      handleError(error, `An error occurred in loginUser`);
+    },
+    onSuccess: () => {
+      router.push(ROUTES.dashboard);
+    },
+  });
+
+  return { registerOwner, isSuccessRegisterOwner, isRegistering, login, isSuccessLogin };
 };

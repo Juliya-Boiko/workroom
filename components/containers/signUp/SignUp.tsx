@@ -13,6 +13,7 @@ import { SvgHandler } from '../../SvgHandler';
 
 export const SignUpSection = () => {
   const [activeStage, setActiveStages] = useState(ESignStages.EnterYourEmail);
+  const { registerOwner, isSuccessRegisterOwner, isRegistering } = useUserMutations();
 
   const handleNext = () => {
     const currentStage = signStagesDataTypes.findIndex((el) => el === activeStage);
@@ -23,8 +24,6 @@ export const SignUpSection = () => {
     const currentStage = signStagesDataTypes.findIndex((el) => el === activeStage);
     setActiveStages(signStagesDataTypes[currentStage - 1]);
   };
-
-  const { registerOwner, isSuccessRegisterOwner, isRegistering } = useUserMutations();
 
   const onSubmit = async (data: SignUpFormData) => {
     registerOwner(data);
