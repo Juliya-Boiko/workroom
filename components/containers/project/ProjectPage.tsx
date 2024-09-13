@@ -17,7 +17,7 @@ export const ProjectPage = ({ slug }: IDynamicComponent) => {
     enabled: true,
   });
   const { data: tasks, isLoading: isLoadingTasks } = useTasks({
-    projectId: project?._id,
+    projectId: project?._id || '',
     enabled: !!project?._id,
   });
   return (

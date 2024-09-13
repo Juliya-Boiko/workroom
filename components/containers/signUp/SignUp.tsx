@@ -1,7 +1,7 @@
 'use client';
 import styles from './signUp.module.scss';
 import Image from 'next/image';
-import imgSrc from '../../public/placeholder-1.png';
+import imgSrc from '../../../public/placeholder-1.png';
 import { useState } from 'react';
 import { useRouter } from 'next/navigation';
 import { useMutation } from '@tanstack/react-query';
