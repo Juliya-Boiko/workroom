@@ -3,6 +3,12 @@
   gap: 16px;
 
   .title {
-    font-size: 28px;
+    font-size: 24px;
+  }
+
+  @include onTablet {
+    .title {
+      font-size: 28px;
+    }
   }
 }

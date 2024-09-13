@@ -24,7 +24,7 @@ export const ProjectsList = ({ loading, projects, placeholder }: Props) => {
       {projects && !projects.length && (
         <li className={styles.placeholder}>
           <p>{placeholder}</p>
-          <Image src={imgSrc} alt="Projects" className={styles.image} />
+          <Image src={imgSrc} priority alt="Projects" className={styles.image} />
         </li>
       )}
       {projects &&

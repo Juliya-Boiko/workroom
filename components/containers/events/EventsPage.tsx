@@ -21,7 +21,9 @@ export const EventsPage = () => {
           content={<AddEventForm />}
         />
       </Topping>
-      <EventsGrid />
+      <div className={styles.container}>
+        <EventsGrid />
+      </div>
     </div>
   );
 };

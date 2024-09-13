@@ -1,15 +1,27 @@
 'use client';
 import styles from './menu.module.scss';
 import Link from 'next/link';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
+import { usePathname } from 'next/navigation';
 import { navRoutes } from '@/utils';
 import { SvgHandler } from '@/components/SvgHandler';
 import { BtnIcon, Overlay, Logo } from '@/components/ui';
 import { EIconsSet } from '@/typings';
-import { Company } from '../company/Company';
 
 export const Menu = () => {
   const [openMenu, setOpenMenu] = useState(false);
+  const pathname = usePathname();
+
+  useEffect(() => {
+    const body = document.body;
+    if (openMenu) {
+      body.style.height = '100vh';
+      body.style.overflowY = 'hidden';
+    } else {
+      body.style.height = '';
+      body.style.overflowY = '';
+    }
+  }, [openMenu]);
 
   return (
     <div className={styles.menu}>
@@ -26,21 +38,18 @@ export const Menu = () => {
               </button>
             </div>
             <nav className={styles.nav}>
-              {navRoutes.map((route) => (
+              {navRoutes.map(({ title, path, icon }) => (
                 <Link
-                  key={route.title}
-                  href={route.path}
-                  className={styles.link}
+                  key={title}
+                  href={path}
+                  className={`${styles.link} ${pathname === path ? styles.active : ''}`}
                   onClick={() => setOpenMenu(false)}
                 >
-                  <SvgHandler icon={route.icon} />
-                  <span>{route.title}</span>
+                  <SvgHandler icon={icon} />
+                  <span>{title}</span>
                 </Link>
               ))}
             </nav>
-            <div className={styles.company}>
-              <Company />
-            </div>
           </div>
         </Overlay>
       )}

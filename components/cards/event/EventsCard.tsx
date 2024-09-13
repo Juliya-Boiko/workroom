@@ -15,7 +15,7 @@ export const EventCard = ({ loading, event, expanded }: Props) => {
   const category = defineEventStyles(event.category);
 
   return (
-    <li className={styles.eventCard}>
+    <div className={styles.eventCard}>
       <div
         className={styles.line}
         style={{ backgroundColor: loading ? '#E6EDF5' : category.color }}
@@ -24,12 +24,12 @@ export const EventCard = ({ loading, event, expanded }: Props) => {
         <LoaderSkeleton height={32} />
       ) : (
         <div className={styles.wrapper}>
-          <p className={styles.title}>
+          <div className={styles.title}>
             <SvgHandler icon={category.icon} />
-            <span title={event.name} className={styles.name}>
+            <div title={event.name} className={styles.name}>
               {event.name}
-            </span>
-          </p>
+            </div>
+          </div>
           <BadgePriopity label={event.priority} />
         </div>
       )}
@@ -48,6 +48,6 @@ export const EventCard = ({ loading, event, expanded }: Props) => {
           <BadgeTimer time={event.time} date={event.date} />
         </div>
       )}
-    </li>
+    </div>
   );
 };

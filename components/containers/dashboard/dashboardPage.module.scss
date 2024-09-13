@@ -2,7 +2,7 @@
   padding: 24px 12px;
 
   .container {
-    padding: 24px 0;
+    padding-top: 24px;
     display: flex;
     flex-direction: column;
     gap: 48px;
@@ -12,7 +12,8 @@
     display: flex;
     align-items: center;
     gap: 8px;
-    padding: 8px;
+    height: 42px;
+    padding: 0 8px;
     border-radius: 14px;
     background-color: $grey-6;
   }
@@ -20,16 +21,26 @@
   @include onTablet {
     padding: 48px;
 
+    .container {
+      padding-top: 48px;
+    }
+
     .today {
-      padding: 12px;
+      height: 48px;
+      padding: 0 12px;
     }
   }
 
   @include onLaptop {
-    padding: 48px 0 0 32px;
+    padding: 32px 0 0 32px;
 
     .container {
-      padding: 24px 0 0 0;
+      padding-top: 32px;
+    }
+  }
+
+  @include onDesktop {
+    .container {
       display: grid;
       grid-template-columns: 2fr 1fr;
       grid-template-rows: repeat(2, 1fr);

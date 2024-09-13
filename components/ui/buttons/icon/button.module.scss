@@ -1,5 +1,5 @@
 .button {
-  @include squareSize(48px);
+  @include squareSize(42px);
   @include flexContainer(row, center, center);
   @extend %shadow-s;
   border-radius: 14px;
@@ -18,6 +18,10 @@
     color: $grey-1;
     box-shadow: none;
     outline: none;
+  }
+
+  @include onTablet {
+    @include squareSize(48px);
   }
 }
 

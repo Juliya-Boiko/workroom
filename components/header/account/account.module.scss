@@ -4,7 +4,7 @@
 
   .btnOpen {
     @extend %shadow-s;
-    height: 48px;
+    height: 42px;
     display: flex;
     align-items: center;
     font-weight: 700;
@@ -13,7 +13,6 @@
     border-radius: 14px;
     padding: 0 12px;
     transition: all 250ms ease-in-out;
-
     &:hover {
       color: $blue-1;
     }
@@ -22,22 +21,13 @@
   .name {
     display: none;
     text-transform: capitalize;
-    @include onTablet {
-      display: inline-block;
-    }
-  }
-
-  .active {
-    @include onTablet {
-      border-radius: 14px 14px 0 0;
-    }
   }
 
   .list {
     @extend %shadow-s;
     width: 120px;
     position: absolute;
-    top: 56px;
+    top: 50px;
     right: 0;
     z-index: 2;
     background-color: $white;
@@ -46,15 +36,10 @@
     display: flex;
     flex-direction: column;
     gap: 8px;
-    @include onTablet {
-      width: 100%;
-      top: 48px;
-      border-radius: 0 0 14px 14px;
-    }
   }
 
   .item {
-    padding: 12px 8px;
+    padding: 8px;
     transition: all 250ms ease-in-out;
     border-radius: 10px;
     cursor: pointer;
@@ -69,5 +54,22 @@
     display: flex;
     align-items: center;
     gap: 8px;
+  }
+
+  @include onTablet {
+    .btnOpen {
+      height: 48px;
+    }
+    .name {
+      display: inline-block;
+    }
+    .active {
+      border-radius: 14px 14px 0 0;
+    }
+    .list {
+      width: 100%;
+      top: 48px;
+      border-radius: 0 0 14px 14px;
+    }
   }
 }

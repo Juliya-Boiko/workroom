@@ -20,8 +20,25 @@
     opacity: 0.5;
   }
 
+  .item {
+    padding: 24px;
+    border-radius: 24px;
+    background-color: $white;
+  }
+
   @include onLaptop {
     flex-grow: 1;
     gap: 0;
+
+    .item {
+      padding: 12px 0;
+    }
+  }
+
+  @include onDesktop {
+    justify-content: space-between;
+    .item {
+      padding: 0;
+    }
   }
 }

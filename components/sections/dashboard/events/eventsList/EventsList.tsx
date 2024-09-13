@@ -15,7 +15,13 @@ export const EventsList = ({ loading, events }: Props) => {
     <ul className={styles.eventsList}>
       {loading &&
         eventSectionSkeleton.map((el) => <EventCard loading={loading} key={el._id} event={el} />)}
-      {events && events.length > 0 && events.map((el) => <EventCard key={el._id} event={el} />)}
+      {events &&
+        events.length > 0 &&
+        events.map((el) => (
+          <li key={el._id} className={styles.item}>
+            <EventCard event={el} />
+          </li>
+        ))}
       {events && !events.length && (
         <li className={styles.placeholder}>
           <p>You dont have events yet</p>

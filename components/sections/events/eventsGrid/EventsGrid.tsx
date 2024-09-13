@@ -25,7 +25,9 @@ export const EventsGrid = () => {
       {events && events.length && (
         <ul className={styles.list}>
           {events.map((el) => (
-            <EventCard key={el._id} event={el} expanded />
+            <li key={el._id} className={styles.item}>
+              <EventCard event={el} expanded />
+            </li>
           ))}
         </ul>
       )}

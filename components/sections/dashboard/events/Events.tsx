@@ -15,7 +15,7 @@ export const EventsSection = () => {
   return (
     <section className={styles.events}>
       <div className={styles.head}>
-        <h2 className={styles.title}>Events</h2>
+        <h2 className={styles.title}>Nearest Events</h2>
         <BtnSecondary disabled={isLoading} onClick={() => router.push(ROUTES.events)}>
           <span>{events?.length ? 'View all' : 'Add event'}</span>
           <SvgHandler icon={EIconsSet.ChevronRight} />
