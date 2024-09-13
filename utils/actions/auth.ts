@@ -8,12 +8,8 @@ export const registerUserAndCompany = async (data: SignUpFormData) => {
     ...data,
     members: filteredMembers,
   };
-  try {
-    const response = await axiosInstance.post('/auth/register', user);
-    return response.status === 201;
-  } catch (error: unknown) {
-    handleError(error, 'registerUserAndCompany');
-  }
+  const response = await axiosInstance.post('/auth/register', user);
+  return response;
 };
 
 export const loginUser = async (data: SignInFormData) => {

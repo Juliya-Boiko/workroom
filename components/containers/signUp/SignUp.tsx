@@ -1,19 +1,18 @@
 'use client';
 import styles from './signUp.module.scss';
+import Link from 'next/link';
 import Image from 'next/image';
 import imgSrc from '../../../public/placeholder-1.png';
 import { useState } from 'react';
-import { useRouter } from 'next/navigation';
-import { useMutation } from '@tanstack/react-query';
-import { registerUserAndCompany, SignUpFormData, ROUTES } from '@/utils';
+import { useUserMutations } from '@/services';
+import { SignUpFormData, ROUTES } from '@/utils';
 import { signStagesDataTypes, ESignStages, EIconsSet } from '@/typings';
 import { SignUpForm } from '../../forms/signUp/SignUpForm';
-import { BtnPrimary, Preloader, Logo } from '../../ui';
+import { Preloader, Logo } from '../../ui';
 import { SvgHandler } from '../../SvgHandler';
 
 export const SignUpSection = () => {
   const [activeStage, setActiveStages] = useState(ESignStages.EnterYourEmail);
-  const router = useRouter();
 
   const handleNext = () => {
     const currentStage = signStagesDataTypes.findIndex((el) => el === activeStage);
@@ -25,37 +24,15 @@ export const SignUpSection = () => {
     setActiveStages(signStagesDataTypes[currentStage - 1]);
   };
 
-  const { mutate, isSuccess, isPending } = useMutation({
-    mutationFn: registerUserAndCompany,
-  });
+  const { registerOwner, isSuccessRegisterOwner, isRegistering } = useUserMutations();
 
   const onSubmit = async (data: SignUpFormData) => {
-    mutate(data);
+    registerOwner(data);
   };
 
   return (
     <>
-      {isSuccess || isPending ? (
-        <div className={styles.start}>
-          {isPending ? (
-            <Preloader />
-          ) : (
-            <>
-              <Image
-                src={imgSrc}
-                priority
-                alt="You are successfully registered!"
-                className={styles.image}
-              />
-              <h3 className={styles.title}>You are successfully registered!</h3>
-              <BtnPrimary onClick={() => router.push(ROUTES.dashboard)}>
-                <span>Let&apos;s Start</span>
-                <SvgHandler icon={EIconsSet.ArrowRight} />
-              </BtnPrimary>
-            </>
-          )}
-        </div>
-      ) : (
+      {!isRegistering && !isSuccessRegisterOwner && (
         <section className={styles.section}>
           <div className={styles.stages}>
             <div className={styles.heading}>
@@ -85,6 +62,26 @@ export const SignUpSection = () => {
             />
           </div>
         </section>
+      )}
+      {isRegistering && (
+        <div className={styles.start}>
+          <Preloader />
+        </div>
+      )}
+      {isSuccessRegisterOwner && (
+        <div className={styles.start}>
+          <Image
+            src={imgSrc}
+            priority
+            alt="You are successfully registered!"
+            className={styles.image}
+          />
+          <h3 className={styles.title}>You are successfully registered!</h3>
+          <Link href={ROUTES.dashboard} className={styles.link}>
+            <span>Let&apos;s Start</span>
+            <SvgHandler icon={EIconsSet.ArrowRight} />
+          </Link>
+        </div>
       )}
     </>
   );

@@ -66,3 +66,34 @@
     }
   }
 }
+
+%primary-action {
+  @include flexContainer(row, center, center);
+  background-color: $blue-1;
+  color: $white;
+  border-radius: 14px;
+  font-weight: bold;
+  gap: 8px;
+  height: 48px;
+  padding: 0 24px;
+  transition: all 250ms ease-in-out;
+  box-shadow: 0px 6px 6px 0px rgba($blue-1-rgb, 0.26);
+  -webkit-box-shadow: 0px 6px 6px 0px rgba($blue-1-rgb,0.26);
+  -moz-box-shadow: 0px 6px 6px 0px rgba($blue-1-rgb,0.26);
+
+  &:hover {
+    background-color: $blue-2;
+    box-shadow: 0px 12px 12px 0px rgba($blue-1-rgb, 0.42);
+    -webkit-box-shadow: 0px 12px 12px 0px rgba($blue-1-rgb,0.42);
+    -moz-box-shadow: 0px 12px 12px 0px rgba($blue-1-rgb,0.42);
+  }
+
+  &:active {
+    background-color: $blue-3;
+  }
+
+  &:disabled {
+    background-color: $grey-1;
+    box-shadow: none;
+  }
+}

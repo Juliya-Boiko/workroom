@@ -3,7 +3,7 @@ import { IUserInfo, IEmployee } from '@/typings';
 import { ProfileFormData, uploadImage } from '@/utils';
 
 export const getUserInfo = async (): Promise<IUserInfo> => {
-  const response = await axiosInstance.get('/user/info');
+  const response = await axiosInstance.get('/user');
   return response.data;
 };
 

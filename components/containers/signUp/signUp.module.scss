@@ -116,4 +116,8 @@
     font-weight: 700;
     font-size: 22px;
   }
+
+  .link {
+    @extend %primary-action;
+  }
 }
