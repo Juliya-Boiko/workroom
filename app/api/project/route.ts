@@ -47,7 +47,7 @@ export async function GET(request: NextRequest) {
 
     const projectsWithTasks: IResponse[] = await Project.find({ companyId })
       .sort({ createdAt: 'desc' })
-      .select('deadline name priority createdAt image')
+      .select('deadline description name priority createdAt image')
       .limit(Number(take))
       .populate({
         path: 'tasks',

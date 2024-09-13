@@ -5,13 +5,13 @@ import { useProject, useTasks } from '@/services';
 import { Topping } from '@/components/topping/Topping';
 import { Modal, BtnPrimary, Preloader } from '@/components/ui';
 import { AddTaskForm } from '@/components/forms/addTask/AddTaskForm';
-import { EIconsSet, EView, IDynamicComponent } from '@/typings';
+import { EIconsSet, EViewTasks, IDynamicComponent } from '@/typings';
 import { SvgHandler } from '@/components/SvgHandler';
 import { ProjectInfo } from '@/components/sections/project/projectInfo/ProjectInfo';
 import { Tasks } from '@/components/sections/tasks/Tasks';
 
 export const ProjectPage = ({ slug }: IDynamicComponent) => {
-  const [view, setView] = useState(EView.LIST);
+  const [view, setView] = useState(EViewTasks.LIST);
   const { data: project, isLoading } = useProject({
     projectId: slug,
     enabled: true,
@@ -47,7 +47,7 @@ export const ProjectPage = ({ slug }: IDynamicComponent) => {
             project={!!project._id}
             tasks={tasks || []}
             loading={isLoadingTasks}
-            setView={(v: EView) => setView(v)}
+            setView={(v: EViewTasks) => setView(v)}
           />
         </div>
       )}

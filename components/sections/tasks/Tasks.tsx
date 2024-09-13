@@ -2,17 +2,17 @@ import styles from './tasks.module.scss';
 import imgSrc from '../../../public/tasks-placeholder.png';
 import Image from 'next/image';
 import { sortTasksByStatus } from '@/utils';
-import { EView, ITask } from '@/typings';
+import { EViewTasks, ITask } from '@/typings';
 import { TasksActions } from './tasksActions/TasksActions';
 import { TasksList } from './tasksList/TasksList';
 import { TasksColumns } from './tasksColumns/TasksColumns';
 
 interface Props {
-  view: EView;
+  view: EViewTasks;
   project: boolean;
   tasks: ITask[];
   loading: boolean;
-  setView: (v: EView) => void;
+  setView: (v: EViewTasks) => void;
 }
 
 export const Tasks = ({ project, tasks, view, loading, setView }: Props) => {
@@ -43,7 +43,7 @@ export const Tasks = ({ project, tasks, view, loading, setView }: Props) => {
             <TasksList loading={loading} tasks={sortedTasks.backlog} />
           </div>
         )}
-        {tasks.length > 0 && view === EView.LIST && (
+        {tasks.length > 0 && view === EViewTasks.LIST && (
           <div className={styles.wrapper}>
             <div className={styles.banner}>Active Tasks</div>
             <TasksList loading={loading} tasks={sortedTasks.active} />
@@ -51,7 +51,7 @@ export const Tasks = ({ project, tasks, view, loading, setView }: Props) => {
             <TasksList loading={loading} tasks={sortedTasks.backlog} />
           </div>
         )}
-        {tasks.length > 0 && view === EView.COLUMNS && (
+        {tasks.length > 0 && view === EViewTasks.COLUMNS && (
           <TasksColumns loading={loading} tasks={tasks} />
         )}
       </div>

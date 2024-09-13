@@ -2,7 +2,6 @@
 import styles from '../common.module.scss';
 import { useForm, Controller } from 'react-hook-form';
 import { useModalContext } from '@/components/providers/ModalProvider';
-import { useRouter } from 'next/navigation';
 import { useProjectsMutation } from '@/services';
 import { yupResolver } from '@hookform/resolvers/yup';
 import { priorityDataTypes } from '@/typings';
@@ -10,7 +9,6 @@ import {
   getTomorrowDate,
   addProjectSchema,
   AddProjectFormData,
-  ROUTES,
   projectThumbsDataTypes,
 } from '@/utils';
 import {
@@ -33,7 +31,6 @@ const defaultValues = {
 };
 
 export const AddProjectForm = () => {
-  const router = useRouter();
   const { closeModal } = useModalContext();
   const { create, isCreating } = useProjectsMutation();
   const {
@@ -52,10 +49,8 @@ export const AddProjectForm = () => {
 
   const onSubmit = async (values: AddProjectFormData) => {
     create(values, {
-      onSuccess: (id) => {
-        console.log(id);
+      onSuccess: () => {
         closeModal();
-        router.push(`${ROUTES.project}/${id}`);
       },
     });
   };

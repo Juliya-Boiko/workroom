@@ -11,6 +11,7 @@ export interface IProject {
 }
 
 export interface IProjectInfo extends IProject {
+  description: string;
   tasks: {
     active: number;
     all: number;
@@ -19,6 +20,5 @@ export interface IProjectInfo extends IProject {
 }
 
 export interface IProjectDetails extends IProjectInfo {
-  description: string;
   start: string;
 }

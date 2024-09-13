@@ -9,9 +9,10 @@ import { BadgePriopity, Assignees } from '@/components/ui';
 interface Props {
   loading?: boolean;
   project: IProjectInfo;
+  expanded?: boolean;
 }
 
-export const ProjectCard = ({ loading, project }: Props) => {
+export const ProjectCard = ({ loading, project, expanded }: Props) => {
   const imgSrc = defineImageSrc(project.image);
 
   return (
@@ -24,9 +25,7 @@ export const ProjectCard = ({ loading, project }: Props) => {
             <Image src={imgSrc} alt="Thumb" width={48} height={48} className={styles.image} />
             <div className={styles.block}>
               <p className={styles.deadline}>Deadline: {formatDeadlineDate(project.deadline)}</p>
-              <p className={styles.title}>
-                <span className={styles.wrap}>{project.name}</span>
-              </p>
+              <p className={styles.title}>{project.name}</p>
             </div>
           </div>
         )}
@@ -34,15 +33,20 @@ export const ProjectCard = ({ loading, project }: Props) => {
         {loading ? (
           <LoaderSkeleton height={24} />
         ) : (
-          <div className={styles.info}>
-            <div className={styles.date}>
-              <SvgHandler icon={EIconsSet.Calendar} />
-              <p>
-                <span className={styles.created}>Created</span> {formatDayDate(project.createdAt)}
-              </p>
+          <>
+            <div className={styles.info}>
+              <div className={styles.date}>
+                <SvgHandler icon={EIconsSet.Calendar} />
+                <p>
+                  <span className={styles.created}>Created</span> {formatDayDate(project.createdAt)}
+                </p>
+              </div>
+              <BadgePriopity label={project.priority} />
             </div>
-            <BadgePriopity label={project.priority} />
-          </div>
+            {expanded && (
+              <div className={styles.description}>Description: {project.description}</div>
+            )}
+          </>
         )}
       </div>
 

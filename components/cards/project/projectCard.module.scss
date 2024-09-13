@@ -1,5 +1,6 @@
 .projectCard {
   @extend %shadow-xs;
+  font-size: 12px;
   border-radius: 24px;
   background-color: $white;
   @include onTablet {
@@ -9,7 +10,7 @@
   .main {
     display: flex;
     flex-direction: column;
-    gap: 24px;
+    gap: 12px;
     padding: 24px;
     border-bottom: 1px solid $grey-9;
     @include onTablet {
@@ -26,29 +27,27 @@
   }
 
   .block {
-    line-height: 1.2;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
   }
 
   .deadline {
-    font-size: 14px;
     color: $grey-10;
+    margin-bottom: 8px;
   }
 
   .title {
     text-transform: capitalize;
     font-weight: 700;
-    font-size: 18px;
+    font-size: 16px;
     display: -webkit-box;
-    line-clamp: 2;
-    -webkit-line-clamp: 2;
+    line-clamp: 1;
+    -webkit-line-clamp: 1;
     -webkit-box-orient: vertical;
     overflow: hidden;
-    &::first-letter {
-      text-transform: capitalize;
-    }
+    word-break: break-all;
+    text-transform: capitalize;
   }
 
   .wrap {
@@ -59,7 +58,6 @@
     @include flexContainer(row, center, space-between);
     color: $grey-3;
     font-weight: 500;
-    font-size: 14px;
   }
 
   .date {
@@ -75,10 +73,16 @@
     }
   }
 
+  .description {
+    padding-top: 24px;
+    color: $grey-3;
+    line-height: 1.2;
+  }
+
   .details {
     display: flex;
     flex-direction: column;
-    gap: 24px;
+    gap: 12px;
     padding: 24px;
     @include onTablet {
       width: 50%;
@@ -87,7 +91,6 @@
   }
 
   .top {
-    line-height: 1.5;
     text-align: center;
     font-weight: 700;
     @include onTablet {
@@ -108,7 +111,6 @@
   }
 
   .subtitle {
-    font-size: 14px;
     color: $grey-10;
     margin-bottom: 4px;
   }

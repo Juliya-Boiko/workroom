@@ -1,22 +1,22 @@
 import { EIconsSet } from './EIconsSet';
 
-export enum EView {
+export enum EViewTasks {
   LIST = 'List',
   COLUMNS = 'Columns',
   TIMELINE = 'Timeline',
 }
 
-export const viewDataTypes = [
+export const tasksViewDataTypes = [
   {
-    value: EView.LIST,
+    value: EViewTasks.LIST,
     icon: EIconsSet.List,
   },
   {
-    value: EView.COLUMNS,
+    value: EViewTasks.COLUMNS,
     icon: EIconsSet.Columns,
   },
   {
-    value: EView.TIMELINE,
+    value: EViewTasks.TIMELINE,
     icon: EIconsSet.Timeline,
   },
 ];
@@ -27,3 +27,14 @@ export enum EViewEmployees {
 }
 
 export const viewEmployeesDataTypes = Object.values(EViewEmployees);
+
+export const projectsViewDataTypes = [
+  {
+    value: EViewTasks.LIST,
+    icon: EIconsSet.List,
+  },
+  {
+    value: EViewTasks.TIMELINE,
+    icon: EIconsSet.Timeline,
+  },
+];

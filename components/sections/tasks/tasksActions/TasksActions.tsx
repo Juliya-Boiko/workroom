@@ -1,12 +1,12 @@
 import styles from './tasksActions.module.scss';
 import { BtnIcon } from '@/components/ui';
 import { SvgHandler } from '@/components/SvgHandler';
-import { EView, viewDataTypes } from '@/typings';
+import { EViewTasks, tasksViewDataTypes } from '@/typings';
 import { TasksFilter } from '../tasksFilter/TasksFilter';
 
 interface Props {
-  view: EView;
-  setView: (v: EView) => void;
+  view: EViewTasks;
+  setView: (v: EViewTasks) => void;
 }
 
 export const TasksActions = ({ view, setView }: Props) => {
@@ -15,7 +15,7 @@ export const TasksActions = ({ view, setView }: Props) => {
       <h6 className={styles.title}>Tasks</h6>
       <div className={styles.actions}>
         <div className={styles.view}>
-          {viewDataTypes.map(({ value, icon }) => (
+          {tasksViewDataTypes.map(({ value, icon }) => (
             <BtnIcon
               key={value}
               title={value}
