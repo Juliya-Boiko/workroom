@@ -23,6 +23,7 @@
 
   .position {
     font-weight: 200;
+    text-transform: capitalize;
   }
 
   @include onLaptop {

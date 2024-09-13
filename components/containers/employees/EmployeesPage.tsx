@@ -31,7 +31,7 @@ export const EmployeesPage = () => {
           <Modal
             title="Add Employee"
             activator={
-              <BtnPrimary>
+              <BtnPrimary disabled={isLoading}>
                 <SvgHandler icon={EIconsSet.Plus} />
                 <span>Add Employee</span>
               </BtnPrimary>
@@ -40,24 +40,26 @@ export const EmployeesPage = () => {
           />
         </div>
       </Topping>
-      {isLoading && (
-        <div className={styles.loader}>
-          <Preloader />
-        </div>
-      )}
-      {employees && !employees.length && (
-        <div className={styles.placeholder}>
-          <p>You dont have employees yet</p>
-          <Image src={imgSrc} priority alt="Projects" className={styles.image} />
-        </div>
-      )}
-      {employees &&
-        employees.length > 0 &&
-        (view === EViewEmployees.LIST ? (
-          <EmployeesTable view={view} onChange={(v) => setView(v)} employees={employees} />
-        ) : (
-          <EmployeesActivity view={view} onChange={(v) => setView(v)} employees={employees} />
-        ))}
+      <div className={styles.container}>
+        {isLoading && (
+          <div className={styles.loader}>
+            <Preloader />
+          </div>
+        )}
+        {employees && !employees.length && (
+          <div className={styles.placeholder}>
+            <p>You dont have employees yet</p>
+            <Image src={imgSrc} priority alt="Projects" className={styles.image} />
+          </div>
+        )}
+        {employees &&
+          employees.length > 0 &&
+          (view === EViewEmployees.LIST ? (
+            <EmployeesTable view={view} onChange={(v) => setView(v)} employees={employees} />
+          ) : (
+            <EmployeesActivity view={view} onChange={(v) => setView(v)} employees={employees} />
+          ))}
+      </div>
     </div>
   );
 };

@@ -16,7 +16,7 @@ interface Props {
 
 export const InviteForm = ({ companyId, email }: Props) => {
   const [typePassword, setTypePassword] = useState('password');
-  const { registerMember } = useUserMutations();
+  const { registerMember, isInviting } = useUserMutations();
   const defaultValues = {
     email,
     password: '',
@@ -114,7 +114,7 @@ export const InviteForm = ({ companyId, email }: Props) => {
         icon={EIconsSet.Eye}
         onIconClick={toggleType}
       />
-      <BtnPrimary type="submit" disabled={!isDirty || !isValid || isSubmitting}>
+      <BtnPrimary type="submit" disabled={!isDirty || !isValid || isSubmitting || isInviting}>
         Sign In
       </BtnPrimary>
     </form>

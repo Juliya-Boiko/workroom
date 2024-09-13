@@ -5,7 +5,7 @@
     align-items: center;
     justify-content: space-between;
     gap: 16px;
-    padding: 24px 0;
+    padding-bottom: 24px;
   }
 
   .list {
@@ -20,7 +20,6 @@
     }
 
     .list {
-      padding-top: 24px;
       display: grid;
       grid-template-columns: repeat(3, 1fr);
     }

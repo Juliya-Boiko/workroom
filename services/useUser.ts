@@ -41,7 +41,7 @@ export const useUserMutations = () => {
     },
   });
 
-  const { mutate: registerMember } = useMutation({
+  const { mutate: registerMember, isPending: isInviting } = useMutation({
     mutationFn: registerUser,
     onError: (error: unknown) => {
       handleError(error, `An error occurred in registerMember`);
@@ -58,5 +58,6 @@ export const useUserMutations = () => {
     login,
     isSuccessLogin,
     registerMember,
+    isInviting,
   };
 };
