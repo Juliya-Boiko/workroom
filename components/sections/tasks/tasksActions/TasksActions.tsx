@@ -1,6 +1,5 @@
 import styles from './tasksActions.module.scss';
 import { BtnIcon } from '@/components/ui';
-import { SvgHandler } from '@/components/SvgHandler';
 import { EViewTasks, tasksViewDataTypes } from '@/typings';
 import { TasksFilter } from '../tasksFilter/TasksFilter';
 
@@ -21,9 +20,8 @@ export const TasksActions = ({ view, setView }: Props) => {
               title={value}
               active={view === value}
               onClick={() => setView(value)}
-            >
-              <SvgHandler icon={icon} />
-            </BtnIcon>
+              icon={icon}
+            />
           ))}
         </div>
         <TasksFilter />

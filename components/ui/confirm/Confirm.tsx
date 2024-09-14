@@ -1,5 +1,4 @@
 import styles from './confirm.module.scss';
-import { SvgHandler } from '@/components/SvgHandler';
 import { BtnIcon, BtnPrimary, BtnSecondary, Overlay } from '@/components/ui';
 import { EIconsSet } from '@/typings';
 
@@ -14,9 +13,7 @@ export const Confirm = ({ text, onCancel, onConfirm }: Props) => {
     <Overlay onClose={onCancel}>
       <div className={styles.confirm}>
         <div className={styles.head}>
-          <BtnIcon tonal title="Close" onClick={onCancel}>
-            <SvgHandler icon={EIconsSet.Cross} />
-          </BtnIcon>
+          <BtnIcon tonal title="Close" onClick={onCancel} icon={EIconsSet.Cross} />
         </div>
         <div className={styles.body}>
           <p className={styles.title}>Confirm deleting</p>

@@ -1,7 +1,6 @@
 import styles from './employeesActivity.module.scss';
 import { viewEmployeesDataTypes, EViewEmployees, IEmployee, EIconsSet } from '@/typings';
 import { TabsSlide, BtnIcon } from '@/components/ui';
-import { SvgHandler } from '@/components/SvgHandler';
 import { ActivityCard } from '@/components/cards/activity/ActivityCard';
 
 interface Props {
@@ -15,9 +14,7 @@ export const EmployeesActivity = ({ view, employees, onChange }: Props) => {
     <section className={styles.employeesActivity}>
       <div className={styles.filters}>
         <TabsSlide options={viewEmployeesDataTypes} value={view} onChange={onChange} />
-        <BtnIcon title="Filter">
-          <SvgHandler icon={EIconsSet.Filter} />
-        </BtnIcon>
+        <BtnIcon title="Filter" icon={EIconsSet.Filter} />
       </div>
       <ul className={styles.list}>
         {employees.map((el) => (

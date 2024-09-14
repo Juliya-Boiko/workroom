@@ -3,7 +3,6 @@ import styles from './profileForm.module.scss';
 import { useEffect, useState } from 'react';
 import { useForm, Controller } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
-import { SvgHandler } from '@/components/SvgHandler';
 import { EIconsSet, EUserPosition } from '@/typings';
 import { profileSchema, ProfileFormData } from '@/utils';
 import { useProfile, useCompany, useProfileMutation } from '@/services';
@@ -81,9 +80,12 @@ export const ProfileForm = () => {
               )}
             />
           )}
-          <BtnIcon tonal title="Edit" onClick={() => setIsDisabled(false)}>
-            <SvgHandler icon={EIconsSet.Pensil} />
-          </BtnIcon>
+          <BtnIcon
+            tonal
+            title="Edit"
+            onClick={() => setIsDisabled(false)}
+            icon={EIconsSet.Pensil}
+          />
         </div>
         <InputField
           label="Name"

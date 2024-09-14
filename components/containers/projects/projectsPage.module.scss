@@ -26,6 +26,12 @@
     padding-top: 24px;
   }
 
+  .filters {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+  }
+
   @include onTablet {
     padding: 48px;
     

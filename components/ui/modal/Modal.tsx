@@ -1,7 +1,6 @@
 'use client';
 import styles from './modal.module.scss';
 import { EIconsSet } from '@/typings';
-import { SvgHandler } from '@/components/SvgHandler';
 import { Overlay } from '../overlay/Overlay';
 import { BtnIcon } from '../buttons/icon/BtnIcon';
 import { useModalContext } from '@/components/providers/ModalProvider';
@@ -23,9 +22,7 @@ export const Modal = ({ activator, title, content }: Props) => {
           <div className={styles.container}>
             <div className={styles.head}>
               <h3 className={styles.title}>{title}</h3>
-              <BtnIcon title="Close" tonal onClick={closeModal}>
-                <SvgHandler icon={EIconsSet.Cross} />
-              </BtnIcon>
+              <BtnIcon title="Close" tonal onClick={closeModal} icon={EIconsSet.Cross} />
             </div>
             {content}
           </div>

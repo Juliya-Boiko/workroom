@@ -25,9 +25,7 @@ export const Menu = () => {
 
   return (
     <div className={styles.menu}>
-      <BtnIcon title="Menu" onClick={() => setOpenMenu(true)}>
-        <SvgHandler icon={EIconsSet.Burger} />
-      </BtnIcon>
+      <BtnIcon title="Menu" onClick={() => setOpenMenu(true)} icon={EIconsSet.Burger} />
       {openMenu && (
         <Overlay onClose={() => setOpenMenu(false)}>
           <div className={styles.container}>

@@ -24,9 +24,7 @@ export const EmployeesPage = () => {
         </div>
         <div className={styles.wrapper}>
           <div className={styles.tabletHidden}>
-            <BtnIcon title="Filter">
-              <SvgHandler icon={EIconsSet.Filter} />
-            </BtnIcon>
+            <BtnIcon title="Filter" icon={EIconsSet.Filter} />
           </div>
           <Modal
             title="Add Employee"

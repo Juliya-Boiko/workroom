@@ -1,7 +1,6 @@
 import styles from './employeesTable.module.scss';
 import { TabsSlide, BtnIcon } from '@/components/ui';
 import { EIconsSet, viewEmployeesDataTypes, EViewEmployees, IEmployee } from '@/typings';
-import { SvgHandler } from '@/components/SvgHandler';
 import { EmployeeCard } from '@/components/cards/employee/EmployeeCard';
 
 interface Props {
@@ -15,9 +14,7 @@ export const EmployeesTable = ({ view, onChange, employees }: Props) => {
     <section className={styles.employeesTable}>
       <div className={styles.filters}>
         <TabsSlide options={viewEmployeesDataTypes} value={view} onChange={onChange} />
-        <BtnIcon title="Filter">
-          <SvgHandler icon={EIconsSet.Filter} />
-        </BtnIcon>
+        <BtnIcon title="Filter" icon={EIconsSet.Filter} />
       </div>
       <ul className={styles.list}>
         {employees.map((el) => (

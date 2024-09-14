@@ -1,17 +1,19 @@
 'use client';
 import styles from './button.module.scss';
+import { EIconsSet } from '@/typings';
+import { SvgHandler } from '@/components/SvgHandler';
 
 interface Props {
   type?: 'button' | 'submit';
   tonal?: boolean;
-  children: string | JSX.Element | JSX.Element[];
+  icon: EIconsSet;
   disabled?: boolean;
   title: string;
   active?: boolean;
   onClick?: () => void;
 }
 
-export const BtnIcon = ({ type, title, children, tonal, active, disabled, onClick }: Props) => {
+export const BtnIcon = ({ type, title, icon, tonal, active, disabled, onClick }: Props) => {
   return (
     <button
       type={type ? type : 'button'}
@@ -22,7 +24,7 @@ export const BtnIcon = ({ type, title, children, tonal, active, disabled, onClic
       disabled={disabled}
       onClick={onClick}
     >
-      {children}
+      <SvgHandler icon={icon} />
     </button>
   );
 };
