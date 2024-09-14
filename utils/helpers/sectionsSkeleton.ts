@@ -8,6 +8,7 @@ export const projectSectionSkeleton: IProjectInfo[] = [
     _id: '1',
     image: 'thumb1',
     createdAt: new Date().toLocaleString(),
+    description: '',
     tasks: {
       all: 0,
       active: 0,
@@ -21,6 +22,7 @@ export const projectSectionSkeleton: IProjectInfo[] = [
     priority: EPriority.LOW,
     image: 'thumb1',
     createdAt: new Date().toLocaleString(),
+    description: '',
     tasks: {
       all: 0,
       active: 0,
@@ -34,6 +36,7 @@ export const projectSectionSkeleton: IProjectInfo[] = [
     priority: EPriority.LOW,
     image: 'thumb1',
     createdAt: new Date().toLocaleString(),
+    description: '',
     tasks: {
       all: 0,
       active: 0,
