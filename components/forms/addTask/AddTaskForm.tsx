@@ -132,7 +132,7 @@ export const AddTaskForm = ({ slug, start, deadline }: Props) => {
         label="Description"
         name="description"
         register={register}
-        placeholder="Add some description of the project"
+        placeholder="Add some description of the task"
       />
       <div>
         <BtnPrimary type="submit" disabled={!isDirty || !isValid || isSubmitting || isCreating}>

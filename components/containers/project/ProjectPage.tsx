@@ -8,7 +8,7 @@ import { AddTaskForm } from '@/components/forms/addTask/AddTaskForm';
 import { EIconsSet, EViewTasks, IDynamicComponent } from '@/typings';
 import { SvgHandler } from '@/components/SvgHandler';
 import { ProjectInfo } from '@/components/sections/project/projectInfo/ProjectInfo';
-import { Tasks } from '@/components/sections/tasks/Tasks';
+import { Tasks } from '@/components/sections/project/tasks/Tasks';
 
 export const ProjectPage = ({ slug }: IDynamicComponent) => {
   const [view, setView] = useState(EViewTasks.LIST);
@@ -17,9 +17,10 @@ export const ProjectPage = ({ slug }: IDynamicComponent) => {
     enabled: true,
   });
   const { data: tasks, isLoading: isLoadingTasks } = useTasks({
-    projectId: project?._id || '',
-    enabled: !!project?._id,
+    projectId: slug,
+    enabled: true,
   });
+
   return (
     <div className={styles.projectPage}>
       <Topping title={project?.name || ''}>
@@ -34,13 +35,18 @@ export const ProjectPage = ({ slug }: IDynamicComponent) => {
           content={<AddTaskForm slug={slug} start={project?.start} deadline={project?.deadline} />}
         />
       </Topping>
-      {isLoading && (
-        <div className={styles.loader}>
-          <Preloader />
+      <div className={styles.container}>
+        {isLoading || isLoadingTasks ? (
+          <div className={styles.loader}>
+            <Preloader />
+          </div>
+        ) : null}
+        <div className={styles.content}>
+          {project && <ProjectInfo project={project} />}
+          <div>taskslist</div>
         </div>
-      )}
-      {project && (
-        <div className={styles.container}>
+        {/* {project && (
+        
           <ProjectInfo editable project={project} />
           <Tasks
             view={view}
@@ -49,8 +55,8 @@ export const ProjectPage = ({ slug }: IDynamicComponent) => {
             loading={isLoadingTasks}
             setView={(v: EViewTasks) => setView(v)}
           />
-        </div>
-      )}
+        )} */}
+      </div>
     </div>
   );
 };

@@ -27,9 +27,7 @@
   }
 
   .filters {
-    display: flex;
-    align-items: center;
-    gap: 16px;
+    display: none;
   }
 
   @include onTablet {
@@ -37,6 +35,12 @@
     
     .container {
       padding-top: 48px;
+    }
+
+    .filters {
+      display: flex;
+      align-items: center;
+      gap: 16px;
     }
   }
 

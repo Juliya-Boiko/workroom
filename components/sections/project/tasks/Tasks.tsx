@@ -1,5 +1,5 @@
 import styles from './tasks.module.scss';
-import imgSrc from '../../../public/tasks-placeholder.png';
+import imgSrc from '../../../../public/tasks-placeholder.png';
 import Image from 'next/image';
 import { sortTasksByStatus } from '@/utils';
 import { EViewTasks, ITask } from '@/typings';

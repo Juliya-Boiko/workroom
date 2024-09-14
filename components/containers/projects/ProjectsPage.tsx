@@ -52,7 +52,9 @@ export const ProjectsPage = () => {
             <Image src={imgSrc} priority alt="Projects" className={styles.image} />
           </div>
         )}
-        {projects && projects.length > 0 && <ProjectsGrid projects={projects} />}
+        {projects && projects.length > 0 && (
+          <ProjectsGrid view={view} projects={projects} onClick={(v) => setView(v)} />
+        )}
       </div>
     </div>
   );
