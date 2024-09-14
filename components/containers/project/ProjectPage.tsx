@@ -1,6 +1,5 @@
 'use client';
 import styles from './projectPage.module.scss';
-import { useState } from 'react';
 import { useProject, useTasks } from '@/services';
 import { Topping } from '@/components/topping/Topping';
 import { Modal, BtnPrimary, Preloader } from '@/components/ui';
@@ -11,7 +10,6 @@ import { ProjectInfo } from '@/components/sections/project/projectInfo/ProjectIn
 import { Tasks } from '@/components/sections/project/tasks/Tasks';
 
 export const ProjectPage = ({ slug }: IDynamicComponent) => {
-  const [view, setView] = useState(EViewTasks.LIST);
   const { data: project, isLoading } = useProject({
     projectId: slug,
     enabled: true,
@@ -43,11 +41,10 @@ export const ProjectPage = ({ slug }: IDynamicComponent) => {
         ) : null}
         <div className={styles.content}>
           {project && <ProjectInfo project={project} />}
-          <div>taskslist</div>
+          <Tasks />
         </div>
         {/* {project && (
         
-          <ProjectInfo editable project={project} />
           <Tasks
             view={view}
             project={!!project._id}

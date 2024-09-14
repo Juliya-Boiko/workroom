@@ -1,26 +1,31 @@
+'use client';
 import styles from './tasks.module.scss';
-import imgSrc from '../../../../public/tasks-placeholder.png';
-import Image from 'next/image';
+// import imgSrc from '../../../../public/tasks-placeholder.png';
+// import Image from 'next/image';
+import { useState } from 'react';
 import { sortTasksByStatus } from '@/utils';
 import { EViewTasks, ITask } from '@/typings';
-import { TasksActions } from './tasksActions/TasksActions';
-import { TasksList } from './tasksList/TasksList';
-import { TasksColumns } from './tasksColumns/TasksColumns';
+// import { TasksActions } from './tasksActions/TasksActions';
+// import { TasksList } from './tasksList/TasksList';
+// import { TasksColumns } from './tasksColumns/TasksColumns';
+import { useTasks } from '@/services';
 
 interface Props {
-  view: EViewTasks;
-  project: boolean;
-  tasks: ITask[];
-  loading: boolean;
-  setView: (v: EViewTasks) => void;
+  // view: EViewTasks;
+  // project: boolean;
+  // tasks: ITask[];
+  // loading: boolean;
+  // setView: (v: EViewTasks) => void;
 }
 
-export const Tasks = ({ project, tasks, view, loading, setView }: Props) => {
-  const sortedTasks = sortTasksByStatus(tasks);
+export const Tasks = () => {
+  const [view, setView] = useState(EViewTasks.LIST);
+  // const sortedTasks = sortTasksByStatus(tasks);
 
   return (
     <section className={styles.tasks}>
-      <TasksActions view={view} setView={setView} />
+      Tasks
+      {/* <TasksActions view={view} setView={setView} />
 
       <div className={styles.container}>
         {!loading && !project && (
@@ -54,7 +59,7 @@ export const Tasks = ({ project, tasks, view, loading, setView }: Props) => {
         {tasks.length > 0 && view === EViewTasks.COLUMNS && (
           <TasksColumns loading={loading} tasks={tasks} />
         )}
-      </div>
+      </div> */}
     </section>
   );
 };
