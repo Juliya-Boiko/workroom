@@ -44,7 +44,7 @@ export const TaskStatusDrop = ({ id, status }: Props) => {
     const data = {
       _id: id,
       update: {
-        status: selected,
+        status: value,
       },
     };
     update(data);

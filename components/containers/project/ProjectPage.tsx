@@ -27,15 +27,16 @@ export const ProjectPage = ({ slug }: IDynamicComponent) => {
         />
       </Topping>
       <div className={styles.container}>
-        {isLoading && (
+        {isLoading ? (
           <div className={styles.loader}>
             <Preloader />
           </div>
+        ) : (
+          <div className={styles.content}>
+            {project && <ProjectInfo project={project} />}
+            <Tasks projectId={slug} />
+          </div>
         )}
-        <div className={styles.content}>
-          {project && <ProjectInfo project={project} />}
-          <Tasks projectId={slug} />
-        </div>
       </div>
     </div>
   );

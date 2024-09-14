@@ -7,6 +7,12 @@
     @include flexContainer(row, center, space-between);
   }
 
+  .actions {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+  }
+
   .title {
     font-weight: 700;
   }

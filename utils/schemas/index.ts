@@ -6,3 +6,4 @@ export * from './invite';
 export * from './profile';
 export * from './addEvent';
 export * from './addLevel';
+export * from './filterTask';
