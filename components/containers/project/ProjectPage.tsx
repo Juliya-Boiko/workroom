@@ -1,20 +1,16 @@
 'use client';
 import styles from './projectPage.module.scss';
-import { useProject, useTasks } from '@/services';
+import { useProject } from '@/services';
 import { Topping } from '@/components/topping/Topping';
 import { Modal, BtnPrimary, Preloader } from '@/components/ui';
 import { AddTaskForm } from '@/components/forms/addTask/AddTaskForm';
-import { EIconsSet, EViewTasks, IDynamicComponent } from '@/typings';
+import { EIconsSet, IDynamicComponent } from '@/typings';
 import { SvgHandler } from '@/components/SvgHandler';
 import { ProjectInfo } from '@/components/sections/project/projectInfo/ProjectInfo';
 import { Tasks } from '@/components/sections/project/tasks/Tasks';
 
 export const ProjectPage = ({ slug }: IDynamicComponent) => {
   const { data: project, isLoading } = useProject({
-    projectId: slug,
-    enabled: true,
-  });
-  const { data: tasks, isLoading: isLoadingTasks } = useTasks({
     projectId: slug,
     enabled: true,
   });
@@ -34,25 +30,15 @@ export const ProjectPage = ({ slug }: IDynamicComponent) => {
         />
       </Topping>
       <div className={styles.container}>
-        {isLoading || isLoadingTasks ? (
+        {isLoading && (
           <div className={styles.loader}>
             <Preloader />
           </div>
-        ) : null}
+        )}
         <div className={styles.content}>
           {project && <ProjectInfo project={project} />}
-          <Tasks />
+          <Tasks projectId={slug} />
         </div>
-        {/* {project && (
-        
-          <Tasks
-            view={view}
-            project={!!project._id}
-            tasks={tasks || []}
-            loading={isLoadingTasks}
-            setView={(v: EViewTasks) => setView(v)}
-          />
-        )} */}
       </div>
     </div>
   );

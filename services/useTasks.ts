@@ -3,14 +3,12 @@ import { getTasks, createTask, updateTask, getTaskById, deleteTask, QUERY_KEYS }
 
 interface Props {
   projectId: string;
-  enabled: boolean;
 }
 
-export const useTasks = ({ projectId, enabled }: Props) => {
+export const useTasks = ({ projectId }: Props) => {
   return useQuery({
     queryKey: [QUERY_KEYS.TASKS, projectId],
     queryFn: () => getTasks(projectId),
-    enabled: enabled,
   });
 };
 

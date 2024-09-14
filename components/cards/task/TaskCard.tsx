@@ -18,8 +18,10 @@ export const TaskCard = ({ task }: Props) => {
         <div className={styles.assignee}>
           <div className={styles.title}>Assignee</div>
           <div className={styles.user}>
-            <Avatar size="s" user={{ name: task.assignee.name, avatar: task.assignee.avatar }} />
-            <span>{task.assignee.name}</span>
+            <div title={task.assignee.name}>
+              <Avatar size="s" user={{ name: task.assignee.name, avatar: task.assignee.avatar }} />
+            </div>
+            <span className={styles.userName}>{task.assignee.name}</span>
           </div>
         </div>
         <div className={styles.estimate}>
@@ -28,13 +30,13 @@ export const TaskCard = ({ task }: Props) => {
         </div>
       </div>
       <div className={styles.badges}>
-        <div className={styles.priority}>
-          <div className={styles.title}>Priority</div>
-          <BadgePriopity label={task.priority} />
-        </div>
         <div className={styles.status}>
           <div className={styles.title}>Status</div>
           <BadgeTask label={task.status} />
+        </div>
+        <div className={styles.priority}>
+          <div className={styles.title}>Priority</div>
+          <BadgePriopity label={task.priority} />
         </div>
       </div>
     </div>
