@@ -1,0 +1,39 @@
+.selectAssignees {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+
+  .item {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    cursor: pointer;
+    transition: all 250ms ease-in-out;
+
+    &:hover{
+      color: $blue-1;
+    }
+  }
+
+  .selected {
+    @extend %shadow-xs;
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 12px;
+    background-color: $white;
+    border: none;
+    outline: 1px solid $grey-7;
+    border-radius: 14px;
+    min-height: 48px;
+    width: 100%;
+    padding: 12px 16px;
+  }
+
+  .variants {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    padding-left: 16px;
+  }
+}

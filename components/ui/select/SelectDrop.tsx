@@ -8,7 +8,7 @@ import { EIconsSet, IEmployee } from '@/typings';
 type UserType = Pick<IEmployee, '_id' | 'name' | 'avatar'>;
 interface Props {
   options: string[] | UserType[];
-  value?: string | UserType;
+  value?: string | null | UserType;
   onChange: (v: string | UserType) => void;
 }
 
