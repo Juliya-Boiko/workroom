@@ -1,12 +1,12 @@
 'use client';
 import styles from './projectInfo.module.scss';
 import Image from 'next/image';
-import { EIconsSet, IProjectDetails } from '@/typings';
+import { useState } from 'react';
 import { formatDayDate, defineImageSrc } from '@/utils';
-import { BadgePriopity, UploadAttach, Assignees } from '@/components/ui';
+import { EIconsSet, IProjectDetails } from '@/typings';
+import { BadgePriopity, Assignees } from '@/components/ui';
 import { SvgHandler } from '@/components/SvgHandler';
 import { OptionsProjectInfo } from './optionsProjectInfo/OptionsProjectInfo';
-import { useState } from 'react';
 
 interface Props {
   project: IProjectDetails;
@@ -54,7 +54,6 @@ export const ProjectInfo = ({ project }: Props) => {
           <span>Created</span>
           <span>{formatDayDate(project.createdAt)}</span>
         </div>
-        <UploadAttach />
       </div>
     </section>
   );

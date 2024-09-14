@@ -29,15 +29,9 @@ export const useProjectsMutation = () => {
   return { create, isCreating, remove, isDeleting };
 };
 
-interface Props {
-  projectId?: string;
-  enabled: boolean;
-}
-
-export const useProject = ({ projectId, enabled }: Props) => {
+export const useProject = (projectId: string) => {
   return useQuery({
     queryKey: [QUERY_KEYS.PROJECT, projectId],
     queryFn: () => getProjectById(projectId),
-    enabled: enabled,
   });
 };

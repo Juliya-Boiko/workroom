@@ -10,10 +10,7 @@ import { ProjectInfo } from '@/components/sections/project/projectInfo/ProjectIn
 import { Tasks } from '@/components/sections/project/tasks/Tasks';
 
 export const ProjectPage = ({ slug }: IDynamicComponent) => {
-  const { data: project, isLoading } = useProject({
-    projectId: slug,
-    enabled: true,
-  });
+  const { data: project, isLoading } = useProject(slug);
 
   return (
     <div className={styles.projectPage}>
