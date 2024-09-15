@@ -1,10 +1,11 @@
+import { priorityDataTypes, taskStatusDataTypes } from '@/typings';
 import * as yup from 'yup';
 
 export const filterTaskSchema = yup.object({
   start: yup.date().nullable(),
   end: yup.date().nullable(),
-  priority: yup.string().trim().nullable(),
-  status: yup.string().trim().nullable(),
+  priority: yup.string().trim().oneOf(priorityDataTypes).nullable(),
+  status: yup.string().trim().oneOf(taskStatusDataTypes).nullable(),
   assignee: yup.array(
     yup
       .object({

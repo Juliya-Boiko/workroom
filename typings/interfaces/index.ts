@@ -7,3 +7,4 @@ export * from './ILocations';
 export * from './IEvent';
 export * from './IDynamicRoute';
 export * from './ISearch';
+export * from './IFilters';

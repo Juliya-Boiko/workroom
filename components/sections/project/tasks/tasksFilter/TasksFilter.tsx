@@ -2,11 +2,21 @@
 import styles from './tasksFilter.module.scss';
 import { useState } from 'react';
 import { BtnIcon, Overlay } from '@/components/ui';
-import { EIconsSet } from '@/typings';
+import { EIconsSet, IFilters } from '@/typings';
 import { TaskFilterForm } from '@/components/forms/taskFilter/TaskFilterForm';
 
-export const TasksFilter = () => {
+interface Props {
+  filters: IFilters | null;
+  setFilters: (v: IFilters) => void;
+}
+
+export const TasksFilter = ({ setFilters, filters }: Props) => {
   const [open, setOpen] = useState(false);
+
+  const handleFilters = (v: IFilters) => {
+    setFilters(v);
+    setOpen(false);
+  };
 
   return (
     <div>
@@ -19,7 +29,7 @@ export const TasksFilter = () => {
                 <h6 className={styles.title}>Filters</h6>
                 <BtnIcon title="Close" onClick={() => setOpen(false)} icon={EIconsSet.Cross} />
               </div>
-              <TaskFilterForm />
+              <TaskFilterForm filters={filters} setFilters={handleFilters} />
             </div>
           </div>
         </Overlay>

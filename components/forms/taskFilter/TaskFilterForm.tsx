@@ -3,23 +3,22 @@ import styles from './taskFilterForm.module.scss';
 import { useForm, Controller } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
 import { filterTaskSchema, FilterTaskFormData } from '@/utils';
-import { EIconsSet, priorityDataTypes, taskStatusDataTypes } from '@/typings';
+import { EIconsSet, priorityDataTypes, taskStatusDataTypes, IFilters, ISelectAssignee } from '@/typings';
 import { BtnIcon, BtnPrimary, SelectDrop, PickerPeriod } from '@/components/ui';
 import { SelectAssignees } from './selectAssignees/SelectAssignees';
 
-interface ISelectAssignee {
-  _id: string;
-  name: string;
-  avatar: string | null;
+interface Props {
+  filters: IFilters | null;
+  setFilters: (v: IFilters) => void;
 }
 
-export const TaskFilterForm = () => {
+export const TaskFilterForm = ({ filters, setFilters }: Props) => {
   const defaultValues = {
-    priority: null,
-    status: null,
-    assignee: [] as ISelectAssignee[],
-    start: null,
-    end: null,
+    priority: filters ? filters.priority : null,
+    status: filters ? filters.status : null,
+    assignee: filters ? filters.assignee : [] as ISelectAssignee[],
+    start: filters ? filters.start : null,
+    end: filters ? filters.end : null,
   };
 
   const { control, watch, setValue, handleSubmit } = useForm({
@@ -48,7 +47,7 @@ export const TaskFilterForm = () => {
   };
 
   const onSubmit = async (data: FilterTaskFormData) => {
-    console.log(data);
+    setFilters(data);
   };
 
   return (

@@ -1,14 +1,11 @@
 import { useQuery, useQueryClient, useMutation } from '@tanstack/react-query';
 import { getTasks, createTask, updateTask, getTaskById, deleteTask, QUERY_KEYS } from '@/utils';
+import { IFilters } from '@/typings';
 
-interface Props {
-  projectId: string;
-}
-
-export const useTasks = ({ projectId }: Props) => {
+export const useTasks = (projectId: string, filters: IFilters | null) => {
   return useQuery({
-    queryKey: [QUERY_KEYS.TASKS, projectId],
-    queryFn: () => getTasks(projectId),
+    queryKey: [QUERY_KEYS.TASKS, projectId, filters],
+    queryFn: () => getTasks(projectId, filters),
   });
 };
 

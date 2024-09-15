@@ -8,7 +8,7 @@ import { TasksView } from './tasksView/TasksView';
 import { TasksFilter } from './tasksFilter/TasksFilter';
 import { TasksList } from './tasksList/TasksList';
 import { TasksColumns } from './tasksColumns/TasksColumns';
-import { EViewTasks } from '@/typings';
+import { EViewTasks, IFilters } from '@/typings';
 
 interface Props {
   projectId: string;
@@ -16,7 +16,8 @@ interface Props {
 
 export const Tasks = ({ projectId }: Props) => {
   const [view, setView] = useState(EViewTasks.LIST);
-  const { data: tasks, isLoading } = useTasks({ projectId });
+  const [filters, setFilters] = useState<null | IFilters>(null);
+  const { data: tasks, isLoading } = useTasks(projectId, filters);
 
   return (
     <section className={styles.tasks}>
@@ -31,7 +32,7 @@ export const Tasks = ({ projectId }: Props) => {
           <div className={styles.head}>
             <p className={styles.title}>Tasks</p>
             <TasksView view={view} setView={(v) => setView(v)} />
-            <TasksFilter />
+            <TasksFilter filters={filters} setFilters={(v) => setFilters(v)} />
           </div>
           {view === EViewTasks.LIST && <TasksList tasks={tasks} />}
           {view === EViewTasks.COLUMNS && <TasksColumns tasks={tasks} loading={isLoading} />}
