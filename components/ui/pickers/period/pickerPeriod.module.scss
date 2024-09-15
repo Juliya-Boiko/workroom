@@ -48,4 +48,10 @@
     flex-direction: column;
     gap: 16px;
   }
+
+  @include onLaptop {
+    .drop {
+      flex-direction: row;
+    }
+  }
 }

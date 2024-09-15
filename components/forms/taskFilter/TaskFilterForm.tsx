@@ -61,6 +61,8 @@ export const TaskFilterForm = ({ filters, setFilters }: Props) => {
       <div className={styles.container}>
         <p className={styles.label}>Period</p>
         <PickerPeriod
+          startValue={filters?.start ?? null}
+          endValue={filters?.end ?? null}
           onStart={(v: Date | null) => setValue('start', v)}
           onEnd={(v: Date | null) => setValue('end', v)}
         />
@@ -113,7 +115,7 @@ export const TaskFilterForm = ({ filters, setFilters }: Props) => {
       </div>
       <div className={styles.container}>
         <p className={styles.label}>Assignees</p>
-        <SelectAssignees onChange={handleAssignee} />
+        <SelectAssignees value={assignee} onChange={handleAssignee} />
       </div>
       <div className={styles.wrapper}>
         <BtnPrimary type="submit">{count()}</BtnPrimary>

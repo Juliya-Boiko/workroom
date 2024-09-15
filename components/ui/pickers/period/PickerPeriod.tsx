@@ -6,14 +6,16 @@ import { EIconsSet } from '@/typings';
 import { SvgHandler } from '@/components/SvgHandler';
 
 interface Props {
+  startValue: Date | null;
+  endValue: Date | null;
   onStart: (v: Date | null) => void;
   onEnd: (v: Date | null) => void;
 }
 
-export const PickerPeriod = ({ onEnd, onStart }: Props) => {
+export const PickerPeriod = ({ startValue, endValue, onEnd, onStart }: Props) => {
   const [open, setOpen] = useState(false);
-  const [start, setStart] = useState<Date | null>(null);
-  const [end, setEnd] = useState<Date | null>(null);
+  const [start, setStart] = useState<Date | null>(startValue);
+  const [end, setEnd] = useState<Date | null>(endValue);
   const ref = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
