@@ -3,8 +3,8 @@ import styles from './taskFilterForm.module.scss';
 import { useForm, Controller } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
 import { filterTaskSchema, FilterTaskFormData } from '@/utils';
-import { priorityDataTypes, taskStatusDataTypes } from '@/typings';
-import { BtnPrimary, SelectDrop } from '@/components/ui';
+import { EIconsSet, priorityDataTypes, taskStatusDataTypes } from '@/typings';
+import { BtnIcon, BtnPrimary, SelectDrop, PickerPeriod } from '@/components/ui';
 import { SelectAssignees } from './selectAssignees/SelectAssignees';
 
 interface ISelectAssignee {
@@ -18,34 +18,28 @@ export const TaskFilterForm = () => {
     priority: null,
     status: null,
     assignee: [] as ISelectAssignee[],
+    start: null,
+    end: null,
   };
 
-  const {
-    control,
-    // register,
-    watch,
-    // getValues,
-    setValue,
-    handleSubmit,
-    // formState: { errors, isDirty, isValid, isSubmitting },
-  } = useForm({
+  const { control, watch, setValue, handleSubmit } = useForm({
     defaultValues,
     resolver: yupResolver(filterTaskSchema),
   });
 
-  const onSubmit = async (data: FilterTaskFormData) => {
-    console.log(data);
-  };
-
   const priority = watch('priority');
   const status = watch('status');
   const assignee = watch('assignee');
+  const start = watch('start');
+  const end = watch('end');
 
   const count = () => {
     let count = 0;
     if (priority) count++;
     if (status) count++;
     if (assignee?.length) count++;
+    if (start) count++;
+    if (end) count++;
     return `Save filters (${count})`;
   };
 
@@ -53,31 +47,64 @@ export const TaskFilterForm = () => {
     setValue('assignee', data);
   };
 
+  const onSubmit = async (data: FilterTaskFormData) => {
+    console.log(data);
+  };
+
   return (
     <form className={styles.taskFilterForm} onSubmit={handleSubmit(onSubmit)}>
       <div className={styles.container}>
-        <p className={styles.label}>Status</p>
-        <Controller
-          control={control}
-          name="status"
-          render={({ field }) => (
-            <SelectDrop
-              options={taskStatusDataTypes}
-              value={field.value}
-              onChange={field.onChange}
-            />
-          )}
+        <p className={styles.label}>Period</p>
+        <PickerPeriod
+          onStart={(v: Date | null) => setValue('start', v)}
+          onEnd={(v: Date | null) => setValue('end', v)}
         />
       </div>
       <div className={styles.container}>
-        <p className={styles.label}>Priority</p>
-        <Controller
-          control={control}
-          name="priority"
-          render={({ field }) => (
-            <SelectDrop options={priorityDataTypes} value={field.value} onChange={field.onChange} />
+        <p className={styles.label}>Status</p>
+        <div className={styles.block}>
+          <Controller
+            control={control}
+            name="status"
+            render={({ field }) => (
+              <SelectDrop
+                options={taskStatusDataTypes}
+                value={field.value}
+                onChange={field.onChange}
+              />
+            )}
+          />
+          {status && (
+            <BtnIcon
+              title="Clear"
+              icon={EIconsSet.Cross}
+              onClick={() => setValue('status', null)}
+            />
           )}
-        />
+        </div>
+      </div>
+      <div className={styles.container}>
+        <p className={styles.label}>Priority</p>
+        <div className={styles.block}>
+          <Controller
+            control={control}
+            name="priority"
+            render={({ field }) => (
+              <SelectDrop
+                options={priorityDataTypes}
+                value={field.value}
+                onChange={field.onChange}
+              />
+            )}
+          />
+          {priority && (
+            <BtnIcon
+              title="Clear"
+              icon={EIconsSet.Cross}
+              onClick={() => setValue('priority', null)}
+            />
+          )}
+        </div>
       </div>
       <div className={styles.container}>
         <p className={styles.label}>Assignees</p>

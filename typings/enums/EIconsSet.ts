@@ -38,4 +38,5 @@ export enum EIconsSet {
   Dots,
   Delete,
   Search,
+  CrossRound,
 }

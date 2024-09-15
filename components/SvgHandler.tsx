@@ -651,4 +651,34 @@ export const SvgHandler = ({ icon }: { icon: EIconsSet }) => {
       </svg>
     );
   }
+  if (icon === EIconsSet.CrossRound) {
+    return (
+      <svg xmlns="http://www.w3.org/2000/svg" width={19} height={19} fill="none">
+        <path
+          fill="#7D8592"
+          fillRule="evenodd"
+          d="M9.5 2A7.493 7.493 0 0 0 2 9.5C2 13.648 5.353 17 9.5 17c4.148 0 7.5-3.352 7.5-7.5C17 5.353 13.648 2 9.5 2Zm3.75 10.193-1.057 1.057L9.5 10.557 6.808 13.25 5.75 12.193 8.443 9.5 5.75 6.808 6.808 5.75 9.5 8.443l2.693-2.693 1.057 1.058L10.557 9.5l2.693 2.693Z"
+          clipRule="evenodd"
+        />
+        <mask
+          id="a"
+          width={15}
+          height={15}
+          x={2}
+          y={2}
+          maskUnits="userSpaceOnUse"
+          style={{
+            maskType: 'luminance',
+          }}
+        >
+          <path
+            fill="#fff"
+            fillRule="evenodd"
+            d="M9.5 2A7.493 7.493 0 0 0 2 9.5C2 13.648 5.353 17 9.5 17c4.148 0 7.5-3.352 7.5-7.5C17 5.353 13.648 2 9.5 2Zm3.75 10.193-1.057 1.057L9.5 10.557 6.808 13.25 5.75 12.193 8.443 9.5 5.75 6.808 6.808 5.75 9.5 8.443l2.693-2.693 1.057 1.058L10.557 9.5l2.693 2.693Z"
+            clipRule="evenodd"
+          />
+        </mask>
+      </svg>
+    );
+  }
 };

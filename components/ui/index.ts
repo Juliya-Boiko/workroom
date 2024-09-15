@@ -16,6 +16,7 @@ export * from './overlay/Overlay';
 export * from './pickers/date/PickerDate';
 export * from './pickers/location/PickerLocation';
 export * from './pickers/time/PickerTime';
+export * from './pickers/period/PickerPeriod';
 export * from './preloader/Preloader';
 export * from './radio/Radio';
 export * from './select/SelectDrop';

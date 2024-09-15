@@ -20,4 +20,10 @@
     justify-content: flex-end;
     padding: 0 16px 64px 16px;
   }
+
+  .block {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+  }
 }

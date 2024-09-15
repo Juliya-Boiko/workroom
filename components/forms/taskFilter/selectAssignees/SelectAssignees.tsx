@@ -30,10 +30,9 @@ export const SelectAssignees = ({ onChange }: Props) => {
   };
 
   const handleUnselect = (v: ISelect) => {
-    setSelected((prev) => {
-      const filtered = prev.filter((el) => el._id !== v._id);
-      return filtered;
-    });
+    const filtered = selected.filter((el) => el._id !== v._id);
+    setSelected(filtered);
+    onChange(filtered);
     setVariants((prev) => [...prev, v]);
   };
 

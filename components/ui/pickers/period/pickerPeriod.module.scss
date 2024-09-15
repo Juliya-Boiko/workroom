@@ -1,0 +1,51 @@
+.pickerPeriod {
+  position: relative;
+
+  .toggleBtn {
+    @include flexContainer(row, center, space-between);
+    background-color: $white;
+    border: 1px solid $grey-7;
+    border-radius: 14px;
+    height: 48px;
+    width: 100%;
+    padding: 0 18px;
+  }
+
+  .wrapper {
+     display: flex;
+     align-items: center;
+     justify-content: center;
+     gap: 8px;
+     min-width: 50%;
+  }
+
+  .date {
+    text-align: center;
+  }
+
+  .deleteBtn {
+    display: flex;
+    color: $grey-3;
+  }
+
+  .open {
+    border-radius: 14px 14px 0 0;
+    border-bottom: none;
+  }
+
+  .drop {
+    position: absolute;
+    z-index: 10;
+    top: 48px;
+    left: 0;
+    width: 100%;
+    border-radius: 0 0 14px 14px;
+    border: 1px solid $grey-7;
+    border-top: none;
+    background-color: $white;
+    padding: 12px;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+  }
+}
