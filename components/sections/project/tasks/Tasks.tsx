@@ -21,24 +21,27 @@ export const Tasks = ({ projectId }: Props) => {
 
   return (
     <section className={styles.tasks}>
-      {tasks && !tasks.length ? (
-        <div className={styles.placeholder}>
-          <p className={styles.text}>You dont have tasks in this project</p>
-          <Image src={imgSrc} alt="Tasks" priority className={styles.image} />
+      <div className={styles.container}>
+        <div className={styles.head}>
+          <p className={styles.title}>Tasks</p>
+          <TasksView view={view} setView={(v) => setView(v)} />
+          <TasksFilter filters={filters} setFilters={(v) => setFilters(v)} />
         </div>
-      ) : null}
-      {tasks && tasks.length ? (
-        <div className={styles.container}>
-          <div className={styles.head}>
-            <p className={styles.title}>Tasks</p>
-            <TasksView view={view} setView={(v) => setView(v)} />
-            <TasksFilter filters={filters} setFilters={(v) => setFilters(v)} />
+        {tasks && !tasks.length ? (
+          <div className={styles.placeholder}>
+            <p className={styles.text}>You dont have tasks in this project</p>
+            <Image src={imgSrc} alt="Tasks" priority className={styles.image} />
           </div>
-          {view === EViewTasks.LIST && <TasksList tasks={tasks} />}
-          {view === EViewTasks.COLUMNS && <TasksColumns tasks={tasks} loading={isLoading} />}
-          {view === EViewTasks.TIMELINE && <div>EViewTasks.TIMELINE</div>}
-        </div>
-      ) : null}
+        ) : null}
+        {tasks && tasks.length ? (
+          <>
+            {view === EViewTasks.LIST && <TasksList tasks={tasks} />}
+            {view === EViewTasks.COLUMNS && <TasksColumns tasks={tasks} loading={isLoading} />}
+            {view === EViewTasks.TIMELINE && <div>EViewTasks.TIMELINE</div>}
+          </>
+        ) : null}
+      </div>
+      {/* {tasks && tasks.length ? <div className={styles.container}></div> : null} */}
     </section>
   );
 };

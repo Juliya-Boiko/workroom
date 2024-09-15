@@ -34,14 +34,17 @@ export async function POST(request: NextRequest) {
 export async function GET(request: NextRequest) {
   const url = new URL(request.url);
   const projectId = url.searchParams.get('projectId');
-  const status = url.searchParams.get('status');
-  const priority = url.searchParams.get('priority');
-  const start = url.searchParams.get('start');
-  // const end = url.searchParams.get('end');
 
   if (!projectId) {
     return NextResponse.json({ message: 'ProjectId is required' }, { status: 400 });
   }
+
+  const status = url.searchParams.get('status');
+  const priority = url.searchParams.get('priority');
+  const start = url.searchParams.get('start');
+  const end = url.searchParams.get('end');
+  const assignee = url.searchParams.get('assignee');
+
   try {
     const query: any = { projectId };
     if (status) {
@@ -50,18 +53,15 @@ export async function GET(request: NextRequest) {
     if (priority) {
       query.priority = priority;
     }
-    console.log(start);
     if (start) {
       query.start = { $gte: new Date(start) };
     }
-    // if (end) {
-    //   const endDate = new Date(end);
-    //   if (!isNaN(endDate.getTime())) {
-    //     query.deadline = { $lt: endDate };
-    //   } else {
-    //     return NextResponse.json({ message: 'Invalid end date' }, { status: 400 });
-    //   }
-    // }
+    if (end) {
+      query.deadline = { $lte: new Date(end) };
+    }
+    if (assignee) {
+      query.assignee = { $in: assignee.split(',') };
+    }
 
     const tasks = await Task.find(query)
       .populate('assignee', 'name avatar _id')
@@ -72,12 +72,3 @@ export async function GET(request: NextRequest) {
     return NextResponse.json({ message: error.message }, { status: 500 });
   }
 }
-
-// assignee: { $in: assignee },
-// start: { $gt: start },
-// deadline: { $lt: end },
-// const assignee = url.searchParams.get('assignee');
-
-// const assignee = url.searchParams.get('assignee');
-// const start = url.searchParams.get('start');
-// const end = url.searchParams.get('end');

@@ -7,9 +7,9 @@ export interface ISelectAssignee {
 }
 
 export interface IFilters {
-  priority: EPriority | null;
-  status: ETaskStatus | null;
-  assignee: ISelectAssignee[];
-  start: Date | null;
-  end: Date | null;
+  start?: Date | null;
+  end?: Date | null;
+  priority?: EPriority | null;
+  status?: ETaskStatus | null;
+  assignee?: ISelectAssignee[];
 }

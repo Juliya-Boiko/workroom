@@ -14,16 +14,20 @@ export const TasksList = ({ tasks }: Props) => {
 
   return (
     <div className={styles.tasksList}>
-      <div className={styles.banner}>Active Tasks</div>
-      <ul className={styles.list}>
-        {sortedTasks.active.map((el) => (
-          <li key={el._id}>
-            <Link href={`${ROUTES.task}/${el._id}`}>
-              <TaskCard task={el} />
-            </Link>
-          </li>
-        ))}
-      </ul>
+      {sortedTasks.active.length ? (
+        <>
+          <div className={styles.banner}>Active Tasks</div>
+          <ul className={styles.list}>
+            {sortedTasks.active.map((el) => (
+              <li key={el._id}>
+                <Link href={`${ROUTES.task}/${el._id}`}>
+                  <TaskCard task={el} />
+                </Link>
+              </li>
+            ))}
+          </ul>
+        </>
+      ) : null}
       {sortedTasks.backlog.length ? (
         <>
           <div className={styles.banner}>Backlog</div>

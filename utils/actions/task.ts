@@ -7,13 +7,12 @@ export const createTask = async (data: ICreateTask): Promise<{ projectId: string
 };
 
 export const getTasks = async (projectId: string, filters: IFilters | null): Promise<ITask[]> => {
+  const assignee = filters?.assignee?.map(({ _id }) => _id).join(',');
   const response = await axiosInstance.get(`/task`, {
     params: {
       projectId,
       ...filters,
-    },
-    paramsSerializer: (params) => {
-      return new URLSearchParams(params).toString();
+      assignee,
     },
   });
   return response.data;
