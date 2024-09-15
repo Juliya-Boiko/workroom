@@ -542,3 +542,10 @@ export const inviteUserEmailBody = (name: string, companyName: string, link: str
   </body>
   </html>
 `;
+
+export const passwordRecoveryEmailBody = (link: string) => `
+    <div>
+      <h1>Follow link</h1>
+      <a href=${link} target="_blank">GO TO PASSWORD RECOVERY PAGE</a>
+    </div>
+`;

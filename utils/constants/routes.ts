@@ -6,6 +6,7 @@ export const ROUTES = {
   signUp: '/sign-up',
   invite: '/invite',
   password: '/password-recovery',
+  newPassword: '/new-password',
   settings: '/profile',
   calendar: '/calendar',
   employees: '/employees',

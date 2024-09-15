@@ -40,3 +40,18 @@ export const inviteUsers = async (data: string[]) => {
     handleError(error, 'inviteUsers');
   }
 };
+
+export const sendEmailRecovery = async (email: string) => {
+  const response = await axiosInstance.get('/auth/recovery', {
+    params: {
+      email,
+    },
+  });
+  console.log('sendEmailRecovery response.data ==>', response.data);
+  return response.data;
+};
+
+export const changePassword = async (data: { email: string; password: string }) => {
+  const response = await axiosInstance.patch('/auth/register', data);
+  return response.status === 200;
+};

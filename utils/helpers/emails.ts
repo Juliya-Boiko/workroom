@@ -1,7 +1,7 @@
 'use server';
 import { sendEmail } from '@/libs/smtp';
-import { registerUserEmailBody, inviteUserEmailBody } from '@/utils';
-import { generateInviteUrl } from './generateInviteUrl';
+import { registerUserEmailBody, inviteUserEmailBody, passwordRecoveryEmailBody } from '@/utils';
+import { generateInviteUrl, generateRecoveryUrl } from './generateInviteUrl';
 
 interface RegisterProps {
   name: string;
@@ -37,4 +37,13 @@ export const sendInviteEmails = async ({ name, companyId, companyName, members }
     }
   });
   await Promise.all(inviteMembers);
+};
+
+export const sendPasswordRecoveryEmail = async (email: string, companyId: string) => {
+  const link = generateRecoveryUrl(companyId, email);
+  await sendEmail({
+    to: email,
+    subject: 'Password recovery in Workroom',
+    body: passwordRecoveryEmailBody(link),
+  });
 };

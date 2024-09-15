@@ -6,3 +6,4 @@ export * from './useTasks';
 export * from './useProfile';
 export * from './useEvent';
 export * from './useSearch';
+export * from './usePassword';
