@@ -7,3 +7,4 @@ export * from './profile';
 export * from './addEvent';
 export * from './addLevel';
 export * from './filterTask';
+export * from './forgotPassword';
