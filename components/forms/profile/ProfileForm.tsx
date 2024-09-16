@@ -43,7 +43,7 @@ export const ProfileForm = () => {
         birthday: user.birthday,
         name: user.name,
         phone: user.phone,
-        company,
+        company: company.name,
         avatar: user.avatar,
       });
     }

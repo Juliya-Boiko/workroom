@@ -1,0 +1,69 @@
+.userSettings {
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  border-radius: 24px;
+  padding: 24px;
+  background-color: $white;
+
+  .toggleBtn {
+    width: 100%;
+    @include flexContainer(row, center, space-between);
+  }
+
+  .wrapper {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+
+  .list {
+    padding-top: 24px;
+    flex-direction: column;
+    gap: 24px;
+  }
+
+  .visible {
+    display: flex;
+  }
+
+  .hidden {
+    display: none;
+  }
+
+  .item {
+    padding: 12px;
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    color: $grey-3;
+    cursor: pointer;
+  }
+
+  .active {
+    background-color: $grey-5;
+    color: $dark;
+    .icon {
+      color: $blue-1;
+    }
+  }
+
+  @include onTablet {
+    display: grid;
+    grid-template-columns: 200px 1fr;
+
+    .toggleBtn {
+      display: none;
+    }
+    .list {
+      padding-top: 0;
+      gap: 8px;
+    }
+
+    .hidden {
+      display: flex;
+    }
+  }
+}

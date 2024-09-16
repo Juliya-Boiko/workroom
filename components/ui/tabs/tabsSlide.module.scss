@@ -22,7 +22,7 @@
     background-color: $blue-1;
   }
 
-  @include onMobile {
+  @include onTablet {
     .item {
       padding: 0 48px;
     }

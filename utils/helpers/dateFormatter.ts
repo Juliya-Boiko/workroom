@@ -12,7 +12,7 @@ export const formatDeadlineDate = (value: string) => {
   }
 };
 
-export const formatDayDate = (value: string) => {
+export const formatDayDate = (value: string | Date) => {
   if (value) {
     const day = new Date(value);
     return day.toLocaleDateString(DATE_LOCALE, TODAY_OPTIONS);

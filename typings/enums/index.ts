@@ -10,3 +10,4 @@ export * from './EUsingGoal';
 export * from './ESignStages';
 export * from './EView';
 export * from './ECardOptions';
+export * from './ESettings';

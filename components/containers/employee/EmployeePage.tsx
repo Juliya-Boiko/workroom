@@ -19,7 +19,7 @@ export const EmployeePage = ({ slug }: IDynamicComponent) => {
     <div className={styles.employeePage}>
       <Topping title="Employee’s Profile"></Topping>
       <div className={styles.container}>
-        <EmployeeInfo company={company} user={user} loading={isLoading} />
+        <EmployeeInfo company={company?.name} user={user} loading={isLoading} />
         <ProjectsList
           loading={isProjectsLoading}
           projects={employeeProjects}

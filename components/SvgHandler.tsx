@@ -457,7 +457,7 @@ export const SvgHandler = ({ icon }: { icon: EIconsSet }) => {
         className="svg-min-size"
       >
         <path
-          fill="#3F8CFF"
+          fill="currentColor"
           fillRule="evenodd"
           d="M11 2a3 3 0 0 1 2.995 2.824L14 5v3h5a3 3 0 0 1 2.995 2.824L22 11v10a1 1 0 0 1-1.993.117L20 21V11a1 1 0 0 0-.883-.993L19 10h-5v11a1 1 0 0 1-1.993.117L12 21V5a1 1 0 0 0-.883-.993L11 4H5a1 1 0 0 0-.993.883L4 5v16a1 1 0 0 1-1.993.117L2 21V5a3 3 0 0 1 2.824-2.995L5 2h6Zm0 5a1 1 0 0 0-1-1H6l-.117.007A1 1 0 0 0 6 8h4l.117-.007A1 1 0 0 0 11 7Zm-5 6h4a1 1 0 0 1 .117 1.993L10 15H6a1 1 0 0 1-.117-1.993L6 13Zm5 5a1 1 0 0 0-1-1H6l-.117.007A1 1 0 0 0 6 19h4l.117-.007A1 1 0 0 0 11 18Zm7-3a1 1 0 0 1 .117 1.993L18 17h-2a1 1 0 0 1-.117-1.993L16 15h2Zm1-2a1 1 0 0 0-1-1h-2l-.117.007A1 1 0 0 0 16 14h2l.117-.007A1 1 0 0 0 19 13Z"
           clipRule="evenodd"
@@ -511,7 +511,7 @@ export const SvgHandler = ({ icon }: { icon: EIconsSet }) => {
         className="svg-min-size"
       >
         <path
-          fill="#6D5DD3"
+          fill="currentColor"
           fillRule="evenodd"
           d="M7 7a5 5 0 1 1 10 0A5 5 0 0 1 7 7Zm8 0a3 3 0 1 0-6 0 3 3 0 0 0 6 0Zm-2 10a5 5 0 1 1 10 0 5 5 0 0 1-10 0Zm8 0a3 3 0 1 0-6 0 3 3 0 0 0 6 0ZM6 12a5 5 0 1 0 0 10 5 5 0 0 0 0-10Zm0 2a3 3 0 1 1 0 6 3 3 0 0 1 0-6Z"
           clipRule="evenodd"
@@ -681,4 +681,75 @@ export const SvgHandler = ({ icon }: { icon: EIconsSet }) => {
       </svg>
     );
   }
+  if (icon === EIconsSet.User) {
+    return (
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        width={24}
+        height={24}
+        fill="none"
+        className="svg-min-size"
+      >
+        <path
+          fill="currentColor"
+          fillRule="evenodd"
+          d="M12 2a5 5 0 1 0 0 10 5 5 0 0 0 0-10Zm0 2a3 3 0 1 1 0 6 3 3 0 0 1 0-6Zm8.995 14.783A5 5 0 0 0 16 14H8l-.217.005A5 5 0 0 0 3 19v2l.007.117A1 1 0 0 0 5 21v-2l.005-.176A3 3 0 0 1 8 16h8l.176.005A3 3 0 0 1 19 19v2l.007.117A1 1 0 0 0 21 21v-2l-.005-.217Z"
+          clipRule="evenodd"
+        />
+      </svg>
+    );
+  }
+  if (icon === EIconsSet.Payments) {
+    return (
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        width={24}
+        height={24}
+        fill="none"
+        className="svg-min-size"
+      >
+        <path
+          fill="currentColor"
+          fillRule="evenodd"
+          d="M19 4H5a4 4 0 0 0-4 4v8a4 4 0 0 0 4 4h14a4 4 0 0 0 4-4V8a4 4 0 0 0-4-4Zm2 4a2 2 0 0 0-2-2H5a2 2 0 0 0-2 2h18ZM3 10h18v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-6Zm16 5a1 1 0 0 0-1-1h-3l-.117.007A1 1 0 0 0 15 16h3l.117-.007A1 1 0 0 0 19 15Zm-7-1a1 1 0 0 1 .117 1.993L12 16h-1a1 1 0 0 1-.117-1.993L11 14h1Z"
+          clipRule="evenodd"
+        />
+      </svg>
+    );
+  }
+  if (icon === EIconsSet.Lock) {
+    return (
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        width={24}
+        height={24}
+        fill="none"
+        className="svg-min-size"
+      >
+        <path
+          fill="currentColor"
+          fillRule="evenodd"
+          d="M17.996 6.234C17.874 3.299 15.213 1 12 1 8.71 1 6 3.41 6 6.444V9a4 4 0 0 0-4 4v5a4 4 0 0 0 4 4h12a4 4 0 0 0 4-4v-5a4 4 0 0 0-4-4V6.444l-.004-.21ZM16 9V6.444C16 4.57 14.234 3 12 3 9.838 3 8.114 4.47 8.005 6.264L8 6.444V9h8Zm-9 2H6a2 2 0 0 0-2 2v5a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-5a2 2 0 0 0-2-2H7Z"
+          clipRule="evenodd"
+        />
+      </svg>
+    );
+  }
+  if (icon === EIconsSet.Safety)
+    return (
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        width={24}
+        height={24}
+        fill="none"
+        className="svg-min-size"
+      >
+        <path
+          fill="currentColor"
+          fillRule="evenodd"
+          d="M19 1H5a4 4 0 0 0-4 4v5c0 4.367 2.66 8.169 7.839 11.38a6 6 0 0 0 6.322 0l.37-.234C20.468 17.983 23 14.26 23 10V5a4 4 0 0 0-4-4ZM5 3h14a2 2 0 0 1 2 2v5c0 3.493-2.136 6.636-6.541 9.458l-.358.225a3.997 3.997 0 0 1-4.209-.003C5.251 16.802 3 13.584 3 10V5a2 2 0 0 1 2-2Zm12.713 3.29a1 1 0 0 0-1.414 0L11 11.585 8.711 9.292l-.094-.083a1 1 0 0 0-1.321 1.496l2.996 3.002.095.083a1 1 0 0 0 1.32-.083l6.006-6.002.083-.095a1 1 0 0 0-.083-1.32Z"
+          clipRule="evenodd"
+        />
+      </svg>
+    );
 };

@@ -8,3 +8,4 @@ export * from './addEvent';
 export * from './addLevel';
 export * from './filterTask';
 export * from './forgotPassword';
+export * from './settings';

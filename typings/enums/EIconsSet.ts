@@ -39,4 +39,8 @@ export enum EIconsSet {
   Delete,
   Search,
   CrossRound,
+  User,
+  Payments,
+  Lock,
+  Safety,
 }

@@ -1,0 +1,30 @@
+.form {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  gap: 48px;
+
+  .optionWrapper {
+    width: 100%;
+  }
+
+  .label {
+    display: inline-block;
+    padding-left: 6px;
+    font-weight: bold;
+    font-size: 14px;
+    text-transform: capitalize;
+    color: $grey-3;
+    margin-bottom: 12px;
+  }
+
+  .btnWrapper {
+    display: flex;
+    justify-content: center;
+  }
+
+  @include onTablet {
+    max-width: 400px;
+    margin: 0 auto;
+  }
+}
