@@ -40,3 +40,23 @@ export const uploadToCloudinary = async (
       });
   });
 };
+
+type CloudinaryDeleteResponse = {
+  result: string;
+};
+
+type DeleteResponse =
+  | { success: true; result: CloudinaryDeleteResponse }
+  | { success: false; error: CloudinaryError };
+
+export const deleteFromCloudinary = async (publicId: string): Promise<DeleteResponse> => {
+  return new Promise((resolve, reject) => {
+    cloudinary.uploader.destroy(publicId, { invalidate: true }, (error, result) => {
+      if (error) {
+        reject({ success: false, error });
+      } else {
+        resolve({ success: true, result });
+      }
+    });
+  });
+};

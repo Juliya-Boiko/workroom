@@ -8,6 +8,7 @@ export const ProfilePage = () => {
       <Topping title="My Profile"></Topping>
       <div className={styles.container}>
         <ProfileForm />
+        <div>content</div>
       </div>
     </div>
   );

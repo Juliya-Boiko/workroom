@@ -6,28 +6,22 @@
     flex-direction: column;
     gap: 24px;
     padding-top: 24px;
-    // @include onTablet {
-    //   padding-top: 48px;
-    //   gap: 48px;
-    // }
-    // @include onLaptop {
-    //   height: 100%;
-    //   padding-top: 16px;
-    //   flex-direction: row;
-    //   gap: 32px;
-    //   justify-content: flex-start;
-    // }
   }
 
-
-
-
-
-
   @include onTablet {
-    padding: 24px 48px;
+    padding: 48px;
+
+    .container {
+      padding-top: 48px;
+    }
   }
   @include onLaptop {
     padding: 32px 0 0 32px;
+
+    .container {
+      padding-top: 32px;
+      display: grid;
+      grid-template-columns: 264px 1fr;
+    }
   }
 }

@@ -10,7 +10,6 @@
   display: inline-block;
   padding-left: 6px;
   font-weight: bold;
-  font-size: 14px;
   text-transform: capitalize;
 }
 
@@ -42,7 +41,6 @@
   border-radius: 14px;
   height: 48px;
   width: 100%;
-  font-size: 16px;
   color: $dark;
   @extend %shadow-xs;
 

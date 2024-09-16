@@ -44,19 +44,27 @@ export const ProfileForm = () => {
         name: user.name,
         phone: user.phone,
         company,
+        avatar: user.avatar,
       });
     }
   }, [company, reset, user]);
 
   const location = watch('location');
   const name = watch('name');
+  const prevAvatar = user?.avatar;
 
   const handleApprove = (v: string) => {
     setValue('location', v);
   };
 
   const onSubmit = async (data: ProfileFormData) => {
-    update(data);
+    update({
+      ...data,
+      avatar: {
+        oldAvatar: prevAvatar || null,
+        newAvatar: data.avatar,
+      },
+    });
     setIsDisabled(true);
   };
 
@@ -80,12 +88,7 @@ export const ProfileForm = () => {
               )}
             />
           )}
-          <BtnIcon
-            tonal
-            title="Edit"
-            onClick={() => setIsDisabled(false)}
-            icon={EIconsSet.Pensil}
-          />
+          <BtnIcon title="Edit" icon={EIconsSet.Pensil} onClick={() => setIsDisabled((v) => !v)} />
         </div>
         <InputField
           label="Name"

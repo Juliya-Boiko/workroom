@@ -1,4 +1,5 @@
-import { uploadToCloudinary } from '@/libs/cloudinary';
+import { uploadToCloudinary, deleteFromCloudinary } from '@/libs/cloudinary';
+import { CLOUDINARY_URL_REGEX } from '../constants';
 
 const encodeImage = async (file: File) => {
   const fileBuffer = await file.arrayBuffer();
@@ -16,5 +17,12 @@ export const uploadImage = async (image: null | string | File) => {
     return uploadResult.success ? uploadResult.result.secure_url : null;
   } else {
     return image;
+  }
+};
+
+export const deleteImage = async (url: string) => {
+  const match = url.match(CLOUDINARY_URL_REGEX);
+  if (match) {
+    await deleteFromCloudinary(match[1]);
   }
 };
