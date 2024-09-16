@@ -86,7 +86,14 @@ export const PickerLocation = ({ value, disabled, onApprove }: Props) => {
       {isOpen && (
         <Overlay onClose={() => setIsOpen(false)}>
           <div className={styles.container}>
-            <BtnIcon title="Close" tonal onClick={() => setIsOpen(false)} icon={EIconsSet.Cross} />
+            <div className={styles.head}>
+              <BtnIcon
+                title="Close"
+                tonal
+                onClick={() => setIsOpen(false)}
+                icon={EIconsSet.Cross}
+              />
+            </div>
             <div className={styles.wrapper}>
               <Filter
                 label="Select country"

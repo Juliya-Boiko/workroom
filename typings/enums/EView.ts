@@ -38,3 +38,11 @@ export const projectsViewDataTypes = [
     icon: EIconsSet.Timeline,
   },
 ];
+
+export enum EViewProfile {
+  PROJECTS = 'Projects',
+  TEAM = 'Team',
+  SETTINGS = 'Settings',
+}
+
+export const viewProfileDataTypes = Object.values(EViewProfile);

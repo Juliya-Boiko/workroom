@@ -1,13 +1,17 @@
-import { EViewEmployees } from '@/typings';
+import { EViewEmployees, EViewProfile } from '@/typings';
 import styles from './tabsSlide.module.scss';
 
-interface Props {
-  options: EViewEmployees[];
-  value: EViewEmployees;
-  onChange: (v: EViewEmployees) => void;
+interface Props<T extends EViewEmployees | EViewProfile> {
+  options: T[];
+  value: T;
+  onChange: (v: T) => void;
 }
 
-export const TabsSlide = ({ options, value, onChange }: Props) => {
+export const TabsSlide = <T extends EViewEmployees | EViewProfile>({
+  options,
+  value,
+  onChange,
+}: Props<T>) => {
   return (
     <ul className={styles.tabsSlide}>
       {options.map((el) => (
