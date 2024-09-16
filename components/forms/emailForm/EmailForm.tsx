@@ -28,7 +28,12 @@ export const EmailForm = () => {
   return (
     <>
       {isSuccess ? (
-        <div>email sended</div>
+        <div className={styles.success}>
+          <div className={styles.wrapper}>
+            <SvgHandler icon={EIconsSet.Checkbox} />
+          </div>
+          <p>Email sent</p>
+        </div>
       ) : (
         <form className={styles.form} onSubmit={handleSubmit(onSubmit)}>
           <InputField

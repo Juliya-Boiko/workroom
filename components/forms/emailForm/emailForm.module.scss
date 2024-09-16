@@ -9,3 +9,11 @@
     width: 400px;
   }
 }
+
+.success {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  font-weight: 700; 
+  color: $blue-1;
+}

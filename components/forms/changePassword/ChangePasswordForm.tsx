@@ -5,8 +5,6 @@ import { yupResolver } from '@hookform/resolvers/yup';
 import { usePasswordMutations } from '@/services';
 import { passwordSchema, PasswordFormData } from '@/utils';
 import { PasswordInputField, BtnPrimary } from '@/components/ui';
-// import { SvgHandler } from '@/components/SvgHandler';
-// import { EIconsSet } from '@/typings';
 
 export const ChangePasswordForm = ({ email }: { email: string }) => {
   const { change, isChanging } = usePasswordMutations();

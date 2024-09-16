@@ -47,7 +47,6 @@ export const sendEmailRecovery = async (email: string) => {
       email,
     },
   });
-  console.log('sendEmailRecovery response.data ==>', response.data);
   return response.data;
 };
 
