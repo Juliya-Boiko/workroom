@@ -78,7 +78,7 @@ export const CompanyForm = () => {
       </div>
       <div className={styles.btnWrapper}>
         <BtnPrimary type="submit" disabled={isDisabled}>
-          Update company
+          Confirm
         </BtnPrimary>
       </div>
     </form>

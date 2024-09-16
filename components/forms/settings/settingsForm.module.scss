@@ -23,8 +23,7 @@
     justify-content: center;
   }
 
-  @include onTablet {
-    max-width: 400px;
-    margin: 0 auto;
+  .avatarWrapper {
+    @include flexContainer(row, center, center);
   }
 }

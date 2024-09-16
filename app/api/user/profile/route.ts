@@ -37,10 +37,8 @@ export async function PATCH(request: NextRequest) {
       return NextResponse.json({ message: 'Find user error' }, { status: 400 });
     }
     const reqBody = await request.json();
-    const user = await User.findByIdAndUpdate(id, reqBody, { new: true }).select(
-      'name avatar position -_id'
-    );
-    return NextResponse.json(user, { status: 200 });
+    await User.findByIdAndUpdate(id, reqBody);
+    return NextResponse.json({ message: 'Profile updated' }, { status: 200 });
   } catch (error: any) {
     return NextResponse.json({ message: error.message }, { status: 500 });
   }

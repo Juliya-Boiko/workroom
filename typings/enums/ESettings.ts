@@ -4,7 +4,7 @@ export enum ESettings {
   ACCOUNT = 'Account',
   NOTIFICATIONS = 'Notifications',
   COMPANY = 'My Company',
-  APPS = 'Connected Apps',
+  APPS = 'Contacts & Apps',
   PAYMENTS = 'Payments',
   CONFIDENTIALITY = 'Confidentiality',
   SAFETY = 'Safety',

@@ -50,6 +50,10 @@
     }
   }
 
+  .formWrapper {
+    width: 100%;
+  }
+
   @include onTablet {
     display: grid;
     grid-template-columns: 200px 1fr;
@@ -64,6 +68,11 @@
 
     .hidden {
       display: flex;
+    }
+
+    .formWrapper {
+      max-width: 400px;
+      margin: 0 auto;
     }
   }
 }

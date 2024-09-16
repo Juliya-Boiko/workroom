@@ -1,22 +1,24 @@
 'use client';
 import styles from './settings.module.scss';
 import { useState } from 'react';
+import { useProfile } from '@/services';
 import { settings, ISetting } from '@/typings';
 import { SvgHandler } from '@/components/SvgHandler';
 import { EIconsSet, ESettings } from '@/typings';
-import { AccountForm, CompanyForm } from '@/components/forms/settings';
+import { AccountForm, CompanyForm, ContactsForm } from '@/components/forms/settings';
+import { ChangePasswordForm } from '@/components/forms/changePassword/ChangePasswordForm';
 
 export const Settings = () => {
   const [open, setOpen] = useState(false);
   const [active, setActive] = useState(settings[0]);
+  const { data: user } = useProfile();
 
   const getForm = () => {
-    if (active.title === ESettings.ACCOUNT) {
-      return <AccountForm />;
-    }
-    if (active.title === ESettings.COMPANY) {
-      return <CompanyForm />;
-    }
+    if (active.title === ESettings.ACCOUNT) return <AccountForm />;
+    if (active.title === ESettings.APPS) return <ContactsForm />;
+    if (active.title === ESettings.COMPANY) return <CompanyForm />;
+    if (active.title === ESettings.SAFETY && user)
+      return <ChangePasswordForm email={user?.email} />;
     return <div>another form</div>;
   };
 
@@ -48,7 +50,7 @@ export const Settings = () => {
           </li>
         ))}
       </ul>
-      <div>{getForm()}</div>
+      <div className={styles.formWrapper}>{getForm()}</div>
     </div>
   );
 };
