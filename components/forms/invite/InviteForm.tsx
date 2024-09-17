@@ -1,13 +1,12 @@
 'use client';
 import styles from '../common.module.scss';
 import inviteStyles from './invite.module.scss';
-import { useState } from 'react';
 import { useForm, Controller } from 'react-hook-form';
 import { useUserMutations } from '@/services';
 import { yupResolver } from '@hookform/resolvers/yup';
 import { inviteSchema, InviteFormData } from '@/utils';
-import { InputField, SelectDrop, BtnPrimary } from '@/components/ui';
-import { EIconsSet, EUserPosition, invitePositionDataTypes } from '@/typings';
+import { InputField, PasswordInputField, SelectDrop, BtnPrimary } from '@/components/ui';
+import { EUserPosition, invitePositionDataTypes } from '@/typings';
 
 interface Props {
   companyId: string;
@@ -15,7 +14,6 @@ interface Props {
 }
 
 export const InviteForm = ({ companyId, email }: Props) => {
-  const [typePassword, setTypePassword] = useState('password');
   const { registerMember, isInviting } = useUserMutations();
   const defaultValues = {
     email,
@@ -39,14 +37,6 @@ export const InviteForm = ({ companyId, email }: Props) => {
   });
 
   const position = watch('userPosition');
-
-  const toggleType = () => {
-    if (typePassword === 'password') {
-      setTypePassword('text');
-    } else {
-      setTypePassword('password');
-    }
-  };
 
   const onSubmit = async (data: InviteFormData) => {
     registerMember({ ...data, companyId });
@@ -92,27 +82,17 @@ export const InviteForm = ({ companyId, email }: Props) => {
         placeholder="John Doe"
         errors={errors.name}
       />
-      <InputField
+      <PasswordInputField
         label="Password"
-        type={typePassword}
         name="password"
-        placeholder="Enter password"
         register={register}
-        iconPosition="end"
-        icon={EIconsSet.Eye}
         errors={errors.password}
-        onIconClick={toggleType}
       />
-      <InputField
+      <PasswordInputField
         label="Confirm Password"
-        type={typePassword}
         name="confirmPassword"
-        placeholder="Confirm password"
         register={register}
         errors={errors.confirmPassword}
-        iconPosition="end"
-        icon={EIconsSet.Eye}
-        onIconClick={toggleType}
       />
       <BtnPrimary type="submit" disabled={!isDirty || !isValid || isSubmitting || isInviting}>
         Sign In

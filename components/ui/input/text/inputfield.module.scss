@@ -35,6 +35,7 @@
 }
 
 .input {
+  @extend %shadow-xs;
   background-color: $white;
   border: none;
   outline: 1px solid;
@@ -42,7 +43,7 @@
   height: 48px;
   width: 100%;
   color: $dark;
-  @extend %shadow-xs;
+  padding: 0 18px;
 
   &::placeholder {
     font-size: 14px;

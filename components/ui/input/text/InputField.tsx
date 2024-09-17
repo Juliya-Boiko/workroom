@@ -1,8 +1,6 @@
 import styles from './inputfield.module.scss';
 import { UseFormRegister, FieldValues, Path } from 'react-hook-form';
 import { HTMLInputTypeAttribute } from 'react';
-import { SvgHandler } from '@/components/SvgHandler';
-import { EIconsSet } from '@/typings';
 
 type InputFieldProps<T extends FieldValues> = {
   label: string;
@@ -14,9 +12,6 @@ type InputFieldProps<T extends FieldValues> = {
   errors?: {
     message?: string;
   };
-  icon?: EIconsSet;
-  iconPosition?: 'start' | 'end';
-  onIconClick?: () => void;
 };
 
 export const InputField = <T extends FieldValues>({
@@ -25,23 +20,9 @@ export const InputField = <T extends FieldValues>({
   placeholder,
   disabled,
   errors,
-  iconPosition,
-  icon,
   name,
   register,
-  onIconClick,
 }: InputFieldProps<T>) => {
-  const getPaddings = () => {
-    if (iconPosition === 'start') {
-      return '0 18px 0 42px';
-    }
-    if (iconPosition === 'end') {
-      return '0 42px 0 18px';
-    }
-    if (!iconPosition) {
-      return '0 18px';
-    }
-  };
   return (
     <label
       htmlFor={name}
@@ -51,16 +32,6 @@ export const InputField = <T extends FieldValues>({
     >
       <span className={styles.title}>{label}</span>
       <div className={styles.wrapper}>
-        {icon && (
-          <div
-            className={`
-              ${styles.icon} ${iconPosition === 'start' ? styles.iconLeft : styles.iconRight}
-            `}
-            onClick={onIconClick}
-          >
-            <SvgHandler icon={icon} />
-          </div>
-        )}
         <input
           id={name}
           type={type ? type : 'text'}
@@ -68,9 +39,6 @@ export const InputField = <T extends FieldValues>({
           disabled={disabled}
           placeholder={placeholder}
           className={styles.input}
-          style={{
-            padding: getPaddings(),
-          }}
         />
         {errors && errors.message && !disabled && (
           <span className={styles.errorMsg}>{errors.message}</span>
