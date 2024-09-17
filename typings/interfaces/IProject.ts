@@ -8,6 +8,7 @@ export interface IProject {
   priority: EPriority;
   createdAt: string;
   _id: string;
+  order: string;
 }
 
 export interface IProjectInfo extends IProject {

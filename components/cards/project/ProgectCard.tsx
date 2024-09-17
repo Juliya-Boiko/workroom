@@ -1,6 +1,6 @@
 import styles from './projectCard.module.scss';
 import Image from 'next/image';
-import { formatDeadlineDate, formatDayDate, defineImageSrc } from '@/utils';
+import { formatDayDate, defineImageSrc } from '@/utils';
 import { LoaderSkeleton } from '@/components/LoaderSkeleton';
 import { SvgHandler } from '@/components/SvgHandler';
 import { EIconsSet, IProjectInfo } from '@/typings';
@@ -24,7 +24,7 @@ export const ProjectCard = ({ loading, project, expanded }: Props) => {
           <div className={styles.head}>
             <Image src={imgSrc} alt="Thumb" width={48} height={48} className={styles.image} />
             <div className={styles.block}>
-              <p className={styles.deadline}>Deadline: {formatDeadlineDate(project.deadline)}</p>
+              <p className={styles.order}>{project.order}</p>
               <p className={styles.title}>{project.name}</p>
             </div>
           </div>
@@ -43,7 +43,7 @@ export const ProjectCard = ({ loading, project, expanded }: Props) => {
               </div>
               <BadgePriopity label={project.priority} />
             </div>
-            {expanded && (
+            {expanded && project.description && (
               <div className={styles.description}>Description: {project.description}</div>
             )}
           </>

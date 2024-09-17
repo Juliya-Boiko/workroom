@@ -2,6 +2,7 @@
 import Project from '@/models/project';
 import { decode } from '@/libs/jwt';
 import { connectToMongoDB } from '@/libs/database';
+import { defineProjectNumber } from '@/utils';
 import { ETaskStatus, IAssignee, IProject } from '@/typings';
 import { NextRequest, NextResponse } from 'next/server';
 
@@ -22,12 +23,15 @@ export async function POST(request: NextRequest) {
       return NextResponse.json({ message: 'Token null or expired' }, { status: 403 });
     }
     const { id, companyId } = await decode(token);
-    const project = new Project({
+    const lastProject = await Project.findOne({ companyId }).sort({ createdAt: -1 });
+
+    const initProject = {
       companyId,
       userId: id,
       ...reqBody,
-      assignee: [],
-    });
+      order: defineProjectNumber(lastProject),
+    };
+    const project = new Project(initProject);
     const savedProject = await project.save();
     return NextResponse.json(savedProject._id, { status: 200 });
   } catch (error: any) {
@@ -47,7 +51,7 @@ export async function GET(request: NextRequest) {
 
     const projectsWithTasks: IResponse[] = await Project.find({ companyId })
       .sort({ createdAt: 'desc' })
-      .select('deadline description name priority createdAt image')
+      .select('deadline description name priority createdAt image order')
       .limit(Number(take))
       .populate({
         path: 'tasks',

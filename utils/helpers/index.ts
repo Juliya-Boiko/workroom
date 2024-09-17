@@ -7,3 +7,4 @@ export * from './defineEventStyles';
 export * from './uploadImage';
 export * from './defineImageSrc';
 export * from './handleError';
+export * from './defineProjectNumber';

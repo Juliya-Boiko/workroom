@@ -12,6 +12,7 @@ const projectSchema = new Schema(
     description: { type: String },
     priority: { type: String, enum: priorityDataTypes, required: true },
     image: { type: String },
+    order: { type: String },
   },
   {
     timestamps: true,

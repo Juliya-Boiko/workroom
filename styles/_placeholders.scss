@@ -9,7 +9,13 @@
 
 %page-title {
   font-weight: 700;
-  font-size: 36px;
+  font-size: 24px;
+  &::first-letter {
+    text-transform: uppercase;
+  }
+  @include onTablet {
+    font-size: 28px;
+  }
 }
 
 %shadow-s {
