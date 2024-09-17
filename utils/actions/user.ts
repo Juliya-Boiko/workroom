@@ -1,5 +1,5 @@
 import { axiosInstance } from '@/libs/axios';
-import { IUserInfo, IEmployee } from '@/typings';
+import { IUserInfo, IProfile } from '@/typings';
 import { uploadImage, deleteImage } from '@/utils';
 
 export const getUserInfo = async (): Promise<IUserInfo> => {
@@ -7,7 +7,7 @@ export const getUserInfo = async (): Promise<IUserInfo> => {
   return response.data;
 };
 
-export const getProfile = async (): Promise<IEmployee> => {
+export const getProfile = async (): Promise<IProfile> => {
   const response = await axiosInstance.get('/user/profile');
   return response.data;
 };
@@ -24,6 +24,11 @@ interface IUpdate {
   birthday?: Date | null;
   name?: string;
   avatar?: AvatarUpdate;
+  settings?: {
+    emailActivity: boolean;
+    notifyTask: boolean;
+    notifyComment: boolean;
+  };
 }
 
 export const updateProfile = async (data: IUpdate): Promise<IUserInfo> => {

@@ -1,0 +1,27 @@
+.toggle {
+  
+
+  .input {
+    display: none;
+    &:checked + .wrapper {
+      background-color: $blue-1;
+      justify-content: flex-end;
+    }
+  }
+
+  .wrapper {
+    @include flexContainer(row, center, flex-start);
+    width: 50px;
+    height: 30px;
+    background-color: $grey-1;
+    border-radius: 18px;
+    padding: 4px;
+    transition: all 250ms ease-in-out;
+  }
+
+  .round {
+    @include squareSize(22px); 
+    border-radius: 50%;
+    background-color: $white;
+  }
+}
