@@ -1,0 +1,10 @@
+.pagination {
+  padding-top: 24px;
+  @include flexContainer(row, center, flex-end);
+
+  .wrapper {
+    background-color: $white;
+    border-radius: 14px;
+    padding: 14px;
+  }
+}

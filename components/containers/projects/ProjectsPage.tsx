@@ -2,14 +2,14 @@
 import styles from './projectsPage.module.scss';
 import imgSrc from '../../../public/placeholder-1.png';
 import Image from 'next/image';
+import { useState } from 'react';
 import { useProjects } from '@/services';
 import { Topping } from '@/components/topping/Topping';
-import { Modal, BtnPrimary, Preloader, BtnIcon } from '@/components/ui';
-import { AddProjectForm } from '@/components/forms/addProject/AddProjectForm';
 import { projectsViewDataTypes, EIconsSet } from '@/typings';
+import { Modal, BtnPrimary, Preloader, BtnIcon, Pagination } from '@/components/ui';
+import { AddProjectForm } from '@/components/forms/addProject/AddProjectForm';
 import { SvgHandler } from '@/components/SvgHandler';
 import { ProjectsGrid } from '@/components/sections/projects/projectsGrid/ProjectsGrid';
-import { useState } from 'react';
 
 export const ProjectsPage = () => {
   const [view, setView] = useState(projectsViewDataTypes[0].value);
@@ -53,7 +53,10 @@ export const ProjectsPage = () => {
           </div>
         )}
         {projects && projects.length > 0 && (
-          <ProjectsGrid view={view} projects={projects} onClick={(v) => setView(v)} />
+          <>
+            <ProjectsGrid view={view} projects={projects} onClick={(v) => setView(v)} />
+            <Pagination start={1} end={5} total={6} />
+          </>
         )}
       </div>
     </div>

@@ -3,3 +3,4 @@ export * from './routes';
 export * from './emails';
 export * from './queryKeys';
 export * from './projectThumbs';
+export * from './paginationSteps';

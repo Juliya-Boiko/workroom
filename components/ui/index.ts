@@ -29,3 +29,4 @@ export * from './options/Options';
 export * from './confirm/Confirm';
 export * from './logo/Logo';
 export * from './toggle/Toggle';
+export * from './pagination/Pagination';
