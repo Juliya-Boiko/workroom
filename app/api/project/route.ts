@@ -2,7 +2,7 @@
 import Project from '@/models/project';
 import { decode } from '@/libs/jwt';
 import { connectToMongoDB } from '@/libs/database';
-import { defineProjectNumber } from '@/utils';
+import { defineProjectNumber, PROJECTS_STEP } from '@/utils';
 import { ETaskStatus, IAssignee, IProject } from '@/typings';
 import { NextRequest, NextResponse } from 'next/server';
 
@@ -42,17 +42,19 @@ export async function POST(request: NextRequest) {
 export async function GET(request: NextRequest) {
   const url = new URL(request.url);
   const take = url.searchParams.get('take');
+  const skip = url.searchParams.get('skip');
   try {
     const token = request.cookies.get('workroom')?.value;
     if (!token) {
       return NextResponse.json({ message: 'Token null or expired' }, { status: 403 });
     }
     const { companyId } = await decode(token);
-
+    const total = await Project.countDocuments({ companyId });
     const projectsWithTasks: IResponse[] = await Project.find({ companyId })
       .sort({ createdAt: 'desc' })
-      .select('deadline description name priority createdAt image order')
+      .skip(Number(skip) * PROJECTS_STEP)
       .limit(Number(take))
+      .select('deadline description name priority createdAt image order')
       .populate({
         path: 'tasks',
         match: { projectId: { $exists: true } },
@@ -80,7 +82,7 @@ export async function GET(request: NextRequest) {
         },
       };
     });
-    return NextResponse.json(formatted, { status: 200 });
+    return NextResponse.json({ projects: formatted, total }, { status: 200 });
   } catch (error: any) {
     console.log(error);
     return NextResponse.json({ message: error.message }, { status: 500 });

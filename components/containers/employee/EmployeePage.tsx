@@ -9,10 +9,10 @@ import { ProjectsList } from '@/components/sections/dashboard/projects/progectsL
 export const EmployeePage = ({ slug }: IDynamicComponent) => {
   const { data: user, isLoading } = useEmployee(slug);
   const { data: company } = useCompany();
-  const { data: projects, isLoading: isProjectsLoading } = useProjects();
+  const { data, isLoading: isProjectsLoading } = useProjects();
 
-  const employeeProjects = projects
-    ? projects.filter((project) => project.tasks.assignee.some((el) => el._id === slug))
+  const employeeProjects = data
+    ? data.projects.filter((project) => project.tasks.assignee.some((el) => el._id === slug))
     : undefined;
 
   return (

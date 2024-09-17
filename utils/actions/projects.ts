@@ -2,8 +2,18 @@ import { axiosInstance } from '@/libs/axios';
 import { IProjectInfo, IProjectDetails } from '@/typings';
 import { AddProjectFormData, uploadImage, IMAGE_THUMB_STARTS } from '@/utils';
 
-export const getProjects = async (take?: number): Promise<IProjectInfo[]> => {
-  const response = await axiosInstance.get(`/project?take=${take}`);
+interface IProjectsResponse {
+  projects: IProjectInfo[];
+  total: number;
+}
+
+export const getProjects = async (take?: number, skip?: number): Promise<IProjectsResponse> => {
+  const response = await axiosInstance.get('/project', {
+    params: {
+      take,
+      skip,
+    },
+  });
   return response.data;
 };
 

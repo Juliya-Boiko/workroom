@@ -10,10 +10,12 @@ import { Modal, BtnPrimary, Preloader, BtnIcon, Pagination } from '@/components/
 import { AddProjectForm } from '@/components/forms/addProject/AddProjectForm';
 import { SvgHandler } from '@/components/SvgHandler';
 import { ProjectsGrid } from '@/components/sections/projects/projectsGrid/ProjectsGrid';
+import { PROJECTS_STEP } from '@/utils';
 
 export const ProjectsPage = () => {
   const [view, setView] = useState(projectsViewDataTypes[0].value);
-  const { data: projects, isLoading: isLoadingProjects } = useProjects();
+  const [page, setPage] = useState(0);
+  const { data, isLoading: isLoadingProjects } = useProjects(PROJECTS_STEP, page);
 
   return (
     <div className={styles.projectsPage}>
@@ -46,16 +48,22 @@ export const ProjectsPage = () => {
             <Preloader />
           </div>
         )}
-        {projects && !projects.length && (
+        {data && !data.projects.length && (
           <div className={styles.placeholder}>
             <p>You dont have projects yet</p>
             <Image src={imgSrc} priority alt="Projects" className={styles.image} />
           </div>
         )}
-        {projects && projects.length > 0 && (
+        {data && data.projects.length > 0 && (
           <>
-            <ProjectsGrid view={view} projects={projects} onClick={(v) => setView(v)} />
-            <Pagination start={1} end={5} total={6} />
+            <ProjectsGrid view={view} projects={data.projects} onClick={(v) => setView(v)} />
+            <Pagination
+              page={page}
+              step={PROJECTS_STEP}
+              total={data.total}
+              onNext={() => setPage((v) => v + 1)}
+              onPrev={() => setPage((v) => v - 1)}
+            />
           </>
         )}
       </div>

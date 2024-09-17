@@ -10,20 +10,20 @@ import { ProjectsList } from './progectsList/ProjectsList';
 
 export const ProjectsSection = () => {
   const router = useRouter();
-  const { data: projects, isLoading } = useProjects(3);
+  const { data, isLoading } = useProjects(3);
 
   return (
     <section className={styles.section}>
       <div className={styles.head}>
         <h2 className={styles.title}>Projects</h2>
         <BtnSecondary disabled={isLoading} onClick={() => router.push(ROUTES.projects)}>
-          <span>{projects?.length ? 'View all' : 'Add project'}</span>
+          <span>{data?.projects?.length ? 'View all' : 'Add project'}</span>
           <SvgHandler icon={EIconsSet.ChevronRight} />
         </BtnSecondary>
       </div>
       <ProjectsList
         loading={isLoading}
-        projects={projects}
+        projects={data?.projects}
         placeholder="You dont have projects yet"
       />
     </section>
