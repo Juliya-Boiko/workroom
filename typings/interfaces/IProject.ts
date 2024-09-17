@@ -1,4 +1,4 @@
-import { EPriority } from '../enums';
+import { EPriority, ETaskStatus } from '../enums';
 import { IAssignee } from './IUserInfo';
 
 export interface IProject {
@@ -9,6 +9,13 @@ export interface IProject {
   createdAt: string;
   _id: string;
   order: string;
+}
+
+export interface IProjectResponse extends IProject {
+  tasks: {
+    status: ETaskStatus;
+    assignee: IAssignee;
+  }[];
 }
 
 export interface IProjectInfo extends IProject {
