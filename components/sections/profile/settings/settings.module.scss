@@ -54,6 +54,12 @@
     width: 100%;
   }
 
+  .formTitle {
+    font-size: 18px;
+    font-weight: 700;
+    margin-bottom: 24px;
+  }
+
   @include onTablet {
     display: grid;
     grid-template-columns: 200px 1fr;

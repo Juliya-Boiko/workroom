@@ -5,7 +5,7 @@ import { useProfile } from '@/services';
 import { settings, ISetting } from '@/typings';
 import { SvgHandler } from '@/components/SvgHandler';
 import { EIconsSet, ESettings } from '@/typings';
-import { AccountForm, CompanyForm, ContactsForm } from '@/components/forms/settings';
+import { AccountForm, CompanyForm, ContactsForm, NotifyForm } from '@/components/forms/settings';
 import { ChangePasswordForm } from '@/components/forms/changePassword/ChangePasswordForm';
 
 export const Settings = () => {
@@ -13,13 +13,14 @@ export const Settings = () => {
   const [active, setActive] = useState(settings[0]);
   const { data: user } = useProfile();
 
-  const getForm = () => {
-    if (active.title === ESettings.ACCOUNT) return <AccountForm />;
-    if (active.title === ESettings.APPS) return <ContactsForm />;
-    if (active.title === ESettings.COMPANY) return <CompanyForm />;
-    if (active.title === ESettings.SAFETY && user)
-      return <ChangePasswordForm email={user?.email} />;
-    return <div>another form</div>;
+  const forms = {
+    [ESettings.ACCOUNT]: <AccountForm />,
+    [ESettings.APPS]: <ContactsForm />,
+    [ESettings.COMPANY]: <CompanyForm />,
+    [ESettings.SAFETY]: user ? <ChangePasswordForm email={user?.email} /> : null,
+    [ESettings.NOTIFICATIONS]: <NotifyForm />,
+    [ESettings.PAYMENTS]: <div>PAYMENTS</div>,
+    [ESettings.CONFIDENTIALITY]: <div>CONFIDENTIALITY</div>,
   };
 
   const handleSelect = (v: ISetting) => {
@@ -50,7 +51,10 @@ export const Settings = () => {
           </li>
         ))}
       </ul>
-      <div className={styles.formWrapper}>{getForm()}</div>
+      <div className={styles.formWrapper}>
+        <h6 className={styles.formTitle}>{active.title}</h6>
+        {forms[active.title]}
+      </div>
     </div>
   );
 };

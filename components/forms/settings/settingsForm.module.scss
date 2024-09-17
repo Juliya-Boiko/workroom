@@ -11,7 +11,7 @@
   .label {
     display: inline-block;
     padding-left: 6px;
-    font-weight: bold;
+    font-weight: 700;
     font-size: 14px;
     text-transform: capitalize;
     color: $grey-3;
@@ -25,5 +25,20 @@
 
   .avatarWrapper {
     @include flexContainer(row, center, center);
+  }
+
+  .item {
+    @include flexContainer(row, center, space-between);
+    gap: 14px;
+    padding: 14px;
+    border-radius: 14px;
+    color: $grey-3;
+    background-color: $grey-5;
+  }
+
+  .subtitle {
+    font-weight: 700;
+    margin-bottom: 14px;
+    color: $dark;
   }
 }
