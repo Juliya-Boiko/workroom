@@ -14,7 +14,7 @@ export const Logout = ({ children }: Props) => {
 
   const handleLogout = async () => {
     try {
-      const response = await axiosInstance.get('/auth/logout');
+      const response = await axiosInstance.delete('/auth');
       if (response.status === 200) {
         router.push(ROUTES.signIn);
       }

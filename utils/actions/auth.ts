@@ -8,12 +8,12 @@ export const registerUserAndCompany = async (data: SignUpFormData) => {
     ...data,
     members: filteredMembers,
   };
-  const response = await axiosInstance.post('/auth/register', user);
+  const response = await axiosInstance.post('/auth', user);
   return response;
 };
 
 export const loginUser = async (data: SignInFormData) => {
-  const response = await axiosInstance.post('/auth/login', data);
+  const response = await axiosInstance.put('/auth', data);
   return response.status === 200;
 };
 
@@ -22,7 +22,7 @@ interface InviteType extends InviteFormData {
 }
 
 export const registerUser = async (data: InviteType) => {
-  const response = await axiosInstance.post('/auth/register', data);
+  const response = await axiosInstance.post('/auth', data);
   return response.status === 201;
 };
 
@@ -51,6 +51,6 @@ export const sendEmailRecovery = async (email: string) => {
 };
 
 export const changePassword = async (data: { email: string; password: string }) => {
-  const response = await axiosInstance.patch('/auth/register', data);
+  const response = await axiosInstance.patch('/auth', data);
   return response.status === 200;
 };

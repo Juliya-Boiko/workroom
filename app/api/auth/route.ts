@@ -1,7 +1,7 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import User from '@/models/user';
 import Company from '@/models/company';
-import { hashPassword } from '@/libs/bcrypt';
+import { hashPassword, comparePassword } from '@/libs/bcrypt';
 import { genToken } from '@/libs/jwt';
 import { connectToMongoDB } from '@/libs/database';
 import { sendRegistrationEmail, sendInviteEmails } from '@/utils';
@@ -11,6 +11,7 @@ import { NextRequest, NextResponse } from 'next/server';
 
 connectToMongoDB();
 
+// REGISTER USER
 export async function POST(request: NextRequest) {
   const reqBody = await request.json();
   // Check if exist user with email
@@ -33,6 +34,11 @@ export async function POST(request: NextRequest) {
     location: null,
     profession: reqBody.userPosition === EUserPosition.EMPLOYEE ? reqBody.profession : null,
     phone: null,
+    settings: {
+      emailActivity: false,
+      notifyTask: true,
+      notifyComment: true,
+    },
   };
   let initToken = '';
   if (reqBody.userPosition === EUserPosition.OWNER) {
@@ -82,6 +88,27 @@ export async function POST(request: NextRequest) {
   return response;
 }
 
+// LOGIN USER
+export async function PUT(request: NextRequest) {
+  const reqBody = await request.json();
+  const { email, password } = reqBody;
+  const user = await User.findOne({ email });
+  // Check if exist user with email
+  if (!user) {
+    return NextResponse.json({ message: `User with email ${email} not found` }, { status: 400 });
+  }
+  // Check is password valid
+  const validPassword = await comparePassword(password, user.password);
+  if (!validPassword) {
+    return NextResponse.json({ message: 'Invalid password' }, { status: 403 });
+  }
+  const token = genToken(user._id, user.companyId);
+  const response = NextResponse.json({ message: 'Login successful' }, { status: 200 });
+  response.cookies.set('workroom', token, { httpOnly: true });
+  return response;
+}
+
+// CHANGE PASSWORD
 export async function PATCH(request: NextRequest) {
   const reqBody = await request.json();
   const { email, password } = reqBody;
@@ -93,4 +120,14 @@ export async function PATCH(request: NextRequest) {
   const hashPass = await hashPassword(password);
   await User.findByIdAndUpdate(user._id, { password: hashPass });
   return NextResponse.json({ message: 'Password updated' }, { status: 200 });
+}
+
+// LOGOUT
+export async function DELETE() {
+  const response = NextResponse.json(
+    { message: 'Logout successful', success: true },
+    { status: 200 }
+  );
+  response.cookies.set('workroom', '', { httpOnly: true });
+  return response;
 }

@@ -15,6 +15,11 @@ const userSchema = new Schema(
     location: { type: String },
     profession: { type: String },
     phone: { type: String },
+    settings: {
+      emailActivity: { type: Boolean, default: false },
+      notifyTask: { type: Boolean, default: true },
+      notifyComment: { type: Boolean, default: true },
+    },
   },
   {
     timestamps: true,
