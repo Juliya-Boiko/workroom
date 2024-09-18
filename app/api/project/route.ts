@@ -1,4 +1,3 @@
-/* eslint-disable @typescript-eslint/no-explicit-any */
 import Project from '@/models/project';
 import { decode } from '@/libs/jwt';
 import { connectToMongoDB } from '@/libs/database';

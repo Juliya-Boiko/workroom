@@ -17,14 +17,6 @@
     gap: 24px;
   }
 
-  .link {
-    display: flex;
-    align-items: center;
-    gap: 12px;
-    margin-bottom: 24px;
-    color: $blue-1;
-  }
-
   @include onTablet {
     padding: 48px;
 

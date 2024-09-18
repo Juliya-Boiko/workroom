@@ -14,6 +14,7 @@ export const projectSectionSkeleton: IProjectInfo[] = [
       active: 0,
       assignee: [],
     },
+    order: 'PN-00001',
   },
   {
     _id: '2',
@@ -28,6 +29,7 @@ export const projectSectionSkeleton: IProjectInfo[] = [
       active: 0,
       assignee: [],
     },
+    order: 'PN-00001',
   },
   {
     _id: '3',
@@ -42,6 +44,7 @@ export const projectSectionSkeleton: IProjectInfo[] = [
       active: 0,
       assignee: [],
     },
+    order: 'PN-00001',
   },
 ];
 

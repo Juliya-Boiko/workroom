@@ -8,13 +8,14 @@ import { EIconsSet, IDynamicComponent } from '@/typings';
 import { SvgHandler } from '@/components/SvgHandler';
 import { ProjectInfo } from '@/components/sections/project/projectInfo/ProjectInfo';
 import { Tasks } from '@/components/sections/project/tasks/Tasks';
+import { ROUTES } from '@/utils';
 
 export const ProjectPage = ({ slug }: IDynamicComponent) => {
   const { data: project, isLoading } = useProject(slug);
 
   return (
     <div className={styles.projectPage}>
-      <Topping title={project?.name || ''}>
+      <Topping link="Back to projects" path={ROUTES.projects} title={project?.name || ''}>
         <Modal
           title="Add task"
           activator={
