@@ -57,15 +57,13 @@ export const EditProjectForm = ({ project }: Props) => {
             <SvgHandler icon={EIconsSet.Plus} />
           </button>
         </div>
-        {showThumbs && (
-          <div>
-            <Controller
-              control={control}
-              name="image"
-              render={({ field }) => <SelectImage value={field.value} onChange={field.onChange} />}
-            />
-          </div>
-        )}
+        <div className={showThumbs ? styles.visible : styles.hidden}>
+          <Controller
+            control={control}
+            name="image"
+            render={({ field }) => <SelectImage value={field.value} onChange={field.onChange} />}
+          />
+        </div>
       </div>
 
       <div className={styles.container}>

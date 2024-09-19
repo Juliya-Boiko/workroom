@@ -5,13 +5,18 @@ import { Topping } from '@/components/topping/Topping';
 import { Preloader } from '@/components/ui';
 import { IDynamicComponent } from '@/typings';
 import { EditProjectForm } from '@/components/forms/editProject/EditProjectForm';
+import { ROUTES } from '@/utils';
 
 export const EditProjectPage = ({ slug }: IDynamicComponent) => {
   const { data: project, isLoading } = useProject(slug);
 
   return (
     <div className={styles.editProjectPage}>
-      <Topping title="Edit project" />
+      <Topping
+        title="Edit project"
+        link="Back to project tasks"
+        path={`${ROUTES.project}/${slug}`}
+      />
       <div className={styles.container}>
         {isLoading ? (
           <div className={styles.loader}>

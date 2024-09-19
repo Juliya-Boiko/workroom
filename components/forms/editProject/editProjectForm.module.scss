@@ -16,6 +16,14 @@
     @include squareSize(96px);
   }
 
+  .hidden {
+    display: none;
+  }
+
+  .visible {
+    display: block;
+  }
+
   .btnPlus {
     @include flexContainer(row, center, center);
     position: absolute;
@@ -32,37 +40,17 @@
     @include flexContainer(row, center, center);
   }
 
-  @include onTablet {
-    gap: 24px;
-  }
   @include onLaptop {
-    padding-top: 24px;
+    display: grid;
+    grid-template-columns: 280px 1fr;
+
+    .hidden {
+      display: block;
+    }
+
+    .container {
+      max-width: 400px;
+      gap: 24px;
+    }
   }
-
-  // .pickers {
-  //   width: 100%;
-  //   display: flex;
-  //   flex-direction: column;
-  //   gap: 48px;
-  //   @include onTablet {
-  //     flex-direction: row;
-  //     gap: 24px;
-  //   }
-  // }
-
-  // .optionWrapper {
-  //   width: 100%;
-  //   display: flex;
-  //   flex-direction: column;
-  //   gap: 12px;
-  // }
-
-  // .label {
-  //   display: inline-block;
-  //   padding-left: 6px;
-  //   font-weight: bold;
-  //   font-size: 14px;
-  //   text-transform: capitalize;
-  //   color: $grey-3;
-  // }
 }
