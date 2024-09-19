@@ -4,11 +4,10 @@ import { useProject } from '@/services';
 import { Topping } from '@/components/topping/Topping';
 import { Preloader } from '@/components/ui';
 import { IDynamicComponent } from '@/typings';
+import { EditProjectForm } from '@/components/forms/editProject/EditProjectForm';
 
 export const EditProjectPage = ({ slug }: IDynamicComponent) => {
   const { data: project, isLoading } = useProject(slug);
-
-  console.log(project);
 
   return (
     <div className={styles.editProjectPage}>
@@ -19,7 +18,11 @@ export const EditProjectPage = ({ slug }: IDynamicComponent) => {
             <Preloader />
           </div>
         ) : (
-          <div className={styles.content}>edit project form</div>
+          project && (
+            <div className={styles.content}>
+              <EditProjectForm project={project} />
+            </div>
+          )
         )}
       </div>
     </div>

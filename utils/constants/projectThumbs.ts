@@ -16,6 +16,8 @@ export const projectThumbs = {
   thumb7,
 };
 
+export type ProjectThumbsKeys = keyof typeof projectThumbs;
+
 export const projectThumbsDataTypes = Object.entries(projectThumbs);
 
 export const IMAGE_THUMB_STARTS = 'thumb';

@@ -1,7 +1,12 @@
 'use client';
 import styles from './selectImage.module.scss';
 import Image from 'next/image';
-import { projectThumbsDataTypes, IMAGE_THUMB_STARTS } from '@/utils';
+import {
+  projectThumbs,
+  projectThumbsDataTypes,
+  ProjectThumbsKeys,
+  IMAGE_THUMB_STARTS,
+} from '@/utils';
 import { UploadThumb } from '@/components/ui';
 import { StaticImageData } from 'next/image';
 
@@ -13,13 +18,24 @@ interface Props {
 }
 
 export const SelectImage = ({ value, onChange }: Props) => {
+  const imgSrc =
+    typeof value === 'string' && value.includes(IMAGE_THUMB_STARTS)
+      ? [value, projectThumbs[value as ProjectThumbsKeys]]
+      : value;
+  console.log(imgSrc);
   const handleUpload = (v: File) => {
     onChange([v.name, v]);
   };
 
   const handleChange = (v: SelectedImageType) => {
+    console.log(v);
     onChange(v);
   };
+
+  const uploadStyles =
+    typeof imgSrc !== 'string' && !imgSrc[0].toString().includes(IMAGE_THUMB_STARTS)
+      ? styles.selected
+      : '';
 
   return (
     <div className={styles.selectImage}>
@@ -31,7 +47,7 @@ export const SelectImage = ({ value, onChange }: Props) => {
         {projectThumbsDataTypes.map((el) => (
           <li
             key={el[0]}
-            className={`${styles.item} ${value[0] === el[0] ? styles.selected : ''}`}
+            className={`${styles.item} ${imgSrc[0] === el[0] ? styles.selected : ''}`}
             onClick={() => handleChange(el)}
           >
             <Image alt={el[0]} src={el[1]} />
@@ -39,7 +55,7 @@ export const SelectImage = ({ value, onChange }: Props) => {
         ))}
         <li
           className={`
-            ${styles.upload} ${!value[0].includes(IMAGE_THUMB_STARTS) ? styles.selected : ''}
+            ${styles.upload} ${uploadStyles}
           `}
         >
           <UploadThumb value={null} onChange={handleUpload} />

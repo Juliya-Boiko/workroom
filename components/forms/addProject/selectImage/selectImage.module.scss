@@ -25,7 +25,7 @@
   }
 
   .upload {
-    @include squareSize(48px);
+    @include squareSize(52px);
     @include flexContainer(row, center, center);
     border-radius: 10px;
     overflow: hidden;
