@@ -3,7 +3,35 @@
   flex-direction: column;
   width: 100%;
   gap: 48px;
-  padding-top: 48px;
+
+  .container {
+    display: flex;
+    flex-direction: column;
+    gap: 48px;
+  }
+
+  .imgWrapper {
+    margin: 0 auto;
+    position: relative;
+    @include squareSize(96px);
+  }
+
+  .btnPlus {
+    @include flexContainer(row, center, center);
+    position: absolute;
+    z-index: 5;
+    bottom: -6px;
+    right: -6px;
+    background-color: $white;
+    color: $blue-1;
+    border-radius: 50%;
+    outline: 1px dashed $blue-1;
+  }
+
+  .btnWrapper {
+    @include flexContainer(row, center, center);
+  }
+
   @include onTablet {
     gap: 24px;
   }

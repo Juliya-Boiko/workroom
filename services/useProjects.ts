@@ -1,6 +1,15 @@
 import { useQuery, useQueryClient, useMutation } from '@tanstack/react-query';
-import { getProjects, getProjectById, createProject, deleteProject, QUERY_KEYS } from '@/utils';
 import { IFilters } from '@/typings';
+import { useRouter } from 'next/navigation';
+import {
+  getProjects,
+  getProjectById,
+  createProject,
+  deleteProject,
+  updateProject,
+  QUERY_KEYS,
+  ROUTES,
+} from '@/utils';
 
 export const useProjects = (filters: IFilters | null, take?: number, skip?: number) => {
   return useQuery({
@@ -11,6 +20,7 @@ export const useProjects = (filters: IFilters | null, take?: number, skip?: numb
 
 export const useProjectsMutation = () => {
   const queryClient = useQueryClient();
+  const router = useRouter();
 
   const { mutate: create, isPending: isCreating } = useMutation({
     mutationFn: createProject,
@@ -27,7 +37,16 @@ export const useProjectsMutation = () => {
     },
   });
 
-  return { create, isCreating, remove, isDeleting };
+  const { mutate: update } = useMutation({
+    mutationFn: updateProject,
+    onSuccess: (id: string) => {
+      queryClient.invalidateQueries({ queryKey: [QUERY_KEYS.PROJECTS] });
+      queryClient.invalidateQueries({ queryKey: [QUERY_KEYS.PROJECT, id] });
+      router.push(`${ROUTES.project}/${id}`);
+    },
+  });
+
+  return { create, isCreating, remove, isDeleting, update };
 };
 
 export const useProject = (projectId: string) => {

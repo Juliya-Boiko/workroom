@@ -1,4 +1,5 @@
 import { useQuery, useMutation } from '@tanstack/react-query';
+import { useRouter } from 'next/navigation';
 import {
   getUserInfo,
   loginUser,
@@ -8,7 +9,6 @@ import {
   QUERY_KEYS,
   ROUTES,
 } from '@/utils';
-import { useRouter } from 'next/navigation';
 
 export const useUser = () => {
   return useQuery({

@@ -59,3 +59,15 @@ export async function DELETE(_request: NextRequest, { params }: IDynamicRoute) {
   await Task.deleteMany({ projectId: id });
   return NextResponse.json({ message: 'Project deleted' }, { status: 200 });
 }
+
+export async function PATCH(request: NextRequest, { params }: IDynamicRoute) {
+  const { id } = params;
+  const token = request.cookies.get('workroom')?.value;
+  if (!token) {
+    return NextResponse.json({ message: 'Token null or expired' }, { status: 403 });
+  }
+  const reqBody = await request.json();
+  console.log({ id, reqBody });
+  await Project.findByIdAndUpdate(id, reqBody);
+  return NextResponse.json(id, { status: 200 });
+}

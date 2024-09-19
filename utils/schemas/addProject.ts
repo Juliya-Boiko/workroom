@@ -9,7 +9,7 @@ export const addProjectSchema = yup.object({
   deadline: yup.date().default(new Date()).required('Deadline is required field'),
   priority: yup.string().trim().oneOf(priorityDataTypes).default(priorityDataTypes[0]),
   description: yup.string().trim(),
-  image: yup.mixed<[string, StaticImageData | File]>().default(projectThumbsDataTypes[0]),
+  image: yup.mixed<[string, StaticImageData | File] | string>().default(projectThumbsDataTypes[0]),
 });
 
 export type AddProjectFormData = yup.InferType<typeof addProjectSchema>;

@@ -22,13 +22,11 @@ export const SelectImage = ({ value, onChange }: Props) => {
     typeof value === 'string' && value.includes(IMAGE_THUMB_STARTS)
       ? [value, projectThumbs[value as ProjectThumbsKeys]]
       : value;
-  console.log(imgSrc);
   const handleUpload = (v: File) => {
     onChange([v.name, v]);
   };
 
   const handleChange = (v: SelectedImageType) => {
-    console.log(v);
     onChange(v);
   };
 

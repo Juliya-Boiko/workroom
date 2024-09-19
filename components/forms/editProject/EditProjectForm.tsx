@@ -1,17 +1,23 @@
 'use client';
 import styles from './editProjectForm.module.scss';
+import Image from 'next/image';
+import { useState } from 'react';
 import { useForm, Controller } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
-import { addProjectSchema, AddProjectFormData, IMAGE_THUMB_STARTS } from '@/utils';
-import { IProjectDetails, priorityDataTypes } from '@/typings';
+import { IProjectDetails, priorityDataTypes, EIconsSet } from '@/typings';
 import { InputField, BtnPrimary, TextareaField, SelectDrop, PickerDate } from '@/components/ui';
 import { SelectImage } from '../addProject/selectImage/SelectImage';
+import { SvgHandler } from '@/components/SvgHandler';
+import { useProjectsMutation } from '@/services';
+import { addProjectSchema, AddProjectFormData, defineThumbSrc } from '@/utils';
+
 interface Props {
   project: IProjectDetails;
 }
 
 export const EditProjectForm = ({ project }: Props) => {
-  console.log(project);
+  const [showThumbs, setShowThumbs] = useState(false);
+  const { update } = useProjectsMutation();
   const defaultValues = {
     name: project.name,
     start: new Date(project.start),
@@ -23,7 +29,7 @@ export const EditProjectForm = ({ project }: Props) => {
   const {
     control,
     register,
-    // watch,
+    watch,
     handleSubmit,
     formState: { errors },
   } = useForm({
@@ -32,22 +38,37 @@ export const EditProjectForm = ({ project }: Props) => {
     mode: 'onChange',
   });
 
+  const projectImage = watch('image');
+  const imgSrc = defineThumbSrc(projectImage);
+
   const onSubmit = (values: AddProjectFormData) => {
-    console.log(values);
+    update({
+      id: project._id,
+      values,
+    });
   };
 
   return (
     <form className={styles.form} onSubmit={handleSubmit(onSubmit)}>
-      <div>
+      <div className={styles.container}>
+        <div className={styles.imgWrapper}>
+          <Image src={imgSrc} alt={project.name} fill sizes="96px" />
+          <button type="button" className={styles.btnPlus} onClick={() => setShowThumbs((v) => !v)}>
+            <SvgHandler icon={EIconsSet.Plus} />
+          </button>
+        </div>
+        {showThumbs && (
+          <div>
+            <Controller
+              control={control}
+              name="image"
+              render={({ field }) => <SelectImage value={field.value} onChange={field.onChange} />}
+            />
+          </div>
+        )}
       </div>
-      <div>
-        <Controller
-          control={control}
-          name="image"
-          render={({ field }) => <SelectImage value={field.value} onChange={field.onChange} />}
-        />
-      </div>
-      <div>
+
+      <div className={styles.container}>
         <InputField
           label="Project Name"
           name="name"
@@ -55,22 +76,20 @@ export const EditProjectForm = ({ project }: Props) => {
           placeholder="Project Name"
           errors={errors.name}
         />
-        <div className={styles.pickers}>
-          <Controller
-            control={control}
-            name="start"
-            render={({ field }) => (
-              <PickerDate label="Start date" value={field.value} onChange={field.onChange} />
-            )}
-          />
-          <Controller
-            control={control}
-            name="deadline"
-            render={({ field }) => (
-              <PickerDate label="Deadline" value={field.value} onChange={field.onChange} />
-            )}
-          />
-        </div>
+        <Controller
+          control={control}
+          name="start"
+          render={({ field }) => (
+            <PickerDate label="Start date" value={field.value} onChange={field.onChange} />
+          )}
+        />
+        <Controller
+          control={control}
+          name="deadline"
+          render={({ field }) => (
+            <PickerDate label="Deadline" value={field.value} onChange={field.onChange} />
+          )}
+        />
         <Controller
           control={control}
           name="priority"
@@ -89,9 +108,9 @@ export const EditProjectForm = ({ project }: Props) => {
           register={register}
           placeholder="Add some description of the project"
         />
-      </div>
-      <div>
-        <BtnPrimary type="submit">Save Project</BtnPrimary>
+        <div className={styles.btnWrapper}>
+          <BtnPrimary type="submit">Save changes</BtnPrimary>
+        </div>
       </div>
     </form>
   );
