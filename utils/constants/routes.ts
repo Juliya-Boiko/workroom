@@ -14,7 +14,7 @@ export const ROUTES = {
   projects: '/projects',
   project: '/project',
   events: '/events',
-  editProject: '/edit-project',
+  editProject: '/project/edit',
   task: '/task',
 };
 

@@ -13,7 +13,7 @@ export const OptionsProjectInfo = ({ id }: { id: string }) => {
   const options = [
     {
       value: 'Edit',
-      action: () => console.log('Edit'),
+      action: () => router.push(`${ROUTES.editProject}/${id}`),
     },
     {
       value: 'Delete',

@@ -1,0 +1,36 @@
+.editProjectPage {
+    padding: 24px 12px;
+
+  .loader {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+  }
+
+  .container {
+    height: 100%;
+    padding-top: 24px;
+  }
+
+  @include onTablet {
+    padding: 48px;
+    
+    .container {
+      padding-top: 48px;
+    }
+  }
+
+  @include onLaptop {
+    padding: 32px 0 0 32px;
+
+    .container {
+      padding-top: 32px;
+    }
+
+    .content {
+      padding: 24px;
+      border-radius: 24px;
+      background-color: $white;
+    }
+  }
+}

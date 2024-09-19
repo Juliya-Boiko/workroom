@@ -32,7 +32,7 @@
 
   .head {
     @include flexContainer(row, center, space-between);
-    padding: 16px 0 16px 16px;
+    padding: 16px;
   }
 
   .title {
