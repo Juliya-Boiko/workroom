@@ -9,3 +9,4 @@ export * from './addLevel';
 export * from './filterTask';
 export * from './forgotPassword';
 export * from './settings';
+export * from './filterProject';

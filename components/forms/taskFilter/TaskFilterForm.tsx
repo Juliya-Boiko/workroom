@@ -68,13 +68,13 @@ export const TaskFilterForm = ({ filters, setFilters }: Props) => {
         />
       </div>
       <div className={styles.container}>
-        <p className={styles.label}>Status</p>
         <div className={styles.block}>
           <Controller
             control={control}
             name="status"
             render={({ field }) => (
               <SelectDrop
+                label="Status"
                 options={taskStatusDataTypes}
                 value={field.value}
                 onChange={field.onChange}
@@ -91,13 +91,13 @@ export const TaskFilterForm = ({ filters, setFilters }: Props) => {
         </div>
       </div>
       <div className={styles.container}>
-        <p className={styles.label}>Priority</p>
         <div className={styles.block}>
           <Controller
             control={control}
             name="priority"
             render={({ field }) => (
               <SelectDrop
+                label="Priority"
                 options={priorityDataTypes}
                 value={field.value}
                 onChange={field.onChange}

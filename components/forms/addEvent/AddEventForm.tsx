@@ -79,12 +79,12 @@ export const AddEventForm = () => {
             errors={errors.name}
           />
           <div className={commonStyles.optionWrapper}>
-            <p className={commonStyles.label}>Category</p>
             <Controller
               control={control}
               name="category"
               render={({ field }) => (
                 <SelectDrop
+                  label="Category"
                   options={categoryEventDataTypes}
                   value={field.value}
                   onChange={field.onChange}
@@ -93,12 +93,12 @@ export const AddEventForm = () => {
             />
           </div>
           <div className={commonStyles.optionWrapper}>
-            <p className={commonStyles.label}>Priority</p>
             <Controller
               control={control}
               name="priority"
               render={({ field }) => (
                 <SelectDrop
+                  label="Priority"
                   options={priorityDataTypes}
                   value={field.value}
                   onChange={field.onChange}

@@ -1,5 +1,5 @@
 import { axiosInstance } from '@/libs/axios';
-import { IProjectInfo, IProjectDetails } from '@/typings';
+import { IProjectInfo, IProjectDetails, IFilters } from '@/typings';
 import { AddProjectFormData, uploadImage, IMAGE_THUMB_STARTS } from '@/utils';
 
 interface IProjectsResponse {
@@ -7,11 +7,16 @@ interface IProjectsResponse {
   total: number;
 }
 
-export const getProjects = async (take?: number, skip?: number): Promise<IProjectsResponse> => {
+export const getProjects = async (
+  filters: IFilters | null,
+  take?: number,
+  skip?: number
+): Promise<IProjectsResponse> => {
   const response = await axiosInstance.get('/project', {
     params: {
       take,
       skip,
+      ...filters,
     },
   });
   return response.data;

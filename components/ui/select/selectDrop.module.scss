@@ -4,6 +4,14 @@
   border-radius: 14px;
 }
 
+.label {
+    padding-left: 6px;
+    font-weight: bold;
+    text-transform: capitalize;
+    color: $grey-3;
+    margin-bottom: 12px;
+}
+
 .selectedBtn {
   @include flexContainer(row, center, space-between);
   gap: 8px;
@@ -39,7 +47,7 @@
 
 .options {
   position: absolute;
-  top: 48px;
+  top: 74px;
   width: 100%;
   z-index: 2;
   border-radius: 0 0 14px 14px;

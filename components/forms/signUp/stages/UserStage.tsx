@@ -20,12 +20,16 @@ export const UserStage = ({ register, errors, control }: Props) => (
       errors={errors.name}
     />
     <div className={styles.optionWrapper}>
-      <p className={styles.label}>Why will you use the service?</p>
       <Controller
         control={control}
         name="usingGoal"
         render={({ field }) => (
-          <SelectDrop options={usingGoalsDataTypes} value={field.value} onChange={field.onChange} />
+          <SelectDrop
+            label="Why will you use the service?"
+            options={usingGoalsDataTypes}
+            value={field.value}
+            onChange={field.onChange}
+          />
         )}
       />
     </div>

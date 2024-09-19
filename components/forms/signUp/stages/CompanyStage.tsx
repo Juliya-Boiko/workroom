@@ -20,12 +20,12 @@ export const CompanyStage = ({ register, errors, control }: Props) => (
       errors={errors.companyName}
     />
     <div className={styles.optionWrapper}>
-      <p className={styles.label}>Business Direction</p>
       <Controller
         control={control}
         name="direction"
         render={({ field }) => (
           <SelectDrop
+            label="Business Direction"
             options={businessDirectionDataTypes}
             value={field.value}
             onChange={field.onChange}

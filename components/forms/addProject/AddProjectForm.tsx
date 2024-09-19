@@ -97,12 +97,12 @@ export const AddProjectForm = () => {
             />
           </div>
           <div className={styles.optionWrapper}>
-            <p className={styles.label}>Priority</p>
             <Controller
               control={control}
               name="priority"
               render={({ field }) => (
                 <SelectDrop
+                  label="Priority"
                   options={priorityDataTypes}
                   value={field.value}
                   onChange={field.onChange}

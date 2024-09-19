@@ -53,12 +53,12 @@ export const InviteForm = ({ companyId, email }: Props) => {
         errors={errors.email}
       />
       <div className={styles.optionWrapper}>
-        <p className={styles.label}>What describes you best?</p>
         <Controller
           control={control}
           name="userPosition"
           render={({ field }) => (
             <SelectDrop
+              label="What describes you best?"
               options={invitePositionDataTypes}
               value={field.value}
               onChange={field.onChange}

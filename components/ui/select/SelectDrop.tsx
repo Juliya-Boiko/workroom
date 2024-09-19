@@ -7,12 +7,13 @@ import { EIconsSet, IEmployee } from '@/typings';
 
 type UserType = Pick<IEmployee, '_id' | 'name' | 'avatar'>;
 interface Props {
+  label?: string;
   options: string[] | UserType[];
   value?: string | null | UserType;
   onChange: (v: string | UserType) => void;
 }
 
-export const SelectDrop = ({ options, value, onChange }: Props) => {
+export const SelectDrop = ({ label, options, value, onChange }: Props) => {
   const [open, setOpen] = useState(false);
   const ref = useRef<HTMLDivElement>(null);
 
@@ -38,6 +39,7 @@ export const SelectDrop = ({ options, value, onChange }: Props) => {
 
   return (
     <div className={styles.wrapper} ref={ref}>
+      {label && <div className={styles.label}>{label}</div>}
       <button
         type="button"
         className={`${styles.selectedBtn} ${open ? styles.openDropBtn : ''}`}

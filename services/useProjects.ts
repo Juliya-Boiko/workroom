@@ -1,10 +1,11 @@
 import { useQuery, useQueryClient, useMutation } from '@tanstack/react-query';
 import { getProjects, getProjectById, createProject, deleteProject, QUERY_KEYS } from '@/utils';
+import { IFilters } from '@/typings';
 
-export const useProjects = (take?: number, skip?: number) => {
+export const useProjects = (filters: IFilters | null, take?: number, skip?: number) => {
   return useQuery({
-    queryKey: [QUERY_KEYS.PROJECTS, take, skip],
-    queryFn: () => getProjects(take, skip),
+    queryKey: [QUERY_KEYS.PROJECTS, take, skip, filters],
+    queryFn: () => getProjects(filters, take, skip),
   });
 };
 

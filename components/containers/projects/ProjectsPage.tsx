@@ -5,17 +5,19 @@ import Image from 'next/image';
 import { useState } from 'react';
 import { useProjects } from '@/services';
 import { Topping } from '@/components/topping/Topping';
-import { projectsViewDataTypes, EIconsSet } from '@/typings';
+import { projectsViewDataTypes, EIconsSet, IFilters } from '@/typings';
 import { Modal, BtnPrimary, Preloader, BtnIcon, Pagination } from '@/components/ui';
 import { AddProjectForm } from '@/components/forms/addProject/AddProjectForm';
 import { SvgHandler } from '@/components/SvgHandler';
 import { ProjectsGrid } from '@/components/sections/projects/projectsGrid/ProjectsGrid';
 import { PROJECTS_STEP } from '@/utils';
+import { ProjectsFilter } from '@/components/sections/projects/projectsFilter/ProjectsFilter';
 
 export const ProjectsPage = () => {
+  const [filters, setFilters] = useState<null | IFilters>(null);
   const [view, setView] = useState(projectsViewDataTypes[0].value);
   const [page, setPage] = useState(0);
-  const { data, isLoading: isLoadingProjects } = useProjects(PROJECTS_STEP, page);
+  const { data, isLoading: isLoadingProjects } = useProjects(filters, PROJECTS_STEP, page);
 
   return (
     <div className={styles.projectsPage}>
@@ -30,6 +32,7 @@ export const ProjectsPage = () => {
               onClick={() => setView(value)}
             />
           ))}
+          <ProjectsFilter filters={filters} setFilters={(v) => setFilters(v)} />
         </div>
         <Modal
           title="Add Project"
@@ -56,14 +59,22 @@ export const ProjectsPage = () => {
         )}
         {data && data.projects.length > 0 && (
           <>
-            <ProjectsGrid view={view} projects={data.projects} onClick={(v) => setView(v)} />
-            <Pagination
-              page={page}
-              step={PROJECTS_STEP}
-              total={data.total}
-              onNext={() => setPage((v) => v + 1)}
-              onPrev={() => setPage((v) => v - 1)}
+            <ProjectsGrid
+              filters={filters}
+              setFilters={(v) => setFilters(v)}
+              view={view}
+              projects={data.projects}
+              onClick={(v) => setView(v)}
             />
+            {data.projects.length < data.total && (
+              <Pagination
+                page={page}
+                step={PROJECTS_STEP}
+                total={data.total}
+                onNext={() => setPage((v) => v + 1)}
+                onPrev={() => setPage((v) => v - 1)}
+              />
+            )}
           </>
         )}
       </div>

@@ -28,16 +28,31 @@ export async function POST(request: NextRequest) {
 }
 
 export async function GET(request: NextRequest) {
-  const url = new URL(request.url);
-  const take = url.searchParams.get('take');
-  const skip = url.searchParams.get('skip');
   const token = request.cookies.get('workroom')?.value;
   if (!token) {
     return NextResponse.json({ message: 'Token null or expired' }, { status: 403 });
   }
   const { companyId } = await decode(token);
-  const total = await Project.countDocuments({ companyId });
-  const projects = await Project.find({ companyId })
+  const url = new URL(request.url);
+  const take = url.searchParams.get('take');
+  const skip = url.searchParams.get('skip');
+  const priority = url.searchParams.get('priority');
+  const start = url.searchParams.get('start');
+  const deadline = url.searchParams.get('deadline');
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  const query: Record<string, any> = { companyId };
+  if (priority) {
+    query.priority = priority;
+  }
+  if (start) {
+    query.start = { $gte: new Date(start) };
+  }
+  if (deadline) {
+    query.deadline = { $lte: new Date(deadline) };
+  }
+
+  const total = await Project.countDocuments(query);
+  const projects = await Project.find(query)
     .sort({ createdAt: 'desc' })
     .skip(Number(skip) * PROJECTS_STEP)
     .limit(Number(take))

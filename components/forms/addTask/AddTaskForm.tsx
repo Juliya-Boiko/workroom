@@ -77,12 +77,12 @@ export const AddTaskForm = ({ slug, start, deadline }: Props) => {
         errors={errors.name}
       />
       <div className={styles.optionWrapper}>
-        <p className={styles.label}>Assignee</p>
         <Controller
           control={control}
           name="assignee"
           render={({ field }) => (
             <SelectDrop
+              label="Assignee"
               options={employeesOptions || []}
               value={field.value}
               onChange={field.onChange}
@@ -119,12 +119,16 @@ export const AddTaskForm = ({ slug, start, deadline }: Props) => {
         />
       </div>
       <div className={styles.optionWrapper}>
-        <p className={styles.label}>Priority</p>
         <Controller
           control={control}
           name="priority"
           render={({ field }) => (
-            <SelectDrop options={priorityDataTypes} value={field.value} onChange={field.onChange} />
+            <SelectDrop
+              label="Priority"
+              options={priorityDataTypes}
+              value={field.value}
+              onChange={field.onChange}
+            />
           )}
         />
       </div>

@@ -10,7 +10,7 @@ import { ProjectsList } from './progectsList/ProjectsList';
 
 export const ProjectsSection = () => {
   const router = useRouter();
-  const { data, isLoading } = useProjects(3);
+  const { data, isLoading } = useProjects(null, 3);
 
   return (
     <section className={styles.section}>

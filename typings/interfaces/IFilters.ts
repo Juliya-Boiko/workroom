@@ -12,4 +12,5 @@ export interface IFilters {
   priority?: EPriority | null;
   status?: ETaskStatus | null;
   assignee?: ISelectAssignee[];
+  deadline?: Date | null;
 }

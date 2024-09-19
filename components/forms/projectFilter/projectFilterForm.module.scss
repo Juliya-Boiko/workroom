@@ -1,0 +1,15 @@
+.projectFilterForm {
+  .container {
+    display: flex;
+    gap: 16px;
+    align-items: flex-end;
+    padding: 16px;
+    border-top: 1px solid $grey-9;
+  }
+
+  .wrapper {
+    display: flex;
+    justify-content: flex-end;
+    padding: 16px 16px 64px 16px;
+  }
+}

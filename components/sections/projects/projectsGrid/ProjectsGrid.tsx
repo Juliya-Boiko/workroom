@@ -1,17 +1,20 @@
 import styles from './projectsGrid.module.scss';
-import { ProjectCard } from '@/components/cards/project/ProgectCard';
-import { projectsViewDataTypes, IProjectInfo, EViewTasks } from '@/typings';
-import { ROUTES } from '@/utils';
 import Link from 'next/link';
+import { projectsViewDataTypes, IFilters, IProjectInfo, EViewTasks } from '@/typings';
+import { ProjectCard } from '@/components/cards/project/ProgectCard';
+import { ProjectsFilter } from '../projectsFilter/ProjectsFilter';
+import { ROUTES } from '@/utils';
 import { BtnIcon } from '@/components/ui';
 
 interface Props {
+  filters: IFilters | null;
+  setFilters: (v: IFilters) => void;
   view: EViewTasks;
   projects: IProjectInfo[];
   onClick: (v: EViewTasks) => void;
 }
 
-export const ProjectsGrid = ({ projects, view, onClick }: Props) => {
+export const ProjectsGrid = ({ filters, setFilters, projects, view, onClick }: Props) => {
   return (
     <section className={styles.projectsGrid}>
       <div className={styles.filters}>
@@ -24,6 +27,7 @@ export const ProjectsGrid = ({ projects, view, onClick }: Props) => {
             onClick={() => onClick(value)}
           />
         ))}
+        <ProjectsFilter filters={filters} setFilters={setFilters} />
       </div>
       <ul className={styles.list}>
         {projects.map((el) => (
