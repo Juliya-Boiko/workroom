@@ -1,0 +1,22 @@
+.editTask {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+
+  .container {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+  }
+
+  .assignee {
+    @include flexContainer(row, center, space-between);
+  }
+
+  .user {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    text-transform: capitalize;
+  }
+}

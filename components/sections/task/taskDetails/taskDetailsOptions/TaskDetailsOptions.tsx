@@ -13,7 +13,9 @@ export const TaskDetailsOptions = ({ id, projectId }: { id: string; projectId: s
   const options = [
     {
       value: 'Edit',
-      action: () => console.log('Edit', id),
+      action: () => {
+        router.push(`${ROUTES.editTask}/${id}`);
+      },
     },
     {
       value: 'Delete',
