@@ -1,5 +1,5 @@
 import Project from '@/models/project';
-import { decode } from '@/libs/jwt';
+import { decodeToken } from '@/libs/jose';
 import { connectToMongoDB } from '@/libs/database';
 import { defineProjectNumber, formatProjectsWithTasks, PROJECTS_STEP } from '@/utils';
 import { IProjectResponse } from '@/typings';
@@ -13,7 +13,7 @@ export async function POST(request: NextRequest) {
   if (!token) {
     return NextResponse.json({ message: 'Token null or expired' }, { status: 403 });
   }
-  const { id, companyId } = await decode(token);
+  const { id, companyId } = await decodeToken(token);
   const lastProject = await Project.findOne({ companyId }).sort({ createdAt: -1 });
 
   const initProject = {
@@ -32,7 +32,7 @@ export async function GET(request: NextRequest) {
   if (!token) {
     return NextResponse.json({ message: 'Token null or expired' }, { status: 403 });
   }
-  const { companyId } = await decode(token);
+  const { companyId } = await decodeToken(token);
   const url = new URL(request.url);
   const take = url.searchParams.get('take');
   const skip = url.searchParams.get('skip');

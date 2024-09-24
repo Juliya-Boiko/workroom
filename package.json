@@ -26,6 +26,7 @@
     "cloudinary": "^2.0.0",
     "country-state-city": "^3.2.1",
     "date-fns": "^3.6.0",
+    "jose": "^5.9.3",
     "jsonwebtoken": "^9.0.2",
     "moment": "^2.30.1",
     "mongodb": "^6.8.0",

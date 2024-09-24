@@ -1,13 +1,12 @@
-/* eslint-disable @typescript-eslint/no-explicit-any */
 import User from '@/models/user';
 import Company from '@/models/company';
 import { hashPassword, comparePassword } from '@/libs/bcrypt';
-import { genToken } from '@/libs/jwt';
 import { connectToMongoDB } from '@/libs/database';
 import { sendRegistrationEmail, sendInviteEmails } from '@/utils';
 import { userPositionsDataTypes } from '@/typings';
 import { EUserPosition } from '@/typings';
 import { NextRequest, NextResponse } from 'next/server';
+import { createToken } from '@/libs/jose';
 
 connectToMongoDB();
 
@@ -72,7 +71,7 @@ export async function POST(request: NextRequest) {
         members: reqBody.members,
       });
     }
-    initToken = genToken(savedUser._id, companyId);
+    initToken = await createToken(savedUser._id, companyId);
   } else {
     // Register user
     const newUser = new User({
@@ -80,7 +79,7 @@ export async function POST(request: NextRequest) {
       companyId: reqBody.companyId,
     });
     const savedUser = await newUser.save();
-    initToken = genToken(savedUser._id, reqBody.companyId);
+    initToken = await createToken(savedUser._id, reqBody.companyId);
   }
 
   const response = NextResponse.json({ message: 'Sign up successful' }, { status: 201 });
@@ -102,7 +101,7 @@ export async function PUT(request: NextRequest) {
   if (!validPassword) {
     return NextResponse.json({ message: 'Invalid password' }, { status: 403 });
   }
-  const token = genToken(user._id, user.companyId);
+  const token = await createToken(user._id, user.companyId);
   const response = NextResponse.json({ message: 'Login successful' }, { status: 200 });
   response.cookies.set('workroom', token, { httpOnly: true });
   return response;
