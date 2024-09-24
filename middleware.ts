@@ -1,6 +1,5 @@
 import { NextResponse } from 'next/server';
 import type { NextRequest } from 'next/server';
-// import { isValidToken } from './libs/jwt';
 import { isValid } from './libs/jose';
 
 export async function middleware(request: NextRequest) {
@@ -26,5 +25,5 @@ export async function middleware(request: NextRequest) {
 }
 
 export const config = {
-  matcher: ['/', '/sign-in', '/sign-up'],
+  matcher: ['/', '/projects', '/project', '/calendar', '/employees', '/sign-in', '/sign-up'],
 };

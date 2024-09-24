@@ -1,0 +1,87 @@
+.taskAttachments {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+
+  .label {
+    display: inline-block;
+    padding-left: 6px;
+    font-weight: 700;
+    text-transform: capitalize;
+    color: $grey-3;
+  }
+
+  .wrapper, .linkList {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+  }
+
+  .placeholder {
+    display: inline-block;
+    padding-left: 48px;
+    color: $grey-7;
+  }
+
+  .linkItem {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding-left: 48px;
+  }
+
+  .link {
+    flex-grow: 1;
+    color: $aqua;
+  }
+
+  .deleteBtn {
+    display: flex;
+    color: $grey-7;
+  }
+
+  .inputLink {
+    width: 100%;
+    border: none;
+    outline: none;
+    padding: 8px 4px;
+    border-bottom: 1px solid $blue-1;
+  }
+
+  .btnWrapper {
+    @include flexContainer(row, center, flex-end);
+    gap: 16px;
+  }
+
+  .btnAction {
+    color: $blue-1;
+    padding: 8px 16px;
+    text-transform: capitalize;
+    transition: all 250ms ease-in-out;
+    &:hover {
+      font-weight: 700;
+    }
+  }
+
+  .btn {
+    @include squareSize(44px);
+    @include flexContainer(row, center, center);
+    border-radius: 14px;
+    transition: all 250ms ease-in-out;
+  }
+
+  .btnFile {
+    background-color: rgba($violet-rgb, 0.1);
+    &:hover, &:active {
+      background-color: rgba($violet-rgb, 0.3);
+    }
+  }
+
+  .btnLink {
+    background-color: rgba($aqua-rgb, 0.1);
+    &:hover, &:active {
+      background-color: rgba($aqua-rgb, 0.3);
+    }
+  }
+}

@@ -1,6 +1,6 @@
 export enum EAttachType {
-  LINK,
-  FILE,
+  LINK = 'Link',
+  FILE = 'File',
 }
 
-// export const businessDirectionDataTypes = Object.values(EBusinessDirection);
+export const attachmentsDataTypes = Object.values(EAttachType);
