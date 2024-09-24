@@ -22,6 +22,12 @@ export interface ITask extends Omit<ICreateTask, 'assignee'> {
 export interface IUpdateTask {
   _id: string;
   update: {
+    assignee?: string;
+    deadline?: Date;
+    description?: string;
+    priority?: EPriority;
+    name?: string;
+    start?: Date;
     status?: ETaskStatus;
   };
 }

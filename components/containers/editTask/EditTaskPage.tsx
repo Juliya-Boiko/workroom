@@ -4,17 +4,17 @@ import { ROUTES } from '@/utils';
 import { useTask } from '@/services';
 import { IDynamicComponent } from '@/typings';
 import { Topping } from '@/components/topping/Topping';
-import { Preloader } from '@/components/ui';
+import { Preloader, TaskStatusDrop } from '@/components/ui';
 import { EditTaskForm } from '@/components/forms/editTask/EditTaskForm';
 
 export const EditTaskPage = ({ slug }: IDynamicComponent) => {
   const { data: task, isLoading: isLoadingTask } = useTask(slug);
 
-  console.log(task);
-
   return (
     <div className={styles.editTaskPage}>
-      <Topping link="Back to task" path={`${ROUTES.task}/${task?._id}`} title="Edit task" />
+      <Topping link="Back to task" path={`${ROUTES.task}/${task?._id}`} title="Edit task">
+        {task && <TaskStatusDrop id={task._id} status={task.status} />}
+      </Topping>
       <div className={styles.container}>
         {isLoadingTask && (
           <div className={styles.loader}>

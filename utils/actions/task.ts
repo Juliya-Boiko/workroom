@@ -18,7 +18,7 @@ export const getTasks = async (projectId: string, filters: IFilters | null): Pro
   return response.data;
 };
 
-export const updateTask = async (data: IUpdateTask): Promise<{ projectId: string }> => {
+export const updateTask = async (data: IUpdateTask): Promise<{ projectId: string, taskId: string }> => {
   const response = await axiosInstance.patch(`/task/${data._id}`, data.update);
   return response.data;
 };

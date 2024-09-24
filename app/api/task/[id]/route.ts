@@ -29,7 +29,7 @@ export async function PATCH(request: NextRequest, { params }: IDynamicRoute) {
       return NextResponse.json({ message: 'Token null or expired' }, { status: 403 });
     }
     const task = await Task.findByIdAndUpdate(id, reqBody);
-    return NextResponse.json({ projectId: task.projectId }, { status: 200 });
+    return NextResponse.json({ projectId: task.projectId, taskId: id }, { status: 200 });
   } catch (error: any) {
     return NextResponse.json({ message: error.message }, { status: 500 });
   }

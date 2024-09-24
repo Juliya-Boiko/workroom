@@ -1,8 +1,7 @@
 import styles from './taskDetails.module.scss';
 import { ITask } from '@/typings';
 import { TaskDetailsOptions } from './taskDetailsOptions/TaskDetailsOptions';
-import { TaskStatusDrop } from './taskStatusDrop/TaskStatusDrop';
-import { UploadAttach } from '@/components/ui';
+import { UploadAttach, TaskStatusDrop } from '@/components/ui';
 
 export const TaskDetails = ({ task }: { task: ITask }) => {
   return (

@@ -1,27 +1,25 @@
 'use client';
 import styles from './editTaskForm.module.scss';
-import { useState } from 'react';
 import { useForm, Controller } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
 import { addTaskSchema, AddTaskFormData } from '@/utils';
-import { priorityDataTypes, ITask, EIconsSet } from '@/typings';
+import { priorityDataTypes, ITask } from '@/typings';
+import { useEmployees, useTasksMutation } from '@/services';
 import {
   InputField,
   BtnPrimary,
   TextareaField,
   SelectDrop,
   PickerDate,
-  Avatar,
-  BtnIcon,
+  UploadAttach,
 } from '@/components/ui';
 
 interface Props {
   task: ITask;
 }
 export const EditTaskForm = ({ task }: Props) => {
-  const [showUsers, setShowUsers] = useState(false);
-  console.log(task);
-
+  const { data: employees } = useEmployees();
+  const { update } = useTasksMutation();
   const defaultValues = {
     name: task.name,
     start: task.start,
@@ -34,8 +32,6 @@ export const EditTaskForm = ({ task }: Props) => {
   const {
     control,
     register,
-    // watch,
-    // setValue,
     handleSubmit,
     formState: { errors, isDirty, isValid, isSubmitting },
   } = useForm({
@@ -44,12 +40,19 @@ export const EditTaskForm = ({ task }: Props) => {
     mode: 'onChange',
   });
 
-  // const employeesOptions = employees
-  //   ? employees.map(({ _id, name, avatar }) => ({ _id, name, avatar }))
-  //   : [];
+  const employeesOptions = employees
+    ? employees.map(({ _id, name, avatar }) => ({ _id, name, avatar }))
+    : [];
 
   const onSubmit = async (data: AddTaskFormData) => {
-    console.log(data);
+    const values = {
+      _id: task._id,
+      update: {
+        ...data,
+        assignee: data.assignee._id,
+      },
+    };
+    update(values);
   };
 
   return (
@@ -69,18 +72,18 @@ export const EditTaskForm = ({ task }: Props) => {
             <PickerDate label="Deadline" value={field.value} onChange={field.onChange} />
           )}
         />
-        <div className={styles.assignee}>
-          <div className={styles.user}>
-            <Avatar size="s" user={{ name: task.assignee.name, avatar: task.assignee.avatar }} />
-            <p>{task.assignee.name}</p>
-          </div>
-          <BtnIcon
-            title="Reassign"
-            icon={EIconsSet.Pensil}
-            onClick={() => setShowUsers((v) => !v)}
-          />
-        </div>
-        {showUsers && <div>users list</div>}
+        <Controller
+          control={control}
+          name="assignee"
+          render={({ field }) => (
+            <SelectDrop
+              label="Assignee"
+              options={employeesOptions || []}
+              value={field.value}
+              onChange={field.onChange}
+            />
+          )}
+        />
         <Controller
           control={control}
           name="priority"
@@ -108,32 +111,16 @@ export const EditTaskForm = ({ task }: Props) => {
           register={register}
           placeholder="Add some description of the task"
         />
-        <div>status</div>
         <div>
+          <p className={styles.label}>Attachments (3)</p>
+          <UploadAttach />
+        </div>
+        <div className={styles.btnWrapper}>
           <BtnPrimary type="submit" disabled={!isDirty || !isValid || isSubmitting}>
             Save Task
           </BtnPrimary>
         </div>
       </div>
-
-      {/* <div>
-      </div>
-      <div>
-        
-         <Controller
-          control={control}
-          name="assignee"
-          render={({ field }) => (
-            <SelectDrop
-              label="Assignee"
-              options={employeesOptions || []}
-              value={field.value}
-              onChange={field.onChange}
-            />
-          )}
-        />
-      </div>
-       */}
     </form>
   );
 };
