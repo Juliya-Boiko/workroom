@@ -3,11 +3,11 @@ import styles from '../common.module.scss';
 import { useEffect } from 'react';
 import { useForm, Controller } from 'react-hook-form';
 import { useModalContext } from '@/components/providers/ModalProvider';
+import { useEmployees, useTasksMutation } from '@/services';
 import { yupResolver } from '@hookform/resolvers/yup';
+import { getTomorrowDate, addTaskSchema, AddTaskFormData } from '@/utils';
 import { ETaskStatus, priorityDataTypes, IDynamicComponent } from '@/typings';
 import { InputField, BtnPrimary, TextareaField, SelectDrop, PickerDate } from '@/components/ui';
-import { useEmployees, useTasksMutation } from '@/services';
-import { getTomorrowDate, addTaskSchema, AddTaskFormData } from '@/utils';
 
 export interface Props extends IDynamicComponent {
   start?: string;
