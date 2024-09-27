@@ -9,3 +9,4 @@ export * from './IDynamicRoute';
 export * from './ISearch';
 export * from './IFilters';
 export * from './ICompany';
+export * from './IAttachments';

@@ -3,6 +3,7 @@ import Task from '@/models/task';
 import { connectToMongoDB } from '@/libs/database';
 import { NextRequest, NextResponse } from 'next/server';
 import { IDynamicRoute } from '@/typings';
+import Attachment from '@/models/attachment';
 
 connectToMongoDB();
 
@@ -39,6 +40,7 @@ export async function DELETE(request: NextRequest, { params }: IDynamicRoute) {
   const { id } = params;
   try {
     await Task.findByIdAndDelete(id);
+    await Attachment.deleteMany({ taskId: id });
     return NextResponse.json({ message: 'Task deleted' }, { status: 200 });
   } catch (error: any) {
     return NextResponse.json({ message: error.message }, { status: 500 });

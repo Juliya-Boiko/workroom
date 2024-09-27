@@ -1,5 +1,5 @@
 import * as yup from 'yup';
-import { priorityDataTypes } from '@/typings';
+import { priorityDataTypes, attachmentsDataTypes } from '@/typings';
 
 export const addTaskSchema = yup.object({
   name: yup.string().trim().required('Name is required field'),
@@ -14,6 +14,27 @@ export const addTaskSchema = yup.object({
     })
     .required('Assignee is required'),
   description: yup.string().trim(),
+  attachments: yup.object({
+    links: yup
+      .array(
+        yup.object({
+          type: yup.string().trim().oneOf(attachmentsDataTypes).default(attachmentsDataTypes[0]),
+          title: yup.string().trim().default(''),
+          value: yup.string().trim().required(),
+        })
+      )
+      .default([]),
+  }),
 });
 
 export type AddTaskFormData = yup.InferType<typeof addTaskSchema>;
+
+// images: yup
+//   .array(
+//     yup.object({
+//       createdAt: yup.date(),
+//       title: yup.string().trim(),
+//       image: yup.mixed(),
+//     })
+//   )
+//   .default([]),

@@ -1,4 +1,5 @@
 import { EPriority, ETaskStatus } from '../enums';
+import { ICreateLink } from './IAttachments';
 import { IAssignee } from './IUserInfo';
 
 export interface ICreateTask {
@@ -8,9 +9,12 @@ export interface ICreateTask {
   priority: EPriority;
   assignee: string;
   description: string;
+  attachments: {
+    links: ICreateLink[];
+  };
 }
 
-export interface ITask extends Omit<ICreateTask, 'assignee'> {
+export interface ITask extends Omit<ICreateTask, 'assignee' | 'attachments'> {
   _id: string;
   updatedAt: Date;
   createdAt: Date;

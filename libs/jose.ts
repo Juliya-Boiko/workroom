@@ -16,7 +16,7 @@ export const isValid = async (token: string) => {
       algorithms: ['HS256'],
     });
     console.log({ payload });
-    return payload;
+    return true;
   } catch (error: unknown) {
     console.log('Token has expired', error);
     return false;

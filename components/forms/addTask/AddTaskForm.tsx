@@ -1,12 +1,12 @@
 'use client';
 import styles from '../common.module.scss';
-import { useEffect, useState } from 'react';
+import { useEffect } from 'react';
 import { useForm, Controller } from 'react-hook-form';
 import { useModalContext } from '@/components/providers/ModalProvider';
 import { useEmployees, useTasksMutation } from '@/services';
 import { yupResolver } from '@hookform/resolvers/yup';
 import { getTomorrowDate, addTaskSchema, AddTaskFormData } from '@/utils';
-import { ETaskStatus, priorityDataTypes, IDynamicComponent } from '@/typings';
+import { ETaskStatus, priorityDataTypes, IDynamicComponent, ICreateLink } from '@/typings';
 import { TaskAttachments } from './attachments/TaskAttachments';
 import { InputField, BtnPrimary, TextareaField, SelectDrop, PickerDate } from '@/components/ui';
 
@@ -19,9 +19,6 @@ export const AddTaskForm = ({ slug, start, deadline }: Props) => {
   const { create, isCreating } = useTasksMutation();
   const { data: employees } = useEmployees();
   const { closeModal } = useModalContext();
-  const [attach, setAttach] = useState<{ links: { createdAt: Date; link: string }[] }>({
-    links: [],
-  });
 
   const employeesOptions = employees
     ? employees.map(({ _id, name, avatar }) => ({ _id, name, avatar }))
@@ -38,6 +35,9 @@ export const AddTaskForm = ({ slug, start, deadline }: Props) => {
       avatar: null,
     },
     description: '',
+    attachments: {
+      links: [],
+    },
   };
 
   const {
@@ -62,7 +62,6 @@ export const AddTaskForm = ({ slug, start, deadline }: Props) => {
       assignee: data.assignee._id,
       projectId: slug,
       description: data.description || '',
-      attach,
     };
     create(task);
     closeModal();
@@ -71,6 +70,10 @@ export const AddTaskForm = ({ slug, start, deadline }: Props) => {
   useEffect(() => {
     setValue('deadline', startDate);
   }, [setValue, startDate]);
+
+  const handleAttachments = (v: { links: ICreateLink[] }) => {
+    setValue('attachments', v);
+  };
 
   return (
     <form className={styles.form} onSubmit={handleSubmit(onSubmit)}>
@@ -143,7 +146,7 @@ export const AddTaskForm = ({ slug, start, deadline }: Props) => {
         register={register}
         placeholder="Add some description of the task"
       />
-      <TaskAttachments onUpdate={(v) => setAttach(v)} />
+      <TaskAttachments onUpdate={handleAttachments} />
       <div>
         <BtnPrimary type="submit" disabled={!isDirty || !isValid || isSubmitting || isCreating}>
           Save Task

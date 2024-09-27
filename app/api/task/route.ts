@@ -1,9 +1,10 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import Task from '@/models/task';
-import Project from '@/models/project';
+import Attachment from '@/models/attachment';
 import { decodeToken } from '@/libs/jose';
 import { connectToMongoDB } from '@/libs/database';
 import { NextRequest, NextResponse } from 'next/server';
+import { ICreateLink } from '@/typings';
 
 connectToMongoDB();
 
@@ -19,11 +20,17 @@ export async function POST(request: NextRequest) {
     ...reqBody,
   });
   const savedTask = await task.save();
-  await Project.findByIdAndUpdate(
-    reqBody.projectId,
-    { $push: { assignee: savedTask.assignee } },
-    { new: true, useFindAndModify: false }
-  );
+  if (reqBody.attachments.links.length) {
+    const links = reqBody.attachments.links.map((el: ICreateLink[]) => ({
+      ...el,
+      taskId: savedTask._id,
+    }));
+    const attachList = links.map(async (link) => {
+      const attach = new Attachment(link);
+      await attach.save();
+    });
+    await Promise.all(attachList);
+  }
   return NextResponse.json({ projectId: reqBody.projectId }, { status: 201 });
 }
 

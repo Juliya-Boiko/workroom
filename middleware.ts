@@ -8,11 +8,15 @@ export async function middleware(request: NextRequest) {
   const token = request.cookies.get('workroom')?.value || '';
 
   if (token) {
-    const valid = isValid(token);
+    const valid = await isValid(token);
     if (!valid) {
-      const response = NextResponse.json({});
-      response.cookies.set('workroom', '', { httpOnly: true });
-      return NextResponse.redirect(new URL('/sign-in', request.nextUrl));
+      const response = NextResponse.redirect(new URL('/sign-in', request.nextUrl));
+      response.cookies.set('workroom', '', {
+        httpOnly: true,
+        path: '/',
+        expires: new Date(0), // Expire immediately
+      });
+      return response;
     }
   }
 
