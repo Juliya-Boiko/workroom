@@ -1,5 +1,5 @@
 import { EPriority, ETaskStatus } from '../enums';
-import { ICreateLink } from './IAttachments';
+import { ICreateFile, ICreateLink } from './IAttachments';
 import { IAssignee } from './IUserInfo';
 
 export interface ICreateTask {
@@ -11,6 +11,7 @@ export interface ICreateTask {
   description: string;
   attachments: {
     links: ICreateLink[];
+    files: ICreateFile[];
   };
 }
 
@@ -21,6 +22,10 @@ export interface ITask extends Omit<ICreateTask, 'assignee' | 'attachments'> {
   status: ETaskStatus;
   projectId: string;
   assignee: IAssignee;
+  attachments: {
+    links: [];
+    files: [];
+  };
 }
 
 export interface IUpdateTask {

@@ -27,6 +27,7 @@ export const EditTaskForm = ({ task }: Props) => {
     priority: task.priority,
     assignee: task.assignee,
     description: task.description,
+    attachments: task.attachments,
   };
 
   const {
