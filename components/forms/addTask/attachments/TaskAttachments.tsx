@@ -2,17 +2,14 @@
 'use client';
 import styles from './taskAttachments.module.scss';
 import { SvgHandler } from '@/components/SvgHandler';
-import { EAttachType, EIconsSet, ICreateLink } from '@/typings';
+import { EAttachType, EIconsSet, ICreateLink, IAttachments, IUploadFile } from '@/typings';
 import Image from 'next/image';
 import { useState, ChangeEvent } from 'react';
 import { BtnSecondary } from '@/components/ui';
 import Link from 'next/link';
 
 interface Props {
-  onUpdate: (v: {
-    links: ICreateLink[];
-    // images: { createdAt: Date; img: File }[];
-  }) => void;
+  onUpdate: (v: IAttachments) => void;
 }
 
 export const TaskAttachments = ({ onUpdate }: Props) => {
@@ -23,6 +20,7 @@ export const TaskAttachments = ({ onUpdate }: Props) => {
     value: '',
   });
   const [links, setLinks] = useState<ICreateLink[]>([]);
+  const [files, setFiles] = useState<IUploadFile[]>([]);
 
   const toggleLinkForm = () => {
     setShowAddLink((v) => !v);
@@ -40,6 +38,7 @@ export const TaskAttachments = ({ onUpdate }: Props) => {
       value: '',
     });
     setShowAddLink(false);
+    setShowAddImage(false);
   };
 
   const addLink = () => {
@@ -48,6 +47,7 @@ export const TaskAttachments = ({ onUpdate }: Props) => {
     handleCancel();
     onUpdate({
       links: updated,
+      files,
     });
   };
 
@@ -56,6 +56,43 @@ export const TaskAttachments = ({ onUpdate }: Props) => {
     setLinks(filtered);
     onUpdate({
       links: filtered,
+      files,
+    });
+  };
+
+  const formatImages = (arr: IUploadFile[]) => {
+    return arr.map(({ title, type, value }) => ({ title, type, value }));
+  };
+
+  const addImage = (e: ChangeEvent<HTMLInputElement>) => {
+    const file = e?.target?.files?.[0];
+    if (file) {
+      const preview = URL.createObjectURL(file);
+      const updated = [
+        ...files,
+        {
+          title: file.name,
+          value: file,
+          preview,
+          type: EAttachType.FILE,
+        },
+      ];
+      setTimeout(() => URL.revokeObjectURL(preview), 1000);
+      setFiles(updated);
+      onUpdate({
+        links,
+        files: updated,
+      });
+      handleCancel();
+    }
+  };
+
+  const deleteImage = (v: string) => {
+    const filtered = files.filter((el) => el.preview !== v);
+    setFiles(filtered);
+    onUpdate({
+      links,
+      files: filtered,
     });
   };
 
@@ -126,7 +163,40 @@ export const TaskAttachments = ({ onUpdate }: Props) => {
           </div>
         </div>
       )}
-      {showAddImage && <div>image upload</div>}
+      {files.length ? (
+        <ul className={styles.filesList}>
+          {files.map(({ title, preview }) => (
+            <li key={title} className={styles.fileItem}>
+              <Image src={preview} alt={title} sizes="100%" fill className={styles.image} />
+              <div className={styles.overlay}>
+                <button
+                  type="button"
+                  className={styles.deleteBtn}
+                  onClick={() => deleteImage(preview)}
+                >
+                  <SvgHandler icon={EIconsSet.Cross} />
+                </button>
+                <div className={styles.info}>{title}</div>
+              </div>
+            </li>
+          ))}
+        </ul>
+      ) : null}
+      {showAddImage && (
+        <div>
+          <label htmlFor="upload-attach" className={styles.uploadImage}>
+            <SvgHandler icon={EIconsSet.Upload} />
+            <input
+              type="file"
+              name="upload-attach"
+              id="upload-attach"
+              accept="image/*"
+              className={styles.inputFile}
+              onChange={addImage}
+            />
+          </label>
+        </div>
+      )}
     </div>
   );
   // const [showLink, setShowLink] = useState(false);
@@ -218,17 +288,6 @@ export const TaskAttachments = ({ onUpdate }: Props) => {
   //             </li>
   //           ))}
   //           <li className={styles.imageItem}>
-  //             <label htmlFor="upload-attach" className={styles.uploadImage}>
-  //               <SvgHandler icon={EIconsSet.Upload} />
-  //               <input
-  //                 type="file"
-  //                 name="upload-attach"
-  //                 id="upload-attach"
-  //                 accept="image/*"
-  //                 className={styles.inputFile}
-  //                 onChange={onImageChange}
-  //               />
-  //             </label>
   //           </li>
   //         </ul>
   //       ) : null}

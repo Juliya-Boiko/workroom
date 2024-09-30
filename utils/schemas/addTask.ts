@@ -24,6 +24,15 @@ export const addTaskSchema = yup.object({
         })
       )
       .default([]),
+    files: yup
+      .array(
+        yup.object({
+          type: yup.string().trim().oneOf(attachmentsDataTypes).default(attachmentsDataTypes[1]),
+          title: yup.string().trim().default(''),
+          value: yup.mixed().required(),
+        })
+      )
+      .default([]),
   }),
 });
 

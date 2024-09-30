@@ -6,7 +6,7 @@ import { useModalContext } from '@/components/providers/ModalProvider';
 import { useEmployees, useTasksMutation } from '@/services';
 import { yupResolver } from '@hookform/resolvers/yup';
 import { getTomorrowDate, addTaskSchema, AddTaskFormData } from '@/utils';
-import { ETaskStatus, priorityDataTypes, IDynamicComponent, ICreateLink } from '@/typings';
+import { ETaskStatus, priorityDataTypes, IDynamicComponent, IAttachments } from '@/typings';
 import { TaskAttachments } from './attachments/TaskAttachments';
 import { InputField, BtnPrimary, TextareaField, SelectDrop, PickerDate } from '@/components/ui';
 
@@ -37,6 +37,7 @@ export const AddTaskForm = ({ slug, start, deadline }: Props) => {
     description: '',
     attachments: {
       links: [],
+      files: [],
     },
   };
 
@@ -71,7 +72,7 @@ export const AddTaskForm = ({ slug, start, deadline }: Props) => {
     setValue('deadline', startDate);
   }, [setValue, startDate]);
 
-  const handleAttachments = (v: { links: ICreateLink[] }) => {
+  const handleAttachments = (v: IAttachments) => {
     setValue('attachments', v);
   };
 
