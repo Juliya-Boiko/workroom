@@ -1,0 +1,14 @@
+.todayBadge {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  height: 42px;
+  padding: 0 8px;
+  border-radius: 14px;
+  background-color: $grey-6;
+
+  @include onTablet {
+    height: 48px;
+    padding: 0 12px;
+  }
+}

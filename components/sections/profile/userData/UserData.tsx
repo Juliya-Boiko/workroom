@@ -6,7 +6,7 @@ import { useState } from 'react';
 import { Settings } from '../settings/Settings';
 
 export const UserData = () => {
-  const [view, setView] = useState(EViewProfile.PROJECTS);
+  const [view, setView] = useState(EViewProfile.SETTINGS);
 
   return (
     <section className={styles.userInfo}>

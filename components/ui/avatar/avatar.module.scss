@@ -4,6 +4,10 @@
   overflow: hidden;
   color: $white;
   background-color: $white;
+
+  .image {
+    object-fit: cover;
+  }
 }
 
 .bordered {

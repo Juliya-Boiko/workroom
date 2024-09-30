@@ -22,7 +22,7 @@ export const EventsGrid = () => {
           <Image src={imgSrc} priority alt="Employees" className={styles.image} />
         </div>
       )}
-      {events && events.length && (
+      {events && events.length ? (
         <ul className={styles.list}>
           {events.map((el) => (
             <li key={el._id} className={styles.item}>
@@ -30,7 +30,7 @@ export const EventsGrid = () => {
             </li>
           ))}
         </ul>
-      )}
+      ) : null}
     </section>
   );
 };
