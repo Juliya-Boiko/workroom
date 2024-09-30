@@ -4,7 +4,7 @@ import Attachment from '@/models/attachment';
 import { decodeToken } from '@/libs/jose';
 import { connectToMongoDB } from '@/libs/database';
 import { NextRequest, NextResponse } from 'next/server';
-import { ICreateLink } from '@/typings';
+import { ICreateLink, EAttachType } from '@/typings';
 
 connectToMongoDB();
 
@@ -25,10 +25,12 @@ export async function POST(request: NextRequest) {
       ...el,
       taskId: savedTask._id,
     }));
-    const attachList = links.map(async (link) => {
-      const attach = new Attachment(link);
-      await attach.save();
-    });
+    const attachList = links.map(
+      async (link: { title: string; value: string; type: EAttachType; taskId: string }) => {
+        const attach = new Attachment(link);
+        await attach.save();
+      }
+    );
     await Promise.all(attachList);
   }
   return NextResponse.json({ projectId: reqBody.projectId }, { status: 201 });
