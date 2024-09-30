@@ -29,7 +29,7 @@ export const addTaskSchema = yup.object({
         yup.object({
           type: yup.string().trim().oneOf(attachmentsDataTypes).default(attachmentsDataTypes[1]),
           title: yup.string().trim().default(''),
-          value: yup.mixed().required(),
+          value: yup.mixed<File>().required(),
         })
       )
       .default([]),

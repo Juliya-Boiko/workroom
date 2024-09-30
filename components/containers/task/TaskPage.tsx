@@ -9,14 +9,14 @@ import { TaskDetails } from '@/components/sections/task/taskDetails/TaskDetails'
 import { TaskInfo } from '@/components/sections/task/taskInfo/TaskInfo';
 
 export const TaskPage = ({ slug }: IDynamicComponent) => {
-  const { data: task, isLoading: isLoadingTask } = useTask(slug);
+  const { data, isLoading: isLoadingTask } = useTask(slug);
 
   return (
     <div className={styles.taskPage}>
       <Topping
         link="Back to project info"
-        path={`${ROUTES.project}/${task?.projectId}`}
-        title={task?.name || ''}
+        path={`${ROUTES.project}/${data?.task?.projectId}`}
+        title={data?.task?.name || ''}
       />
       <div className={styles.container}>
         {isLoadingTask && (
@@ -24,10 +24,10 @@ export const TaskPage = ({ slug }: IDynamicComponent) => {
             <Preloader />
           </div>
         )}
-        {task && (
+        {data && (
           <div className={styles.content}>
-            <TaskInfo task={task} />
-            <TaskDetails task={task} />
+            <TaskInfo task={data?.task} />
+            <TaskDetails task={data?.task} attachments={data.attachments} />
           </div>
         )}
       </div>

@@ -1,8 +1,25 @@
 import { axiosInstance } from '@/libs/axios';
-import { ICreateTask, IUpdateTask, ITask, IFilters } from '@/typings';
+import {
+  ICreateTask,
+  IUpdateTask,
+  ITask,
+  IFilters,
+  IUploadTask,
+  ITaskAttachments,
+} from '@/typings';
+import { uploadImage } from '../helpers';
 
 export const createTask = async (data: ICreateTask): Promise<{ projectId: string }> => {
-  const response = await axiosInstance.post('/task', data);
+  const values: IUploadTask = { ...data };
+  if (values.attachments.files.length) {
+    const thumbs = data.attachments.files.map(async (file) => {
+      const url = await uploadImage(file.value);
+      return { ...file, value: url };
+    });
+    const images = await Promise.all(thumbs);
+    values.attachments.files = images;
+  }
+  const response = await axiosInstance.post('/task', values);
   return response.data;
 };
 
@@ -25,7 +42,9 @@ export const updateTask = async (
   return response.data;
 };
 
-export const getTaskById = async (id: string): Promise<ITask> => {
+export const getTaskById = async (
+  id: string
+): Promise<{ task: ITask; attachments: ITaskAttachments }> => {
   const response = await axiosInstance.get(`/task/${id}`);
   return response.data;
 };

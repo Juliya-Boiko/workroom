@@ -63,6 +63,10 @@ export const AddTaskForm = ({ slug, start, deadline }: Props) => {
       assignee: data.assignee._id,
       projectId: slug,
       description: data.description || '',
+      attachments: {
+        ...data.attachments,
+        files: data.attachments.files.map(({ title, type, value }) => ({ title, type, value })),
+      },
     };
     create(task);
     closeModal();

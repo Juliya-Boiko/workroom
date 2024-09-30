@@ -4,7 +4,7 @@ import Attachment from '@/models/attachment';
 import { decodeToken } from '@/libs/jose';
 import { connectToMongoDB } from '@/libs/database';
 import { NextRequest, NextResponse } from 'next/server';
-import { ICreateLink, EAttachType } from '@/typings';
+import { ICreateLink, EAttachType, ICreateFile } from '@/typings';
 
 connectToMongoDB();
 
@@ -32,6 +32,19 @@ export async function POST(request: NextRequest) {
       }
     );
     await Promise.all(attachList);
+  }
+  if (reqBody.attachments.files.length) {
+    const files = reqBody.attachments.files.map((el: ICreateFile[]) => ({
+      ...el,
+      taskId: savedTask._id,
+    }));
+    const attachFiles = files.map(
+      async (file: { title: string; value: string; type: EAttachType; taskId: string }) => {
+        const attach = new Attachment(file);
+        await attach.save();
+      }
+    );
+    await Promise.all(attachFiles);
   }
   return NextResponse.json({ projectId: reqBody.projectId }, { status: 201 });
 }
