@@ -4,7 +4,7 @@ import Attachment from '@/models/attachment';
 import { decodeToken } from '@/libs/jose';
 import { connectToMongoDB } from '@/libs/database';
 import { NextRequest, NextResponse } from 'next/server';
-import { ICreateLink, EAttachType, ICreateFile } from '@/typings';
+import { ICreateAttach } from '@/typings';
 
 connectToMongoDB();
 
@@ -20,31 +20,12 @@ export async function POST(request: NextRequest) {
     ...reqBody,
   });
   const savedTask = await task.save();
-  if (reqBody.attachments.links.length) {
-    const links = reqBody.attachments.links.map((el: ICreateLink[]) => ({
-      ...el,
-      taskId: savedTask._id,
-    }));
-    const attachList = links.map(
-      async (link: { title: string; value: string; type: EAttachType; taskId: string }) => {
-        const attach = new Attachment(link);
-        await attach.save();
-      }
-    );
-    await Promise.all(attachList);
-  }
-  if (reqBody.attachments.files.length) {
-    const files = reqBody.attachments.files.map((el: ICreateFile[]) => ({
-      ...el,
-      taskId: savedTask._id,
-    }));
-    const attachFiles = files.map(
-      async (file: { title: string; value: string; type: EAttachType; taskId: string }) => {
-        const attach = new Attachment(file);
-        await attach.save();
-      }
-    );
-    await Promise.all(attachFiles);
+  if (reqBody.attachments.length) {
+    const items = reqBody.attachments.map(async (el: ICreateAttach) => {
+      const attach = new Attachment({ ...el, taskId: savedTask._id });
+      await attach.save();
+    });
+    await Promise.all(items);
   }
   return NextResponse.json({ projectId: reqBody.projectId }, { status: 201 });
 }

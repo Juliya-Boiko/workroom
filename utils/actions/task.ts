@@ -1,25 +1,17 @@
 import { axiosInstance } from '@/libs/axios';
-import {
-  ICreateTask,
-  IUpdateTask,
-  ITask,
-  IFilters,
-  IUploadTask,
-  ITaskAttachments,
-} from '@/typings';
+import { ICreateTask, IUpdateTask, ITask, IFilters } from '@/typings';
 import { uploadImage } from '../helpers';
 
 export const createTask = async (data: ICreateTask): Promise<{ projectId: string }> => {
-  const values: IUploadTask = { ...data };
-  if (values.attachments.files.length) {
-    const thumbs = data.attachments.files.map(async (file) => {
-      const url = await uploadImage(file.value);
-      return { ...file, value: url };
-    });
-    const images = await Promise.all(thumbs);
-    values.attachments.files = images;
-  }
-  const response = await axiosInstance.post('/task', values);
+  const uploaded = data.attachments.map(async ({ title, type, value }) => {
+    if (value instanceof File) {
+      const url = await uploadImage(value);
+      return { title, type, value: url };
+    }
+    return { title, value, type };
+  });
+  const attachments = await Promise.all(uploaded);
+  const response = await axiosInstance.post('/task', { ...data, attachments });
   return response.data;
 };
 
@@ -42,9 +34,7 @@ export const updateTask = async (
   return response.data;
 };
 
-export const getTaskById = async (
-  id: string
-): Promise<{ task: ITask; attachments: ITaskAttachments }> => {
+export const getTaskById = async (id: string): Promise<ITask> => {
   const response = await axiosInstance.get(`/task/${id}`);
   return response.data;
 };

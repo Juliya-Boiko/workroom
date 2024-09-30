@@ -11,4 +11,5 @@ export const QUERY_KEYS = {
   EVENTS: 'events',
   CALENDAR: 'calendar',
   SEARCH: 'search',
+  ATTACHMENTS: 'attachments',
 };

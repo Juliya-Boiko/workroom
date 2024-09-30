@@ -1,19 +1,20 @@
 import styles from './taskDetails.module.scss';
 import Link from 'next/link';
-import Image from 'next/image';
-import { formatDayDate } from '@/utils';
-import { EIconsSet, ITask, ITaskAttachments } from '@/typings';
+import { EIconsSet, ITask, IAttachment, EAttachType } from '@/typings';
 import { TaskDetailsOptions } from './taskDetailsOptions/TaskDetailsOptions';
 import { TaskStatusDrop } from '@/components/ui';
 import { SvgHandler } from '@/components/SvgHandler';
+import { AttachViewBox } from './attachViewbox/AttachViewBox';
 
 interface Props {
   task: ITask;
-  attachments: ITaskAttachments;
+  attachments: IAttachment[];
 }
 
 export const TaskDetails = ({ task, attachments }: Props) => {
-  const total = attachments.links.length + attachments.files.length;
+  const total = attachments.length;
+  const links = attachments.filter((el) => el.type === EAttachType.LINK);
+  const images = attachments.filter((el) => el.type === EAttachType.FILE);
 
   return (
     <section className={styles.taskDetails}>
@@ -29,26 +30,14 @@ export const TaskDetails = ({ task, attachments }: Props) => {
         <div>{task.description}</div>
         <p className={styles.title}>Task Attachments ({total})</p>
         <ul className={styles.filesList}>
-          {attachments.files.map(({ _id, value, title, createdAt }) => (
-            <li key={_id} className={styles.fileItem}>
-              <Image
-                priority
-                src={value}
-                alt={title}
-                width={156}
-                height={144}
-                className={styles.image}
-              />
-              <div className={styles.overlay}>
-                <p className={styles.fileName}>{title}</p>
-                <p className={styles.date}>{formatDayDate(createdAt)}</p>
-              </div>
+          {images.map((el) => (
+            <li key={el._id} className={styles.fileItem}>
+              <AttachViewBox item={el} />
             </li>
           ))}
         </ul>
-
         <ul className={styles.linksList}>
-          {attachments.links.map(({ _id, title, value }) => (
+          {links.map(({ _id, title, value }) => (
             <li key={_id} className={styles.linkItem}>
               <SvgHandler icon={EIconsSet.AttachLink} />
               <Link href={value}>{title || value}</Link>

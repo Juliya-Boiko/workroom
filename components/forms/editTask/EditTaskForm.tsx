@@ -2,24 +2,21 @@
 import styles from './editTaskForm.module.scss';
 import { useForm, Controller } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
-import { addTaskSchema, AddTaskFormData } from '@/utils';
-import { priorityDataTypes, ITask } from '@/typings';
+import { editTaskSchema, EditTaskFormData } from '@/utils';
+import { priorityDataTypes, ITask, IAttachment } from '@/typings';
 import { useEmployees, useTasksMutation } from '@/services';
-import {
-  InputField,
-  BtnPrimary,
-  TextareaField,
-  SelectDrop,
-  PickerDate,
-  UploadAttach,
-} from '@/components/ui';
+import { EditAttachments } from './editAttachments/EditAttachments';
+import { InputField, BtnPrimary, TextareaField, SelectDrop, PickerDate } from '@/components/ui';
 
 interface Props {
   task: ITask;
+  attachments: IAttachment;
 }
-export const EditTaskForm = ({ task }: Props) => {
+
+export const EditTaskForm = ({ task, attachments }: Props) => {
   const { data: employees } = useEmployees();
   const { update } = useTasksMutation();
+  console.log(attachments);
   const defaultValues = {
     name: task.name,
     start: task.start,
@@ -27,7 +24,7 @@ export const EditTaskForm = ({ task }: Props) => {
     priority: task.priority,
     assignee: task.assignee,
     description: task.description,
-    attachments: task.attachments,
+    // attachments: attachments,
   };
 
   const {
@@ -37,7 +34,7 @@ export const EditTaskForm = ({ task }: Props) => {
     formState: { errors, isDirty, isValid, isSubmitting },
   } = useForm({
     defaultValues,
-    resolver: yupResolver(addTaskSchema),
+    resolver: yupResolver(editTaskSchema),
     mode: 'onChange',
   });
 
@@ -45,7 +42,7 @@ export const EditTaskForm = ({ task }: Props) => {
     ? employees.map(({ _id, name, avatar }) => ({ _id, name, avatar }))
     : [];
 
-  const onSubmit = async (data: AddTaskFormData) => {
+  const onSubmit = async (data: EditTaskFormData) => {
     const values = {
       _id: task._id,
       update: {
@@ -112,10 +109,7 @@ export const EditTaskForm = ({ task }: Props) => {
           register={register}
           placeholder="Add some description of the task"
         />
-        <div>
-          <p className={styles.label}>Attachments (3)</p>
-          <UploadAttach />
-        </div>
+        <EditAttachments />
         <div className={styles.btnWrapper}>
           <BtnPrimary type="submit" disabled={!isDirty || !isValid || isSubmitting}>
             Save Task

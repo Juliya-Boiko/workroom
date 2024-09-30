@@ -6,7 +6,7 @@ import { useModalContext } from '@/components/providers/ModalProvider';
 import { useEmployees, useTasksMutation } from '@/services';
 import { yupResolver } from '@hookform/resolvers/yup';
 import { getTomorrowDate, addTaskSchema, AddTaskFormData } from '@/utils';
-import { ETaskStatus, priorityDataTypes, IDynamicComponent, IAttachments } from '@/typings';
+import { ETaskStatus, priorityDataTypes, IDynamicComponent } from '@/typings';
 import { TaskAttachments } from './attachments/TaskAttachments';
 import { InputField, BtnPrimary, TextareaField, SelectDrop, PickerDate } from '@/components/ui';
 
@@ -35,10 +35,7 @@ export const AddTaskForm = ({ slug, start, deadline }: Props) => {
       avatar: null,
     },
     description: '',
-    attachments: {
-      links: [],
-      files: [],
-    },
+    attachments: [],
   };
 
   const {
@@ -63,10 +60,6 @@ export const AddTaskForm = ({ slug, start, deadline }: Props) => {
       assignee: data.assignee._id,
       projectId: slug,
       description: data.description || '',
-      attachments: {
-        ...data.attachments,
-        files: data.attachments.files.map(({ title, type, value }) => ({ title, type, value })),
-      },
     };
     create(task);
     closeModal();
@@ -75,10 +68,6 @@ export const AddTaskForm = ({ slug, start, deadline }: Props) => {
   useEffect(() => {
     setValue('deadline', startDate);
   }, [setValue, startDate]);
-
-  const handleAttachments = (v: IAttachments) => {
-    setValue('attachments', v);
-  };
 
   return (
     <form className={styles.form} onSubmit={handleSubmit(onSubmit)}>
@@ -151,7 +140,11 @@ export const AddTaskForm = ({ slug, start, deadline }: Props) => {
         register={register}
         placeholder="Add some description of the task"
       />
-      <TaskAttachments onUpdate={handleAttachments} />
+      <Controller
+        control={control}
+        name="attachments"
+        render={({ field }) => <TaskAttachments value={field.value} onChange={field.onChange} />}
+      />
       <div>
         <BtnPrimary type="submit" disabled={!isDirty || !isValid || isSubmitting || isCreating}>
           Save Task

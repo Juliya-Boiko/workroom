@@ -7,16 +7,18 @@ import { Topping } from '@/components/topping/Topping';
 import { Preloader } from '@/components/ui';
 import { TaskDetails } from '@/components/sections/task/taskDetails/TaskDetails';
 import { TaskInfo } from '@/components/sections/task/taskInfo/TaskInfo';
+import { useAttachments } from '@/services/useAttachments';
 
 export const TaskPage = ({ slug }: IDynamicComponent) => {
-  const { data, isLoading: isLoadingTask } = useTask(slug);
+  const { data: task, isLoading: isLoadingTask } = useTask(slug);
+  const { data: attachments } = useAttachments(slug);
 
   return (
     <div className={styles.taskPage}>
       <Topping
         link="Back to project info"
-        path={`${ROUTES.project}/${data?.task?.projectId}`}
-        title={data?.task?.name || ''}
+        path={`${ROUTES.project}/${task?.projectId}`}
+        title={task?.name || ''}
       />
       <div className={styles.container}>
         {isLoadingTask && (
@@ -24,10 +26,10 @@ export const TaskPage = ({ slug }: IDynamicComponent) => {
             <Preloader />
           </div>
         )}
-        {data && (
+        {task && attachments && (
           <div className={styles.content}>
-            <TaskInfo task={data?.task} />
-            <TaskDetails task={data?.task} attachments={data.attachments} />
+            <TaskInfo task={task} />
+            <TaskDetails task={task} attachments={attachments} />
           </div>
         )}
       </div>

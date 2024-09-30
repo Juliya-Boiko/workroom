@@ -6,3 +6,4 @@ export * from './task';
 export * from './event';
 export * from './search';
 export * from './employee';
+export * from './attachments';

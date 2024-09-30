@@ -8,12 +8,12 @@ import { Preloader, TaskStatusDrop } from '@/components/ui';
 import { EditTaskForm } from '@/components/forms/editTask/EditTaskForm';
 
 export const EditTaskPage = ({ slug }: IDynamicComponent) => {
-  const { data: task, isLoading: isLoadingTask } = useTask(slug);
+  const { data, isLoading: isLoadingTask } = useTask(slug);
 
   return (
     <div className={styles.editTaskPage}>
-      <Topping link="Back to task" path={`${ROUTES.task}/${task?._id}`} title="Edit task">
-        {task && <TaskStatusDrop id={task._id} status={task.status} />}
+      <Topping link="Back to task" path={`${ROUTES.task}/${data?.task?._id}`} title="Edit task">
+        {data && <TaskStatusDrop id={data.task._id} status={data.task.status} />}
       </Topping>
       <div className={styles.container}>
         {isLoadingTask && (
@@ -21,7 +21,7 @@ export const EditTaskPage = ({ slug }: IDynamicComponent) => {
             <Preloader />
           </div>
         )}
-        {task && <EditTaskForm task={task} />}
+        {data && <EditTaskForm task={data.task} attachments={data.attachments} />}
       </div>
     </div>
   );

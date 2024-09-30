@@ -1,4 +1,9 @@
-import { IProjectResponse, ETaskStatus } from '@/typings';
+import {
+  IProjectResponse,
+  ETaskStatus,
+  // EAttachType,
+  // IAttachment,
+} from '@/typings';
 
 export const formatProjectsWithTasks = (data: IProjectResponse[]) => {
   return data.map((el) => {
@@ -17,4 +22,16 @@ export const formatProjectsWithTasks = (data: IProjectResponse[]) => {
       },
     };
   });
+};
+
+export const formatTaskAttachments = () => {
+  // const initialValue: IAttachment = { links: [], files: [] };
+  // return data.reduce((acc, curr) => {
+  //   if (curr.type === EAttachType.LINK) {
+  //     acc.links.push(curr);
+  //   } else {
+  //     acc.files.push(curr);
+  //   }
+  //   return acc;
+  // }, initialValue);
 };

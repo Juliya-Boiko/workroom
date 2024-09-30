@@ -55,33 +55,7 @@
 
   .fileItem {
     position: relative;
-    outline: 1px solid red;
     border-radius: 14px;
     overflow: hidden;
-  }
-
-  .image {
-    object-fit: cover;
-  }
-
-  .overlay {
-    position: absolute;
-    z-index: 2;
-    bottom: 0;
-    left: 0;
-    width: 100%;
-    background-color: $white;
-    padding: 14px;
-    border-radius: 14px;
-  }
-
-  .fileName {
-    font-weight: 700;
-    margin-bottom: 8px;
-  }
-
-  .date {
-    color: $grey-10;
-    font-size: 12px;
   }
 }
