@@ -14,26 +14,15 @@ export const editTaskSchema = yup.object({
     })
     .required('Assignee is required'),
   description: yup.string().trim(),
-  // attachments: yup.object({
-  //   links: yup
-  //     .array(
-  //       yup.object({
-  //         type: yup.string().trim().oneOf(attachmentsDataTypes).default(attachmentsDataTypes[0]),
-  //         title: yup.string().trim().default(''),
-  //         value: yup.string().trim().required(),
-  //       })
-  //     )
-  //     .default([]),
-  //   files: yup
-  //     .array(
-  //       yup.object({
-  //         type: yup.string().trim().oneOf(attachmentsDataTypes).default(attachmentsDataTypes[0]),
-  //         title: yup.string().trim().default(''),
-  //         value: yup.mixed<File | string>().required(),
-  //       })
-  //     )
-  //     .default([]),
-  // }),
+  attachments: yup
+    .array(
+      yup.object({
+        type: yup.string().trim().oneOf(attachmentsDataTypes).required(),
+        title: yup.string().trim().default(''),
+        value: yup.mixed<File | string>().required(),
+      })
+    )
+    .default([]),
 });
 
 export type EditTaskFormData = yup.InferType<typeof editTaskSchema>;

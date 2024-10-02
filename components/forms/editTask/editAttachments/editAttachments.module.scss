@@ -1,4 +1,7 @@
 .editAttachments {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
 
   .label {
     display: inline-block;
@@ -6,5 +9,88 @@
     font-weight: 700;
     text-transform: capitalize;
     color: $grey-3;
+  }
+
+  .linksList {
+    display: flex;
+    align-items: center;
+    gap: 24px;
+    flex-wrap: wrap;
+  }
+
+  .linkItem {
+    padding: 8px 16px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    color: $aqua;
+    text-transform: capitalize;
+    border-radius: 14px;
+    background-color: rgba($aqua-rgb, 0.1);
+  }
+
+  .btnDelete {
+    display: flex;
+    color: $grey-3;
+  }
+
+  .filesList {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 24px;
+  }
+
+  .fileItem {
+    height: 144px;
+    position: relative;
+    border-radius: 14px;
+    overflow: hidden;
+
+    .btnDelete {
+      position: absolute;
+      top: 14px;
+      right: 14px;
+      z-index: 3;
+      border-radius: 4px;
+      background-color: $white;
+    }
+  }
+
+  .info {
+    background-color: $white;
+    border-radius: 14px;
+    padding: 14px;
+    position: absolute;
+    z-index: 2;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+  }
+
+    .buttonsWrapper {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+  }
+
+  .btn {
+    @include squareSize(44px);
+    @include flexContainer(row, center, center);
+    border-radius: 14px;
+    transition: all 250ms ease-in-out;
+  }
+
+  .btnFile {
+    background-color: rgba($violet-rgb, 0.1);
+    &:hover, &:active {
+      background-color: rgba($violet-rgb, 0.3);
+    }
+  }
+
+  .btnLink {
+    background-color: rgba($aqua-rgb, 0.1);
+    &:hover, &:active {
+      background-color: rgba($aqua-rgb, 0.3);
+    }
   }
 }

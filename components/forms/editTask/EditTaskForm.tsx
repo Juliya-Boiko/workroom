@@ -1,22 +1,24 @@
 'use client';
 import styles from './editTaskForm.module.scss';
+import { useEffect } from 'react';
 import { useForm, Controller } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
 import { editTaskSchema, EditTaskFormData } from '@/utils';
-import { priorityDataTypes, ITask, IAttachment } from '@/typings';
-import { useEmployees, useTasksMutation } from '@/services';
+import { priorityDataTypes, ITask, ICreateAttach } from '@/typings';
+import { useEmployees, useTasksMutation, useAttachments } from '@/services';
 import { EditAttachments } from './editAttachments/EditAttachments';
 import { InputField, BtnPrimary, TextareaField, SelectDrop, PickerDate } from '@/components/ui';
 
 interface Props {
   task: ITask;
-  attachments: IAttachment;
 }
 
-export const EditTaskForm = ({ task, attachments }: Props) => {
+export const EditTaskForm = ({ task }: Props) => {
   const { data: employees } = useEmployees();
+  const { data: attachments } = useAttachments(task._id);
+
   const { update } = useTasksMutation();
-  console.log(attachments);
+
   const defaultValues = {
     name: task.name,
     start: task.start,
@@ -24,12 +26,13 @@ export const EditTaskForm = ({ task, attachments }: Props) => {
     priority: task.priority,
     assignee: task.assignee,
     description: task.description,
-    // attachments: attachments,
+    attachments: [],
   };
 
   const {
     control,
     register,
+    reset,
     handleSubmit,
     formState: { errors, isDirty, isValid, isSubmitting },
   } = useForm({
@@ -37,6 +40,12 @@ export const EditTaskForm = ({ task, attachments }: Props) => {
     resolver: yupResolver(editTaskSchema),
     mode: 'onChange',
   });
+
+  useEffect(() => {
+    if (attachments) {
+      reset({ attachments });
+    }
+  }, [attachments, reset]);
 
   const employeesOptions = employees
     ? employees.map(({ _id, name, avatar }) => ({ _id, name, avatar }))
@@ -109,7 +118,11 @@ export const EditTaskForm = ({ task, attachments }: Props) => {
           register={register}
           placeholder="Add some description of the task"
         />
-        <EditAttachments />
+        <Controller
+          control={control}
+          name="attachments"
+          render={({ field }) => <EditAttachments value={field.value} onChange={field.onChange} />}
+        />
         <div className={styles.btnWrapper}>
           <BtnPrimary type="submit" disabled={!isDirty || !isValid || isSubmitting}>
             Save Task

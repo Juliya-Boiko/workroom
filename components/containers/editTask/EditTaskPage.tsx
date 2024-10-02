@@ -5,6 +5,7 @@ import { useTask } from '@/services';
 import { IDynamicComponent } from '@/typings';
 import { Topping } from '@/components/topping/Topping';
 import { Preloader, TaskStatusDrop } from '@/components/ui';
+import { EditTaskForm } from '@/components/forms/editTask/EditTaskForm';
 
 export const EditTaskPage = ({ slug }: IDynamicComponent) => {
   const { data: task, isLoading: isLoadingTask } = useTask(slug);
@@ -20,6 +21,7 @@ export const EditTaskPage = ({ slug }: IDynamicComponent) => {
             <Preloader />
           </div>
         )}
+        {task && <EditTaskForm task={task} />}
       </div>
     </div>
   );

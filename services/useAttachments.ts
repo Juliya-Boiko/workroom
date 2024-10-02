@@ -7,6 +7,7 @@ export const useAttachMutation = () => {
   const { mutate: remove, isPending: isDeleting } = useMutation({
     mutationFn: deleteAttach,
     onSuccess: ({ taskId }) => {
+      queryClient.invalidateQueries({ queryKey: [QUERY_KEYS.ATTACHMENTS, taskId] });
       queryClient.invalidateQueries({ queryKey: [QUERY_KEYS.TASK, taskId] });
     },
   });
