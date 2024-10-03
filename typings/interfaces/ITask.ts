@@ -31,5 +31,6 @@ export interface IUpdateTask {
     name?: string;
     start?: Date;
     status?: ETaskStatus;
+    attachments?: ICreateAttach[];
   };
 }

@@ -17,6 +17,7 @@ export const editTaskSchema = yup.object({
   attachments: yup
     .array(
       yup.object({
+        _id: yup.string().optional(),
         type: yup.string().trim().oneOf(attachmentsDataTypes).required(),
         title: yup.string().trim().default(''),
         value: yup.mixed<File | string>().required(),

@@ -1,26 +1,82 @@
-.uploadApplications {
-  @include flexContainer(row, center, flex-start);
+.buttonsWrapper {
+  display: flex;
+  align-items: center;
   gap: 16px;
+}
 
-  .btn {
-    @include squareSize(44px);
-    @include flexContainer(row, center, center);
-    border-radius: 14px;
-    transition: all 250ms ease-in-out;
+.btn {
+  @include squareSize(44px);
+  @include flexContainer(row, center, center);
+  border-radius: 14px;
+  transition: all 250ms ease-in-out;
+}
 
+.btnFile {
+  background-color: rgba($violet-rgb, 0.1);
+  &:hover, &:active {
+    background-color: rgba($violet-rgb, 0.3);
   }
+}
 
-  .btnFile {
-    background-color: rgba($violet-rgb, 0.1);
-    &:hover, &:active {
-      background-color: rgba($violet-rgb, 0.3);
-    }
+.btnLink {
+  background-color: rgba($aqua-rgb, 0.1);
+  &:hover, &:active {
+    background-color: rgba($aqua-rgb, 0.3);
   }
+}
 
-  .btnLink {
-    background-color: rgba($aqua-rgb, 0.1);
-    &:hover, &:active {
-      background-color: rgba($aqua-rgb, 0.3);
-    }
+.linkForm {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.label {
+  display: inline-block;
+  padding-left: 6px;
+  font-weight: 700;
+  text-transform: capitalize;
+  color: $grey-3;
+}
+
+.input {
+  @extend %shadow-xs;
+  background-color: $white;
+  border: none;
+  outline: 1px solid $grey-7;
+  border-radius: 14px;
+  height: 48px;
+  width: 100%;
+  color: $dark;
+  padding: 0 18px;
+
+  &::placeholder {
+    font-size: 14px;
+    color: $grey-3;
   }
+}
+
+.buttonsActions {
+  @include flexContainer(row, center, flex-end);
+  gap: 24px;
+}
+
+.uploadImage {
+  @include flexContainer(row, center, center);
+  position: relative;
+  cursor: pointer;
+  padding: 24px;
+  border-radius: 14px;
+  outline: 1px dashed $blue-1;
+  max-width: fit-content;
+}
+
+.inputFile {
+  display: none;
 }

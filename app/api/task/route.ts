@@ -1,10 +1,8 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import Task from '@/models/task';
-import Attachment from '@/models/attachment';
 import { decodeToken } from '@/libs/jose';
 import { connectToMongoDB } from '@/libs/database';
 import { NextRequest, NextResponse } from 'next/server';
-import { ICreateAttach } from '@/typings';
 
 connectToMongoDB();
 
@@ -20,14 +18,10 @@ export async function POST(request: NextRequest) {
     ...reqBody,
   });
   const savedTask = await task.save();
-  if (reqBody.attachments.length) {
-    const items = reqBody.attachments.map(async (el: ICreateAttach) => {
-      const attach = new Attachment({ ...el, taskId: savedTask._id });
-      await attach.save();
-    });
-    await Promise.all(items);
-  }
-  return NextResponse.json({ projectId: reqBody.projectId }, { status: 201 });
+  return NextResponse.json(
+    { projectId: reqBody.projectId, taskId: savedTask._id },
+    { status: 201 }
+  );
 }
 
 export async function GET(request: NextRequest) {

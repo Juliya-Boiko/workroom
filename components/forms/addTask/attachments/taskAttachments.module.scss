@@ -12,65 +12,10 @@
     color: $grey-3;
   }
 
-  .buttonsWrapper {
-    display: flex;
-    align-items: center;
-    gap: 16px;
-  }
-
-  .btn {
-    @include squareSize(44px);
-    @include flexContainer(row, center, center);
-    border-radius: 14px;
-    transition: all 250ms ease-in-out;
-  }
-
-  .btnFile {
-    background-color: rgba($violet-rgb, 0.1);
-    &:hover, &:active {
-      background-color: rgba($violet-rgb, 0.3);
-    }
-  }
-
-  .btnLink {
-    background-color: rgba($aqua-rgb, 0.1);
-    &:hover, &:active {
-      background-color: rgba($aqua-rgb, 0.3);
-    }
-  }
-
-  .input {
-    @extend %shadow-xs;
-    background-color: $white;
-    border: none;
-    outline: 1px solid $grey-7;
-    border-radius: 14px;
-    height: 48px;
-    width: 100%;
-    color: $dark;
-    padding: 0 18px;
-
-    &::placeholder {
-      font-size: 14px;
-      color: $grey-3;
-    }
-  }
-
-  .wrapper, .linksList {
+  .linksList {
     display: flex;
     flex-direction: column;
     gap: 12px;
-  }
-
-  .linkForm {
-    display: flex;
-    flex-direction: column;
-    gap: 12px;
-  }
-
-  .buttonsActions {
-    @include flexContainer(row, center, flex-end);
-    gap: 24px;
   }
 
   .linkItem {
@@ -85,20 +30,6 @@
     padding: 4px;
     border-radius: 4px;
     color: $grey-7;
-  }
-
-  .uploadImage {
-    @include flexContainer(row, center, center);
-    position: relative;
-    cursor: pointer;
-    padding: 24px;
-    border-radius: 14px;
-    outline: 1px dashed $blue-1;
-    max-width: fit-content;
-  }
-
-  .inputFile {
-    display: none;
   }
 
   .filesList {
@@ -134,6 +65,7 @@
     padding: 14px;
     width: 100%;
   }
+
   .image {
     object-fit: cover;
   }

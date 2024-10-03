@@ -66,31 +66,4 @@
     bottom: 0;
     width: 100%;
   }
-
-    .buttonsWrapper {
-    display: flex;
-    align-items: center;
-    gap: 16px;
-  }
-
-  .btn {
-    @include squareSize(44px);
-    @include flexContainer(row, center, center);
-    border-radius: 14px;
-    transition: all 250ms ease-in-out;
-  }
-
-  .btnFile {
-    background-color: rgba($violet-rgb, 0.1);
-    &:hover, &:active {
-      background-color: rgba($violet-rgb, 0.3);
-    }
-  }
-
-  .btnLink {
-    background-color: rgba($aqua-rgb, 0.1);
-    &:hover, &:active {
-      background-color: rgba($aqua-rgb, 0.3);
-    }
-  }
 }

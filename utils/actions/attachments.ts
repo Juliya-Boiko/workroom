@@ -29,3 +29,15 @@ export const deleteAttach = async ({ id, type }: DeleteProps): Promise<{ taskId:
   const response = await axiosInstance.delete(`/attach/${id}`);
   return response.data;
 };
+
+interface CreateProps {
+  taskId: string;
+  title: string;
+  type: EAttachType;
+  value: string | null;
+}
+
+export const createAttach = async (data: CreateProps) => {
+  const response = await axiosInstance.post('/attach', data);
+  return response.data;
+};

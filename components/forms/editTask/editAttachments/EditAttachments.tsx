@@ -1,67 +1,73 @@
-/* eslint-disable @typescript-eslint/no-unused-vars */
 'use client';
 import styles from './editAttachments.module.scss';
-// import Link from 'next/link';
-// import Image from 'next/image';
-// import { useState, ChangeEvent, useEffect } from 'react';
-// import { useAttachments, useAttachMutation } from '@/services/useAttachments';
-import { ICreateAttach, IAttachment, EAttachType, EIconsSet } from '@/typings';
-// import { SvgHandler } from '@/components/SvgHandler';
+import Link from 'next/link';
+import Image from 'next/image';
+import { useAttachMutation } from '@/services/useAttachments';
+import { ICreateAttach, EAttachType, EIconsSet } from '@/typings';
+import { SvgHandler } from '@/components/SvgHandler';
+import { UploadAttach } from '@/components/ui';
 
 interface Props {
   value: ICreateAttach[];
   onChange: (v: ICreateAttach[]) => void;
 }
 
-export const EditAttachments = ({ value }: Props) => {
-  console.log({ value });
-  // const { data } = useAttachments(id);
-  // const { remove } = useAttachMutation();
-  // const [attachments, setAttachments] = useState<IAttachment[]>([]);
+export const EditAttachments = ({ value, onChange }: Props) => {
+  const { remove } = useAttachMutation();
 
-  // const total = attachments.length;
-  // const links = attachments.filter((el) => el.type === EAttachType.LINK);
-  // const images = attachments.filter((el) => el.type === EAttachType.FILE);
+  const total = value.length;
+  const links = value.filter((el) => el.type === EAttachType.LINK);
+  const images = value
+    .filter((el) => el.type === EAttachType.FILE)
+    .map((el) => ({
+      ...el,
+      preview: el.value instanceof File ? URL.createObjectURL(el.value) : el.value,
+    }));
 
-  // useEffect(() => {
-  //   if (data) {
-  //     setAttachments(data);
-  //   }
-  // }, [data]);
-  // const [showAddLink, setShowAddLink] = useState(false);
-  // const [showAddImage, setShowAddImage] = useState(false);
-  // const [linkFields, setLinkFields] = useState({
-  //   title: '',
-  //   value: '',
-  // });
+  const handleDeleteImage = (
+    type: EAttachType,
+    val: string | File,
+    title: string,
+    id: string | undefined
+  ) => {
+    if (val instanceof File) {
+      const filtered = value.filter((el) => el.title !== title);
+      onChange(filtered);
+      return;
+    }
+    if (id) {
+      remove({ id, type });
+    }
+  };
 
-  // console.log(data);
+  const handleDeleteLink = (type: EAttachType, val: string | File, id: string | undefined) => {
+    if (id) {
+      remove({ id, type });
+    } else {
+      const filtered = value.filter((el) => el.value !== val);
+      onChange(filtered);
+    }
+  };
 
-  // const toggleLinkForm = () => {
-  //   setShowAddLink((v) => !v);
-  //   setShowAddImage(false);
-  // };
-
-  // const toggleImageForm = () => {
-  //   setShowAddImage((v) => !v);
-  //   setShowAddLink(false);
-  // };
+  const handleAddAttach = (attach: ICreateAttach) => {
+    onChange([...value, attach]);
+  };
 
   return (
     <div className={styles.editAttachments}>
-      <p className={styles.label}>Attachments ()</p>
-      {/* {images.length ? (
+      <p className={styles.label}>Attachments {total ? `(${total})` : ''}</p>
+      {images.length ? (
         <ul className={styles.filesList}>
-          {images.map(({ _id, title, type, value }) => (
-            <li key={_id} className={styles.fileItem}>
-              <Image src={value} sizes="100%" alt={title} fill />
+          {images.map(({ _id, title, type, value, preview }) => (
+            <li key={_id || title} className={styles.fileItem}>
+              <Image src={preview} sizes="100%" alt={title} fill />
               <div className={styles.info}>
                 <p>{title}</p>
               </div>
               <button
                 type="button"
                 className={styles.btnDelete}
-                onClick={() => remove({ id: _id, type })}
+                onClick={() => handleDeleteImage(type, value, title, _id)}
               >
                 <SvgHandler icon={EIconsSet.Cross} />
               </button>
@@ -72,41 +78,23 @@ export const EditAttachments = ({ value }: Props) => {
       {links.length ? (
         <ul className={styles.linksList}>
           {links.map(({ _id, title, value, type }) => (
-            <li key={_id} className={styles.linkItem}>
+            <li key={_id || value.toString()} className={styles.linkItem}>
               <SvgHandler icon={EIconsSet.AttachLink} />
-              <Link href={value} target="_blank">
-                {title || value}
+              <Link href={value.toString()} target="_blank">
+                {title || value.toString()}
               </Link>
               <button
                 type="button"
                 className={styles.btnDelete}
-                onClick={() => remove({ id: _id, type })}
+                onClick={() => handleDeleteLink(type, value, _id)}
               >
                 <SvgHandler icon={EIconsSet.Cross} />
               </button>
             </li>
           ))}
         </ul>
-      ) : null} */}
-      {/* 
-      <div className={styles.buttonsWrapper}>
-        <button
-          type="button"
-          title="Add link"
-          className={`${styles.btn} ${styles.btnLink}`}
-          onClick={toggleLinkForm}
-        >
-          <SvgHandler icon={EIconsSet.AttachLink} />
-        </button>
-        <button
-          type="button"
-          title="Add image"
-          className={`${styles.btn} ${styles.btnFile}`}
-          onClick={toggleImageForm}
-        >
-          <SvgHandler icon={EIconsSet.AttachFile} />
-        </button>
-      </div> */}
+      ) : null}
+      <UploadAttach onChange={handleAddAttach} />
     </div>
   );
 };

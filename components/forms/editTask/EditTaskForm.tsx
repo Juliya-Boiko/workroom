@@ -4,7 +4,7 @@ import { useEffect } from 'react';
 import { useForm, Controller } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
 import { editTaskSchema, EditTaskFormData } from '@/utils';
-import { priorityDataTypes, ITask, ICreateAttach } from '@/typings';
+import { priorityDataTypes, ITask } from '@/typings';
 import { useEmployees, useTasksMutation, useAttachments } from '@/services';
 import { EditAttachments } from './editAttachments/EditAttachments';
 import { InputField, BtnPrimary, TextareaField, SelectDrop, PickerDate } from '@/components/ui';
