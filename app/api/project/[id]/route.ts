@@ -3,7 +3,6 @@ import { connectToMongoDB } from '@/libs/database';
 import { ETaskStatus, IAssignee, IProject } from '@/typings';
 import { NextRequest, NextResponse } from 'next/server';
 import { IDynamicRoute } from '@/typings';
-import Task from '@/models/task';
 
 connectToMongoDB();
 
@@ -55,8 +54,7 @@ export async function GET(request: NextRequest, { params }: IDynamicRoute) {
 
 export async function DELETE(_request: NextRequest, { params }: IDynamicRoute) {
   const { id } = params;
-  await Project.findByIdAndDelete(id);
-  await Task.deleteMany({ projectId: id });
+  await Project.findOneAndDelete({ _id: id });
   return NextResponse.json({ message: 'Project deleted' }, { status: 200 });
 }
 

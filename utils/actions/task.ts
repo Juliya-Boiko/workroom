@@ -1,7 +1,7 @@
 import { axiosInstance } from '@/libs/axios';
 import { ICreateTask, IUpdateTask, ITask, IFilters, ICreateAttach } from '@/typings';
 import { uploadImage } from '../helpers';
-import { createAttach } from './attachments';
+import { createAttach, deleteTaskAttachments } from './attachments';
 
 export const createTask = async (
   data: ICreateTask
@@ -65,4 +65,12 @@ export const getTaskById = async (id: string): Promise<ITask> => {
 
 export const deleteTask = async (id: string) => {
   await axiosInstance.delete(`/task/${id}`);
+  await deleteTaskAttachments(id);
+};
+
+export const deleteProjectTasks = async (projectId: string) => {
+  const tasks = await getTasks(projectId, null);
+  tasks.every(async ({ _id }) => {
+    await deleteTask(_id);
+  });
 };

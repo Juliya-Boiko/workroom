@@ -19,7 +19,7 @@ export const ProjectInfo = ({ project }: Props) => {
   return (
     <section className={styles.projectInfo}>
       <div className={styles.main}>
-        <Image alt={project.name} src={imgSrc} width={48} height={48} />
+        <Image alt={project.name} src={imgSrc} width={48} height={48} className={styles.image} />
         <button type="button" className={styles.toggleBtn} onClick={() => setOpen((prev) => !prev)}>
           <span>Project details</span>
           <SvgHandler icon={EIconsSet.ChevronDown} />

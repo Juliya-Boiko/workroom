@@ -26,6 +26,11 @@
     gap: 18px;
   }
 
+  .image {
+    border-radius: 10px;
+    overflow: hidden;
+  }
+
   .block {
     display: flex;
     flex-direction: column;

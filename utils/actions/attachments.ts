@@ -21,15 +21,6 @@ interface DeleteProps {
   type: EAttachType;
 }
 
-export const deleteAttach = async ({ id, type }: DeleteProps): Promise<{ taskId: string }> => {
-  if (type === EAttachType.FILE) {
-    const attach = await getAttachById(id);
-    await deleteImage(attach.value);
-  }
-  const response = await axiosInstance.delete(`/attach/${id}`);
-  return response.data;
-};
-
 interface CreateProps {
   taskId: string;
   title: string;
@@ -40,4 +31,20 @@ interface CreateProps {
 export const createAttach = async (data: CreateProps) => {
   const response = await axiosInstance.post('/attach', data);
   return response.data;
+};
+
+export const deleteAttachById = async ({ id, type }: DeleteProps): Promise<{ taskId: string }> => {
+  if (type === EAttachType.FILE) {
+    const attach = await getAttachById(id);
+    await deleteImage(attach.value);
+  }
+  const response = await axiosInstance.delete(`/attach/${id}`);
+  return response.data;
+};
+
+export const deleteTaskAttachments = async (taskId: string) => {
+  const attachs = await getAttachments(taskId);
+  attachs.every(async ({ _id, type }) => {
+    await deleteAttachById({ id: _id, type });
+  });
 };

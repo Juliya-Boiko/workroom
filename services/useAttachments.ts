@@ -1,11 +1,11 @@
 import { useQuery, useQueryClient, useMutation } from '@tanstack/react-query';
-import { deleteAttach, getAttachments, QUERY_KEYS } from '@/utils';
+import { deleteAttachById, getAttachments, QUERY_KEYS } from '@/utils';
 
 export const useAttachMutation = () => {
   const queryClient = useQueryClient();
 
   const { mutate: remove, isPending: isDeleting } = useMutation({
-    mutationFn: deleteAttach,
+    mutationFn: deleteAttachById,
     onSuccess: ({ taskId }) => {
       queryClient.invalidateQueries({ queryKey: [QUERY_KEYS.ATTACHMENTS, taskId] });
       queryClient.invalidateQueries({ queryKey: [QUERY_KEYS.TASK, taskId] });

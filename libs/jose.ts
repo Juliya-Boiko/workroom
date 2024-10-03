@@ -15,8 +15,7 @@ export const isValid = async (token: string) => {
     const { payload } = await jwtVerify(token, secret, {
       algorithms: ['HS256'],
     });
-    console.log({ payload });
-    return true;
+    return !!payload;
   } catch (error: unknown) {
     console.log('Token has expired', error);
     return false;

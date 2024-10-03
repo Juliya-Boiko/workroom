@@ -3,7 +3,6 @@ import Link from 'next/link';
 import { formatDayDate, getFullYears, ROUTES } from '@/utils';
 import { Avatar, BadgeLevel } from '@/components/ui';
 import { SvgHandler } from '@/components/SvgHandler';
-import { Delete } from '@/components/delete/Delete';
 import { IEmployee, EIconsSet } from '@/typings';
 import { EmployeeCardOptions } from './options/EmployeeCardOptions';
 
@@ -50,7 +49,7 @@ export const EmployeeCard = ({ employee }: Props) => {
         <Link href={`${ROUTES.employee}/${employee._id}`} className={styles.link}>
           <SvgHandler icon={EIconsSet.Eye} />
         </Link>
-        <Delete />
+        <button type="button">Delete</button>
       </div>
       <div className={styles.dropdown}>
         <EmployeeCardOptions id={employee._id} />

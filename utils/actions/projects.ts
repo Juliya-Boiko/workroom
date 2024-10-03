@@ -1,6 +1,13 @@
 import { axiosInstance } from '@/libs/axios';
 import { IProjectInfo, IProjectDetails, IFilters } from '@/typings';
-import { AddProjectFormData, uploadImage, uploadThumb, IMAGE_THUMB_STARTS } from '@/utils';
+import {
+  AddProjectFormData,
+  uploadImage,
+  uploadThumb,
+  IMAGE_THUMB_STARTS,
+  deleteProjectTasks,
+  deleteImage,
+} from '@/utils';
 
 interface IProjectsResponse {
   projects: IProjectInfo[];
@@ -38,7 +45,12 @@ export const getProjectById = async (id?: string): Promise<IProjectDetails> => {
 };
 
 export const deleteProject = async (id: string) => {
+  const project = await getProjectById(id);
   await axiosInstance.delete(`/project/${id}`);
+  if (!project.image.includes(IMAGE_THUMB_STARTS)) {
+    await deleteImage(project.image);
+  }
+  await deleteProjectTasks(id);
 };
 
 export type IEditProject = { values: AddProjectFormData; id: string };

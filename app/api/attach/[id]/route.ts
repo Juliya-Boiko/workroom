@@ -14,6 +14,5 @@ export async function GET(request: NextRequest, { params }: IDynamicRoute) {
 export async function DELETE(request: NextRequest, { params }: IDynamicRoute) {
   const { id } = params;
   const attach = await Attachment.findByIdAndDelete(id);
-  console.log({ attach });
   return NextResponse.json(attach.taskId, { status: 200 });
 }

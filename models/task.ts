@@ -1,3 +1,4 @@
+import Attachment from './attachment';
 import { model, models, Schema } from 'mongoose';
 import { priorityDataTypes, taskStatusDataTypes } from '@/typings';
 
@@ -17,6 +18,15 @@ const taskSchema = new Schema(
     versionKey: false,
   }
 );
+
+taskSchema.virtual('attachments', {
+  ref: Attachment,
+  localField: '_id',
+  foreignField: 'taskId',
+});
+
+taskSchema.set('toObject', { virtuals: true });
+taskSchema.set('toJSON', { virtuals: true });
 
 const Task = models.Task || model('Task', taskSchema);
 export default Task;
