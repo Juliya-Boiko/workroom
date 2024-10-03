@@ -18,3 +18,7 @@ export const updateLevelEmployee = async ({
   const response = await axiosInstance.patch(`/employee/${_id}`, { level });
   return response.data;
 };
+
+export const deleteEmployee = async (id: string) => {
+  await axiosInstance.delete(`/employee/${id}`);
+};

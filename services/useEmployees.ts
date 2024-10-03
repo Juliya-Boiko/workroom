@@ -1,5 +1,11 @@
 import { useQuery, useQueryClient, useMutation } from '@tanstack/react-query';
-import { getEmployeeById, getEmployees, updateLevelEmployee, QUERY_KEYS } from '@/utils';
+import {
+  getEmployeeById,
+  getEmployees,
+  updateLevelEmployee,
+  deleteEmployee,
+  QUERY_KEYS,
+} from '@/utils';
 import { IEmployee } from '@/typings';
 
 export const useEmployees = (take?: number) => {
@@ -30,5 +36,12 @@ export const useEmployeeMutation = () => {
     },
   });
 
-  return { updateLevel, isUpdatingLevel };
+  const { mutate: remove } = useMutation({
+    mutationFn: deleteEmployee,
+    onSuccess: () => {
+      queryClient.invalidateQueries({ queryKey: [QUERY_KEYS.EMPLOYEES] });
+    },
+  });
+
+  return { updateLevel, isUpdatingLevel, remove };
 };
