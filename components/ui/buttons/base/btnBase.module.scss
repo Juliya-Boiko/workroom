@@ -1,0 +1,7 @@
+.btnBase {
+  @include flexContainer(row, center, center);
+  transition: all 250ms ease-in-out;
+  &:hover {
+    color: $blue-1 !important;
+  }
+}

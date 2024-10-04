@@ -8,14 +8,15 @@
 
   .head {
     @include flexContainer(row, center, space-between);
+    gap: 24px;
   }
-  
-  .btnClose {
-    @include flexContainer(row, center, center);
-    transition: all 250ms ease-in-out;
-    &:hover {
-      color: $blue-1;
-    }
+
+  .company {
+    font-size: 16px;
+    font-weight: 700;
+    text-transform: capitalize;
+    text-align: center;
+    color: $blue-1;
   }
 
   .nav {

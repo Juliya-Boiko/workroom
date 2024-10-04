@@ -2,6 +2,7 @@ import User from '@/models/user';
 import { connectToMongoDB } from '@/libs/database';
 import { NextRequest, NextResponse } from 'next/server';
 import { IDynamicRoute } from '@/typings';
+import Task from '@/models/task';
 
 connectToMongoDB();
 
@@ -29,5 +30,6 @@ export async function PATCH(request: NextRequest, { params }: IDynamicRoute) {
 export async function DELETE(request: NextRequest, { params }: IDynamicRoute) {
   const { id } = params;
   await User.findByIdAndDelete(id);
+  await Task.updateMany({ assignee: id }, { $set: { assignee: null } });
   return NextResponse.json({ message: 'Employee deleted' }, { status: 200 });
 }

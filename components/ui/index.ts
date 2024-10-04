@@ -6,6 +6,7 @@ export * from './badges/task/BadgeTask';
 export * from './badges/timer/BadgeTimer';
 export * from './buttons/icon/BtnIcon';
 export * from './buttons/primary/BtnPrimary';
+export * from './buttons/base/BtnBase';
 export * from './buttons/secondary/BtnSecondary';
 export * from './checkbox/CheckField';
 export * from './filter/Filter';

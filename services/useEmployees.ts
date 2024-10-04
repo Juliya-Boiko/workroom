@@ -40,6 +40,8 @@ export const useEmployeeMutation = () => {
     mutationFn: deleteEmployee,
     onSuccess: () => {
       queryClient.invalidateQueries({ queryKey: [QUERY_KEYS.EMPLOYEES] });
+      queryClient.invalidateQueries({ queryKey: [QUERY_KEYS.PROJECTS] });
+      queryClient.invalidateQueries({ queryKey: [QUERY_KEYS.TASKS] });
     },
   });
 
