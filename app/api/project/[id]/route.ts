@@ -36,9 +36,9 @@ export async function GET(request: NextRequest, { params }: IDynamicRoute) {
     const allTasks = project.tasks;
     const activeTasks = allTasks.filter((task) => task.status !== ETaskStatus.DONE);
     const users = allTasks.map((task) => task.assignee);
-    const assignee = users.filter(
-      (user, index, self) => index === self.findIndex((u) => u._id === user._id)
-    );
+    const assignee = users
+      .filter((el) => el)
+      .filter((user, index, self) => index === self.findIndex((u) => u._id === user._id));
     const data = {
       ...project,
       tasks: {

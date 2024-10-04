@@ -12,7 +12,8 @@ export const addTaskSchema = yup.object({
       name: yup.string().required(),
       avatar: yup.string().nullable().default(null),
     })
-    .required('Assignee is required'),
+    .nullable()
+    .optional(),
   description: yup.string().trim(),
   attachments: yup
     .array(

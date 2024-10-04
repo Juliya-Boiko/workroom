@@ -11,7 +11,7 @@ export const Assignees = ({ assignees }: Props) => {
     return <span>-</span>;
   }
 
-  const cropped = assignees.slice(0, 3);
+  const cropped = assignees.filter((el) => el).slice(0, 3);
 
   return (
     <ul

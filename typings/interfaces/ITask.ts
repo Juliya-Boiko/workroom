@@ -7,7 +7,7 @@ export interface ICreateTask {
   start: Date;
   deadline: Date;
   priority: EPriority;
-  assignee: string;
+  assignee: string | undefined;
   description: string;
   attachments: ICreateAttach[];
 }
@@ -18,7 +18,7 @@ export interface ITask extends Omit<ICreateTask, 'assignee' | 'attachments'> {
   createdAt: Date;
   status: ETaskStatus;
   projectId: string;
-  assignee: IAssignee;
+  assignee?: IAssignee;
 }
 
 export interface IUpdateTask {

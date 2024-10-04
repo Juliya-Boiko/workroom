@@ -9,11 +9,6 @@ interface Props {
 }
 
 export const DragCard = ({ task, loading }: Props) => {
-  const user = {
-    name: task.assignee.name,
-    avatar: task.assignee.avatar,
-  };
-
   return (
     <div className={styles.dragCard}>
       <p className={styles.name}>{loading ? <LoaderSkeleton height={16} /> : task.name}</p>
@@ -22,9 +17,11 @@ export const DragCard = ({ task, loading }: Props) => {
       ) : (
         <div className={styles.wrapper}>
           <BadgePriopity label={task.priority} />
-          <div title={user.name}>
-            <Avatar size="s" user={user} />
-          </div>
+          {task.assignee && (
+            <div title={task.assignee.name}>
+              <Avatar size="s" user={{ name: task.assignee.name, avatar: task.assignee.avatar }} />
+            </div>
+          )}
         </div>
       )}
     </div>

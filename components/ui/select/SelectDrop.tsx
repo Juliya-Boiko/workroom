@@ -7,13 +7,14 @@ import { EIconsSet, IEmployee } from '@/typings';
 
 type UserType = Pick<IEmployee, '_id' | 'name' | 'avatar'>;
 interface Props {
+  clearable?: boolean;
   label?: string;
   options: string[] | UserType[];
   value?: string | null | UserType;
-  onChange: (v: string | UserType) => void;
+  onChange: (v: string | UserType | null) => void;
 }
 
-export const SelectDrop = ({ label, options, value, onChange }: Props) => {
+export const SelectDrop = ({ clearable, label, options, value, onChange }: Props) => {
   const [open, setOpen] = useState(false);
   const ref = useRef<HTMLDivElement>(null);
 
@@ -54,7 +55,14 @@ export const SelectDrop = ({ label, options, value, onChange }: Props) => {
             </div>
           )}
         </div>
-        <SvgHandler icon={EIconsSet.ChevronDown} />
+        <div className={styles.actions}>
+          {clearable && value && (
+            <button type="button" className={styles.btnReset} onClick={() => onChange(null)}>
+              <SvgHandler icon={EIconsSet.Cross} />
+            </button>
+          )}
+          <SvgHandler icon={EIconsSet.ChevronDown} />
+        </div>
       </button>
       {open && options && (
         <ul className={styles.options}>

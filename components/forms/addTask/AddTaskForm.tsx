@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-unused-vars */
 'use client';
 import styles from '../common.module.scss';
 import { useEffect } from 'react';
@@ -29,11 +30,7 @@ export const AddTaskForm = ({ slug, start, deadline }: Props) => {
     start: new Date(),
     deadline: getTomorrowDate(new Date()),
     priority: priorityDataTypes[0],
-    assignee: {
-      _id: '',
-      name: '',
-      avatar: null,
-    },
+    assignee: null,
     description: '',
     attachments: [],
   };
@@ -57,7 +54,7 @@ export const AddTaskForm = ({ slug, start, deadline }: Props) => {
     const task = {
       ...data,
       status: ETaskStatus.TODO,
-      assignee: data.assignee._id,
+      assignee: data.assignee?._id,
       projectId: slug,
       description: data.description || '',
     };
@@ -78,20 +75,6 @@ export const AddTaskForm = ({ slug, start, deadline }: Props) => {
         placeholder="Task Name"
         errors={errors.name}
       />
-      <div className={styles.optionWrapper}>
-        <Controller
-          control={control}
-          name="assignee"
-          render={({ field }) => (
-            <SelectDrop
-              label="Assignee"
-              options={employeesOptions || []}
-              value={field.value}
-              onChange={field.onChange}
-            />
-          )}
-        />
-      </div>
       <div className={styles.pickers}>
         <Controller
           control={control}
@@ -128,6 +111,21 @@ export const AddTaskForm = ({ slug, start, deadline }: Props) => {
             <SelectDrop
               label="Priority"
               options={priorityDataTypes}
+              value={field.value}
+              onChange={field.onChange}
+            />
+          )}
+        />
+      </div>
+      <div className={styles.optionWrapper}>
+        <Controller
+          control={control}
+          name="assignee"
+          render={({ field }) => (
+            <SelectDrop
+              clearable
+              label="Assignee"
+              options={employeesOptions || []}
               value={field.value}
               onChange={field.onChange}
             />

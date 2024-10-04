@@ -77,3 +77,14 @@
   color: $dark;
   background-color: rgba($blue-1-rgb, 0.12);
 }
+
+.actions {
+  display: flex;
+  align-items: center;
+  gap: 24px;
+}
+
+.btnReset {
+  display: flex;
+  color: $grey-3;
+}

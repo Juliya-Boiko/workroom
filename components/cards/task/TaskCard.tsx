@@ -18,10 +18,17 @@ export const TaskCard = ({ task }: Props) => {
         <div className={styles.assignee}>
           <div className={styles.title}>Assignee</div>
           <div className={styles.user}>
-            <div title={task.assignee.name}>
-              <Avatar size="s" user={{ name: task.assignee.name, avatar: task.assignee.avatar }} />
-            </div>
-            <span className={styles.userName}>{task.assignee.name}</span>
+            {task.assignee && (
+              <>
+                <div title={task.assignee.name}>
+                  <Avatar
+                    size="s"
+                    user={{ name: task.assignee.name, avatar: task.assignee.avatar }}
+                  />
+                </div>
+                <span className={styles.userName}>{task.assignee.name}</span>
+              </>
+            )}
           </div>
         </div>
         <div className={styles.estimate}>
