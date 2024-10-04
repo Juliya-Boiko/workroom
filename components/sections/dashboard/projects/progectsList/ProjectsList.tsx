@@ -1,10 +1,9 @@
 import styles from './projectsList.module.scss';
 import Link from 'next/link';
-import Image from 'next/image';
-import imgSrc from '../../../../../public/placeholder-1.png';
 import { projectSectionSkeleton, ROUTES } from '@/utils';
 import { IProjectInfo } from '@/typings';
 import { ProjectCard } from '@/components/cards/project/ProgectCard';
+import { Placeholder } from '@/components/ui';
 
 interface Props {
   loading: boolean;
@@ -22,10 +21,7 @@ export const ProjectsList = ({ loading, projects, placeholder }: Props) => {
           </li>
         ))}
       {projects && !projects.length && (
-        <li className={styles.placeholder}>
-          <p>{placeholder}</p>
-          <Image src={imgSrc} priority alt="Projects" className={styles.image} />
-        </li>
+        <Placeholder primary title={placeholder} />
       )}
       {projects &&
         projects.length > 0 &&

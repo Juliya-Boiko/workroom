@@ -1,9 +1,8 @@
 import styles from './eventsList.module.scss';
-import imgSrc from '../../../../../public/placeholder-2.png';
-import Image from 'next/image';
 import { IEvent } from '@/typings';
 import { eventSectionSkeleton } from '@/utils';
 import { EventCard } from '@/components/cards/event/EventsCard';
+import { Placeholder } from '@/components/ui';
 
 interface Props {
   loading: boolean;
@@ -23,10 +22,7 @@ export const EventsList = ({ loading, events }: Props) => {
           </li>
         ))}
       {events && !events.length && (
-        <li className={styles.placeholder}>
-          <p>You dont have events yet</p>
-          <Image src={imgSrc} alt="Employees" priority className={styles.image} />
-        </li>
+        <Placeholder title="You dont have events yet" />
       )}
     </ul>
   );

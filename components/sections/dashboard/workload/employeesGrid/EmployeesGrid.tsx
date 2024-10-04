@@ -1,9 +1,8 @@
 import styles from './employeesGrid.module.scss';
-import Image from 'next/image';
-import imgSrc from '../../../../../public/placeholder-1.png';
 import { employeeSectionSkeleton } from '@/utils';
 import { WorkloadCard } from '@/components/cards/workload/WorkloadCard';
 import { IEmployee } from '@/typings';
+import { Placeholder } from '@/components/ui';
 
 interface Props {
   loading: boolean;
@@ -32,10 +31,7 @@ export const EmployeesGrid = ({ loading, employees }: Props) => {
         </ul>
       )}
       {!loading && !employees?.length && (
-        <div className={styles.placeholder}>
-          <p>You dont have employees yet</p>
-          <Image src={imgSrc} priority alt="Employees" className={styles.image} />
-        </div>
+        <Placeholder title="You dont have employees yet" primary />
       )}
     </>
   );
