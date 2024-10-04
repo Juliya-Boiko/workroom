@@ -10,11 +10,6 @@ import { BtnIcon } from '@/components/ui';
 export const TaskInfo = ({ task }: { task: ITask }) => {
   const [open, setOpen] = useState(false);
 
-  const user = {
-    name: task.assignee.name,
-    avatar: task.assignee.avatar,
-  };
-
   return (
     <section className={styles.taskInfo}>
       <div className={styles.main} onClick={() => setOpen((prev) => !prev)}>
@@ -24,15 +19,20 @@ export const TaskInfo = ({ task }: { task: ITask }) => {
         </div>
       </div>
       <div className={`${styles.info} ${open ? styles.showInfo : styles.hideInfo}`}>
-        <div className={styles.wrapper}>
-          <p className={styles.subtitle}>Assigned</p>
-          <div className={styles.assignee}>
-            <div>
-              <Avatar size="s" user={user} />
+        {task.assignee && (
+          <div className={styles.wrapper}>
+            <p className={styles.subtitle}>Assigned</p>
+            <div className={styles.assignee}>
+              <div>
+                <Avatar
+                  size="s"
+                  user={{ name: task.assignee?.name, avatar: task.assignee?.avatar }}
+                />
+              </div>
+              <span className={styles.userName}>{task.assignee.name}</span>
             </div>
-            <span className={styles.userName}>{task.assignee.name}</span>
           </div>
-        </div>
+        )}
         <div className={styles.wrapper}>
           <p className={styles.subtitle}>Deadline</p>
           <p>{formatDayDate(task.deadline.toString())}</p>
