@@ -2,7 +2,5 @@
 import { Placeholder } from '@/components/ui';
 
 export const ActivityList = () => {
-  return (
-    <Placeholder title="You dont have any activity yet" />
-  );
+  return <Placeholder title="You dont have any activity yet" />;
 };

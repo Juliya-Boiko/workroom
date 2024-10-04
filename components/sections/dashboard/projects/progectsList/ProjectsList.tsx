@@ -20,9 +20,7 @@ export const ProjectsList = ({ loading, projects, placeholder }: Props) => {
             <ProjectCard loading={loading} project={el} />
           </li>
         ))}
-      {projects && !projects.length && (
-        <Placeholder primary title={placeholder} />
-      )}
+      {projects && !projects.length && <Placeholder primary title={placeholder} />}
       {projects &&
         projects.length > 0 &&
         projects.map((el) => (

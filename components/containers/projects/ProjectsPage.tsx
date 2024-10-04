@@ -1,12 +1,10 @@
 'use client';
 import styles from './projectsPage.module.scss';
-import imgSrc from '../../../public/placeholder-1.png';
-import Image from 'next/image';
 import { useState } from 'react';
 import { useProjects } from '@/services';
 import { Topping } from '@/components/topping/Topping';
 import { projectsViewDataTypes, EIconsSet, IFilters } from '@/typings';
-import { Modal, BtnPrimary, Preloader, BtnIcon, Pagination } from '@/components/ui';
+import { Modal, BtnPrimary, Preloader, BtnIcon, Pagination, Placeholder } from '@/components/ui';
 import { AddProjectForm } from '@/components/forms/addProject/AddProjectForm';
 import { SvgHandler } from '@/components/SvgHandler';
 import { ProjectsGrid } from '@/components/sections/projects/projectsGrid/ProjectsGrid';
@@ -52,10 +50,7 @@ export const ProjectsPage = () => {
           </div>
         )}
         {data && !data.projects.length && (
-          <div className={styles.placeholder}>
-            <p>You dont have projects yet</p>
-            <Image src={imgSrc} priority alt="Projects" className={styles.image} />
-          </div>
+          <Placeholder primary title="You dont have projects yet" />
         )}
         {data && data.projects.length > 0 && (
           <>

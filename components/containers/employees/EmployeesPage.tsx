@@ -1,12 +1,10 @@
 'use client';
 import styles from './employeesPage.module.scss';
-import Image from 'next/image';
-import imgSrc from '../../../public/placeholder-1.png';
 import { useState } from 'react';
 import { viewEmployeesDataTypes, EIconsSet, EViewEmployees } from '@/typings';
 import { useEmployees } from '@/services';
 import { Topping } from '@/components/topping/Topping';
-import { Modal, BtnPrimary, BtnIcon, TabsSlide, Preloader } from '@/components/ui';
+import { Modal, BtnPrimary, BtnIcon, TabsSlide, Preloader, Placeholder } from '@/components/ui';
 import { AddEmployeeForm } from '@/components/forms/addEmployee/AddEmployeeForm';
 import { SvgHandler } from '@/components/SvgHandler';
 import { EmployeesTable } from '@/components/sections/employees/table/EmployeesTable';
@@ -45,10 +43,7 @@ export const EmployeesPage = () => {
           </div>
         )}
         {employees && !employees.length && (
-          <div className={styles.placeholder}>
-            <p>You dont have employees yet</p>
-            <Image src={imgSrc} priority alt="Projects" className={styles.image} />
-          </div>
+          <Placeholder primary title="You dont have employees yet" />
         )}
         {employees &&
           employees.length > 0 &&

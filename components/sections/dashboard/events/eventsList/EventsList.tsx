@@ -21,9 +21,7 @@ export const EventsList = ({ loading, events }: Props) => {
             <EventCard event={el} />
           </li>
         ))}
-      {events && !events.length && (
-        <Placeholder title="You dont have events yet" />
-      )}
+      {events && !events.length && <Placeholder title="You dont have events yet" />}
     </ul>
   );
 };
