@@ -8,6 +8,7 @@ import {
   handleError,
   QUERY_KEYS,
   ROUTES,
+  inviteUsers,
 } from '@/utils';
 
 export const useUser = () => {
@@ -51,6 +52,13 @@ export const useUserMutations = () => {
     },
   });
 
+  const { mutate: sendInvite } = useMutation({
+    mutationFn: inviteUsers,
+    onError: (error: unknown) => {
+      handleError(error, 'An error occurred in sendInvite');
+    },
+  });
+
   return {
     registerOwner,
     isSuccessRegisterOwner,
@@ -59,5 +67,6 @@ export const useUserMutations = () => {
     isSuccessLogin,
     registerMember,
     isInviting,
+    sendInvite,
   };
 };

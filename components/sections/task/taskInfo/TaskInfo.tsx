@@ -34,6 +34,10 @@ export const TaskInfo = ({ task }: { task: ITask }) => {
           </div>
         )}
         <div className={styles.wrapper}>
+          <p className={styles.subtitle}>Start</p>
+          <p>{formatDayDate(task.start.toString())}</p>
+        </div>
+        <div className={styles.wrapper}>
           <p className={styles.subtitle}>Deadline</p>
           <p>{formatDayDate(task.deadline.toString())}</p>
         </div>

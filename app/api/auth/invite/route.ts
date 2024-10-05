@@ -40,19 +40,12 @@ export async function POST(request: NextRequest) {
     companyName: company.name,
     members: filtered,
   });
-
+  const resp = {
+    success: `Email sended to ${emails.length} employees`,
+    warning: '',
+  };
   if (isExist.length) {
-    return NextResponse.json(
-      {
-        message: `Users with emails ${joined} already exists`,
-        warning: true,
-      },
-      { status: 200 }
-    );
-  } else {
-    return NextResponse.json(
-      { message: `Email sended to ${emails.length} employees` },
-      { status: 200 }
-    );
+    resp.warning = `Users with emails ${joined} already exists`;
   }
+  return NextResponse.json(resp, { status: 200 });
 }

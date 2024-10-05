@@ -4,13 +4,14 @@ import imgSrc from '../../../public/members.png';
 import Image from 'next/image';
 import { useState } from 'react';
 import { useModalContext } from '@/components/providers/ModalProvider';
-import { inviteUsers } from '@/utils';
 import { MembersStage } from '../signUp/stages';
 import { BtnPrimary } from '@/components/ui';
+import { useUserMutations } from '@/services';
 
 export const AddEmployeeForm = () => {
   const [members, setMembers] = useState(['']);
   const [isDisabled, setDisabled] = useState(true);
+  const { sendInvite } = useUserMutations();
   const { closeModal } = useModalContext();
 
   const onAdd = () => {
@@ -25,10 +26,8 @@ export const AddEmployeeForm = () => {
   };
 
   const onSubmit = async () => {
-    const resp = await inviteUsers(members);
-    if (resp) {
-      closeModal();
-    }
+    sendInvite(members);
+    closeModal();
   };
 
   const handleDelete = (idx: number) => {
@@ -42,7 +41,7 @@ export const AddEmployeeForm = () => {
       <MembersStage members={members} onAdd={onAdd} onChange={onChange} onDelete={handleDelete} />
       <div className={styles.approveBtn}>
         <BtnPrimary type="button" disabled={isDisabled} onClick={onSubmit}>
-          Approve
+          Send Invite
         </BtnPrimary>
       </div>
     </div>
