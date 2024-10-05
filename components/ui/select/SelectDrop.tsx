@@ -3,9 +3,14 @@ import styles from './selectDrop.module.scss';
 import { useEffect, useRef, useState } from 'react';
 import { SvgHandler } from '@/components/SvgHandler';
 import { Avatar } from '../avatar/Avatar';
-import { EIconsSet, IEmployee } from '@/typings';
+import { EIconsSet } from '@/typings';
 
-type UserType = Pick<IEmployee, '_id' | 'name' | 'avatar'>;
+type UserType = {
+  _id: string;
+  name: string;
+  avatar?: string | null | undefined;
+};
+
 interface Props {
   clearable?: boolean;
   label?: string;
@@ -50,7 +55,9 @@ export const SelectDrop = ({ clearable, label, options, value, onChange }: Props
           {value && typeof value === 'string' && <span>{value}</span>}
           {value && typeof value !== 'string' && (
             <div className={styles.user}>
-              {value.name && <Avatar size="s" user={{ name: value.name, avatar: value.avatar }} />}
+              {value.name && (
+                <Avatar size="s" user={{ name: value.name, avatar: value.avatar || null }} />
+              )}
               <span>{value.name}</span>
             </div>
           )}
@@ -73,7 +80,7 @@ export const SelectDrop = ({ clearable, label, options, value, onChange }: Props
               </li>
             ) : (
               <li key={option._id} className={styles.option} onClick={() => handleOption(option)}>
-                <Avatar size="s" user={{ name: option.name, avatar: option.avatar }} />
+                <Avatar size="s" user={{ name: option.name, avatar: option.avatar || null }} />
                 <span>{option.name}</span>
               </li>
             );

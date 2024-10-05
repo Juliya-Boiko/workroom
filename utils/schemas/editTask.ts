@@ -8,11 +8,12 @@ export const editTaskSchema = yup.object({
   priority: yup.string().trim().oneOf(priorityDataTypes).default(priorityDataTypes[0]),
   assignee: yup
     .object({
-      _id: yup.string().required(),
-      name: yup.string().required(),
-      avatar: yup.string().nullable().default(null),
+      _id: yup.string().required('Assignee ID is required').default(''),
+      name: yup.string().required('Assignee name is required').default(''),
+      avatar: yup.string().nullable(),
     })
-    .required('Assignee is required'),
+    .nullable()
+    .optional(),
   description: yup.string().trim(),
   attachments: yup
     .array(

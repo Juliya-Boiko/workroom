@@ -24,7 +24,7 @@ export const EditTaskForm = ({ task }: Props) => {
     start: task.start,
     deadline: task.deadline,
     priority: task.priority,
-    assignee: task.assignee,
+    assignee: task.assignee || null,
     description: task.description,
     attachments: [],
   };
@@ -48,7 +48,11 @@ export const EditTaskForm = ({ task }: Props) => {
   }, [attachments, reset]);
 
   const employeesOptions = employees
-    ? employees.map(({ _id, name, avatar }) => ({ _id, name, avatar }))
+    ? employees.map(({ _id, name, avatar }) => ({
+        _id,
+        name,
+        avatar: avatar ?? null,
+      }))
     : [];
 
   const onSubmit = async (data: EditTaskFormData) => {
@@ -56,7 +60,7 @@ export const EditTaskForm = ({ task }: Props) => {
       _id: task._id,
       update: {
         ...data,
-        assignee: data.assignee._id,
+        assignee: data.assignee?._id || undefined,
       },
     };
     update(values);
