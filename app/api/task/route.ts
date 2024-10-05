@@ -2,6 +2,7 @@
 import Task from '@/models/task';
 import { decodeToken } from '@/libs/jose';
 import { connectToMongoDB } from '@/libs/database';
+import { defineTaskNumber } from '@/utils';
 import { NextRequest, NextResponse } from 'next/server';
 
 connectToMongoDB();
@@ -13,9 +14,12 @@ export async function POST(request: NextRequest) {
     return NextResponse.json({ message: 'Token null or expired' }, { status: 403 });
   }
   const { id } = await decodeToken(token);
+  const lastTask = await Task.findOne({ projectId: reqBody.projectId }).sort({ createdAt: -1 });
+
   const task = new Task({
     userId: id,
     ...reqBody,
+    order: defineTaskNumber(lastTask),
   });
   const savedTask = await task.save();
   return NextResponse.json(

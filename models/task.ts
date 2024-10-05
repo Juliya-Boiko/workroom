@@ -12,6 +12,7 @@ const taskSchema = new Schema(
     priority: { type: String, enum: priorityDataTypes, required: true },
     description: { type: String },
     status: { type: String, enum: taskStatusDataTypes, required: true },
+    order: { type: String },
   },
   {
     timestamps: true,

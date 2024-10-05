@@ -19,6 +19,7 @@ export interface ITask extends Omit<ICreateTask, 'assignee' | 'attachments'> {
   status: ETaskStatus;
   projectId: string;
   assignee?: IAssignee;
+  order: string;
 }
 
 export interface IUpdateTask {

@@ -12,6 +12,7 @@ interface Props {
 export const DragCard = ({ task, loading }: Props) => {
   return (
     <div className={styles.dragCard}>
+      <p className={styles.order}>{loading ? <LoaderSkeleton height={16} /> : task.order}</p>
       <p className={styles.name}>{loading ? <LoaderSkeleton height={16} /> : task.name}</p>
       {loading ? (
         <LoaderSkeleton height={24} />
