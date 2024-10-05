@@ -33,15 +33,10 @@ export const Tasks = ({ projectId }: Props) => {
             <Image src={imgSrc} alt="Tasks" priority className={styles.image} />
           </div>
         ) : null}
-        {tasks && tasks.length ? (
-          <>
-            {view === EViewTasks.LIST && <TasksList tasks={tasks} />}
-            {view === EViewTasks.COLUMNS && <TasksColumns tasks={tasks} loading={isLoading} />}
-            {view === EViewTasks.TIMELINE && <div>EViewTasks.TIMELINE</div>}
-          </>
-        ) : null}
+        {view === EViewTasks.LIST && <TasksList tasks={tasks} loading={isLoading} />}
+        {view === EViewTasks.COLUMNS && <TasksColumns tasks={tasks} loading={isLoading} />}
+        {view === EViewTasks.TIMELINE && <div>EViewTasks.TIMELINE</div>}
       </div>
-      {/* {tasks && tasks.length ? <div className={styles.container}></div> : null} */}
     </section>
   );
 };

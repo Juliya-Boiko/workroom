@@ -17,3 +17,22 @@ export const sortTasksByStatus = (tasks: ITask[]) =>
     },
     { active: [], backlog: [] }
   );
+
+export type GroupedTasks = {
+  [key in ETaskStatus]: ITask[];
+};
+
+export const groupTasksByStatus = (tasks: ITask[] | undefined): GroupedTasks => {
+  const initialGroupedTasks: GroupedTasks = {
+    [ETaskStatus.TODO]: [],
+    [ETaskStatus.INPROGRESS]: [],
+    [ETaskStatus.DONE]: [],
+  };
+
+  if (!tasks) return initialGroupedTasks;
+
+  return tasks.reduce((acc: GroupedTasks, task: ITask) => {
+    acc[task.status].push(task);
+    return acc;
+  }, initialGroupedTasks);
+};

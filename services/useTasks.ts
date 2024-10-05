@@ -1,15 +1,6 @@
 import { useQuery, useQueryClient, useMutation } from '@tanstack/react-query';
 import { IFilters } from '@/typings';
-import { useRouter } from 'next/navigation';
-import {
-  getTasks,
-  createTask,
-  updateTask,
-  getTaskById,
-  deleteTask,
-  QUERY_KEYS,
-  ROUTES,
-} from '@/utils';
+import { getTasks, createTask, updateTask, getTaskById, deleteTask, QUERY_KEYS } from '@/utils';
 
 export const useTasks = (projectId: string, filters: IFilters | null) => {
   return useQuery({
@@ -20,7 +11,6 @@ export const useTasks = (projectId: string, filters: IFilters | null) => {
 
 export const useTasksMutation = () => {
   const queryClient = useQueryClient();
-  const router = useRouter();
 
   const { mutate: create, isPending: isCreating } = useMutation({
     mutationFn: createTask,
@@ -36,7 +26,6 @@ export const useTasksMutation = () => {
       queryClient.invalidateQueries({ queryKey: [QUERY_KEYS.TASKS] });
       queryClient.invalidateQueries({ queryKey: [QUERY_KEYS.PROJECT, projectId] });
       queryClient.invalidateQueries({ queryKey: [QUERY_KEYS.TASK, taskId] });
-      router.push(`${ROUTES.task}/${taskId}`);
     },
   });
 

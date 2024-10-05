@@ -16,4 +16,10 @@
     flex-direction: column;
     gap: 16px;
   }
+
+  .placeholder {
+    padding: 12px;
+    color: $grey-2;
+    text-align: center;
+  }
 }
