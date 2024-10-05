@@ -17,18 +17,8 @@
     background-color: $grey-5;
   }
 
-  @include onTablet {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-  }
-
-  @include onLaptop {
-    display: flex;
-    flex-direction: column;
-  }
-
   @include onDesktop {
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
+    grid-template-columns: repeat(4, 1fr);
   }
 }

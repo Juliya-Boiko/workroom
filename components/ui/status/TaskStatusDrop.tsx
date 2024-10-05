@@ -17,12 +17,9 @@ export const TaskStatusDrop = ({ id, status }: Props) => {
   const { update } = useTasksMutation();
 
   const getStyles = (value: ETaskStatus) => {
-    if (value === ETaskStatus.INPROGRESS) {
-      return styles.progress;
-    }
-    if (value === ETaskStatus.DONE) {
-      return styles.done;
-    }
+    if (value === ETaskStatus.INPROGRESS) return styles.progress;
+    if (value === ETaskStatus.DONE) return styles.done;
+    if (value === ETaskStatus.REVIEW) return styles.review;
     return styles.default;
   };
 

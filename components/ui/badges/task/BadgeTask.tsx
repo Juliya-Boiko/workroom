@@ -13,6 +13,9 @@ export const BadgeTask = ({ label }: Props) => {
     if (label === ETaskStatus.DONE) {
       return styles.badgeDone;
     }
+    if (label === ETaskStatus.REVIEW) {
+      return styles.badgeReview;
+    }
     return styles.badgeDefault;
   };
   return <div className={`${styles.badge} ${getStyles()}`}>{label}</div>;

@@ -1,6 +1,7 @@
 export enum ETaskStatus {
   TODO = 'To Do',
   INPROGRESS = 'In Progress',
+  REVIEW = 'In Review',
   DONE = 'Done',
 }
 

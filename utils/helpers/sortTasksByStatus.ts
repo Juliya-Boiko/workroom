@@ -27,6 +27,7 @@ export const groupTasksByStatus = (tasks: ITask[] | undefined): GroupedTasks => 
     [ETaskStatus.TODO]: [],
     [ETaskStatus.INPROGRESS]: [],
     [ETaskStatus.DONE]: [],
+    [ETaskStatus.REVIEW]: [],
   };
 
   if (!tasks) return initialGroupedTasks;

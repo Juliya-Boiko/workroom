@@ -32,8 +32,7 @@ export const getEstimate = (start: Date, end: Date) => {
   const millisecondsInAnHour = 1000 * 60 * 60;
   const millisecondsInADay = millisecondsInAnHour * 24;
   const days = Math.floor(diffInMs / millisecondsInADay) + 1;
-  const hours = Math.floor((diffInMs % millisecondsInADay) / millisecondsInAnHour);
-  return `${days}d ${hours}h`;
+  return `${days}d`;
 };
 
 const getIsToday = (value: Date) => {
