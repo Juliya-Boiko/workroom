@@ -33,7 +33,10 @@ export const TaskCard = ({ task }: Props) => {
         </div>
         <div className={styles.estimate}>
           <div className={styles.title}>Estimate</div>
-          <div className={styles.time}>{getEstimate(task.start, task.deadline)}</div>
+          <div className={styles.time}>
+            <span className={styles.subtitle}>Estimate:</span>{' '}
+            {getEstimate(task.start, task.deadline)}
+          </div>
         </div>
       </div>
       <div className={styles.badges}>

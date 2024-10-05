@@ -35,6 +35,14 @@ export const getEstimate = (start: Date, end: Date) => {
   return `${days}d`;
 };
 
+export const getDaysToDeadline = (deadline: Date) => {
+  const todayDate = new Date();
+  const deadlineDate = new Date(deadline);
+  const differenceInTime = deadlineDate.getTime() - todayDate.getTime();
+  const differenceInDays = Math.ceil(differenceInTime / (1000 * 3600 * 24));
+  return `${differenceInDays}d`;
+};
+
 const getIsToday = (value: Date) => {
   const today = new Date().toLocaleDateString();
   const eventDay = new Date(value).toLocaleDateString();

@@ -13,4 +13,17 @@
   .wrapper {
     @include flexContainer(row, center, space-between);
   }
+
+  .info {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+
+  .deadline {
+    padding: 8px;
+    border-radius: 8px;
+    color: $grey-3;
+    background-color: $grey-5;
+  }
 }

@@ -17,8 +17,13 @@
     background-color: $grey-5;
   }
 
-  @include onDesktop {
+  @include onTablet {
     display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: repeat(2, 1fr);
+  }
+
+  @include onDesktop {
     grid-template-columns: repeat(4, 1fr);
   }
 }
