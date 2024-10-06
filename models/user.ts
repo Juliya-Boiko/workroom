@@ -1,4 +1,5 @@
 import Task from './task';
+import Comment from './comment';
 import { model, models, Schema } from 'mongoose';
 import { userPositionsDataTypes } from '@/typings';
 
@@ -31,6 +32,12 @@ userSchema.virtual('tasks', {
   ref: Task,
   localField: '_id',
   foreignField: 'assignee',
+});
+
+userSchema.virtual('comments', {
+  ref: Comment,
+  localField: '_id',
+  foreignField: 'userId',
 });
 
 userSchema.set('toObject', { virtuals: true });

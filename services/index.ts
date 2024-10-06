@@ -8,3 +8,4 @@ export * from './useEvent';
 export * from './useSearch';
 export * from './usePassword';
 export * from './useAttachments';
+export * from './useComments';

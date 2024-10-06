@@ -12,4 +12,5 @@ export const QUERY_KEYS = {
   CALENDAR: 'calendar',
   SEARCH: 'search',
   ATTACHMENTS: 'attachments',
+  COMMENTS: 'comments',
 };

@@ -14,7 +14,7 @@ export async function middleware(request: NextRequest) {
       response.cookies.set('workroom', '', {
         httpOnly: true,
         path: '/',
-        expires: new Date(0), // Expire immediately
+        expires: new Date(0),
       });
       return response;
     }
@@ -29,5 +29,14 @@ export async function middleware(request: NextRequest) {
 }
 
 export const config = {
-  matcher: ['/', '/projects', '/project', '/calendar', '/employees', '/sign-in', '/sign-up'],
+  matcher: [
+    '/',
+    '/projects',
+    '/project',
+    '/task',
+    '/calendar',
+    '/employees',
+    '/sign-in',
+    '/sign-up',
+  ],
 };

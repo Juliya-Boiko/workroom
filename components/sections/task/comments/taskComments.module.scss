@@ -1,0 +1,15 @@
+.taskComments {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+
+  .title {
+    font-weight: 700;
+  }
+
+  .list {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+  }
+}

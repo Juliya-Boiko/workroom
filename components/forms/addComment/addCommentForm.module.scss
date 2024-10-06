@@ -1,0 +1,9 @@
+.addCommentForm {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+
+  .wrapper {
+    @include flexContainer(row, center, flex-end);
+  }
+}

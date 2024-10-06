@@ -7,6 +7,7 @@ import { Topping } from '@/components/topping/Topping';
 import { Preloader } from '@/components/ui';
 import { TaskDetails } from '@/components/sections/task/taskDetails/TaskDetails';
 import { TaskInfo } from '@/components/sections/task/taskInfo/TaskInfo';
+import { TaskComments } from '@/components/sections/task/comments/TaskComments';
 import { useAttachments } from '@/services/useAttachments';
 
 export const TaskPage = ({ slug }: IDynamicComponent) => {
@@ -29,7 +30,10 @@ export const TaskPage = ({ slug }: IDynamicComponent) => {
         {task && attachments && (
           <div className={styles.content}>
             <TaskInfo task={task} />
-            <TaskDetails task={task} attachments={attachments} />
+            <div className={styles.wrapper}>
+              <TaskDetails task={task} attachments={attachments} />
+              <TaskComments taskId={task._id} />
+            </div>
           </div>
         )}
       </div>
