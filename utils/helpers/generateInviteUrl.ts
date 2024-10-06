@@ -1,10 +1,10 @@
 import { createInviteToken } from '@/libs/jose';
 import { ROUTES } from '@/utils';
 
-export const generateInviteUrl = (companyId: string, email: string) => {
-  const inviteToken = createInviteToken(companyId, email);
+export const generateInviteUrl = async (companyId: string, email: string) => {
+  const inviteToken = await createInviteToken(companyId, email);
   const domain = process.env.DOMAIN;
-  const link = `${domain}/${ROUTES.invite}/${inviteToken}`;
+  const link = `${domain}${ROUTES.invite}/${inviteToken}`;
   return link;
 };
 

@@ -30,7 +30,7 @@ export const AccountForm = () => {
         location: user.location,
         birthday: user.birthday,
         name: user.name,
-        avatar: user.avatar,
+        avatar: user.avatar || null,
       });
     }
   }, [user, reset]);
@@ -43,11 +43,14 @@ export const AccountForm = () => {
   };
 
   const onSubmit = async (data: AccountFormData) => {
+    const newAvatar =
+      data.avatar instanceof File || typeof data.avatar === 'string' ? data.avatar : null;
+
     update({
       ...data,
       avatar: {
         oldAvatar: prevAvatar || null,
-        newAvatar: data.avatar,
+        newAvatar,
       },
     });
   };

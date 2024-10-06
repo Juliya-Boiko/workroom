@@ -27,8 +27,7 @@ interface InviteProps {
 export const sendInviteEmails = async ({ name, companyId, companyName, members }: InviteProps) => {
   const inviteMembers = members.map(async (memberEmail: string) => {
     if (!!memberEmail) {
-      const link = generateInviteUrl(companyId, memberEmail);
-
+      const link = await generateInviteUrl(companyId, memberEmail);
       await sendEmail({
         to: memberEmail,
         subject: `Invite to Workroom from ${name}`,

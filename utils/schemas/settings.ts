@@ -21,7 +21,7 @@ export const contactsSchema = yup.object({
 export type ContactsFormData = yup.InferType<typeof contactsSchema>;
 
 export const accountSchema = yup.object({
-  avatar: yup.mixed(),
+  avatar: yup.mixed().nullable(),
   name: yup.string().trim().required('Name is required'),
   location: yup.string().trim().nullable().optional().default(null),
   birthday: yup.date().nullable().optional().default(null),

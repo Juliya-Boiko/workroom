@@ -19,18 +19,21 @@ export async function POST(request: NextRequest) {
 
   const emails = (await request.json()) as string[];
 
-  const isExist = (await User.find({ email: { $in: emails } }).select('email -_id')).map(
-    (el) => el.email
-  );
-  const joined = isExist.join(', ');
-  const filtered = emails.filter((el) => !isExist.includes(el));
+  // const isExist = (await User.find({ email: { $in: emails } }).select('email -_id')).map(
+  //   (el) => el.email
+  // );
 
-  if (!filtered.length) {
-    return NextResponse.json(
-      { message: `All users with emails ${joined} already exists` },
-      { status: 400 }
-    );
-  }
+  // console.log({ isExist });
+
+  // const joined = isExist.join(', ');
+  // const filtered = emails.filter((el) => !isExist.includes(el));
+
+  // if (!filtered.length) {
+  //   return NextResponse.json(
+  //     { message: `All users with emails ${joined} already exists` },
+  //     { status: 400 }
+  //   );
+  // }
 
   const user = await User.findById(id);
   const company = await Company.findById(companyId);
@@ -38,14 +41,21 @@ export async function POST(request: NextRequest) {
     name: user.name,
     companyId,
     companyName: company.name,
-    members: filtered,
+    members: emails,
   });
+  // const resp = {
+  //   success: `Email sended to ${emails.length} employees`,
+  //   warning: '',
+  // };
+  // if (isExist.length) {
+  //   resp.warning = `Users with emails ${joined} already exists`;
+  // }
+  // return NextResponse.json(resp, { status: 200 });
+
   const resp = {
     success: `Email sended to ${emails.length} employees`,
     warning: '',
   };
-  if (isExist.length) {
-    resp.warning = `Users with emails ${joined} already exists`;
-  }
+
   return NextResponse.json(resp, { status: 200 });
 }
