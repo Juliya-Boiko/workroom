@@ -5,5 +5,12 @@ export interface ICreateComment {
 
 export interface IComment extends ICreateComment {
   _id: string;
-  createdAt: Date;
+  updatedAt: Date;
+}
+
+export interface IUpdateComment {
+  id: string;
+  update: {
+    text: string;
+  };
 }

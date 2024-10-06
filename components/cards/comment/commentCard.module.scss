@@ -1,7 +1,9 @@
 .commentCard {
-  // display: flex;
-  // flex-direction: column;
-  // gap: 8px;
+  @include flexContainer(row, flex-start, space-between);
+
+  .wrapper {
+    flex-grow: 1;
+  }
 
   .date {
     color: $grey-3;

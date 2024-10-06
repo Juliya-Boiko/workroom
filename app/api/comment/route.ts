@@ -16,8 +16,8 @@ export async function POST(request: NextRequest) {
     ...reqBody,
     userId: id,
   });
-  await comment.save();
-  return NextResponse.json('Comment created', { status: 201 });
+  const savedComment = await comment.save();
+  return NextResponse.json(savedComment.taskId, { status: 201 });
 }
 
 export async function GET(request: NextRequest) {
@@ -28,8 +28,6 @@ export async function GET(request: NextRequest) {
     return NextResponse.json({ message: 'TaskId is required' }, { status: 400 });
   }
 
-  const comments = await Comment.find({ taskId })
-    .select('-updatedAt -userId')
-    .sort({ createdAt: 'asc' });
+  const comments = await Comment.find({ taskId }).select('-userId').sort({ createdAt: 'asc' });
   return NextResponse.json(comments, { status: 200 });
 }

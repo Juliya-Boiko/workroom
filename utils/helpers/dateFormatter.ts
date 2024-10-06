@@ -1,4 +1,5 @@
 import moment from 'moment';
+import { format } from 'date-fns';
 import { TODAY_OPTIONS, DATE_LOCALE } from '@/utils';
 
 export const formatDeadlineDate = (value: string) => {
@@ -90,4 +91,9 @@ export const getFullYears = (day: string) => {
     fullYears--;
   }
   return fullYears;
+};
+
+export const formatDateTime = (value: Date) => {
+  const date = new Date(value);
+  return format(date, 'dd.MM.yyyy HH:mm');
 };

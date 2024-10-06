@@ -25,7 +25,7 @@ export const AddCommentForm = ({ taskId }: { taskId: string }) => {
 
   return (
     <form className={styles.addCommentForm} onSubmit={handleSubmit(onSubmit)}>
-      <TextareaField errors={errors.text} label="Comment" name="text" register={register} />
+      <TextareaField errors={errors.text} label="Add Comment" name="text" register={register} />
       <div className={styles.wrapper}>
         <BtnPrimary type="submit" disabled={!isDirty || !isValid || isSubmitting}>
           Add comment

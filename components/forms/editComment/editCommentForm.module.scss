@@ -1,0 +1,11 @@
+.editCommentForm {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+
+  .wrapper {
+    @include flexContainer(row, center, flex-end);
+    gap: 24px;
+  }
+}

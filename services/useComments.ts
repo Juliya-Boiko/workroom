@@ -1,23 +1,42 @@
-/* eslint-disable @typescript-eslint/no-unused-vars */
 import { useQuery, useQueryClient, useMutation } from '@tanstack/react-query';
-import { createComment, getComments, QUERY_KEYS } from '@/utils';
+import {
+  createComment,
+  deleteCommentById,
+  updateCommentById,
+  getComments,
+  QUERY_KEYS,
+} from '@/utils';
 
 export const useCommentMutation = () => {
   const queryClient = useQueryClient();
 
   const { mutate: create, isPending: isCreating } = useMutation({
     mutationFn: createComment,
-    onSuccess: ({ taskId }) => {
-      queryClient.invalidateQueries({ queryKey: [QUERY_KEYS.COMMENTS] });
+    onSuccess: (taskId: string) => {
+      queryClient.invalidateQueries({ queryKey: [QUERY_KEYS.COMMENTS, taskId] });
     },
   });
 
-  return { create, isCreating };
+  const { mutate: remove } = useMutation({
+    mutationFn: deleteCommentById,
+    onSuccess: (taskId: string) => {
+      queryClient.invalidateQueries({ queryKey: [QUERY_KEYS.COMMENTS, taskId] });
+    },
+  });
+
+  const { mutate: update } = useMutation({
+    mutationFn: updateCommentById,
+    onSuccess: (taskId: string) => {
+      queryClient.invalidateQueries({ queryKey: [QUERY_KEYS.COMMENTS, taskId] });
+    },
+  });
+
+  return { create, isCreating, remove, update };
 };
 
 export const useComments = (taskId: string) => {
   return useQuery({
-    queryKey: [QUERY_KEYS.COMMENTS],
+    queryKey: [QUERY_KEYS.COMMENTS, taskId],
     queryFn: () => getComments(taskId),
   });
 };
