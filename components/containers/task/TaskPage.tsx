@@ -2,9 +2,11 @@
 import styles from './taskPage.module.scss';
 import { ROUTES } from '@/utils';
 import { useTask } from '@/services';
-import { IDynamicComponent } from '@/typings';
+import { IDynamicComponent, EIconsSet } from '@/typings';
 import { Topping } from '@/components/topping/Topping';
-import { Preloader } from '@/components/ui';
+import { Preloader, Modal, BtnPrimary } from '@/components/ui';
+import { SvgHandler } from '@/components/SvgHandler';
+import { LogTimeForm } from '@/components/forms/logTime/LogTimeForm';
 import { TaskDetails } from '@/components/sections/task/taskDetails/TaskDetails';
 import { TaskInfo } from '@/components/sections/task/taskInfo/TaskInfo';
 import { TaskComments } from '@/components/sections/task/comments/TaskComments';
@@ -20,7 +22,20 @@ export const TaskPage = ({ slug }: IDynamicComponent) => {
         link="Back to project info"
         path={`${ROUTES.project}/${task?.projectId}`}
         title={task?.name || ''}
-      />
+      >
+        <Modal
+          title="Time Tracking"
+          activator={
+            <BtnPrimary disabled={isLoadingTask}>
+              <SvgHandler icon={EIconsSet.ClockOutlined} />
+              <span>Log Time</span>
+            </BtnPrimary>
+          }
+          content={
+            <LogTimeForm minDate={task?.start} maxDate={task?.deadline} taskId={task?._id} />
+          }
+        />
+      </Topping>
       <div className={styles.container}>
         {isLoadingTask && (
           <div className={styles.loader}>

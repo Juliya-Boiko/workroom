@@ -7,11 +7,12 @@ import { SvgHandler } from '@/components/SvgHandler';
 import { EIconsSet } from '@/typings';
 
 interface Props {
-  value: string;
+  label?: string;
+  value: string | undefined;
   onChange: (v: Moment | string) => void;
 }
 
-export const PickerTime = ({ value, onChange }: Props) => {
+export const PickerTime = ({ label, value, onChange }: Props) => {
   const handleChange = (v: Moment | string) => {
     if (moment.isMoment(v)) {
       onChange(v.format('HH:mm'));
@@ -20,7 +21,7 @@ export const PickerTime = ({ value, onChange }: Props) => {
 
   return (
     <div className={`custom-datetime ${styles.picker}`}>
-      <p className={styles.label}>Time</p>
+      <p className={styles.label}>{label || 'Time'}</p>
       <Datetime
         value={value}
         dateFormat={false}

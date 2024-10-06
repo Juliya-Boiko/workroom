@@ -11,3 +11,4 @@ export * from './IFilters';
 export * from './ICompany';
 export * from './IAttachments';
 export * from './IComment';
+export * from './ITimelog';

@@ -1,14 +1,16 @@
 'use client';
 import styles from './taskInfo.module.scss';
 import { useState } from 'react';
-import { formatDayDate } from '@/utils';
+import { useTimelogs } from '@/services';
+import { formatDayDate, formatDuration, getEstimate, calculateEstimateInSeconds } from '@/utils';
 import { ITask, EIconsSet } from '@/typings';
 import { Avatar, BadgePriopity } from '@/components/ui';
 import { SvgHandler } from '@/components/SvgHandler';
-import { BtnIcon } from '@/components/ui';
+import { BtnIcon, Progress } from '@/components/ui';
 
 export const TaskInfo = ({ task }: { task: ITask }) => {
   const [open, setOpen] = useState(false);
+  const { data: logged } = useTimelogs(task._id);
 
   return (
     <section className={styles.taskInfo}>
@@ -19,6 +21,21 @@ export const TaskInfo = ({ task }: { task: ITask }) => {
         </div>
       </div>
       <div className={`${styles.info} ${open ? styles.showInfo : styles.hideInfo}`}>
+        <div className={styles.tracker}>
+          <p>Time tracking</p>
+          <div className={styles.trackerWrapper}>
+            <Progress
+              value={logged}
+              total={calculateEstimateInSeconds(task.start, task.deadline)}
+            />
+            <div className={styles.counts}>
+              <p>{formatDuration(logged)} logged</p>
+              <p className={styles.estimate}>
+                Original Estimate {getEstimate(task.start, task.deadline)}
+              </p>
+            </div>
+          </div>
+        </div>
         {task.assignee && (
           <div className={styles.wrapper}>
             <p className={styles.subtitle}>Assigned</p>

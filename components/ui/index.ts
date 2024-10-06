@@ -33,3 +33,4 @@ export * from './toggle/Toggle';
 export * from './pagination/Pagination';
 export * from './status/TaskStatusDrop';
 export * from './placeholder/Placeholder';
+export * from './progress/Progress';

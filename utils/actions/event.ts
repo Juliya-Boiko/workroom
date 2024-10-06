@@ -3,8 +3,7 @@ import { IEvent } from '@/typings';
 import { AddEventFormData } from '@/utils';
 
 export const createEvent = async (data: AddEventFormData) => {
-  const response = await axiosInstance.post('/event', data);
-  console.log(response);
+  await axiosInstance.post('/event', data);
 };
 
 export const getEvents = async (take?: number): Promise<IEvent[]> => {

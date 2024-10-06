@@ -1,4 +1,3 @@
-/* eslint-disable @typescript-eslint/no-unused-vars */
 'use client';
 import styles from '../common.module.scss';
 import { useEffect } from 'react';
