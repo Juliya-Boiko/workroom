@@ -7,6 +7,7 @@ interface Props {
 }
 
 export const ActivityCard = ({ employee }: Props) => {
+  console.log(employee);
   return (
     <div className={styles.activityCard}>
       <WorkloadCard user={employee} />
@@ -20,8 +21,8 @@ export const ActivityCard = ({ employee }: Props) => {
           <p className={styles.subtitle}>Tasks In Progress</p>
         </div>
         <div>
-          <p className={styles.value}>{employee.tasks?.[ETaskStatus.TODO]}</p>
-          <p className={styles.subtitle}>To Do</p>
+          <p className={styles.value}>{employee.tasks?.[ETaskStatus.REVIEW]}</p>
+          <p className={styles.subtitle}>Tasks In Review</p>
         </div>
       </div>
     </div>
