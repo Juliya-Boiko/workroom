@@ -49,24 +49,6 @@
     padding: 14px;
   }
 
-  .trackerWrapper {
-    display: flex;
-    gap: 14px;
-    font-weight: 400;
-  }
-
-  .counts {
-    flex-grow: 1;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-  }
-
-  .estimate {
-    color: $grey-10;
-    font-size: 12px;
-  }
-
   .subtitle {
     font-size: 12px;
     color: $grey-10;

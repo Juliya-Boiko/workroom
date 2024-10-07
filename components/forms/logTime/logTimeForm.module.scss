@@ -2,7 +2,29 @@
   display: flex;
   flex-direction: column;
   gap: 24px;
-  padding-top: 48px;
+
+  .tracker {
+    position: relative;
+  }
+
+  .image {
+    opacity: 0.5;
+    width: 100%;
+    height: auto;
+    max-width: 300px;
+    margin: 0 auto;
+  }
+
+  .wrapper {
+    @include flexContainer(row, center, center);
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    background-color: $grey-5;
+    border-radius: 14px;
+    padding: 14px;
+    width: 100%;
+  }
 
   .btnWrapper {
     @include flexContainer(row, center, flex-end);

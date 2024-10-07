@@ -1,6 +1,6 @@
 'use client';
 import styles from '../signUp/signUp.module.scss';
-import imgSrc from '../../../public/members.png';
+import imgSrc from '../../../public/placeholder-3.png';
 import Image from 'next/image';
 import { useState } from 'react';
 import { useModalContext } from '@/components/providers/ModalProvider';
