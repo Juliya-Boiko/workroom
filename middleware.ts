@@ -32,11 +32,12 @@ export const config = {
   matcher: [
     '/',
     '/projects',
-    '/project',
-    '/task',
+    '/project/:path*',
+    '/task/:path*',
     '/calendar',
     '/employees',
     '/sign-in',
     '/sign-up',
+    '/profile',
   ],
 };

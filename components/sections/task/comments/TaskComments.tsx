@@ -23,7 +23,7 @@ export const TaskComments = ({ taskId }: { taskId: string }) => {
           ))}
         </ul>
       ) : null}
-      <AddCommentForm taskId={taskId} />
+      {comments && <AddCommentForm taskId={taskId} />}
     </section>
   );
 };

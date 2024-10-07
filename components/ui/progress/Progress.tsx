@@ -35,6 +35,9 @@ export const Progress = ({ value, total }: Props) => {
         strokeDashoffset={offset}
         transform="rotate(-90 20 20)"
         strokeLinecap="round"
+        style={{
+          transition: 'stroke-dashoffset 0.5s ease-in-out', // Add a transition for smooth animation
+        }}
       />
     </svg>
   );
