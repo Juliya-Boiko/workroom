@@ -10,3 +10,4 @@ export * from './handleError';
 export * from './defineOrderNumbers';
 export * from './responseFormatters';
 export * from './timeFormatter';
+export * from './generateNotification';

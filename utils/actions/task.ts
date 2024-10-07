@@ -2,6 +2,7 @@ import { axiosInstance } from '@/libs/axios';
 import { ICreateTask, IUpdateTask, ITask, IFilters, ICreateAttach } from '@/typings';
 import { uploadImage } from '../helpers';
 import { createAttach, deleteTaskAttachments } from './attachments';
+import { createNotification } from './notifications';
 
 export const createTask = async (
   data: ICreateTask
@@ -55,6 +56,7 @@ export const updateTask = async (
       await Promise.all(created);
     }
   }
+  await createNotification(data, response.data.companyId, response.data.userId);
   return response.data;
 };
 

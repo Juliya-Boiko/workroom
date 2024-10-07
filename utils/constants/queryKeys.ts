@@ -14,4 +14,5 @@ export const QUERY_KEYS = {
   ATTACHMENTS: 'attachments',
   COMMENTS: 'comments',
   TIMELOG: 'timelog',
+  NOTIFICATIONS: 'notifications',
 };

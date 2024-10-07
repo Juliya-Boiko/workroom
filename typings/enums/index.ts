@@ -12,3 +12,4 @@ export * from './EView';
 export * from './ECardOptions';
 export * from './ESettings';
 export * from './EAttachType';
+export * from './ENotificationType';

@@ -1,5 +1,6 @@
 import Task from './task';
 import Comment from './comment';
+import Notification from './notification';
 import { model, models, Schema } from 'mongoose';
 import { userPositionsDataTypes } from '@/typings';
 
@@ -36,6 +37,12 @@ userSchema.virtual('tasks', {
 
 userSchema.virtual('comments', {
   ref: Comment,
+  localField: '_id',
+  foreignField: 'userId',
+});
+
+userSchema.virtual('notifications', {
+  ref: Notification,
   localField: '_id',
   foreignField: 'userId',
 });

@@ -1,8 +1,7 @@
 import {
   IProjectResponse,
   ETaskStatus,
-  // EAttachType,
-  // IAttachment,
+  INotificationsResponse,
 } from '@/typings';
 
 export const formatProjectsWithTasks = (data: IProjectResponse[]) => {
@@ -22,4 +21,8 @@ export const formatProjectsWithTasks = (data: IProjectResponse[]) => {
       },
     };
   });
+};
+
+export const formatNotifications = (data: INotificationsResponse[]) => {
+  return data.map(({ _id, text, type, userId, createdAt }) => ({ _id, text, type, createdAt, user: { name: userId.name, avatar: userId.avatar } }));
 };

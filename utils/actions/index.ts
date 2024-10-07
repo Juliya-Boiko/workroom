@@ -9,3 +9,4 @@ export * from './employee';
 export * from './attachments';
 export * from './comments';
 export * from './timelog';
+export * from './notifications';
