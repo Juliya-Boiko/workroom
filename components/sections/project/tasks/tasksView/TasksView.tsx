@@ -7,18 +7,16 @@ interface Props {
   setView: (v: EViewTasks) => void;
 }
 
-export const TasksView = ({ view, setView }: Props) => {
-  return (
-    <div className={styles.tasksView}>
-      {tasksViewDataTypes.map(({ value, icon }) => (
-        <BtnIcon
-          key={value}
-          title={value}
-          active={view === value}
-          onClick={() => setView(value)}
-          icon={icon}
-        />
-      ))}
-    </div>
-  );
-};
+export const TasksView = ({ view, setView }: Props) => (
+  <div className={styles.tasksView}>
+    {tasksViewDataTypes.map(({ value, icon }) => (
+      <BtnIcon
+        key={value}
+        title={value}
+        active={view === value}
+        onClick={() => setView(value)}
+        icon={icon}
+      />
+    ))}
+  </div>
+);

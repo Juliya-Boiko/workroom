@@ -18,8 +18,6 @@ export const EditTaskForm = ({ task }: Props) => {
   const { data: attachments } = useAttachments(task._id);
   const { data: project } = useProject(task.projectId);
 
-  console.log(project);
-
   const { update } = useTasksMutation();
 
   const defaultValues = {

@@ -9,19 +9,17 @@ interface Props {
   events?: IEvent[];
 }
 
-export const EventsList = ({ loading, events }: Props) => {
-  return (
-    <ul className={styles.eventsList}>
-      {loading &&
-        eventSectionSkeleton.map((el) => <EventCard loading={loading} key={el._id} event={el} />)}
-      {events &&
-        events.length > 0 &&
-        events.map((el) => (
-          <li key={el._id} className={styles.item}>
-            <EventCard event={el} />
-          </li>
-        ))}
-      {events && !events.length && <Placeholder title="You dont have events yet" />}
-    </ul>
-  );
-};
+export const EventsList = ({ loading, events }: Props) => (
+  <ul className={styles.eventsList}>
+    {loading &&
+      eventSectionSkeleton.map((el) => <EventCard loading={loading} key={el._id} event={el} />)}
+    {events &&
+      events.length > 0 &&
+      events.map((el) => (
+        <li key={el._id} className={styles.item}>
+          <EventCard event={el} />
+        </li>
+      ))}
+    {events && !events.length && <Placeholder title="You dont have events yet" />}
+  </ul>
+);

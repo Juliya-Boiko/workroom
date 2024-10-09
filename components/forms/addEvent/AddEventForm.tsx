@@ -1,6 +1,7 @@
 'use client';
 import moment from 'moment';
 import commonStyles from '../common.module.scss';
+import { useEffect } from 'react';
 import { useForm, Controller } from 'react-hook-form';
 import { useEventsMutation } from '@/services';
 import { useModalContext } from '@/components/providers/ModalProvider';
@@ -16,7 +17,6 @@ import {
   PickerTime,
   Preloader,
 } from '@/components/ui';
-import { useEffect } from 'react';
 
 const defaultValues = {
   name: '',

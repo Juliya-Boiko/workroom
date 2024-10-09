@@ -2,6 +2,8 @@
 import styles from './taskFilterForm.module.scss';
 import { useForm, Controller } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
+import { SelectAssignees } from './selectAssignees/SelectAssignees';
+import { BtnIcon, BtnPrimary, SelectDrop, PickerPeriod } from '@/components/ui';
 import { filterTaskSchema, FilterTaskFormData } from '@/utils';
 import {
   EIconsSet,
@@ -10,8 +12,6 @@ import {
   IFilters,
   ISelectAssignee,
 } from '@/typings';
-import { BtnIcon, BtnPrimary, SelectDrop, PickerPeriod } from '@/components/ui';
-import { SelectAssignees } from './selectAssignees/SelectAssignees';
 
 interface Props {
   filters: IFilters | null;

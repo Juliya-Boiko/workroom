@@ -14,30 +14,28 @@ interface Props {
   onClick: (v: EViewTasks) => void;
 }
 
-export const ProjectsGrid = ({ filters, setFilters, projects, view, onClick }: Props) => {
-  return (
-    <section className={styles.projectsGrid}>
-      <div className={styles.filters}>
-        {projectsViewDataTypes.map(({ value, icon }) => (
-          <BtnIcon
-            key={value}
-            title={value}
-            icon={icon}
-            active={value === view}
-            onClick={() => onClick(value)}
-          />
-        ))}
-        <ProjectsFilter filters={filters} setFilters={setFilters} />
-      </div>
-      <ul className={styles.list}>
-        {projects.map((el) => (
-          <li key={el._id}>
-            <Link href={`${ROUTES.project}/${el._id}`}>
-              <ProjectCard project={el} expanded />
-            </Link>
-          </li>
-        ))}
-      </ul>
-    </section>
-  );
-};
+export const ProjectsGrid = ({ filters, setFilters, projects, view, onClick }: Props) => (
+  <section className={styles.projectsGrid}>
+    <div className={styles.filters}>
+      {projectsViewDataTypes.map(({ value, icon }) => (
+        <BtnIcon
+          key={value}
+          title={value}
+          icon={icon}
+          active={value === view}
+          onClick={() => onClick(value)}
+        />
+      ))}
+      <ProjectsFilter filters={filters} setFilters={setFilters} />
+    </div>
+    <ul className={styles.list}>
+      {projects.map((el) => (
+        <li key={el._id}>
+          <Link href={`${ROUTES.project}/${el._id}`}>
+            <ProjectCard project={el} expanded />
+          </Link>
+        </li>
+      ))}
+    </ul>
+  </section>
+);

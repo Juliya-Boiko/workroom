@@ -5,6 +5,7 @@ import { useModalContext } from '@/components/providers/ModalProvider';
 import { useProjectsMutation } from '@/services';
 import { yupResolver } from '@hookform/resolvers/yup';
 import { priorityDataTypes } from '@/typings';
+import { SelectImage } from './selectImage/SelectImage';
 import {
   getTomorrowDate,
   addProjectSchema,
@@ -19,7 +20,6 @@ import {
   PickerDate,
   Preloader,
 } from '@/components/ui';
-import { SelectImage } from './selectImage/SelectImage';
 
 const defaultValues = {
   name: '',

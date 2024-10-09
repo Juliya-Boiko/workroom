@@ -4,17 +4,15 @@ import { Notifications } from './notifications/Notification';
 import { Account } from './account/Account';
 import { Search } from './search/Search';
 
-export const Header = () => {
-  return (
-    <header className={styles.header}>
-      <Menu />
-      <div className={styles.search}>
-        <Search />
-      </div>
-      <div className={styles.user}>
-        <Notifications />
-        <Account />
-      </div>
-    </header>
-  );
-};
+export const Header = () => (
+  <header className={styles.header}>
+    <Menu />
+    <div className={styles.search}>
+      <Search />
+    </div>
+    <div className={styles.user}>
+      <Notifications />
+      <Account />
+    </div>
+  </header>
+);

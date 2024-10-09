@@ -1,14 +1,14 @@
 'use client';
 import styles from './selectImage.module.scss';
 import Image from 'next/image';
+import { UploadThumb } from '@/components/ui';
+import { StaticImageData } from 'next/image';
 import {
   projectThumbs,
   projectThumbsDataTypes,
   ProjectThumbsKeys,
   IMAGE_THUMB_STARTS,
 } from '@/utils';
-import { UploadThumb } from '@/components/ui';
-import { StaticImageData } from 'next/image';
 
 type SelectedImageType = [string, StaticImageData | File];
 

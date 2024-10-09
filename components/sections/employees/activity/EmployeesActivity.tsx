@@ -9,20 +9,18 @@ interface Props {
   onChange: (v: EViewEmployees) => void;
 }
 
-export const EmployeesActivity = ({ view, employees, onChange }: Props) => {
-  return (
-    <section className={styles.employeesActivity}>
-      <div className={styles.filters}>
-        <TabsSlide options={viewEmployeesDataTypes} value={view} onChange={onChange} />
-        <BtnIcon title="Filter" icon={EIconsSet.Filter} />
-      </div>
-      <ul className={styles.list}>
-        {employees.map((el) => (
-          <li key={el._id}>
-            <ActivityCard employee={el} />
-          </li>
-        ))}
-      </ul>
-    </section>
-  );
-};
+export const EmployeesActivity = ({ view, employees, onChange }: Props) => (
+  <section className={styles.employeesActivity}>
+    <div className={styles.filters}>
+      <TabsSlide options={viewEmployeesDataTypes} value={view} onChange={onChange} />
+      <BtnIcon title="Filter" icon={EIconsSet.Filter} />
+    </div>
+    <ul className={styles.list}>
+      {employees.map((el) => (
+        <li key={el._id}>
+          <ActivityCard employee={el} />
+        </li>
+      ))}
+    </ul>
+  </section>
+);

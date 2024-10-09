@@ -1,9 +1,9 @@
 'use client';
-import { LoaderSkeleton } from '@/components/LoaderSkeleton';
 import styles from './selectAssignees.module.scss';
-import { Avatar } from '@/components/ui';
 import { useEmployees } from '@/services';
 import { useState, useEffect } from 'react';
+import { LoaderSkeleton } from '@/components/LoaderSkeleton';
+import { Avatar } from '@/components/ui';
 import { ISelectAssignee } from '@/typings';
 
 interface Props {

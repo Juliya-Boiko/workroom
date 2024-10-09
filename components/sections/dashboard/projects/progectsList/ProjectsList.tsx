@@ -11,25 +11,23 @@ interface Props {
   placeholder: string;
 }
 
-export const ProjectsList = ({ loading, projects, placeholder }: Props) => {
-  return (
-    <ul className={styles.list}>
-      {loading &&
-        projectSectionSkeleton.map((el) => (
-          <li key={el._id} className={styles.item}>
-            <ProjectCard loading={loading} project={el} />
-          </li>
-        ))}
-      {projects && !projects.length && <Placeholder primary title={placeholder} />}
-      {projects &&
-        projects.length > 0 &&
-        projects.map((el) => (
-          <li key={el._id}>
-            <Link href={`${ROUTES.project}/${el._id}`}>
-              <ProjectCard project={el} />
-            </Link>
-          </li>
-        ))}
-    </ul>
-  );
-};
+export const ProjectsList = ({ loading, projects, placeholder }: Props) => (
+  <ul className={styles.list}>
+    {loading &&
+      projectSectionSkeleton.map((el) => (
+        <li key={el._id} className={styles.item}>
+          <ProjectCard loading={loading} project={el} />
+        </li>
+      ))}
+    {projects && !projects.length && <Placeholder primary title={placeholder} />}
+    {projects &&
+      projects.length > 0 &&
+      projects.map((el) => (
+        <li key={el._id}>
+          <Link href={`${ROUTES.project}/${el._id}`}>
+            <ProjectCard project={el} />
+          </Link>
+        </li>
+      ))}
+  </ul>
+);
