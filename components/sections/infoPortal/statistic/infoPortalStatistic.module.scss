@@ -1,0 +1,49 @@
+.infoPortalStatistic {
+  padding: 24px;
+  border-radius: 24px;
+  background-color: $white;
+
+  .title {
+    font-size: 16px;
+    margin-bottom: 24px;
+  }
+
+  .wrapper {
+    @include flexContainer(row, center, space-between);
+    margin-bottom: 24px;
+  }
+
+  .amount {
+    font-weight: 700;
+    font-size: 54px;
+    margin-bottom: 8px;
+  }
+
+  .dynamic {
+    font-size: 12px;
+    color: $green-2;
+  }
+
+  .subtitle {
+    color: $grey-10;
+  }
+
+  // .text {
+  //   color: $grey-3;
+  // }
+
+  // .image {
+  //   display: none;
+  // }
+
+  // @include onTablet {
+  //   @include flexContainer(row, center, space-between);
+  //   gap: 48px;
+
+  //   .image {
+  //     display: block;
+  //     max-height: 150px;
+  //     width: auto;
+  //   }
+  // }
+}

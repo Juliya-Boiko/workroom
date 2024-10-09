@@ -5,7 +5,7 @@ interface Props {
   value: boolean;
   onChange: (v: boolean) => void;
 }
-export const Toggle = ({ name, value, onChange }: Props) =>  (
+export const Toggle = ({ name, value, onChange }: Props) => (
   <label htmlFor={name} className={styles.toggle}>
     <input
       type="checkbox"

@@ -46,4 +46,5 @@ export enum EIconsSet {
   Info,
   Comment,
   UserPlus,
+  Folder,
 }

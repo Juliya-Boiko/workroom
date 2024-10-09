@@ -1,0 +1,29 @@
+.infoPortalPage {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  padding: 24px 12px;
+
+  .container, .wrapper {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+  }
+
+  @include onTablet {
+    padding: 24px 48px;
+
+    .wrapper {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+
+  @include onLaptop {
+    padding: 32px 0 0 32px;
+
+    .wrapper {
+      grid-template-columns: 3fr 1fr;
+    }
+  }
+}

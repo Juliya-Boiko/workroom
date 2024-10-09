@@ -17,6 +17,7 @@ export const ROUTES = {
   editProject: '/project/edit',
   task: '/task',
   editTask: '/task/edit',
+  infoPortal: '/info-portal',
 };
 
 export type RoutesType = typeof ROUTES;
@@ -42,5 +43,10 @@ export const navRoutes = [
     title: 'Employees',
     path: ROUTES.employees,
     icon: EIconsSet.Persons,
+  },
+  {
+    title: 'Info Portal',
+    path: ROUTES.infoPortal,
+    icon: EIconsSet.Folder,
   },
 ];

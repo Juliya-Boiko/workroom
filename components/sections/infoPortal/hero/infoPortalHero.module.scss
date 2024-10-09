@@ -1,0 +1,31 @@
+.infoPortalHero {
+  padding: 24px;
+  border-radius: 24px;
+  background-color: $white;
+
+  .title {
+    font-size: 16px;
+    margin-bottom: 24px;
+  }
+
+  .text {
+    color: $grey-3;
+  }
+
+  .image {
+    display: none;
+  }
+
+  @include onTablet {
+    @include flexContainer(row, center, space-between);
+    gap: 24px;
+  }
+
+  @include onLaptop {
+    .image {
+      display: block;
+      max-height: 150px;
+      width: auto;
+    }
+  }
+}

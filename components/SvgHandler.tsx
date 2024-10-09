@@ -803,4 +803,21 @@ export const SvgHandler = ({ icon }: { icon: EIconsSet }) => {
         />
       </svg>
     );
+  if (icon === EIconsSet.Folder)
+    return (
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        width={24}
+        height={24}
+        fill="none"
+        className="svg-min-size"
+      >
+        <path
+          fill="currentColor"
+          fillRule="evenodd"
+          d="M22.713 9.966a1.524 1.524 0 0 0-1.234-.633h-1.226l-.014-1.073a2 2 0 0 0-2-1.974h-5.764a1 1 0 0 1-.602-.202L9.641 4.403A2 2 0 0 0 8.437 4H4a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h14.597a2 2 0 0 0 1.897-1.368l2.428-7.293a1.53 1.53 0 0 0-.209-1.373ZM8.257 5.524a1 1 0 0 1 .601.2l2.37 1.78c.264.198.584.305.912.306h5.592a1 1 0 0 1 1 1v.523H6.35a1.52 1.52 0 0 0-1.443 1.042L3.52 14.543v-8.02a1 1 0 0 1 1-1h3.736Z"
+          clipRule="evenodd"
+        />
+      </svg>
+    );
 };

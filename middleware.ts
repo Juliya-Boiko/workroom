@@ -39,5 +39,6 @@ export const config = {
     '/sign-in',
     '/sign-up',
     '/profile',
+    '/info-portal',
   ],
 };
