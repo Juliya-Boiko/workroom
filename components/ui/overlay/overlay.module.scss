@@ -8,5 +8,6 @@
   left: 0;
   @include onTablet {
     display: flex;
+    background-color: rgba($blue-4-rgb, 0.16);
   }
 }

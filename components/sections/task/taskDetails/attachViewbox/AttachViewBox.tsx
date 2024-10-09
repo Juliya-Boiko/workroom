@@ -28,7 +28,7 @@ export const AttachViewBox = ({ item }: Props) => {
         <p className={styles.date}>{formatDayDate(item.createdAt)}</p>
       </div>
       {showFull && (
-        <Overlay onClose={() => setShowFull(false)}>
+        <Overlay isOpen={showFull} onClose={() => setShowFull(false)}>
           <div className={styles.imageFull}>
             <Image priority src={item.value} alt={item.title} fill />
           </div>

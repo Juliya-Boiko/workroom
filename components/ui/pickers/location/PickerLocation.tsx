@@ -84,7 +84,7 @@ export const PickerLocation = ({ value, disabled, onApprove }: Props) => {
         <SvgHandler icon={EIconsSet.Location} />
       </button>
       {isOpen && (
-        <Overlay onClose={() => setIsOpen(false)}>
+        <Overlay isOpen={isOpen} onClose={() => setIsOpen(false)}>
           <div className={styles.container}>
             <div className={styles.head}>
               <BtnIcon

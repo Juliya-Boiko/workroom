@@ -14,7 +14,7 @@ export const Notifications = () => {
     <>
       <BtnIcon title="Notifications" icon={EIconsSet.Bell} onClick={() => setShowList((v) => !v)} />
       {showList && (
-        <Overlay onClose={() => setShowList(false)}>
+        <Overlay isOpen={showList} onClose={() => setShowList(false)}>
           <div className={styles.container}>
             <div className={styles.wrapper}>
               <div className={styles.head}>

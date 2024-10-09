@@ -1,7 +1,7 @@
 'use client';
 import styles from './menu.module.scss';
 import Link from 'next/link';
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 import { usePathname } from 'next/navigation';
 import { navRoutes } from '@/utils';
 import { SvgHandler } from '@/components/SvgHandler';
@@ -14,22 +14,11 @@ export const Menu = () => {
   const { data: company } = useCompany();
   const pathname = usePathname();
 
-  useEffect(() => {
-    const body = document.body;
-    if (openMenu) {
-      body.style.height = '100vh';
-      body.style.overflowY = 'hidden';
-    } else {
-      body.style.height = '';
-      body.style.overflowY = '';
-    }
-  }, [openMenu]);
-
   return (
     <div className={styles.menu}>
       <BtnIcon title="Menu" onClick={() => setOpenMenu(true)} icon={EIconsSet.Burger} />
       {openMenu && (
-        <Overlay onClose={() => setOpenMenu(false)}>
+        <Overlay isOpen={openMenu} onClose={() => setOpenMenu(false)}>
           <div className={styles.container}>
             <div className={styles.head}>
               <Logo colored cropped />

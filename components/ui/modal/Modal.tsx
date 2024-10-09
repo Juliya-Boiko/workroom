@@ -18,7 +18,7 @@ export const Modal = ({ activator, title, content }: Props) => {
     <div className={styles.modal}>
       <div onClick={openModal}>{activator}</div>
       {isModalOpen && (
-        <Overlay>
+        <Overlay isOpen={isModalOpen}>
           <div className={styles.container}>
             <div className={styles.head}>
               <h3 className={styles.title}>{title}</h3>
