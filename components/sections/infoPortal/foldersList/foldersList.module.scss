@@ -1,0 +1,24 @@
+.foldersList {
+  display: flex;
+  justify-content: center;
+
+  .list {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+  }
+
+  @include onTablet {
+    .list {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+
+  @include onLaptop {
+    .list {
+      grid-template-columns: repeat(4, 1fr);
+    }
+  }
+}

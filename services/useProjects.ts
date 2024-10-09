@@ -7,6 +7,7 @@ import {
   createProject,
   deleteProject,
   updateProject,
+  getFolderlessProjects,
   QUERY_KEYS,
   ROUTES,
 } from '@/utils';
@@ -15,6 +16,13 @@ export const useProjects = (filters: IFilters | null, take?: number, skip?: numb
   return useQuery({
     queryKey: [QUERY_KEYS.PROJECTS, take, skip, filters],
     queryFn: () => getProjects(filters, take, skip),
+  });
+};
+
+export const useFolderlessProjects = () => {
+  return useQuery({
+    queryKey: [QUERY_KEYS.FOLDERLESS_PROJECTS],
+    queryFn: () => getFolderlessProjects(),
   });
 };
 

@@ -13,3 +13,4 @@ export * from './IAttachments';
 export * from './IComment';
 export * from './ITimelog';
 export * from './INotification';
+export * from './IFolder';

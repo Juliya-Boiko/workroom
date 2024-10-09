@@ -29,6 +29,11 @@ export const getProjects = async (
   return response.data;
 };
 
+export const getFolderlessProjects = async (): Promise<{ _id: string; name: string }[]> => {
+  const response = await axiosInstance.get('/project/folder');
+  return response.data;
+};
+
 export const createProject = async (data: AddProjectFormData): Promise<string> => {
   let image: string | null = data.image[0];
   if (!data.image[0].includes(IMAGE_THUMB_STARTS) && data.image[1] instanceof File) {

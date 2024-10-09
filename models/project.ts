@@ -1,6 +1,7 @@
 import { model, models, Schema } from 'mongoose';
 import { priorityDataTypes } from '@/typings';
 import Task from './task';
+import Folder from './folder';
 
 const projectSchema = new Schema(
   {
@@ -22,6 +23,12 @@ const projectSchema = new Schema(
 
 projectSchema.virtual('tasks', {
   ref: Task,
+  localField: '_id',
+  foreignField: 'projectId',
+});
+
+projectSchema.virtual('folders', {
+  ref: Folder,
   localField: '_id',
   foreignField: 'projectId',
 });

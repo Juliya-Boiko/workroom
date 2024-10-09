@@ -18,6 +18,7 @@ export const ROUTES = {
   task: '/task',
   editTask: '/task/edit',
   infoPortal: '/info-portal',
+  folder: '/folder',
 };
 
 export type RoutesType = typeof ROUTES;

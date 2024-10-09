@@ -13,3 +13,4 @@ export * from './filterProject';
 export * from './editTask';
 export * from './addComment';
 export * from './logTime';
+export * from './addFolder';

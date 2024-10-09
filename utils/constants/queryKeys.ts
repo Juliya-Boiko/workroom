@@ -2,6 +2,7 @@ export const QUERY_KEYS = {
   USER: 'user',
   COMPANY: 'company',
   PROJECTS: 'projects',
+  FOLDERLESS_PROJECTS: 'folderlessProjects',
   PROJECT: 'project',
   EMPLOYEES: 'employees',
   EMPLOYEE: 'employee',
@@ -15,4 +16,5 @@ export const QUERY_KEYS = {
   COMMENTS: 'comments',
   TIMELOG: 'timelog',
   NOTIFICATIONS: 'notifications',
+  FOLDERS: 'folders',
 };

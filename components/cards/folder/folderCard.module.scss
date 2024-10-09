@@ -1,0 +1,21 @@
+.folderCard {
+  
+  .link {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+    padding: 24px;
+    border-radius: 24px;
+    background-color: $white;
+  }
+
+  .name {
+    font-weight: 700;
+    font-size: 16px;
+  }
+
+  .pages {
+    font-size: 12px;
+    color: $grey-10;
+  }
+}
