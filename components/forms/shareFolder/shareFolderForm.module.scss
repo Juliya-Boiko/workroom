@@ -1,0 +1,54 @@
+.shareFolderForm {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  max-width: 100%;
+  gap: 48px;
+  padding-top: 48px;
+
+  .label {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+
+  .checkbox {
+    @include squareSize(20px);
+    @include flexContainer(row, center, center);
+    border: 2px solid $dark;
+    border-radius: 4px;
+    padding: 2px;
+    cursor: pointer;
+  }
+
+  .mark {
+    display: none;
+    width: 100%;
+    height: 100%;
+    background-color: $blue-1;
+    border-radius: 2px;
+  }
+
+  .inputHidden {
+    display: none;
+
+    &:checked + .checkbox {
+      .mark {
+        display: block;
+      }
+    }
+  }
+
+  .placeholder {
+    padding: 48px 0;
+    color: $grey-3;
+  }
+
+  @include onTablet {
+    gap: 24px;
+  }
+
+  @include onLaptop {
+    padding-top: 24px;
+  }
+}

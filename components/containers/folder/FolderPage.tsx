@@ -12,13 +12,14 @@ import { PageInfo } from '@/components/sections/folder/pageInfo/PageInfo';
 import { ShareFolderForm } from '@/components/forms/shareFolder/ShareFolderForm';
 
 export const FolderPage = ({ slug }: IDynamicComponent) => {
-  const [page, setPage] = useState(null);
+  const [page, setPage] = useState<string | null>(null);
+  const [editorView, setEditorView] = useState(false);
   const { data: folder, isLoading: isLoadingFolder } = useFolder(slug);
   const { data: project, isLoading: isLoadingProject } = useProject(folder?.projectId);
 
   return (
     <div className={styles.projectPage}>
-      <Topping link="Back to Info Portal" path={ROUTES.infoPortal} title={project?.name || '' }>
+      <Topping link="Back to Info Portal" path={ROUTES.infoPortal} title={project?.name || ''}>
         <Modal
           title="Share folder access"
           activator={
@@ -36,9 +37,13 @@ export const FolderPage = ({ slug }: IDynamicComponent) => {
             <Preloader />
           </div>
         ) : (
-            <div className={styles.content}>
-              <PageSelect />
-              <PageInfo />
+          <div className={styles.content}>
+            <PageSelect
+              page={page}
+              onChange={(v) => setPage(v)}
+              setView={() => setEditorView(true)}
+            />
+            {editorView ? <div>editop</div> : <PageInfo />}
           </div>
         )}
       </div>

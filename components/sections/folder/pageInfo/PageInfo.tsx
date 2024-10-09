@@ -1,3 +1,3 @@
 export const PageInfo = () => {
-  return <section>PageInfo</section>
-}
+  return <section>PageInfo</section>;
+};

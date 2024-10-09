@@ -1,0 +1,32 @@
+.pageSelect {
+  border-radius: 24px;
+  background-color: $white;
+
+  .head {
+    @include flexContainer(row, center, space-between);
+    padding: 12px 12px 12px 24px;
+    font-weight: 700;
+  }
+
+  .list {
+    border-top: 1px solid $grey-9;
+    padding: 12px 0 12px 12px;
+  }
+
+  .openList {
+    display: block;
+  }
+
+  .hiddenList {
+    display: none;
+  }
+
+  @include onLaptop {
+    .laptopHidden {
+      display: none;
+    }
+    .hiddenList {
+      display: block;
+    }
+  }
+}

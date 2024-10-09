@@ -14,3 +14,10 @@ export interface IFolder {
 export interface IFolderInfo extends Omit<IFolder, 'projectId'> {
   projectId: string;
 }
+
+export interface IUpdateFolder {
+  id: string;
+  update: {
+    users?: string[];
+  };
+}

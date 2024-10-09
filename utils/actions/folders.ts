@@ -1,5 +1,5 @@
 import { axiosInstance } from '@/libs/axios';
-import { IFolder, IFolderInfo } from '@/typings';
+import { IFolder, IFolderInfo, IUpdateFolder } from '@/typings';
 import { AddFolderFormData } from '@/utils';
 
 export const createFolder = async (data: AddFolderFormData) => {
@@ -13,5 +13,10 @@ export const getFolders = async (): Promise<IFolder[]> => {
 
 export const getFolderById = async (id: string): Promise<IFolderInfo> => {
   const response = await axiosInstance.get(`/folder/${id}`);
+  return response.data;
+};
+
+export const updateFolder = async (data: IUpdateFolder): Promise<{ folderId: string }> => {
+  const response = await axiosInstance.patch(`/folder/${data.id}`, data.update);
   return response.data;
 };
