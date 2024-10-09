@@ -8,8 +8,6 @@ export const createComment = async (
   const { data } = await axiosInstance.post('/comment', values);
   await createNotification({
     taskId: data.taskId,
-    companyId: data.companyId,
-    userId: data.userId,
     type: ENotificationType.COMMENT,
   });
   return data;
