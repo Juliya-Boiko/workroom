@@ -1,6 +1,6 @@
 'use client';
-import { useNotifications } from '@/services';
 import styles from './activity.module.scss';
+import { useNotifications } from '@/services';
 import { ActivityList } from './activityList/ActivityList';
 import { NOTIFICATIONS_TAKE_DASHBOARD } from '@/utils';
 

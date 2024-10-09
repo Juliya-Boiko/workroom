@@ -4,11 +4,12 @@ import { useEffect } from 'react';
 import { useModalContext } from '@/components/providers/ModalProvider';
 
 interface Props {
+  transparent?: boolean;
   children: string | JSX.Element | JSX.Element[];
   onClose?: () => void;
 }
 
-export const Overlay = ({ children, onClose }: Props) => {
+export const Overlay = ({ transparent, children, onClose }: Props) => {
   const { closeModal } = useModalContext();
   const TARGET_ID = 'overlay';
 
@@ -29,7 +30,11 @@ export const Overlay = ({ children, onClose }: Props) => {
   }, [closeModal, onClose]);
 
   return (
-    <div id={TARGET_ID} className={styles.overlay}>
+    <div
+      id={TARGET_ID}
+      style={{ backgroundColor: transparent ? 'transparent' : 'rgba(33, 85, 163, 0.16)' }}
+      className={styles.overlay}
+    >
       {children}
     </div>
   );

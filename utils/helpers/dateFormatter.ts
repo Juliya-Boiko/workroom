@@ -44,7 +44,7 @@ export const getDaysToDeadline = (deadline: Date) => {
   return `${differenceInDays}d`;
 };
 
-const getIsToday = (value: Date) => {
+export const getIsToday = (value: Date) => {
   const today = new Date().toLocaleDateString();
   const eventDay = new Date(value).toLocaleDateString();
   const date1 = moment(today, 'DD.MM.YYYY');
