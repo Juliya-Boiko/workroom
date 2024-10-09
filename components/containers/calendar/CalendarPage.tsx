@@ -6,22 +6,20 @@ import { SvgHandler } from '@/components/SvgHandler';
 import { AddEventForm } from '@/components/forms/addEvent/AddEventForm';
 import { CalendarSection } from '@/components/sections/calendar/CalendarSection';
 
-export const CalendarPage = () => {
-  return (
-    <div className={styles.calendarPage}>
-      <Topping title="Calendar">
-        <Modal
-          title="Add Event"
-          activator={
-            <BtnPrimary>
-              <SvgHandler icon={EIconsSet.Plus} />
-              <span>Add Event</span>
-            </BtnPrimary>
-          }
-          content={<AddEventForm />}
-        />
-      </Topping>
-      <CalendarSection />
-    </div>
-  );
-};
+export const CalendarPage = () => (
+  <div className={styles.calendarPage}>
+    <Topping title="Calendar">
+      <Modal
+        title="Add Event"
+        activator={
+          <BtnPrimary>
+            <SvgHandler icon={EIconsSet.Plus} />
+            <span>Add Event</span>
+          </BtnPrimary>
+        }
+        content={<AddEventForm />}
+      />
+    </Topping>
+    <CalendarSection />
+  </div>
+);

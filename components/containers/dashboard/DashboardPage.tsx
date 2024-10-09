@@ -6,18 +6,16 @@ import { EventsSection } from '@/components/sections/dashboard/events/Events';
 import { Topping } from '@/components/topping/Topping';
 import { TodayBadge } from '@/components/sections/dashboard/today/TodayBadge';
 
-export const DashboardPage = () => {
-  return (
-    <div className={styles.dashboardPage}>
-      <Topping title="Dashboard">
-        <TodayBadge />
-      </Topping>
-      <div className={styles.container}>
-        <WorkloadSection />
-        <EventsSection />
-        <ProjectsSection />
-        <ActivitySection />
-      </div>
+export const DashboardPage = () => (
+  <div className={styles.dashboardPage}>
+    <Topping title="Dashboard">
+      <TodayBadge />
+    </Topping>
+    <div className={styles.container}>
+      <WorkloadSection />
+      <EventsSection />
+      <ProjectsSection />
+      <ActivitySection />
     </div>
-  );
-};
+  </div>
+);
