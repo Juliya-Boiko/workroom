@@ -17,7 +17,7 @@ export async function POST(request: NextRequest) {
     userId: id,
   });
   const savedComment = await comment.save();
-  return NextResponse.json(savedComment.taskId, { status: 201 });
+  return NextResponse.json({ taskId: savedComment.taskId }, { status: 201 });
 }
 
 export async function GET(request: NextRequest) {

@@ -1,25 +1,19 @@
 import { axiosInstance } from '@/libs/axios';
-import { IUpdateTask, ENotificationType, INotification } from '@/typings';
-import { generateNotification } from '../helpers';
-import { getTaskById } from './task';
+import { ENotificationType, INotification } from '@/typings';
+import { generateNotificationText } from '../helpers';
 
-export const createNotification = async (data: IUpdateTask, companyId: string, userId: string) => {
-  const task = await getTaskById(data._id);
-  const initValue = {
-    userId,
-    companyId,
-    taskId: task._id,
-    text: '',
-    type: ENotificationType.STATUS,
-  };
-  if (data.update.status) {
-    initValue.text = generateNotification({
-      type: ENotificationType.STATUS,
-      title: task.name,
-      status: task.status,
-    });
-  }
-  await axiosInstance.post('/notification', initValue);
+interface Props {
+  taskId: string;
+  type: ENotificationType;
+}
+
+export const createNotification = async ({ taskId, type }: Props) => {
+  const text = await generateNotificationText({ taskId, type });
+  await axiosInstance.post('/notification', {
+    taskId,
+    type,
+    text,
+  });
 };
 
 export const getNotifications = async (take?: number): Promise<INotification[]> => {

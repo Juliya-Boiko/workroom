@@ -1,6 +1,7 @@
 import { axiosInstance } from '@/libs/axios';
-import { EAttachType, IAttachment } from '@/typings';
+import { EAttachType, ENotificationType, IAttachment } from '@/typings';
 import { deleteImage } from '@/utils';
+import { createNotification } from './notifications';
 
 export const getAttachments = async (taskId: string): Promise<IAttachment[]> => {
   const response = await axiosInstance.get(`/attach`, {
@@ -30,6 +31,7 @@ interface CreateProps {
 
 export const createAttach = async (data: CreateProps) => {
   const response = await axiosInstance.post('/attach', data);
+  await createNotification({ taskId: data.taskId, type: ENotificationType.ATTACH });
   return response.data;
 };
 

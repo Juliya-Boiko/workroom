@@ -1,6 +1,5 @@
 import Task from '@/models/task';
 import Attachment from '@/models/attachment';
-import { decodeToken } from '@/libs/jose';
 import { connectToMongoDB } from '@/libs/database';
 import { NextRequest, NextResponse } from 'next/server';
 import { IDynamicRoute } from '@/typings';
@@ -21,13 +20,9 @@ export async function PATCH(request: NextRequest, { params }: IDynamicRoute) {
   if (!token) {
     return NextResponse.json({ message: 'Token null or expired' }, { status: 403 });
   }
-  const { id: userId, companyId } = await decodeToken(token);
 
   const task = await Task.findByIdAndUpdate(id, reqBody);
-  return NextResponse.json(
-    { projectId: task.projectId, taskId: id, companyId, userId },
-    { status: 200 }
-  );
+  return NextResponse.json({ projectId: task.projectId, taskId: id }, { status: 200 });
 }
 
 export async function DELETE(request: NextRequest, { params }: IDynamicRoute) {

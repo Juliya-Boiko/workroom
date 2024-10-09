@@ -43,4 +43,7 @@ export enum EIconsSet {
   Payments,
   Lock,
   Safety,
+  Info,
+  Comment,
+  UserPlus,
 }

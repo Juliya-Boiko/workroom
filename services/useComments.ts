@@ -12,8 +12,9 @@ export const useCommentMutation = () => {
 
   const { mutate: create, isPending: isCreating } = useMutation({
     mutationFn: createComment,
-    onSuccess: (taskId: string) => {
+    onSuccess: ({ taskId }: { taskId: string }) => {
       queryClient.invalidateQueries({ queryKey: [QUERY_KEYS.COMMENTS, taskId] });
+      queryClient.invalidateQueries({ queryKey: [QUERY_KEYS.NOTIFICATIONS] });
     },
   });
 

@@ -1,4 +1,4 @@
-import { ENotificationType } from "../enums";
+import { ENotificationType } from '../enums';
 
 export interface INotificationsResponse {
   _id: string;
@@ -8,6 +8,7 @@ export interface INotificationsResponse {
   userId: {
     name: string;
     avatar: string | null;
+    profession: string;
   };
 }
 
@@ -15,5 +16,6 @@ export interface INotification extends Omit<INotificationsResponse, 'userId'> {
   user: {
     name: string;
     avatar: string | null;
+    profession: string;
   };
 }

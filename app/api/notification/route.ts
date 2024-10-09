@@ -12,9 +12,13 @@ export async function POST(request: NextRequest) {
   if (!token) {
     return NextResponse.json({ message: 'Token null or expired' }, { status: 403 });
   }
+  const { id, companyId } = await decodeToken(token);
+
   const reqBody = await request.json();
   const notification = new Notification({
     ...reqBody,
+    companyId,
+    userId: id,
   });
   await notification.save();
   return NextResponse.json({ message: 'Notification created' }, { status: 201 });
@@ -32,7 +36,7 @@ export async function GET(request: NextRequest) {
     .sort({ createdAt: 'desc' })
     .limit(Number(take))
     .select('-updatedAt -companyId -taskId')
-    .populate('userId', 'name avatar')
+    .populate('userId', 'name avatar profession')
     .lean<INotificationsResponse[]>();
 
   return NextResponse.json(formatNotifications(notifications), { status: 200 });

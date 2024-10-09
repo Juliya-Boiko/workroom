@@ -1,9 +1,18 @@
 import { axiosInstance } from '@/libs/axios';
-import { ICreateComment, IUpdateComment, IComment } from '@/typings';
+import { createNotification } from './notifications';
+import { ICreateComment, IUpdateComment, IComment, ENotificationType } from '@/typings';
 
-export const createComment = async (data: ICreateComment): Promise<string> => {
-  const response = await axiosInstance.post('/comment', data);
-  return response.data;
+export const createComment = async (
+  values: ICreateComment
+): Promise<{ taskId: string; userId: string; companyId: string }> => {
+  const { data } = await axiosInstance.post('/comment', values);
+  await createNotification({
+    taskId: data.taskId,
+    companyId: data.companyId,
+    userId: data.userId,
+    type: ENotificationType.COMMENT,
+  });
+  return data;
 };
 
 export const getComments = async (taskId: string): Promise<IComment[]> => {

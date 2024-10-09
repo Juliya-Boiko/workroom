@@ -1,14 +1,21 @@
-import { ENotificationType, ETaskStatus } from '@/typings';
+import { ENotificationType } from '@/typings';
+import { getTaskById } from '../actions';
 
 interface Props {
   type: ENotificationType;
-  title: string;
-  status: ETaskStatus;
+  taskId: string;
 }
 
-export const generateNotification = ({ type, title, status }: Props) => {
+export const generateNotificationText = async ({ type, taskId }: Props) => {
+  const task = await getTaskById(taskId);
   if (type === ENotificationType.STATUS) {
-    return `Updated the status of ${title} task to ${status}`;
+    return `Updated the status of ${task.name} task to ${task.status}`;
   }
-  return `anothet notification`;
+  if (type === ENotificationType.COMMENT) {
+    return `Left comment to task ${task.name}`;
+  }
+  if (type === ENotificationType.ATTACH) {
+    return `Attached files to the task ${task.name}`;
+  }
+  return `Task ${task.name} assigned to ${task.assignee?.name}`;
 };

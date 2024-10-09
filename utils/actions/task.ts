@@ -1,8 +1,15 @@
 import { axiosInstance } from '@/libs/axios';
-import { ICreateTask, IUpdateTask, ITask, IFilters, ICreateAttach } from '@/typings';
 import { uploadImage } from '../helpers';
 import { createAttach, deleteTaskAttachments } from './attachments';
 import { createNotification } from './notifications';
+import {
+  ICreateTask,
+  IUpdateTask,
+  ITask,
+  IFilters,
+  ICreateAttach,
+  ENotificationType,
+} from '@/typings';
 
 export const createTask = async (
   data: ICreateTask
@@ -20,6 +27,12 @@ export const createTask = async (
     await createAttach(el);
   });
   await Promise.all(attachments);
+  if (data.assignee) {
+    await createNotification({
+      taskId: response.data.taskId,
+      type: ENotificationType.ASSIGN,
+    });
+  }
   return response.data;
 };
 
@@ -56,7 +69,18 @@ export const updateTask = async (
       await Promise.all(created);
     }
   }
-  await createNotification(data, response.data.companyId, response.data.userId);
+  if (data.update.status) {
+    await createNotification({
+      taskId: data._id,
+      type: ENotificationType.STATUS,
+    });
+  }
+  if (data.update.assignee) {
+    await createNotification({
+      taskId: response.data.taskId,
+      type: ENotificationType.ASSIGN,
+    });
+  }
   return response.data;
 };
 
