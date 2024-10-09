@@ -10,3 +10,7 @@ export interface IFolder {
   };
   users: string[];
 }
+
+export interface IFolderInfo extends Omit<IFolder, 'projectId'> {
+  projectId: string;
+}

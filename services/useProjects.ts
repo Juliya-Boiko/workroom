@@ -57,9 +57,10 @@ export const useProjectsMutation = () => {
   return { create, isCreating, remove, isDeleting, update };
 };
 
-export const useProject = (projectId: string) => {
+export const useProject = (projectId?: string) => {
   return useQuery({
     queryKey: [QUERY_KEYS.PROJECT, projectId],
     queryFn: () => getProjectById(projectId),
+    enabled: !!projectId,
   });
 };

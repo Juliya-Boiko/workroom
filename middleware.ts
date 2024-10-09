@@ -40,5 +40,6 @@ export const config = {
     '/sign-up',
     '/profile',
     '/info-portal',
+    '/folder/:path*',
   ],
 };

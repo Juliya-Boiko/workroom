@@ -1,5 +1,5 @@
 import { useQuery, useQueryClient, useMutation } from '@tanstack/react-query';
-import { createFolder, getFolders, QUERY_KEYS } from '@/utils';
+import { createFolder, getFolders, getFolderById, QUERY_KEYS } from '@/utils';
 
 export const useFolders = () => {
   return useQuery({
@@ -40,9 +40,9 @@ export const useFolderMutation = () => {
   return { create, isCreating };
 };
 
-// export const useTask = (id: string) => {
-//   return useQuery({
-//     queryKey: [QUERY_KEYS.TASK, id],
-//     queryFn: () => getTaskById(id),
-//   });
-// };
+export const useFolder = (id: string) => {
+  return useQuery({
+    queryKey: [QUERY_KEYS.FOLDER, id],
+    queryFn: () => getFolderById(id),
+  });
+};

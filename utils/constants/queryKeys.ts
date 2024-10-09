@@ -17,4 +17,5 @@ export const QUERY_KEYS = {
   TIMELOG: 'timelog',
   NOTIFICATIONS: 'notifications',
   FOLDERS: 'folders',
+  FOLDER: 'folder',
 };
