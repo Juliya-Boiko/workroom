@@ -19,27 +19,25 @@ export const TextareaField = <T extends FieldValues>({
   disabled,
   register,
   errors,
-}: AreaFieldProps<T>) => {
-  return (
-    <label
-      htmlFor={name}
-      className={`
-        ${styles.label} ${disabled ? styles.labelDis : errors ? styles.labelErr : styles.labelDef}
-      `}
-    >
-      <span className={styles.title}>{label}</span>
-      <div className={styles.wrapper}>
-        <textarea
-          id={name}
-          {...register(name)}
-          disabled={disabled}
-          placeholder={placeholder}
-          className={styles.textarea}
-        />
-        {errors && errors.message && !disabled && (
-          <span className={styles.errorMsg}>{errors.message}</span>
-        )}
-      </div>
-    </label>
-  );
-};
+}: AreaFieldProps<T>) => (
+  <label
+    htmlFor={name}
+    className={`
+      ${styles.label} ${disabled ? styles.labelDis : errors ? styles.labelErr : styles.labelDef}
+    `}
+  >
+    <span className={styles.title}>{label}</span>
+    <div className={styles.wrapper}>
+      <textarea
+        id={name}
+        {...register(name)}
+        disabled={disabled}
+        placeholder={placeholder}
+        className={styles.textarea}
+      />
+      {errors && errors.message && !disabled && (
+        <span className={styles.errorMsg}>{errors.message}</span>
+      )}
+    </div>
+  </label>
+);

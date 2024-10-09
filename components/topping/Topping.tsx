@@ -11,19 +11,17 @@ interface Props {
   path?: string;
 }
 
-export const Topping = ({ title, children, link, path }: Props) => {
-  return (
-    <section className={styles.topping}>
-      {link && (
-        <Link href={path || ROUTES.dashboard} className={styles.link}>
-          <SvgHandler icon={EIconsSet.ArrowLeft} />
-          <span>{link}</span>
-        </Link>
-      )}
-      <div className={styles.wrapper}>
-        <h1 className={styles.title}>{title}</h1>
-        {children}
-      </div>
-    </section>
-  );
-};
+export const Topping = ({ title, children, link, path }: Props) => (
+  <section className={styles.topping}>
+    {link && (
+      <Link href={path || ROUTES.dashboard} className={styles.link}>
+        <SvgHandler icon={EIconsSet.ArrowLeft} />
+        <span>{link}</span>
+      </Link>
+    )}
+    <div className={styles.wrapper}>
+      <h1 className={styles.title}>{title}</h1>
+      {children}
+    </div>
+  </section>
+);

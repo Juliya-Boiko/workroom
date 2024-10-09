@@ -9,18 +9,16 @@ interface Props {
   onClick?: () => void;
 }
 
-export const BtnPrimary = ({ type, spread, children, disabled, onClick }: Props) => {
-  return (
-    <button
-      type={type ? type : 'button'}
-      className={styles.button}
-      disabled={disabled}
-      style={{
-        width: spread ? '100%' : 'fit-content',
-      }}
-      onClick={onClick}
-    >
-      {children}
-    </button>
-  );
-};
+export const BtnPrimary = ({ type, spread, children, disabled, onClick }: Props) => (
+  <button
+    type={type ? type : 'button'}
+    className={styles.button}
+    disabled={disabled}
+    style={{
+      width: spread ? '100%' : 'fit-content',
+    }}
+    onClick={onClick}
+  >
+    {children}
+  </button>
+);

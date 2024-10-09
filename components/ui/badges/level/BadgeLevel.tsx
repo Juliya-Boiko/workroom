@@ -5,6 +5,4 @@ interface Props {
   label: ELevelEmployee;
 }
 
-export const BadgeLevel = ({ label }: Props) => {
-  return <div className={styles.badge}>{label}</div>;
-};
+export const BadgeLevel = ({ label }: Props) => <div className={styles.badge}>{label}</div>;

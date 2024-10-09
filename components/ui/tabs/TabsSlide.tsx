@@ -11,18 +11,16 @@ export const TabsSlide = <T extends EViewEmployees | EViewProfile>({
   options,
   value,
   onChange,
-}: Props<T>) => {
-  return (
-    <ul className={styles.tabsSlide}>
-      {options.map((el) => (
-        <li
-          key={el}
-          className={`${styles.item} ${value === el ? styles.active : ''}`}
-          onClick={() => onChange(el)}
-        >
-          {el}
-        </li>
-      ))}
-    </ul>
-  );
-};
+}: Props<T>) => (
+  <ul className={styles.tabsSlide}>
+    {options.map((el) => (
+      <li
+        key={el}
+        className={`${styles.item} ${value === el ? styles.active : ''}`}
+        onClick={() => onChange(el)}
+      >
+        {el}
+      </li>
+    ))}
+  </ul>
+);

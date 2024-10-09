@@ -6,18 +6,16 @@ interface Props {
   onChange: (v: string) => void;
 }
 
-export const RadioTab = ({ options, value, onChange }: Props) => {
-  return (
-    <ul className={styles.list}>
-      {options.map((size) => (
-        <li
-          key={size}
-          className={`${styles.item} ${value === size ? styles.active : ''}`}
-          onClick={() => onChange(size)}
-        >
-          {size}
-        </li>
-      ))}
-    </ul>
-  );
-};
+export const RadioTab = ({ options, value, onChange }: Props) => (
+  <ul className={styles.list}>
+    {options.map((size) => (
+      <li
+        key={size}
+        className={`${styles.item} ${value === size ? styles.active : ''}`}
+        onClick={() => onChange(size)}
+      >
+        {size}
+      </li>
+    ))}
+  </ul>
+);

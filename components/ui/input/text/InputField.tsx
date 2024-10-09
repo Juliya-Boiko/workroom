@@ -22,28 +22,26 @@ export const InputField = <T extends FieldValues>({
   errors,
   name,
   register,
-}: InputFieldProps<T>) => {
-  return (
-    <label
-      htmlFor={name}
-      className={`
-        ${styles.label} ${disabled ? styles.labelDis : errors ? styles.labelErr : styles.labelDef}
-      `}
-    >
-      <span className={styles.title}>{label}</span>
-      <div className={styles.wrapper}>
-        <input
-          id={name}
-          type={type ? type : 'text'}
-          {...register(name)}
-          disabled={disabled}
-          placeholder={placeholder}
-          className={styles.input}
-        />
-        {errors && errors.message && !disabled && (
-          <span className={styles.errorMsg}>{errors.message}</span>
-        )}
-      </div>
-    </label>
-  );
-};
+}: InputFieldProps<T>) => (
+  <label
+    htmlFor={name}
+    className={`
+      ${styles.label} ${disabled ? styles.labelDis : errors ? styles.labelErr : styles.labelDef}
+    `}
+  >
+    <span className={styles.title}>{label}</span>
+    <div className={styles.wrapper}>
+      <input
+        id={name}
+        type={type ? type : 'text'}
+        {...register(name)}
+        disabled={disabled}
+        placeholder={placeholder}
+        className={styles.input}
+      />
+      {errors && errors.message && !disabled && (
+        <span className={styles.errorMsg}>{errors.message}</span>
+      )}
+    </div>
+  </label>
+);

@@ -5,7 +5,6 @@ interface Props {
 
 export const Progress = ({ value, total }: Props) => {
   const progress = value ? value : 0;
-
   const radius = 16;
   const circumference = 2 * Math.PI * radius;
   const percent = Math.min((progress / total) * 100, 100);

@@ -8,15 +8,13 @@ interface Props {
   onClick?: () => void;
 }
 
-export const BtnSecondary = ({ type, children, disabled, onClick }: Props) => {
-  return (
-    <button
-      type={type ? type : 'button'}
-      className={styles.button}
-      disabled={disabled}
-      onClick={onClick}
-    >
-      {children}
-    </button>
-  );
-};
+export const BtnSecondary = ({ type, children, disabled, onClick }: Props) => (
+  <button
+    type={type ? type : 'button'}
+    className={styles.button}
+    disabled={disabled}
+    onClick={onClick}
+  >
+    {children}
+  </button>
+);
