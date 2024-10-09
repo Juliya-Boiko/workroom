@@ -10,50 +10,49 @@ interface Props {
   employee: IEmployee;
 }
 
-export const EmployeeCard = ({ employee }: Props) => {
-  const user = {
-    name: employee.name,
-    avatar: employee.avatar,
-  };
-
-  return (
-    <li className={styles.employeeCard}>
-      <div className={styles.user}>
-        <div>
-          <Avatar size="l" user={user} />
-        </div>
-        <div>
-          <p className={styles.name}>{employee.name}</p>
-          <p className={styles.email}>{employee.email}</p>
-        </div>
+export const EmployeeCard = ({ employee }: Props) => (
+  <li className={styles.employeeCard}>
+    <div className={styles.user}>
+      <div>
+        <Avatar
+          size="l"
+          user={{
+            name: employee.name,
+            avatar: employee.avatar,
+          }}
+        />
       </div>
+      <div>
+        <p className={styles.name}>{employee.name}</p>
+        <p className={styles.email}>{employee.email}</p>
+      </div>
+    </div>
 
-      <div className={styles.age}>
-        <div className={styles.wrapper}>
-          <p className={styles.subtitle}>Birthday</p>
-          <p>{employee.birthday ? formatDayDate(employee.birthday.toString()) : '-'}</p>
-        </div>
-        <div className={styles.wrapper}>
-          <p className={styles.subtitle}>Full age</p>
-          <p>{employee.birthday ? getFullYears(employee.birthday.toString()) : '-'}</p>
-        </div>
+    <div className={styles.age}>
+      <div className={styles.wrapper}>
+        <p className={styles.subtitle}>Birthday</p>
+        <p>{employee.birthday ? formatDayDate(employee.birthday.toString()) : '-'}</p>
       </div>
       <div className={styles.wrapper}>
-        <p className={styles.subtitle}>Position</p>
-        <div className={styles.profession}>
-          <span>{employee.profession}</span>
-          {employee.level && <BadgeLevel label={employee.level} />}
-        </div>
+        <p className={styles.subtitle}>Full age</p>
+        <p>{employee.birthday ? getFullYears(employee.birthday.toString()) : '-'}</p>
       </div>
-      <div className={styles.options}>
-        <Link href={`${ROUTES.employee}/${employee._id}`} className={styles.link}>
-          <SvgHandler icon={EIconsSet.Eye} />
-        </Link>
-        <button type="button">Delete</button>
+    </div>
+    <div className={styles.wrapper}>
+      <p className={styles.subtitle}>Position</p>
+      <div className={styles.profession}>
+        <span>{employee.profession}</span>
+        {employee.level && <BadgeLevel label={employee.level} />}
       </div>
-      <div className={styles.dropdown}>
-        <EmployeeCardOptions id={employee._id} />
-      </div>
-    </li>
-  );
-};
+    </div>
+    <div className={styles.options}>
+      <Link href={`${ROUTES.employee}/${employee._id}`} className={styles.link}>
+        <SvgHandler icon={EIconsSet.Eye} />
+      </Link>
+      <button type="button">Delete</button>
+    </div>
+    <div className={styles.dropdown}>
+      <EmployeeCardOptions id={employee._id} />
+    </div>
+  </li>
+);
