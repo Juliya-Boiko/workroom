@@ -14,3 +14,4 @@ export * from './IComment';
 export * from './ITimelog';
 export * from './INotification';
 export * from './IFolder';
+export * from './IPage';

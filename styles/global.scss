@@ -269,8 +269,9 @@ body {
   border-radius: 0 0 24px 24px !important;
   background-color: $white;
   border: none !important;
+  height: auto !important;
 }
 
 .ql-editor {
-  min-height: 400px !important;
+  height: 400px !important;
 }

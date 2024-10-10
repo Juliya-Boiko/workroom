@@ -12,7 +12,7 @@ export interface IFolder {
 }
 
 export interface IFolderInfo extends Omit<IFolder, 'projectId'> {
-  projectId: string;
+  title: string;
 }
 
 export interface IUpdateFolder {

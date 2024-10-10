@@ -1,0 +1,10 @@
+.addPageForm {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+
+  .actions {
+    @include flexContainer (row, center, flex-end);
+    gap: 24px;
+  }
+}

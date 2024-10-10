@@ -10,7 +10,9 @@ export const FolderCard = ({ folder }: { folder: IFolder }) => {
       <Link href={`${ROUTES.folder}/${folder._id}`} className={styles.link}>
         <Image priority src={folder.image} alt={folder.projectId.name} width={44} height={44} />
         <p className={styles.name}>{folder.projectId.name}</p>
-        <p className={styles.pages}>{folder.pages} pages</p>
+        <p className={styles.pages}>
+          {folder.pages} {folder.pages === 1 ? 'page' : 'pages'}
+        </p>
       </Link>
     </li>
   );

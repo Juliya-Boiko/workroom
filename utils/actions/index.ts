@@ -11,3 +11,4 @@ export * from './comments';
 export * from './timelog';
 export * from './notifications';
 export * from './folders';
+export * from './pages';

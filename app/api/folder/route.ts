@@ -2,6 +2,7 @@ import Folder from '@/models/folder';
 import { decodeToken } from '@/libs/jose';
 import { connectToMongoDB } from '@/libs/database';
 import { NextRequest, NextResponse } from 'next/server';
+import Page from '@/models/page';
 
 connectToMongoDB();
 
@@ -16,7 +17,6 @@ export async function POST(request: NextRequest) {
   const folder = new Folder({
     ...reqBody,
     companyId,
-    pages: 0,
     users: [id],
   });
   await folder.save();
@@ -31,7 +31,12 @@ export async function GET(request: NextRequest) {
   const { companyId } = await decodeToken(token);
   const folders = await Folder.find({ companyId })
     .sort({ createdAt: 'desc' })
-    .populate({ path: 'projectId', select: 'name' });
-
-  return NextResponse.json(folders, { status: 200 });
+    .populate({ path: 'projectId', select: 'name' })
+    .lean();
+  const data = folders.map(async (el) => {
+    const pages = await Page.find({ folderId: el._id });
+    return { ...el, pages: pages.length };
+  });
+  const foldersWithPages = await Promise.all(data);
+  return NextResponse.json(foldersWithPages, { status: 200 });
 }

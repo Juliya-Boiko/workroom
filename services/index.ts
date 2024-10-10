@@ -12,3 +12,4 @@ export * from './useComments';
 export * from './useTimelog';
 export * from './useNotifications';
 export * from './useFolder';
+export * from './usePages';

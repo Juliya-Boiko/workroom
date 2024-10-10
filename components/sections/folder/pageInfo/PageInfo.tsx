@@ -1,3 +1,3 @@
-export const PageInfo = () => {
-  return <section>PageInfo</section>;
+export const PageInfo = ({ pageId }: { pageId: string | null }) => {
+  return <section>PageInfo - {pageId}</section>;
 };

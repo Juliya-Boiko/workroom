@@ -18,4 +18,5 @@ export const QUERY_KEYS = {
   NOTIFICATIONS: 'notifications',
   FOLDERS: 'folders',
   FOLDER: 'folder',
+  PAGES: 'pages',
 };

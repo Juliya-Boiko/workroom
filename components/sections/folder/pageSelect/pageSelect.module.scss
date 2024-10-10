@@ -10,7 +10,7 @@
 
   .list {
     border-top: 1px solid $grey-9;
-    padding: 12px 0 12px 12px;
+    padding: 12px;
   }
 
   .openList {
@@ -19,6 +19,27 @@
 
   .hiddenList {
     display: none;
+  }
+
+  .item {
+    padding: 12px;
+    border-radius: 12px;
+    cursor: pointer;
+  }
+
+  .active {
+    background-color: $grey-5;
+  }
+
+  .name {
+    text-transform: capitalize;
+    font-weight: 700;
+    margin-bottom: 8px;
+  }
+
+  .date {
+    font-size: 12px;
+    color: $grey-10;
   }
 
   @include onLaptop {

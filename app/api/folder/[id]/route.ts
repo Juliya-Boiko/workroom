@@ -7,8 +7,15 @@ connectToMongoDB();
 
 export async function GET(_request: NextRequest, { params }: IDynamicRoute) {
   const { id } = params;
-  const folder = await Folder.findById(id);
-  return NextResponse.json(folder, { status: 200 });
+  const folder = await Folder.findById(id).populate({
+    path: 'projectId',
+    select: 'name',
+  });
+  const response = {
+    ...folder.toObject(),
+    title: folder.projectId?.name || null,
+  };
+  return NextResponse.json(response, { status: 200 });
 }
 
 export async function PATCH(request: NextRequest, { params }: IDynamicRoute) {

@@ -1,7 +1,7 @@
 'use client';
 import styles from './folderPage.module.scss';
-import { useState } from 'react';
-import { useFolder, useProject } from '@/services';
+import { useEffect, useState } from 'react';
+import { useFolder, usePages } from '@/services';
 import { Topping } from '@/components/topping/Topping';
 import { Modal, BtnPrimary, Preloader } from '@/components/ui';
 import { EIconsSet, IDynamicComponent } from '@/typings';
@@ -13,18 +13,24 @@ import { ShareFolderForm } from '@/components/forms/shareFolder/ShareFolderForm'
 import { AddPageForm } from '@/components/forms/addPage/AddPageForm';
 
 export const FolderPage = ({ slug }: IDynamicComponent) => {
-  const [page, setPage] = useState<string | null>(null);
+  const [pageId, setPageId] = useState<string | null>(null);
   const [editorView, setEditorView] = useState(false);
   const { data: folder, isLoading: isLoadingFolder } = useFolder(slug);
-  const { data: project, isLoading: isLoadingProject } = useProject(folder?.projectId);
+  const { data: pages, isLoading: isLoadingPages } = usePages(slug);
+
+  useEffect(() => {
+    if (pages && pages.length) {
+      setPageId(pages[0]._id);
+    }
+  }, []);
 
   return (
     <div className={styles.projectPage}>
-      <Topping link="Back to Info Portal" path={ROUTES.infoPortal} title={project?.name || ''}>
+      <Topping link="Back to Info Portal" path={ROUTES.infoPortal} title={folder?.title || ''}>
         <Modal
           title="Share folder access"
           activator={
-            <BtnPrimary disabled={isLoadingFolder || isLoadingProject}>
+            <BtnPrimary disabled={isLoadingFolder}>
               <SvgHandler icon={EIconsSet.UserPlus} />
               <span>Share</span>
             </BtnPrimary>
@@ -33,18 +39,23 @@ export const FolderPage = ({ slug }: IDynamicComponent) => {
         />
       </Topping>
       <div className={styles.container}>
-        {isLoadingFolder || isLoadingProject ? (
+        {isLoadingFolder || isLoadingPages ? (
           <div className={styles.loader}>
             <Preloader />
           </div>
         ) : (
           <div className={styles.content}>
             <PageSelect
-              page={page}
-              onChange={(v) => setPage(v)}
+              pages={pages}
+              active={pageId}
+              onSelect={(v) => setPageId(v)}
               setView={() => setEditorView(true)}
             />
-            {editorView ? <AddPageForm onCancel={() => setEditorView(false)} /> : <PageInfo />}
+            {editorView ? (
+              <AddPageForm folderId={slug} onCancel={() => setEditorView(false)} />
+            ) : (
+              <PageInfo pageId={pageId} />
+            )}
           </div>
         )}
       </div>
