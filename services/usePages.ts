@@ -1,6 +1,5 @@
-/* eslint-disable @typescript-eslint/no-unused-vars */
 import { useQuery, useQueryClient, useMutation } from '@tanstack/react-query';
-import { createPage, getPages, QUERY_KEYS } from '@/utils';
+import { createPage, getPages, deletePage, updatePage, QUERY_KEYS } from '@/utils';
 
 export const usePages = (folderId: string) => {
   return useQuery({
@@ -16,29 +15,23 @@ export const usePageMutation = () => {
     mutationFn: createPage,
     onSuccess: ({ folderId }) => {
       queryClient.invalidateQueries({ queryKey: [QUERY_KEYS.PAGES, folderId] });
+      queryClient.invalidateQueries({ queryKey: [QUERY_KEYS.FOLDERS] });
     },
   });
 
-  // const { mutate: update, isPending: isUpdating } = useMutation({
-  //   mutationFn: updateFolder,
-  //   onSuccess: ({ folderId }: { folderId: string }) => {
-  //     queryClient.invalidateQueries({ queryKey: [QUERY_KEYS.FOLDER, folderId] });
-  //   },
-  // });
+  const { mutate: update, isPending: isUpdating } = useMutation({
+    mutationFn: updatePage,
+    onSuccess: ({ folderId }) => {
+      queryClient.invalidateQueries({ queryKey: [QUERY_KEYS.PAGES, folderId] });
+    },
+  });
 
-  // const { mutate: remove, isPending: isDeleting } = useMutation({
-  //   mutationFn: deleteTask,
-  //   onSuccess: () => {
-  //     queryClient.invalidateQueries({ queryKey: [QUERY_KEYS.TASKS] });
-  //   },
-  // });
+  const { mutate: remove, isPending: isDeleting } = useMutation({
+    mutationFn: deletePage,
+    onSuccess: ({ folderId }) => {
+      queryClient.invalidateQueries({ queryKey: [QUERY_KEYS.PAGES, folderId] });
+    },
+  });
 
-  return { create, isCreating };
+  return { create, isCreating, remove, isDeleting, update, isUpdating };
 };
-
-// export const useFolder = (id: string) => {
-//   return useQuery({
-//     queryKey: [QUERY_KEYS.FOLDER, id],
-//     queryFn: () => getFolderById(id),
-//   });
-// };

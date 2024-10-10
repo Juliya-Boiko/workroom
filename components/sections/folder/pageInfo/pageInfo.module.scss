@@ -1,0 +1,20 @@
+.pageInfo {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+
+  .head {
+    @include flexContainer(row, center, space-between);
+  }
+
+  .title {
+    font-size: 16px;
+    text-transform: capitalize;
+  }
+
+  .container {
+    padding: 24px;
+    border-radius: 24px;
+    background-color: $white;
+  }
+}

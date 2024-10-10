@@ -18,7 +18,7 @@ export const PageSelect = ({ active, pages, setView, onSelect }: Props) => {
   const handleSleect = (id: string) => {
     onSelect(id);
     setOpen(false);
-  }
+  };
 
   return (
     <section className={styles.pageSelect}>
@@ -39,7 +39,11 @@ export const PageSelect = ({ active, pages, setView, onSelect }: Props) => {
       <ul className={`${styles.list} ${open ? styles.openList : styles.hiddenList}`}>
         {pages && pages.length
           ? pages.map(({ _id, title, updatedAt }) => (
-              <li key={_id} className={`${styles.item} ${active === _id ? styles.active : ''}`} onClick={() => handleSleect(_id)}>
+              <li
+                key={_id}
+                className={`${styles.item} ${active === _id ? styles.active : ''}`}
+                onClick={() => handleSleect(_id)}
+              >
                 <p className={styles.name}>{title}</p>
                 <p className={styles.date}>Last modified {formatDayDate(updatedAt)}</p>
               </li>

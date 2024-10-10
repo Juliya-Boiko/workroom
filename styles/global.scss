@@ -251,6 +251,9 @@ body {
 // QUILL
 .quill {
   font-family: inherit !important;
+  border-radius: 24px;
+  @extend %shadow-xs;
+  outline: 1px solid $grey-7;
 }
 
 .ql-toolbar.ql-snow {

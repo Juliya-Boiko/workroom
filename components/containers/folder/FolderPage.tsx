@@ -22,7 +22,9 @@ export const FolderPage = ({ slug }: IDynamicComponent) => {
     if (pages && pages.length) {
       setPageId(pages[0]._id);
     }
-  }, []);
+  }, [pages]);
+
+  const page = pages && pageId ? pages.find((el) => el._id === pageId) : undefined;
 
   return (
     <div className={styles.projectPage}>
@@ -54,7 +56,7 @@ export const FolderPage = ({ slug }: IDynamicComponent) => {
             {editorView ? (
               <AddPageForm folderId={slug} onCancel={() => setEditorView(false)} />
             ) : (
-              <PageInfo pageId={pageId} />
+              <PageInfo page={page} />
             )}
           </div>
         )}

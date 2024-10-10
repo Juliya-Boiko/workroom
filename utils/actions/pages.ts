@@ -1,5 +1,5 @@
 import { axiosInstance } from '@/libs/axios';
-import { ICreatePage, IPage } from '@/typings';
+import { ICreatePage, IPage, IUpdatePage } from '@/typings';
 
 export const createPage = async (data: ICreatePage): Promise<{ folderId: string }> => {
   const response = await axiosInstance.post('/page', data);
@@ -10,5 +10,15 @@ export const getPages = async (folderId: string): Promise<IPage[]> => {
   const response = await axiosInstance.get(`/page`, {
     params: { folderId },
   });
+  return response.data;
+};
+
+export const deletePage = async (id: string): Promise<{ folderId: string }> => {
+  const response = await axiosInstance.delete(`/page/${id}`);
+  return response.data;
+};
+
+export const updatePage = async (data: IUpdatePage): Promise<{ folderId: string }> => {
+  const response = await axiosInstance.patch(`/page/${data.id}`, data.update);
   return response.data;
 };
