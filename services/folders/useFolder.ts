@@ -1,5 +1,6 @@
 import { useQuery, useQueryClient, useMutation } from '@tanstack/react-query';
-import { createFolder, getFolders, getFolderById, updateFolder, QUERY_KEYS } from '@/utils';
+import { QUERY_KEYS } from '@/utils';
+import { createFolder, getFolders, getFolderById, updateFolder } from './folders';
 
 export const useFolders = () => {
   return useQuery({
@@ -24,13 +25,6 @@ export const useFolderMutation = () => {
       queryClient.invalidateQueries({ queryKey: [QUERY_KEYS.FOLDER, folderId] });
     },
   });
-
-  // const { mutate: remove, isPending: isDeleting } = useMutation({
-  //   mutationFn: deleteTask,
-  //   onSuccess: () => {
-  //     queryClient.invalidateQueries({ queryKey: [QUERY_KEYS.TASKS] });
-  //   },
-  // });
 
   return { create, isCreating, update, isUpdating };
 };

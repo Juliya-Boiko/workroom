@@ -1,5 +1,6 @@
 import { useQuery, useQueryClient, useMutation } from '@tanstack/react-query';
-import { deleteAttachById, getAttachments, QUERY_KEYS } from '@/utils';
+import { deleteAttachById, getAttachments } from './attachments';
+import { QUERY_KEYS } from '@/utils';
 
 export const useAttachMutation = () => {
   const queryClient = useQueryClient();

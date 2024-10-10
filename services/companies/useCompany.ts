@@ -1,5 +1,6 @@
 import { useQuery, useQueryClient, useMutation } from '@tanstack/react-query';
-import { getCompanyInfo, updateCompany, QUERY_KEYS } from '@/utils';
+import { getCompanyInfo, updateCompany } from './company';
+import { QUERY_KEYS } from '@/utils';
 
 export const useCompany = () => {
   return useQuery({

@@ -1,5 +1,5 @@
 import { axiosInstance } from '@/libs/axios';
-import { createNotification } from './notifications';
+import { createNotification } from '../notifications/notifications';
 import { ICreateComment, IUpdateComment, IComment, ENotificationType } from '@/typings';
 
 export const createComment = async (

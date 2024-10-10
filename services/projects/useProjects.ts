@@ -1,6 +1,7 @@
 import { useQuery, useQueryClient, useMutation } from '@tanstack/react-query';
 import { IFilters } from '@/typings';
 import { useRouter } from 'next/navigation';
+import { QUERY_KEYS, ROUTES } from '@/utils';
 import {
   getProjects,
   getProjectById,
@@ -8,9 +9,7 @@ import {
   deleteProject,
   updateProject,
   getFolderlessProjects,
-  QUERY_KEYS,
-  ROUTES,
-} from '@/utils';
+} from './projects';
 
 export const useProjects = (filters: IFilters | null, take?: number, skip?: number) => {
   return useQuery({

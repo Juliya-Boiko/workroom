@@ -1,7 +1,7 @@
 import { axiosInstance } from '@/libs/axios';
 import { EAttachType, ENotificationType, IAttachment } from '@/typings';
 import { deleteImage } from '@/utils';
-import { createNotification } from './notifications';
+import { createNotification } from '../notifications/notifications';
 
 export const getAttachments = async (taskId: string): Promise<IAttachment[]> => {
   const response = await axiosInstance.get(`/attach`, {

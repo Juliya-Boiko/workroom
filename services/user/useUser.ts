@@ -1,15 +1,8 @@
 import { useQuery, useMutation } from '@tanstack/react-query';
 import { useRouter } from 'next/navigation';
-import {
-  getUserInfo,
-  loginUser,
-  registerUserAndCompany,
-  registerUser,
-  handleError,
-  QUERY_KEYS,
-  ROUTES,
-  inviteUsers,
-} from '@/utils';
+import { handleError, QUERY_KEYS, ROUTES } from '@/utils';
+import { getUserInfo } from './user';
+import { registerUserAndCompany, loginUser, registerUser, inviteUsers } from './auth';
 
 export const useUser = () => {
   return useQuery({

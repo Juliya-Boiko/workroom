@@ -1,5 +1,5 @@
 import { ENotificationType } from '@/typings';
-import { getTaskById } from '../actions';
+import { getTaskById } from '@/services/tasks/task';
 
 interface Props {
   type: ENotificationType;

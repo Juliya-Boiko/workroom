@@ -10,7 +10,7 @@ import { LogTimeForm } from '@/components/forms/logTime/LogTimeForm';
 import { TaskDetails } from '@/components/sections/task/taskDetails/TaskDetails';
 import { TaskInfo } from '@/components/sections/task/taskInfo/TaskInfo';
 import { TaskComments } from '@/components/sections/task/comments/TaskComments';
-import { useAttachments } from '@/services/useAttachments';
+import { useAttachments } from '@/services/attachments/useAttachments';
 
 export const TaskPage = ({ slug }: IDynamicComponent) => {
   const { data: task, isLoading: isLoadingTask } = useTask(slug);

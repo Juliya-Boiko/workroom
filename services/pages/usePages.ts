@@ -1,5 +1,6 @@
 import { useQuery, useQueryClient, useMutation } from '@tanstack/react-query';
-import { createPage, getPages, deletePage, updatePage, QUERY_KEYS } from '@/utils';
+import { QUERY_KEYS } from '@/utils';
+import { createPage, getPages, deletePage, updatePage } from './pages';
 
 export const usePages = (folderId: string) => {
   return useQuery({

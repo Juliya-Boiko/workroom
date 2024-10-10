@@ -1,5 +1,6 @@
 import { useQuery, useMutation, useQueryClient } from '@tanstack/react-query';
-import { createEvent, getEvents, getCalendarEvents, QUERY_KEYS } from '@/utils';
+import { QUERY_KEYS } from '@/utils';
+import { createEvent, getEvents, getCalendarEvents } from './event';
 
 export const useEventsMutation = () => {
   const queryClient = useQueryClient();

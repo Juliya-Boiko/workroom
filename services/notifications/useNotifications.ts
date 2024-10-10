@@ -1,5 +1,6 @@
 import { useQuery } from '@tanstack/react-query';
-import { getNotifications, QUERY_KEYS } from '@/utils';
+import { QUERY_KEYS } from '@/utils';
+import { getNotifications } from './notifications';
 
 export const useNotifications = (take?: number) => {
   return useQuery({

@@ -1,6 +1,7 @@
 import { useQuery, useQueryClient, useMutation } from '@tanstack/react-query';
 import { IFilters } from '@/typings';
-import { getTasks, createTask, updateTask, getTaskById, deleteTask, QUERY_KEYS } from '@/utils';
+import { QUERY_KEYS } from '@/utils';
+import { getTasks, createTask, updateTask, getTaskById, deleteTask } from './task';
 
 export const useTasks = (projectId: string, filters: IFilters | null) => {
   return useQuery({

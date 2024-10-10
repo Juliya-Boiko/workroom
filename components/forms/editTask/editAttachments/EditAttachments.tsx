@@ -2,7 +2,7 @@
 import styles from './editAttachments.module.scss';
 import Link from 'next/link';
 import Image from 'next/image';
-import { useAttachMutation } from '@/services/useAttachments';
+import { useAttachMutation } from '@/services/attachments/useAttachments';
 import { ICreateAttach, EAttachType, EIconsSet } from '@/typings';
 import { SvgHandler } from '@/components/SvgHandler';
 import { UploadAttach } from '@/components/ui';

@@ -1,5 +1,6 @@
 import { useQuery, useMutation, useQueryClient } from '@tanstack/react-query';
-import { createTimelog, getTaskLogs, QUERY_KEYS } from '@/utils';
+import { QUERY_KEYS } from '@/utils';
+import { createTimelog, getTaskLogs } from './timelog';
 
 export const useTimelogMutation = () => {
   const queryClient = useQueryClient();

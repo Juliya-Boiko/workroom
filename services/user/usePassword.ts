@@ -1,6 +1,7 @@
 import { useMutation } from '@tanstack/react-query';
 import { useRouter } from 'next/navigation';
-import { sendEmailRecovery, changePassword, handleError, ROUTES } from '@/utils';
+import { handleError, ROUTES } from '@/utils';
+import { sendEmailRecovery, changePassword } from './auth';
 
 export const usePasswordMutations = () => {
   const router = useRouter();

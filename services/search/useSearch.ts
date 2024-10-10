@@ -1,5 +1,6 @@
 import { useQuery } from '@tanstack/react-query';
-import { getSearch, QUERY_KEYS } from '@/utils';
+import { QUERY_KEYS } from '@/utils';
+import { getSearch } from './search';
 
 interface Props {
   value: string;

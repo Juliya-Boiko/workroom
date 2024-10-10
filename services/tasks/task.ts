@@ -1,7 +1,7 @@
 import { axiosInstance } from '@/libs/axios';
-import { uploadImage } from '../helpers';
-import { createAttach, deleteTaskAttachments } from './attachments';
-import { createNotification } from './notifications';
+import { uploadImage } from '@/utils';
+import { createAttach, deleteTaskAttachments } from '../attachments/attachments';
+import { createNotification } from '../notifications/notifications';
 import {
   ICreateTask,
   IUpdateTask,
