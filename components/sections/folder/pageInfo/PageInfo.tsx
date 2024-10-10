@@ -4,6 +4,7 @@ import { useState } from 'react';
 import { PageInfoOptions } from './options/PageInfoOptions';
 import { EditPageForm } from '@/components/forms/editPageForm/EditPageForm';
 import { IPage } from '@/typings';
+import { Placeholder } from '@/components/ui';
 
 export const PageInfo = ({ page }: { page?: IPage }) => {
   const [isEditing, setIsEditing] = useState(false);
@@ -20,6 +21,7 @@ export const PageInfo = ({ page }: { page?: IPage }) => {
         </>
       ) : null}
       {page && isEditing ? <EditPageForm page={page} onCancel={() => setIsEditing(false)} /> : null}
+      {!page ? <Placeholder primary title="" /> : null}
     </section>
   );
 };

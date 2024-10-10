@@ -1,19 +1,20 @@
 import styles from './folderCard.module.scss';
 import Link from 'next/link';
+import Image from 'next/image';
 import { IFolder } from '@/typings';
 import { ROUTES } from '@/utils';
-import Image from 'next/image';
 
 export const FolderCard = ({ folder }: { folder: IFolder }) => {
   return (
     <li className={styles.folderCard}>
-      <Link href={`${ROUTES.folder}/${folder._id}`} className={styles.link}>
+      <div className={styles.wrapper}>
         <Image priority src={folder.image} alt={folder.projectId.name} width={44} height={44} />
-        <p className={styles.name}>{folder.projectId.name}</p>
-        <p className={styles.pages}>
-          {folder.pages} {folder.pages === 1 ? 'page' : 'pages'}
-        </p>
-      </Link>
+        <div>opts</div>
+      </div>
+      <Link href={`${ROUTES.folder}/${folder._id}`} className={styles.link}>{folder.projectId.name}</Link>
+      <p className={styles.pages}>
+        {folder.pages} {folder.pages === 1 ? 'page' : 'pages'}
+      </p>
     </li>
   );
 };

@@ -42,6 +42,12 @@
     color: $grey-10;
   }
 
+  .placeholder {
+    padding: 12px;
+    color: $grey-10;
+    text-align: center;
+  }
+
   @include onLaptop {
     .laptopHidden {
       display: none;

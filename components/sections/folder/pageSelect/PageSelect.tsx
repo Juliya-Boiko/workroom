@@ -49,6 +49,11 @@ export const PageSelect = ({ active, pages, setView, onSelect }: Props) => {
               </li>
             ))
           : null}
+        {pages && !pages.length ? (
+          <li className={styles.placeholder} onClick={() => setOpen(false)}>
+            No pages created
+          </li>
+        ) : null}
       </ul>
     </section>
   );
