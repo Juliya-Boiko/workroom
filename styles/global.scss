@@ -246,3 +246,31 @@ body {
 .fc .fc-popover {
   max-width: 320px;
 }
+
+
+// QUILL
+.quill {
+  font-family: inherit !important;
+}
+
+.ql-toolbar.ql-snow {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  justify-content: center;
+  border-radius: 24px 24px 0 0;
+  padding: 12px 24px !important;
+  background-color: $white;
+  border: none !important;
+  border-bottom: 1px solid $grey-9 !important;
+}
+
+.ql-container.ql-snow {
+  border-radius: 0 0 24px 24px !important;
+  background-color: $white;
+  border: none !important;
+}
+
+.ql-editor {
+  min-height: 400px !important;
+}

@@ -10,6 +10,7 @@ import { ROUTES } from '@/utils';
 import { PageSelect } from '@/components/sections/folder/pageSelect/PageSelect';
 import { PageInfo } from '@/components/sections/folder/pageInfo/PageInfo';
 import { ShareFolderForm } from '@/components/forms/shareFolder/ShareFolderForm';
+import { AddPageForm } from '@/components/forms/addPage/AddPageForm';
 
 export const FolderPage = ({ slug }: IDynamicComponent) => {
   const [page, setPage] = useState<string | null>(null);
@@ -43,7 +44,7 @@ export const FolderPage = ({ slug }: IDynamicComponent) => {
               onChange={(v) => setPage(v)}
               setView={() => setEditorView(true)}
             />
-            {editorView ? <div>editop</div> : <PageInfo />}
+            {editorView ? <AddPageForm onCancel={() => setEditorView(false)} /> : <PageInfo />}
           </div>
         )}
       </div>

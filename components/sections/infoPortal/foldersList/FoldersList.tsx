@@ -7,8 +7,6 @@ import { useFolders } from '@/services';
 export const FoldersList = () => {
   const { data: folders, isLoading } = useFolders();
 
-  console.log({ folders });
-
   return (
     <section className={styles.foldersList}>
       {isLoading ? <Preloader /> : null}

@@ -15,3 +15,4 @@ export * from './addComment';
 export * from './logTime';
 export * from './addFolder';
 export * from './shareFolder';
+export * from './addPage';
