@@ -1,6 +1,6 @@
 import { axiosInstance } from '@/libs/axios';
-import { ENotificationType, INotification } from '@/typings';
 import { generateNotificationText } from '@/utils';
+import { ENotificationType, INotification } from '@/typings';
 
 interface Props {
   taskId: string;

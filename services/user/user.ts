@@ -1,6 +1,6 @@
 import { axiosInstance } from '@/libs/axios';
-import { IUserInfo, IProfile } from '@/typings';
 import { uploadImage, deleteImage } from '@/utils';
+import { IUserInfo, IProfile } from '@/typings';
 
 export const getUserInfo = async (): Promise<IUserInfo> => {
   const response = await axiosInstance.get('/user');

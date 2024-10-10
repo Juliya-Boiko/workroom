@@ -1,6 +1,6 @@
 import { axiosInstance } from '@/libs/axios';
 import { ICompany } from '@/typings';
-import { CompanyFormData } from '../schemas';
+import { CompanyFormData } from '@/utils';
 
 export const getCompanyInfo = async (): Promise<ICompany> => {
   const response = await axiosInstance.get('/company');

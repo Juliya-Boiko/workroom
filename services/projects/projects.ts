@@ -1,11 +1,11 @@
 import { axiosInstance } from '@/libs/axios';
 import { IProjectInfo, IProjectDetails, IFilters } from '@/typings';
+import { deleteProjectTasks } from '../tasks/task';
 import {
   AddProjectFormData,
   uploadImage,
   uploadThumb,
   IMAGE_THUMB_STARTS,
-  deleteProjectTasks,
   deleteImage,
 } from '@/utils';
 
