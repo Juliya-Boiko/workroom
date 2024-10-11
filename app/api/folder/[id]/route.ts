@@ -3,6 +3,7 @@ import { connectToMongoDB } from '@/libs/database';
 import { NextRequest, NextResponse } from 'next/server';
 import { IDynamicRoute } from '@/typings';
 import Project from '@/models/project';
+import Page from '@/models/page';
 
 connectToMongoDB();
 
@@ -33,13 +34,9 @@ export async function PATCH(request: NextRequest, { params }: IDynamicRoute) {
   return NextResponse.json({ folderId: folder._id }, { status: 200 });
 }
 
-// export async function DELETE(request: NextRequest, { params }: IDynamicRoute) {
-//   const { id } = params;
-//   await Task.findOneAndDelete({ _id: id });
-//   await Attachment.deleteMany({ taskId: id });
-//   return NextResponse.json({ message: 'Task deleted' }, { status: 200 });
-// }
-// .populate({
-//   path: 'projectId',
-//   select: 'name',
-// });
+export async function DELETE(_request: NextRequest, { params }: IDynamicRoute) {
+  const { id } = params;
+  await Folder.findOneAndDelete({ _id: id });
+  await Page.deleteMany({ folderId: id });
+  return NextResponse.json({ message: 'Folder deleted' }, { status: 200 });
+}

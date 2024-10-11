@@ -20,3 +20,7 @@ export const updateFolder = async (data: IUpdateFolder): Promise<{ folderId: str
   const response = await axiosInstance.patch(`/folder/${data.id}`, data.update);
   return response.data;
 };
+
+export const deleteFolder = async (id: string) => {
+  await axiosInstance.delete(`/folder/${id}`);
+};

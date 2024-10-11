@@ -16,3 +16,4 @@ export * from './logTime';
 export * from './addFolder';
 export * from './shareFolder';
 export * from './addPage';
+export * from './editFolder';

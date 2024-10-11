@@ -11,11 +11,14 @@ export async function POST(request: NextRequest) {
   }
 
   const reqBody = await request.json();
+  const lastPage = await Page.findOne({ folderId: reqBody.folderId }).sort({ order: -1 });
+
   const page = new Page({
     ...reqBody,
+    order: lastPage ? lastPage.order + 1 : 0,
   });
   await page.save();
-  return NextResponse.json({ folderId: page.folderId }, { status: 201 });
+  return NextResponse.json({ folderId: reqBody.folderId }, { status: 201 });
 }
 
 export async function GET(request: NextRequest) {
@@ -25,6 +28,6 @@ export async function GET(request: NextRequest) {
   }
   const url = new URL(request.url);
   const folderId = url.searchParams.get('folderId');
-  const pages = await Page.find({ folderId }).sort({ createdAt: 'desc' });
+  const pages = await Page.find({ folderId }).sort({ order: -1 });
   return NextResponse.json(pages, { status: 200 });
 }

@@ -1,0 +1,22 @@
+.reorderPages {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+
+  .item {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    background-color: $white;
+    padding: 14px;
+    border-radius: 14px;
+    font-weight: 700;
+    cursor: grab;
+    text-transform: capitalize;
+  }
+
+  .order {
+    font-size: 28px;
+    color: $grey-3;
+  }
+}

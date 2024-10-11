@@ -7,6 +7,7 @@ export interface ICreatePage {
 export interface IPage extends ICreatePage {
   _id: string;
   updatedAt: Date;
+  order: number;
 }
 
 export interface IUpdatePage {

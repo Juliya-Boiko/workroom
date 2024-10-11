@@ -5,6 +5,7 @@ const pageSchema = new Schema(
     title: { type: String, required: true },
     content: { type: String, required: true },
     folderId: { type: Schema.Types.ObjectId, ref: 'Folder', required: true },
+    order: { type: Number, required: true },
   },
   {
     timestamps: true,

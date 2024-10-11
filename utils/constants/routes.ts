@@ -19,6 +19,7 @@ export const ROUTES = {
   editTask: '/task/edit',
   infoPortal: '/info-portal',
   folder: '/folder',
+  editFolder: '/folder/edit',
 };
 
 export type RoutesType = typeof ROUTES;
