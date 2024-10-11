@@ -11,7 +11,7 @@ export const ShareFolderForm = ({ slug }: { slug: string }) => {
   const { data: folder, isLoading: isLoadingFolder } = useFolder(slug);
   const { data: employees, isLoading: isLoadingEmployees } = useEmployees();
   const { closeModal } = useModalContext();
-  const { update, isUpdating } = useFolderMutation();
+  const { share, isSharing } = useFolderMutation();
 
   const variants = employees?.filter((el) => !folder?.users.includes(el._id));
 
@@ -27,10 +27,10 @@ export const ShareFolderForm = ({ slug }: { slug: string }) => {
     mode: 'onChange',
   });
 
-  const isDisabled = !isDirty || !isValid || isLoadingFolder || isLoadingEmployees || isUpdating;
+  const isDisabled = !isDirty || !isValid || isLoadingFolder || isLoadingEmployees || isSharing;
 
   const onSubmit = async (v: ShareFolderFormData) => {
-    update({
+    share({
       id: slug,
       update: v,
     });

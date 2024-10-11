@@ -10,7 +10,6 @@ export const getPages = async (folderId: string): Promise<IPage[]> => {
   const response = await axiosInstance.get(`/page`, {
     params: { folderId },
   });
-  console.log(response.data);
   return response.data;
 };
 

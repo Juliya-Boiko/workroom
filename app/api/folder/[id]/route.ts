@@ -44,3 +44,19 @@ export async function DELETE(_request: NextRequest, { params }: IDynamicRoute) {
   await Page.deleteMany({ folderId: id });
   return NextResponse.json({ message: 'Folder deleted' }, { status: 200 });
 }
+
+export async function PUT(request: NextRequest, { params }: IDynamicRoute) {
+  const token = request.cookies.get('workroom')?.value;
+  const { id } = params;
+  const reqBody = await request.json();
+  if (!token) {
+    return NextResponse.json({ message: 'Token null or expired' }, { status: 403 });
+  }
+  await Folder.findByIdAndUpdate(
+    id,
+    { $addToSet: { users: { $each: reqBody.users } } },
+    { new: true }
+  );
+
+  return NextResponse.json({ folderId: id }, { status: 200 });
+}

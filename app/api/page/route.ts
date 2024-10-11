@@ -43,7 +43,6 @@ export async function PATCH(request: NextRequest) {
     await Page.findByIdAndUpdate(el._id, { order: el.order });
   });
   await Promise.all(data);
-  await Page.find();
 
   return NextResponse.json({ message: 'Order updated' }, { status: 200 });
 }
