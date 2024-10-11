@@ -1,6 +1,7 @@
 import { axiosInstance } from '@/libs/axios';
 import { IFolder, IFolderInfo, IUpdateFolder } from '@/typings';
 import { AddFolderFormData } from '@/utils';
+import { updatePagesOrder } from '../pages/pages';
 
 export const createFolder = async (data: AddFolderFormData) => {
   await axiosInstance.post('/folder', data);
@@ -18,6 +19,9 @@ export const getFolderById = async (id: string): Promise<IFolderInfo> => {
 
 export const updateFolder = async (data: IUpdateFolder): Promise<{ folderId: string }> => {
   const response = await axiosInstance.patch(`/folder/${data.id}`, data.update);
+  if (data.pages) {
+    await updatePagesOrder(data.pages);
+  }
   return response.data;
 };
 

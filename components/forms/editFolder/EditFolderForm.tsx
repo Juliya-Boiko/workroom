@@ -1,10 +1,11 @@
 'use client';
 import styles from './editFolderForm.module.scss';
 import { useEffect } from 'react';
-import { useFolder, usePages } from '@/services';
+import { useRouter } from 'next/navigation';
+import { useFolder, usePages, useFolderMutation } from '@/services';
 import { useForm, Controller } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
-import { editFolderSchema, EditFolderFormData, folderThumbs } from '@/utils';
+import { editFolderSchema, EditFolderFormData, folderThumbs, ROUTES } from '@/utils';
 import { BtnPrimary } from '@/components/ui';
 import { ThumbSelect } from '../addFolder/thumbSelect/ThumbSelect';
 import { LoaderSkeleton } from '@/components/LoaderSkeleton';
@@ -13,6 +14,8 @@ import { ReorderPages } from './reorderPages/ReorderPages';
 export const EditFolderForm = ({ folderId }: { folderId: string }) => {
   const { data: folder, isLoading: isLoadingFolder } = useFolder(folderId);
   const { data: pages } = usePages(folderId);
+  const { update } = useFolderMutation();
+  const router = useRouter();
   const {
     reset,
     control,
@@ -38,7 +41,14 @@ export const EditFolderForm = ({ folderId }: { folderId: string }) => {
   }, [folder, pages, reset]);
 
   const onSubmit = async (v: EditFolderFormData) => {
-    console.log(v);
+    update({
+      id: folderId,
+      update: {
+        image: v.image,
+      },
+      pages: v.pages,
+    });
+    router.push(`${ROUTES.folder}/${folderId}`);
   };
 
   const isDisabled = !isDirty || !isValid || isSubmitting || isLoadingFolder;

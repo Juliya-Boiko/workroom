@@ -23,6 +23,7 @@ export const useFolderMutation = () => {
     mutationFn: updateFolder,
     onSuccess: ({ folderId }: { folderId: string }) => {
       queryClient.invalidateQueries({ queryKey: [QUERY_KEYS.FOLDER, folderId] });
+      queryClient.invalidateQueries({ queryKey: [QUERY_KEYS.PAGES, folderId] });
     },
   });
 

@@ -1,3 +1,5 @@
+import { IPageOrder } from './IPage';
+
 export interface IFolder {
   _id: string;
   image: string;
@@ -19,5 +21,7 @@ export interface IUpdateFolder {
   id: string;
   update: {
     users?: string[];
+    image?: string;
   };
+  pages?: IPageOrder[];
 }

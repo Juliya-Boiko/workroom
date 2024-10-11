@@ -17,3 +17,9 @@ export interface IUpdatePage {
     content?: string;
   };
 }
+
+export interface IPageOrder {
+  _id: string;
+  title: string;
+  order: number;
+}

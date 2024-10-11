@@ -1,6 +1,7 @@
 import Page from '@/models/page';
 import { connectToMongoDB } from '@/libs/database';
 import { NextRequest, NextResponse } from 'next/server';
+import { IPageOrder } from '@/typings';
 
 connectToMongoDB();
 
@@ -28,6 +29,21 @@ export async function GET(request: NextRequest) {
   }
   const url = new URL(request.url);
   const folderId = url.searchParams.get('folderId');
-  const pages = await Page.find({ folderId }).sort({ order: -1 });
+  const pages = await Page.find({ folderId }).sort({ order: 1 });
   return NextResponse.json(pages, { status: 200 });
+}
+
+export async function PATCH(request: NextRequest) {
+  const token = request.cookies.get('workroom')?.value;
+  if (!token) {
+    return NextResponse.json({ message: 'Token null or expired' }, { status: 403 });
+  }
+  const reqBody = await request.json();
+  const data = reqBody.map(async (el: IPageOrder) => {
+    await Page.findByIdAndUpdate(el._id, { order: el.order });
+  });
+  await Promise.all(data);
+  await Page.find();
+
+  return NextResponse.json({ message: 'Order updated' }, { status: 200 });
 }

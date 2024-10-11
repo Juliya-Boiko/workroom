@@ -1,16 +1,11 @@
 'use client';
 import styles from './reorderPages.module.scss';
+import { IPageOrder } from '@/typings';
 import { DragDropContext, Droppable, Draggable, type DropResult } from '@hello-pangea/dnd';
 
-interface Item {
-  _id: string;
-  title: string;
-  order: number;
-}
-
 interface Props {
-  value: Item[];
-  onChange: (v: Item[]) => void;
+  value: IPageOrder[];
+  onChange: (v: IPageOrder[]) => void;
 }
 
 export const ReorderPages = ({ value, onChange }: Props) => {
@@ -31,34 +26,37 @@ export const ReorderPages = ({ value, onChange }: Props) => {
   return (
     <>
       {value && value.length ? (
-        <DragDropContext onDragEnd={onDragEnd}>
-          <Droppable droppableId="droppable">
-            {(provided) => (
-              <div
-                {...provided.droppableProps}
-                ref={provided.innerRef}
-                className={styles.reorderPages}
-              >
-                {value.map((item, index) => (
-                  <Draggable key={item._id} draggableId={item._id} index={index}>
-                    {(provided) => (
-                      <div
-                        ref={provided.innerRef}
-                        {...provided.draggableProps}
-                        {...provided.dragHandleProps}
-                        className={styles.item}
-                      >
-                        <div className={styles.order}>{index + 1}</div>
-                        <div className={styles.title}>{item.title}</div>
-                      </div>
-                    )}
-                  </Draggable>
-                ))}
-                {provided.placeholder}
-              </div>
-            )}
-          </Droppable>
-        </DragDropContext>
+        <div className={styles.reorderPages}>
+          <p className={styles.label}>Reorder pages</p>
+          <DragDropContext onDragEnd={onDragEnd}>
+            <Droppable droppableId="droppable">
+              {(provided) => (
+                <div
+                  {...provided.droppableProps}
+                  ref={provided.innerRef}
+                  className={styles.container}
+                >
+                  {value.map((item, index) => (
+                    <Draggable key={item._id} draggableId={item._id} index={index}>
+                      {(provided) => (
+                        <div
+                          ref={provided.innerRef}
+                          {...provided.draggableProps}
+                          {...provided.dragHandleProps}
+                          className={styles.item}
+                        >
+                          <div className={styles.order}>{index + 1}</div>
+                          <div className={styles.title}>{item.title}</div>
+                        </div>
+                      )}
+                    </Draggable>
+                  ))}
+                  {provided.placeholder}
+                </div>
+              )}
+            </Droppable>
+          </DragDropContext>
+        </div>
       ) : null}
     </>
   );
