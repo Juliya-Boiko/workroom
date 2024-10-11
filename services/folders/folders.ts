@@ -1,7 +1,7 @@
 import { axiosInstance } from '@/libs/axios';
 import { IFolder, IFolderInfo, IUpdateFolder } from '@/typings';
 import { AddFolderFormData } from '@/utils';
-import { updatePagesOrder } from '../pages/pages';
+import { updatePagesOrder, deleteFolderPages } from '../pages/pages';
 
 export const createFolder = async (data: AddFolderFormData) => {
   await axiosInstance.post('/folder', data);
@@ -32,4 +32,5 @@ export const shareFolder = async (data: IUpdateFolder): Promise<{ folderId: stri
 
 export const deleteFolder = async (id: string) => {
   await axiosInstance.delete(`/folder/${id}`);
+  await deleteFolderPages(id);
 };

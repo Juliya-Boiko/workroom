@@ -100,3 +100,7 @@ export const deleteProjectTasks = async (projectId: string) => {
     await deleteTask(_id);
   });
 };
+
+export const reseTasktEmployees = async (employeeId: string) => {
+  await axiosInstance.put('task', { employeeId });
+};

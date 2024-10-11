@@ -41,3 +41,13 @@ export async function GET(request: NextRequest) {
 
   return NextResponse.json(formatNotifications(notifications), { status: 200 });
 }
+
+export async function DELETE(request: NextRequest) {
+  const token = request.cookies.get('workroom')?.value;
+  if (!token) {
+    return NextResponse.json({ message: 'Token null or expired' }, { status: 403 });
+  }
+  const url = new URL(request.url);
+  const userId = url.searchParams.get('userId');
+  await Notification.deleteMany({ userId });
+}

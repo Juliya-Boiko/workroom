@@ -20,3 +20,11 @@ export const getNotifications = async (take?: number): Promise<INotification[]> 
   const response = await axiosInstance.get(`/notification?take=${take}`);
   return response.data;
 };
+
+export const deleteUserNotifications = async (userId: string) => {
+  await axiosInstance.delete(`/notification`, {
+    params: {
+      userId,
+    },
+  });
+};

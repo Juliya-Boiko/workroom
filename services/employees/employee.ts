@@ -1,5 +1,7 @@
 import { axiosInstance } from '@/libs/axios';
 import { IEmployee, IUpdateEmployee } from '@/typings';
+import { reseTasktEmployees } from '../tasks/task';
+import { deleteUserNotifications } from '../notifications/notifications';
 
 export const getEmployees = async (take?: number): Promise<IEmployee[]> => {
   const response = await axiosInstance.get(`/employee?take=${take}`);
@@ -21,4 +23,6 @@ export const updateLevelEmployee = async ({
 
 export const deleteEmployee = async (id: string) => {
   await axiosInstance.delete(`/employee/${id}`);
+  await reseTasktEmployees(id);
+  await deleteUserNotifications(id);
 };

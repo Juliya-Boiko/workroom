@@ -65,3 +65,14 @@ export async function GET(request: NextRequest) {
 
   return NextResponse.json(tasks, { status: 200 });
 }
+
+export async function PUT(request: NextRequest) {
+  const reqBody = await request.json();
+  const token = request.cookies.get('workroom')?.value;
+  if (!token) {
+    return NextResponse.json({ message: 'Token null or expired' }, { status: 403 });
+  }
+  await Task.updateMany({ assignee: reqBody.employeeId }, { assignee: null });
+
+  return NextResponse.json({ message: 'Employee deleted from assignee' }, { status: 201 });
+}

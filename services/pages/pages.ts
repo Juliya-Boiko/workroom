@@ -26,3 +26,10 @@ export const updatePage = async (data: IUpdatePage): Promise<{ folderId: string 
 export const updatePagesOrder = async (data: IPageOrder[]) => {
   await axiosInstance.patch('/page', data);
 };
+
+export const deleteFolderPages = async (folderId: string) => {
+  const data = await getPages(folderId);
+  data.every(async ({ _id }) => {
+    await deletePage(_id);
+  });
+};

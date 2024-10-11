@@ -37,6 +37,7 @@ export const useEmployeeMutation = () => {
       queryClient.invalidateQueries({ queryKey: [QUERY_KEYS.EMPLOYEES] });
       queryClient.invalidateQueries({ queryKey: [QUERY_KEYS.PROJECTS] });
       queryClient.invalidateQueries({ queryKey: [QUERY_KEYS.TASKS] });
+      queryClient.invalidateQueries({ queryKey: [QUERY_KEYS.NOTIFICATIONS] });
     },
   });
 
