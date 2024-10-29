@@ -39,7 +39,9 @@ export const Tasks = ({ projectId }: Props) => {
         {view === EViewTasks.COLUMNS && tasks && tasks.length ? (
           <TasksColumns tasks={tasks} loading={isLoading} />
         ) : null}
-        {view === EViewTasks.TIMELINE && tasks && tasks.length ? <div>EViewTasks.TIMELINE</div> : null}
+        {view === EViewTasks.TIMELINE && tasks && tasks.length ? (
+          <div>EViewTasks.TIMELINE</div>
+        ) : null}
       </div>
     </section>
   );

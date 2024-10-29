@@ -66,7 +66,7 @@ export const EditProjectForm = ({ project }: Props) => {
         </div>
       </div>
 
-      <div className={styles.container}>
+      <div className={`${styles.container} ${styles.content}`}>
         <InputField
           label="Project Name"
           name="name"
