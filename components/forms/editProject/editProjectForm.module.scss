@@ -42,7 +42,7 @@
 
   @include onLaptop {
     display: grid;
-    grid-template-columns: 280px 1fr;
+    grid-template-columns: 280px 400px;
     justify-content: center;
 
     .hidden {

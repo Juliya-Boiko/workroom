@@ -7,11 +7,9 @@ import { navRoutes } from '@/utils';
 import { SvgHandler } from '@/components/SvgHandler';
 import { BtnIcon, Overlay, Logo, BtnBase } from '@/components/ui';
 import { EIconsSet } from '@/typings';
-import { useCompany } from '@/services';
 
 export const Menu = () => {
   const [openMenu, setOpenMenu] = useState(false);
-  const { data: company } = useCompany();
   const pathname = usePathname();
 
   return (
@@ -22,7 +20,6 @@ export const Menu = () => {
           <div className={styles.container}>
             <div className={styles.head}>
               <Logo colored cropped />
-              <p className={styles.company}>{company?.name}</p>
               <BtnBase color="#7D8592" onClick={() => setOpenMenu(false)} />
             </div>
             <nav className={styles.nav}>

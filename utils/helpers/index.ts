@@ -12,3 +12,4 @@ export * from './responseFormatters';
 export * from './timeFormatter';
 export * from './generateNotification';
 export * from './formatNotification';
+export * from './statisticCounters';
