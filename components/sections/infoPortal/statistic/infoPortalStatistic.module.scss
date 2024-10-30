@@ -9,41 +9,34 @@
   }
 
   .wrapper {
-    @include flexContainer(row, center, space-between);
-    margin-bottom: 24px;
+    @include flexContainer(row, center, space-around);
   }
 
   .amount {
+    text-align: center;
     font-weight: 700;
     font-size: 54px;
     margin-bottom: 8px;
   }
-
+  
   .dynamic {
     font-size: 12px;
     color: $green-2;
   }
 
   .subtitle {
+    text-align: center;
+    margin-top: 24px;
     color: $grey-10;
   }
 
-  // .text {
-  //   color: $grey-3;
-  // }
+  @include onTablet {
+    .wrapper {
+      justify-content: space-between;
+    }
 
-  // .image {
-  //   display: none;
-  // }
-
-  // @include onTablet {
-  //   @include flexContainer(row, center, space-between);
-  //   gap: 48px;
-
-  //   .image {
-  //     display: block;
-  //     max-height: 150px;
-  //     width: auto;
-  //   }
-  // }
+    .subtitle {
+      text-align: start;
+    }
+  }
 }
