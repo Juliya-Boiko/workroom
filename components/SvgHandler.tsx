@@ -820,4 +820,23 @@ export const SvgHandler = ({ icon }: { icon: EIconsSet }) => {
         />
       </svg>
     );
+  if (icon === EIconsSet.FlagEng)
+    return (
+      <svg width="24" height="24" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+        <circle cx="12" cy="12" r="12" fill="#012169" />
+        <path d="M3,3 L21,21 M21,3 L3,21" stroke="#FFF" strokeWidth="4" strokeLinecap="round" />
+        <path d="M3,3 L21,21 M21,3 L3,21" stroke="#C8102E" strokeWidth="2" strokeLinecap="round" />
+        <rect x="8" y="0" width="8" height="24" fill="#FFF" />
+        <rect x="0" y="8" width="24" height="8" fill="#FFF" />
+        <rect x="9" y="0" width="6" height="24" fill="#C8102E" />
+        <rect x="0" y="9" width="24" height="6" fill="#C8102E" />
+      </svg>
+    );
+  if (icon === EIconsSet.FlagUkr)
+    return (
+      <svg width="24" height="24" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+        <circle cx="12" cy="12" r="12" fill="#0057B7" />
+        <path d="M0,12 h24 a12,12 0 0,1 -24,0" fill="#FFD700" />
+      </svg>
+    );
 };

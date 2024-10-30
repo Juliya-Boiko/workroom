@@ -47,4 +47,6 @@ export enum EIconsSet {
   Comment,
   UserPlus,
   Folder,
+  FlagUkr,
+  FlagEng,
 }

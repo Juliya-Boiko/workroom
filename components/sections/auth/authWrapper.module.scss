@@ -5,6 +5,7 @@
   background-color: $white;
   border-radius: 24px;
   overflow: hidden;
+  flex-grow: 1;
   @extend %shadow-s;
 
   .container {

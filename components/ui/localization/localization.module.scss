@@ -1,0 +1,37 @@
+.localization {
+  position: relative;
+  min-height: 24px;
+
+  .btnToggle {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+
+  .list {
+    position: absolute;
+    top: 28px;
+    right: 0;
+    background-color: $white;
+    padding: 16px;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    border-radius: 16px;
+    @extend %shadow-xs;
+  }
+
+  .item {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    cursor: pointer;
+  }
+
+  .btnToggle, .item {
+    transition: all 250ms ease-in-out;
+    &:hover {
+      color: $blue-1;
+    }
+  }
+}
