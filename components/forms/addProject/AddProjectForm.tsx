@@ -3,6 +3,7 @@ import styles from '../common.module.scss';
 import { useForm, Controller } from 'react-hook-form';
 import { useModalContext } from '@/components/providers/ModalProvider';
 import { useProjectsMutation } from '@/services';
+import { useTranslations } from 'next-intl';
 import { yupResolver } from '@hookform/resolvers/yup';
 import { priorityDataTypes } from '@/typings';
 import { SelectImage } from './selectImage/SelectImage';
@@ -33,6 +34,7 @@ const defaultValues = {
 export const AddProjectForm = () => {
   const { closeModal } = useModalContext();
   const { create, isCreating } = useProjectsMutation();
+  const t = useTranslations('Forms');
   const {
     control,
     register,
@@ -64,7 +66,7 @@ export const AddProjectForm = () => {
       ) : (
         <form className={styles.form} onSubmit={handleSubmit(onSubmit)}>
           <InputField
-            label="Project Name"
+            label={t('projectName')}
             name="name"
             register={register}
             placeholder="Project Name"
@@ -76,7 +78,7 @@ export const AddProjectForm = () => {
               name="start"
               render={({ field }) => (
                 <PickerDate
-                  label="Start date"
+                  label={t('start')}
                   value={field.value}
                   onChange={field.onChange}
                   minDate={field.value}
@@ -88,7 +90,7 @@ export const AddProjectForm = () => {
               name="deadline"
               render={({ field }) => (
                 <PickerDate
-                  label="Deadline"
+                  label={t('deadline')}
                   minDate={startDate}
                   value={field.value}
                   onChange={field.onChange}
@@ -102,7 +104,7 @@ export const AddProjectForm = () => {
               name="priority"
               render={({ field }) => (
                 <SelectDrop
-                  label="Priority"
+                  label={t('priority')}
                   options={priorityDataTypes}
                   value={field.value}
                   onChange={field.onChange}
@@ -111,7 +113,7 @@ export const AddProjectForm = () => {
             />
           </div>
           <TextareaField
-            label="Description"
+            label={t('description')}
             name="description"
             register={register}
             placeholder="Add some description of the project"
@@ -123,7 +125,7 @@ export const AddProjectForm = () => {
           />
           <div>
             <BtnPrimary type="submit" disabled={!isDirty || !isValid || isSubmitting}>
-              Save Project
+              {t('saveProject')}
             </BtnPrimary>
           </div>
         </form>

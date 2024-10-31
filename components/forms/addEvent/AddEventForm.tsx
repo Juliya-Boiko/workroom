@@ -4,6 +4,7 @@ import commonStyles from '../common.module.scss';
 import { useEffect } from 'react';
 import { useForm, Controller } from 'react-hook-form';
 import { useEventsMutation } from '@/services';
+import { useTranslations } from 'next-intl';
 import { useModalContext } from '@/components/providers/ModalProvider';
 import { AddEventFormData, addEventSchema } from '@/utils';
 import { yupResolver } from '@hookform/resolvers/yup';
@@ -30,6 +31,8 @@ const defaultValues = {
 export const AddEventForm = () => {
   const { closeModal } = useModalContext();
   const { create, isCreating } = useEventsMutation();
+  const t = useTranslations('Forms');
+
   const {
     control,
     register,
@@ -72,7 +75,7 @@ export const AddEventForm = () => {
       ) : (
         <form className={commonStyles.form} onSubmit={handleSubmit(onSubmit)}>
           <InputField
-            label="Event Name"
+            label={t('eventName')}
             name="name"
             register={register}
             placeholder="Event Name"
@@ -84,7 +87,7 @@ export const AddEventForm = () => {
               name="category"
               render={({ field }) => (
                 <SelectDrop
-                  label="Category"
+                  label={t('category')}
                   options={categoryEventDataTypes}
                   value={field.value}
                   onChange={field.onChange}
@@ -98,7 +101,7 @@ export const AddEventForm = () => {
               name="priority"
               render={({ field }) => (
                 <SelectDrop
-                  label="Priority"
+                  label={t('priority')}
                   options={priorityDataTypes}
                   value={field.value}
                   onChange={field.onChange}
@@ -110,22 +113,24 @@ export const AddEventForm = () => {
             control={control}
             name="date"
             render={({ field }) => (
-              <PickerDate label="Date" value={field.value} onChange={field.onChange} />
+              <PickerDate label={t('date')} value={field.value} onChange={field.onChange} />
             )}
           />
           <Controller
             control={control}
             name="time"
-            render={({ field }) => <PickerTime value={field.value} onChange={field.onChange} />}
+            render={({ field }) => (
+              <PickerTime label={t('time')} value={field.value} onChange={field.onChange} />
+            )}
           />
           <TextareaField
-            label="Description"
+            label={t('description')}
             name="description"
             register={register}
             placeholder="Add some description of the event"
           />
           <BtnPrimary type="submit" disabled={!isDirty || !isValid || isSubmitting || isCreating}>
-            Save Event
+            {t('saveEvent')}
           </BtnPrimary>
         </form>
       )}

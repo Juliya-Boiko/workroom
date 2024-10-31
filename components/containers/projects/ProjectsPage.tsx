@@ -52,9 +52,7 @@ export const ProjectsPage = () => {
             <Preloader />
           </div>
         )}
-        {data && !data.projects.length && (
-          <Placeholder primary title={tHolder('projects')} />
-        )}
+        {data && !data.projects.length && <Placeholder primary title={tHolder('projects')} />}
         {data && data.projects.length > 0 && (
           <>
             <ProjectsGrid

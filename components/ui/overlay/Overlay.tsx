@@ -15,7 +15,6 @@ export const Overlay = ({ isOpen, children, onClose }: Props) => {
 
   useEffect(() => {
     const handleClick = (event: MouseEvent) => {
-      onClose?.();
       const target = event.target as HTMLElement | null;
       if (target && target.id === TARGET_ID) {
         closeModal();
@@ -46,7 +45,7 @@ export const Overlay = ({ isOpen, children, onClose }: Props) => {
   }, [isOpen]);
 
   return (
-    <div id={TARGET_ID} className={styles.overlay} onClick={() => onClose?.()}>
+    <div id={TARGET_ID} className={styles.overlay}>
       {children}
     </div>
   );

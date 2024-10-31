@@ -1,6 +1,7 @@
 'use client';
 import styles from './projectFilterForm.module.scss';
 import { useForm, Controller } from 'react-hook-form';
+import { useTranslations } from 'next-intl';
 import { yupResolver } from '@hookform/resolvers/yup';
 import { filterProjectSchema, FilterProjectFormData } from '@/utils';
 import { BtnIcon, BtnPrimary, SelectDrop, PickerDate } from '@/components/ui';
@@ -12,6 +13,8 @@ interface Props {
 }
 
 export const ProjectFilterForm = ({ filters, setFilters }: Props) => {
+  const t = useTranslations('Forms');
+
   const defaultValues = {
     priority: filters?.priority ?? null,
     start: filters?.start ?? null,
@@ -36,7 +39,7 @@ export const ProjectFilterForm = ({ filters, setFilters }: Props) => {
     if (priority) count++;
     if (start) count++;
     if (deadline) count++;
-    return `Save filters (${count})`;
+    return `${t('saveFilters')} (${count})`;
   };
 
   return (
@@ -47,7 +50,7 @@ export const ProjectFilterForm = ({ filters, setFilters }: Props) => {
           name="priority"
           render={({ field }) => (
             <SelectDrop
-              label="Priority"
+              label={t('priority')}
               options={priorityDataTypes}
               value={field.value}
               onChange={field.onChange}
@@ -67,7 +70,7 @@ export const ProjectFilterForm = ({ filters, setFilters }: Props) => {
           control={control}
           name="start"
           render={({ field }) => (
-            <PickerDate label="Start after" value={field.value} onChange={field.onChange} />
+            <PickerDate label={t('startAfter')} value={field.value} onChange={field.onChange} />
           )}
         />
         {start && (
@@ -79,7 +82,7 @@ export const ProjectFilterForm = ({ filters, setFilters }: Props) => {
           control={control}
           name="deadline"
           render={({ field }) => (
-            <PickerDate label="Deadline before" value={field.value} onChange={field.onChange} />
+            <PickerDate label={t('deadlineBefore')} value={field.value} onChange={field.onChange} />
           )}
         />
         {deadline && (

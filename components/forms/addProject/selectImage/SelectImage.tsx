@@ -1,6 +1,7 @@
 'use client';
 import styles from './selectImage.module.scss';
 import Image from 'next/image';
+import { useTranslations } from 'next-intl';
 import { UploadThumb } from '@/components/ui';
 import { StaticImageData } from 'next/image';
 import {
@@ -18,6 +19,8 @@ interface Props {
 }
 
 export const SelectImage = ({ value, onChange }: Props) => {
+  const t = useTranslations('Forms');
+
   const imgSrc =
     typeof value === 'string' && value.includes(IMAGE_THUMB_STARTS)
       ? [value, projectThumbs[value as ProjectThumbsKeys]]
@@ -37,10 +40,8 @@ export const SelectImage = ({ value, onChange }: Props) => {
 
   return (
     <div className={styles.selectImage}>
-      <p className={styles.title}>Select image</p>
-      <p className={styles.text}>
-        Select or upload an avatar for the project (available formats: jpg, png)
-      </p>
+      <p className={styles.title}>{t('selectImage')}</p>
+      <p className={styles.text}>{t('imageFormat')}</p>
       <ul className={styles.list}>
         {projectThumbsDataTypes.map((el) => (
           <li

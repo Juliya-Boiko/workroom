@@ -1,8 +1,8 @@
 export enum ECategoryEvent {
-  CORPORATE = 'Corporate',
-  BIRTHDAY = 'Birthday',
-  MEETING = 'Meeting',
-  OTHER = 'Other',
+  CORPORATE = 'corporate',
+  BIRTHDAY = 'birthday',
+  MEETING = 'meeting',
+  OTHER = 'other',
 }
 
 export const categoryEventDataTypes = Object.values(ECategoryEvent);

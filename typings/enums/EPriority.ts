@@ -1,9 +1,9 @@
 import { EIconsSet } from './EIconsSet';
 
 export enum EPriority {
-  LOW = 'Low',
-  MEDIUM = 'Medium',
-  HIGH = 'High',
+  LOW = 'low',
+  MEDIUM = 'medium',
+  HIGH = 'high',
 }
 
 export const EPrioritySet = {
