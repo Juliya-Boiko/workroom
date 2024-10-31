@@ -5,11 +5,12 @@ import { EventCard } from '@/components/cards/event/EventsCard';
 import { Placeholder } from '@/components/ui';
 
 interface Props {
+  holder: string;
   loading: boolean;
   events?: IEvent[];
 }
 
-export const EventsList = ({ loading, events }: Props) => (
+export const EventsList = ({ loading, events, holder }: Props) => (
   <ul className={styles.eventsList}>
     {loading &&
       eventSectionSkeleton.map((el) => <EventCard loading={loading} key={el._id} event={el} />)}
@@ -20,6 +21,6 @@ export const EventsList = ({ loading, events }: Props) => (
           <EventCard event={el} />
         </li>
       ))}
-    {events && !events.length && <Placeholder title="You dont have events yet" />}
+    {events && !events.length && <Placeholder title={holder} />}
   </ul>
 );

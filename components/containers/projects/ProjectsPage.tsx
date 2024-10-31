@@ -19,7 +19,7 @@ export const ProjectsPage = () => {
 
   return (
     <div className={styles.projectsPage}>
-      <Topping title="Projects">
+      <Topping title="projects">
         <div className={styles.filters}>
           {projectsViewDataTypes.map(({ value, icon }) => (
             <BtnIcon

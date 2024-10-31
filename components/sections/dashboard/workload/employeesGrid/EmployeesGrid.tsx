@@ -5,11 +5,12 @@ import { IEmployee } from '@/typings';
 import { Placeholder } from '@/components/ui';
 
 interface Props {
+  holder: string;
   loading: boolean;
   employees: IEmployee[] | undefined;
 }
 
-export const EmployeesGrid = ({ loading, employees }: Props) => (
+export const EmployeesGrid = ({ loading, employees, holder }: Props) => (
   <>
     {loading && (
       <ul className={styles.employeesGrid}>
@@ -29,6 +30,6 @@ export const EmployeesGrid = ({ loading, employees }: Props) => (
         ))}
       </ul>
     )}
-    {!loading && !employees?.length && <Placeholder title="You dont have employees yet" primary />}
+    {!loading && !employees?.length && <Placeholder title={holder} primary />}
   </>
 );

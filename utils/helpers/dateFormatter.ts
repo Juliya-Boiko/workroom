@@ -1,6 +1,6 @@
 import moment from 'moment';
 import { format } from 'date-fns';
-import { TODAY_OPTIONS, DATE_LOCALE } from '@/utils';
+import { TODAY_OPTIONS, DATE_LOCALE_ENG } from '@/utils';
 
 export const formatDeadlineDate = (value: string) => {
   if (value) {
@@ -16,7 +16,7 @@ export const formatDeadlineDate = (value: string) => {
 export const formatDayDate = (value: string | Date) => {
   if (value) {
     const day = new Date(value);
-    return day.toLocaleDateString(DATE_LOCALE, TODAY_OPTIONS);
+    return day.toLocaleDateString(DATE_LOCALE_ENG, TODAY_OPTIONS);
   }
 };
 

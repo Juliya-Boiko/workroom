@@ -1,4 +1,3 @@
-import { useTranslations } from 'next-intl';
 import { decodeInviteToken } from '@/libs/jose';
 import { IDynamicComponent } from '@/typings';
 import { AuthWrapper } from '@/components/sections/auth/AuthWrapper';

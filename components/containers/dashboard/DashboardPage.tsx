@@ -8,7 +8,7 @@ import { TodayBadge } from '@/components/sections/dashboard/today/TodayBadge';
 
 export const DashboardPage = () => (
   <div className={styles.dashboardPage}>
-    <Topping title="Dashboard">
+    <Topping title="dashboard">
       <TodayBadge />
     </Topping>
     <div className={styles.container}>

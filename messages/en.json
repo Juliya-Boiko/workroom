@@ -65,7 +65,8 @@
     "employees": "Employees",
     "infoPortal": "Info Portal",
     "logout": "Logout",
-    "profile": "Profile"
+    "profile": "Profile",
+    "myProfile": "My Profile"
   },
   "Header": {
     "search": "Search",
@@ -74,6 +75,28 @@
   },
   "Notifications": {
     "title": "Notifications",
-    "placeholder": "You dont have notifications yet"
+    "placeholder": "You dont have notifications yet",
+    "stream": "Activity stream"
+  },
+  "Placeholder": {
+    "projects": "You dont have projects yet",
+    "employees": "You dont have employees yet",
+    "events": "You dont have events yet",
+    "activity": "You dont have any activity yet"
+  },
+  "Projects": {
+    "title": "Projects",
+    "add": "Add project"
+  },
+  "Workload": {
+    "title": "Workload",
+    "add": "Add new"
+  },
+  "Common": {
+    "viewAll": "View all"
+  },
+  "Events": {
+    "title": "Nearest Events",
+    "add": "Add event"
   }
 }

@@ -8,7 +8,7 @@ import { CalendarSection } from '@/components/sections/calendar/CalendarSection'
 
 export const CalendarPage = () => (
   <div className={styles.calendarPage}>
-    <Topping title="Calendar">
+    <Topping title="calendar">
       <Modal
         title="Add Event"
         activator={

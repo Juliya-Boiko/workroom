@@ -3,7 +3,12 @@ import styles from './activityList.module.scss';
 import { Placeholder } from '@/components/ui';
 import { INotification } from '@/typings';
 
-export const ActivityList = ({ notifications }: { notifications: INotification[] }) => (
+interface Props {
+  notifications: INotification[];
+  holder: string;
+}
+
+export const ActivityList = ({ notifications, holder }: Props) => (
   <>
     {notifications.length ? (
       <ul className={styles.activityList}>
@@ -14,7 +19,7 @@ export const ActivityList = ({ notifications }: { notifications: INotification[]
         ))}
       </ul>
     ) : (
-      <Placeholder title="You dont have any activity yet" />
+      <Placeholder title={holder} />
     )}
   </>
 );

@@ -11,7 +11,7 @@ import { InfoPortalStatistic } from '@/components/sections/infoPortal/statistic/
 
 export const InfoPortalPage = () => (
   <div className={styles.infoPortalPage}>
-    <Topping title="Info Portal">
+    <Topping title="infoPortal">
       <Modal
         title="Add Folder"
         activator={

@@ -49,9 +49,7 @@ export const Search = () => {
         onChange={handleChange}
         className={styles.input}
       />
-      {value && !result && !isLoading && (
-        <div className={styles.placeholder}>{t('type')}</div>
-      )}
+      {value && !result && !isLoading && <div className={styles.placeholder}>{t('type')}</div>}
       {showResult ? (
         <div className={styles.result}>
           {result.projects.length ? (

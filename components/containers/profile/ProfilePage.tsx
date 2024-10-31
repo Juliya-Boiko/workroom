@@ -5,7 +5,7 @@ import { UserData } from '@/components/sections/profile/userData/UserData';
 
 export const ProfilePage = () => (
   <div className={styles.profilePage}>
-    <Topping title="My Profile"></Topping>
+    <Topping title="myProfile"></Topping>
     <div className={styles.container}>
       <UserInfo />
       <UserData />

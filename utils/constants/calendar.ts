@@ -4,4 +4,6 @@ export const TODAY_OPTIONS: Intl.DateTimeFormatOptions = {
   year: 'numeric',
 };
 
-export const DATE_LOCALE = 'en-US';
+export const DATE_LOCALE_ENG = 'en-US';
+
+export const DATE_LOCALE_UK = 'uk-UA';
