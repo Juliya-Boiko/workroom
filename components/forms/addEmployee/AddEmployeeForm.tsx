@@ -3,6 +3,7 @@ import styles from '../signUp/signUp.module.scss';
 import imgSrc from '../../../public/placeholder-3.png';
 import Image from 'next/image';
 import { useState } from 'react';
+import { useTranslations } from 'next-intl';
 import { useModalContext } from '@/components/providers/ModalProvider';
 import { MembersStage } from '../signUp/stages';
 import { BtnPrimary } from '@/components/ui';
@@ -13,6 +14,7 @@ export const AddEmployeeForm = () => {
   const [isDisabled, setDisabled] = useState(true);
   const { sendInvite } = useUserMutations();
   const { closeModal } = useModalContext();
+  const t = useTranslations('Forms');
 
   const onAdd = () => {
     setMembers((prev) => [...prev, '']);
@@ -41,7 +43,7 @@ export const AddEmployeeForm = () => {
       <MembersStage members={members} onAdd={onAdd} onChange={onChange} onDelete={handleDelete} />
       <div className={styles.approveBtn}>
         <BtnPrimary type="button" disabled={isDisabled} onClick={onSubmit}>
-          Send Invite
+          {t('sendInvite')}
         </BtnPrimary>
       </div>
     </div>

@@ -1,4 +1,6 @@
+'use client';
 import styles from './infoPortalPage.module.scss';
+import { useTranslations } from 'next-intl';
 import { Topping } from '@/components/topping/Topping';
 import { Modal, BtnPrimary } from '@/components/ui';
 import { EIconsSet } from '@/typings';
@@ -9,26 +11,30 @@ import { FoldersList } from '@/components/sections/infoPortal/foldersList/Folder
 // eslint-disable-next-line max-len
 import { InfoPortalStatistic } from '@/components/sections/infoPortal/statistic/InfoPortalStatistic';
 
-export const InfoPortalPage = () => (
-  <div className={styles.infoPortalPage}>
-    <Topping title="infoPortal">
-      <Modal
-        title="Add Folder"
-        activator={
-          <BtnPrimary>
-            <SvgHandler icon={EIconsSet.Plus} />
-            <span>Add Folder</span>
-          </BtnPrimary>
-        }
-        content={<AddFolderForm />}
-      />
-    </Topping>
-    <div className={styles.container}>
-      <div className={styles.wrapper}>
-        <InfoPortalHero />
-        <InfoPortalStatistic />
+export const InfoPortalPage = () => {
+  const t = useTranslations('InfoPortal');
+
+  return (
+    <div className={styles.infoPortalPage}>
+      <Topping title="infoPortal">
+        <Modal
+          title={t('add')}
+          activator={
+            <BtnPrimary>
+              <SvgHandler icon={EIconsSet.Plus} />
+              <span>{t('add')}</span>
+            </BtnPrimary>
+          }
+          content={<AddFolderForm />}
+        />
+      </Topping>
+      <div className={styles.container}>
+        <div className={styles.wrapper}>
+          <InfoPortalHero />
+          <InfoPortalStatistic />
+        </div>
+        <FoldersList />
       </div>
-      <FoldersList />
     </div>
-  </div>
-);
+  );
+};

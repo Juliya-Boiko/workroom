@@ -6,11 +6,13 @@ import { EIconsSet } from '@/typings';
 import { useFolderlessProjects } from '@/services';
 
 interface Props {
+  label: string;
   value?: string;
+  holder: string;
   onChange: (v: string) => void;
 }
 
-export const ProjectsSelect = ({ value, onChange }: Props) => {
+export const ProjectsSelect = ({ value, onChange, label, holder }: Props) => {
   const [open, setOpen] = useState(false);
   const ref = useRef<HTMLDivElement>(null);
   const { data } = useFolderlessProjects();
@@ -38,7 +40,7 @@ export const ProjectsSelect = ({ value, onChange }: Props) => {
 
   return (
     <div ref={ref} className={styles.projectSelect}>
-      <p className={styles.label}>Select Project</p>
+      <p className={styles.label}>{label}</p>
       <button
         type="button"
         className={`${styles.selectedBtn} ${open ? styles.openDropBtn : ''}`}
@@ -56,9 +58,7 @@ export const ProjectsSelect = ({ value, onChange }: Props) => {
                 </li>
               ))
             : null}
-          {data && !data.length ? (
-            <li className={styles.placeholder}>You dont nave projects without folders</li>
-          ) : null}
+          {data && !data.length ? <li className={styles.placeholder}>{holder}</li> : null}
         </ul>
       )}
     </div>

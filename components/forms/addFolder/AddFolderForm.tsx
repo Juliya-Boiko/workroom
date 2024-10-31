@@ -1,8 +1,9 @@
 'use client';
 import styles from '../common.module.scss';
-import { useModalContext } from '@/components/providers/ModalProvider';
-import { useFolderMutation } from '@/services';
+import { useTranslations } from 'next-intl';
 import { useForm, Controller } from 'react-hook-form';
+import { useFolderMutation } from '@/services';
+import { useModalContext } from '@/components/providers/ModalProvider';
 import { yupResolver } from '@hookform/resolvers/yup';
 import { addFolderSchema, AddFolderFormData, folderThumbs } from '@/utils';
 import { ProjectsSelect } from './projectsSelect/ProjectsSelect';
@@ -12,6 +13,8 @@ import { ThumbSelect } from './thumbSelect/ThumbSelect';
 export const AddFolderForm = () => {
   const { closeModal } = useModalContext();
   const { create } = useFolderMutation();
+  const t = useTranslations('Forms');
+  const tHolder = useTranslations('Placeholder');
 
   const {
     control,
@@ -36,15 +39,24 @@ export const AddFolderForm = () => {
       <Controller
         control={control}
         name="image"
-        render={({ field }) => <ThumbSelect value={field.value} onChange={field.onChange} />}
+        render={({ field }) => (
+          <ThumbSelect label={t('selectImage')} value={field.value} onChange={field.onChange} />
+        )}
       />
       <Controller
         control={control}
         name="projectId"
-        render={({ field }) => <ProjectsSelect value={field.value} onChange={field.onChange} />}
+        render={({ field }) => (
+          <ProjectsSelect
+            label={t('selectProject')}
+            value={field.value}
+            holder={tHolder('folderList')}
+            onChange={field.onChange}
+          />
+        )}
       />
       <BtnPrimary type="submit" disabled={!isDirty || !isValid || isSubmitting}>
-        Save Folder
+        {t('saveFolder')}
       </BtnPrimary>
     </form>
   );

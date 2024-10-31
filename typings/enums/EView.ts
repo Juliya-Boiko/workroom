@@ -22,8 +22,8 @@ export const tasksViewDataTypes = [
 ];
 
 export enum EViewEmployees {
-  LIST = 'List',
-  ACTIVITY = 'Activity',
+  LIST = 'list',
+  ACTIVITY = 'activity',
 }
 
 export const viewEmployeesDataTypes = Object.values(EViewEmployees);

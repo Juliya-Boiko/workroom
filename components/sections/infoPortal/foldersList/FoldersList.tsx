@@ -1,17 +1,20 @@
 'use client';
-import { FolderCard } from '@/components/cards/folder/FolderCard';
 import styles from './foldersList.module.scss';
-import { Placeholder, Preloader } from '@/components/ui';
 import { useFolders } from '@/services';
+import { useTranslations } from 'next-intl';
+import { Placeholder, Preloader } from '@/components/ui';
+
+import { FolderCard } from '@/components/cards/folder/FolderCard';
 
 export const FoldersList = () => {
   const { data: folders, isLoading } = useFolders();
+  const t = useTranslations('Placeholder');
 
   return (
     <section className={styles.foldersList}>
       {isLoading ? <Preloader /> : null}
       {folders && !folders.length ? (
-        <Placeholder primary title="You dont have folders yet" />
+        <Placeholder primary title={t('folders')} />
       ) : null}
       {folders && folders.length ? (
         <ul className={styles.list}>

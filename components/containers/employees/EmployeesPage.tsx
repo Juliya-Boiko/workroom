@@ -1,8 +1,9 @@
 'use client';
 import styles from './employeesPage.module.scss';
 import { useState } from 'react';
-import { viewEmployeesDataTypes, EIconsSet, EViewEmployees } from '@/typings';
 import { useEmployees } from '@/services';
+import { useTranslations } from 'next-intl';
+import { viewEmployeesDataTypes, EIconsSet, EViewEmployees } from '@/typings';
 import { Topping } from '@/components/topping/Topping';
 import { Modal, BtnPrimary, BtnIcon, TabsSlide, Preloader, Placeholder } from '@/components/ui';
 import { AddEmployeeForm } from '@/components/forms/addEmployee/AddEmployeeForm';
@@ -13,10 +14,12 @@ import { EmployeesActivity } from '@/components/sections/employees/activity/Empl
 export const EmployeesPage = () => {
   const [view, setView] = useState(viewEmployeesDataTypes[0]);
   const { data: employees, isLoading } = useEmployees();
+  const t = useTranslations('Employees');
+  const tHolder = useTranslations('Placeholder');
 
   return (
     <div className={styles.employeesPage}>
-      <Topping title={`Employees ${employees?.length ? `(${employees.length})` : ''}`}>
+      <Topping title={'employees'}>
         <div className={styles.tabletHidden}>
           <TabsSlide options={viewEmployeesDataTypes} value={view} onChange={(v) => setView(v)} />
         </div>
@@ -25,11 +28,11 @@ export const EmployeesPage = () => {
             <BtnIcon title="Filter" icon={EIconsSet.Filter} />
           </div>
           <Modal
-            title="Add Employee"
+            title={t('add')}
             activator={
               <BtnPrimary disabled={isLoading}>
                 <SvgHandler icon={EIconsSet.Plus} />
-                <span>Add Employee</span>
+                <span>{t('add')}</span>
               </BtnPrimary>
             }
             content={<AddEmployeeForm />}
@@ -42,9 +45,7 @@ export const EmployeesPage = () => {
             <Preloader />
           </div>
         )}
-        {employees && !employees.length && (
-          <Placeholder primary title="You dont have employees yet" />
-        )}
+        {employees && !employees.length && <Placeholder primary title={tHolder('employees')} />}
         {employees &&
           employees.length > 0 &&
           (view === EViewEmployees.LIST ? (

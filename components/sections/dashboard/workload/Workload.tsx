@@ -14,7 +14,7 @@ export const WorkloadSection = () => {
   const { data: employees, isLoading } = useEmployees(8);
   const tHolder = useTranslations('Placeholder');
   const tCommon = useTranslations('Common');
-  const t = useTranslations('Workload');
+  const t = useTranslations('Employees');
 
   return (
     <section className={styles.workload}>

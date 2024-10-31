@@ -3,13 +3,14 @@ import Image from 'next/image';
 import { folderThumbs } from '@/utils';
 
 interface Props {
+  label: string;
   value?: string;
   onChange: (v: string) => void;
 }
 
-export const ThumbSelect = ({ value, onChange }: Props) => (
+export const ThumbSelect = ({ value, onChange, label }: Props) => (
   <div className={styles.thumbSelect}>
-    <p className={styles.label}>Select image</p>
+    <p className={styles.label}>{label}</p>
     <ul className={styles.list}>
       {folderThumbs.map((el) => (
         <li

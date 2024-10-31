@@ -59,7 +59,10 @@
     "category": "Category",
     "date": "Date",
     "saveEvent": "Save Event",
-    "time": "Time"
+    "time": "Time",
+    "sendInvite": "Send Invite",
+    "saveFolder": "Save Folder",
+    "selectProject": "Select Project"
   },
   "Options": {
     "work": "Work",
@@ -80,7 +83,8 @@
     "corporate": "Corporate",
     "birthday": "Birthday",
     "meeting": "Meeting",
-    "other": "Other"
+    "list": "List",
+    "activity": "Activity"
   },
   "SidebarMenu": {
     "dashboard": "Dashboard",
@@ -106,13 +110,15 @@
     "projects": "You dont have projects yet",
     "employees": "You dont have employees yet",
     "events": "You dont have events yet",
-    "activity": "You dont have any activity yet"
+    "activity": "You dont have any activity yet",
+    "folderList": "You dont nave projects without folders",
+    "folders": "You dont have folders yet"
   },
   "Projects": {
     "title": "Projects",
     "add": "Add project"
   },
-  "Workload": {
+  "Employees": {
     "title": "Workload",
     "add": "Add new"
   },
@@ -122,5 +128,14 @@
   "Events": {
     "title": "Nearest Events",
     "add": "Add event"
+  },
+  "InfoPortal": {
+    "add": "Add Folder",
+    "title": "Your project data warehouse",
+    "description": " Add project data, create thematic pages, edit data, share information with team members",
+    "currentProjects": "Current Projects",
+    "growth": "Growth",
+    "ongoing": "Ongoing projects last month"
+    
   }
 }
