@@ -2,8 +2,9 @@
 import styles from './projectsPage.module.scss';
 import { useState } from 'react';
 import { useProjects } from '@/services';
-import { Topping } from '@/components/topping/Topping';
+import { useTranslations } from 'next-intl';
 import { projectsViewDataTypes, EIconsSet, IFilters } from '@/typings';
+import { Topping } from '@/components/topping/Topping';
 import { Modal, BtnPrimary, Preloader, BtnIcon, Pagination, Placeholder } from '@/components/ui';
 import { AddProjectForm } from '@/components/forms/addProject/AddProjectForm';
 import { SvgHandler } from '@/components/SvgHandler';
@@ -16,6 +17,8 @@ export const ProjectsPage = () => {
   const [view, setView] = useState(projectsViewDataTypes[0].value);
   const [page, setPage] = useState(0);
   const { data, isLoading: isLoadingProjects } = useProjects(filters, PROJECTS_STEP, page);
+  const tHolder = useTranslations('Placeholder');
+  const t = useTranslations('Projects');
 
   return (
     <div className={styles.projectsPage}>
@@ -33,11 +36,11 @@ export const ProjectsPage = () => {
           <ProjectsFilter filters={filters} setFilters={(v) => setFilters(v)} />
         </div>
         <Modal
-          title="Add Project"
+          title={t('add')}
           activator={
             <BtnPrimary disabled={isLoadingProjects}>
               <SvgHandler icon={EIconsSet.Plus} />
-              <span>Add Project</span>
+              <span>{t('add')}</span>
             </BtnPrimary>
           }
           content={<AddProjectForm />}
@@ -50,7 +53,7 @@ export const ProjectsPage = () => {
           </div>
         )}
         {data && !data.projects.length && (
-          <Placeholder primary title="You dont have projects yet" />
+          <Placeholder primary title={tHolder('projects')} />
         )}
         {data && data.projects.length > 0 && (
           <>
