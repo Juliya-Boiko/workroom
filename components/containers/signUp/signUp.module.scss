@@ -41,7 +41,6 @@
     display: none;
     align-items: center;
     gap: 12px;
-    font-size: 16px;
     font-weight: 500;
     @include onTablet {
       display: flex;
@@ -77,6 +76,7 @@
   }
 
   .count {
+    font-size: 12px;
     @include onTablet {
       display: none;
     }

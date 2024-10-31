@@ -18,7 +18,6 @@ export const Localization = () => {
       const lang = languagesSet.find((el) => el.value === v) || languagesSet[0];
       setLocale(lang);
       document.cookie = `${LOCALE_LANGUAGE}=${v}; path=/;`;
-      setIsOpen(false);
       router.refresh();
     },
     [router]
@@ -39,12 +38,8 @@ export const Localization = () => {
   return (
     <div className={styles.localization}>
       {locale && (
-        <>
-          <button type="button" className={styles.btnToggle} onClick={() => setIsOpen((v) => !v)}>
-            <SvgHandler icon={locale.icon} />
-            <span>{locale.label}</span>
-          </button>
-          {isOpen && (
+        <button type="button" className={styles.btnToggle} onClick={() => setIsOpen((v) => !v)}>
+          {isOpen ? (
             <ul className={styles.list}>
               {languagesSet.map(({ label, value, icon }) => (
                 <li key={value} className={styles.item} onClick={() => selectLanguage(value)}>
@@ -53,8 +48,13 @@ export const Localization = () => {
                 </li>
               ))}
             </ul>
+          ) : (
+            <>
+              <SvgHandler icon={locale.icon} />
+              <span>{locale.label}</span>
+            </>
           )}
-        </>
+        </button>
       )}
     </div>
   );

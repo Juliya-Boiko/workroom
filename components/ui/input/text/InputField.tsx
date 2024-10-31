@@ -1,4 +1,6 @@
+'use client';
 import styles from './inputfield.module.scss';
+import { useTranslations } from 'next-intl';
 import { UseFormRegister, FieldValues, Path } from 'react-hook-form';
 import { HTMLInputTypeAttribute } from 'react';
 
@@ -22,26 +24,30 @@ export const InputField = <T extends FieldValues>({
   errors,
   name,
   register,
-}: InputFieldProps<T>) => (
-  <label
-    htmlFor={name}
-    className={`
-      ${styles.label} ${disabled ? styles.labelDis : errors ? styles.labelErr : styles.labelDef}
-    `}
-  >
-    <span className={styles.title}>{label}</span>
-    <div className={styles.wrapper}>
-      <input
-        id={name}
-        type={type ? type : 'text'}
-        {...register(name)}
-        disabled={disabled}
-        placeholder={placeholder}
-        className={styles.input}
-      />
-      {errors && errors.message && !disabled && (
-        <span className={styles.errorMsg}>{errors.message}</span>
-      )}
-    </div>
-  </label>
-);
+}: InputFieldProps<T>) => {
+  const t = useTranslations('Forms');
+
+  return (
+    <label
+      htmlFor={name}
+      className={`
+        ${styles.label} ${disabled ? styles.labelDis : errors ? styles.labelErr : styles.labelDef}
+      `}
+    >
+      <span className={styles.title}>{t(label)}</span>
+      <div className={styles.wrapper}>
+        <input
+          id={name}
+          type={type ? type : 'text'}
+          {...register(name)}
+          disabled={disabled}
+          placeholder={placeholder}
+          className={styles.input}
+        />
+        {errors && errors.message && !disabled && (
+          <span className={styles.errorMsg}>{errors.message}</span>
+        )}
+      </div>
+    </label>
+  );
+};

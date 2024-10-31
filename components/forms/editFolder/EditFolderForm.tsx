@@ -61,7 +61,9 @@ export const EditFolderForm = ({ folderId }: { folderId: string }) => {
         <Controller
           control={control}
           name="image"
-          render={({ field }) => <ThumbSelect value={field.value} onChange={field.onChange} />}
+          render={({ field }) => (
+            <ThumbSelect label="Select Image" value={field.value} onChange={field.onChange} />
+          )}
         />
       )}
       {pages?.length ? (

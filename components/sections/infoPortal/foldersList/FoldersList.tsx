@@ -13,9 +13,7 @@ export const FoldersList = () => {
   return (
     <section className={styles.foldersList}>
       {isLoading ? <Preloader /> : null}
-      {folders && !folders.length ? (
-        <Placeholder primary title={t('folders')} />
-      ) : null}
+      {folders && !folders.length ? <Placeholder primary title={t('folders')} /> : null}
       {folders && folders.length ? (
         <ul className={styles.list}>
           {folders.map((el) => (
