@@ -57,5 +57,23 @@
     "m": "11-20",
     "l": "21-40",
     "xl": ">40"
+  },
+  "SidebarMenu": {
+    "dashboard": "Dashboard",
+    "projects": "Projects",
+    "calendar": "Calendar",
+    "employees": "Employees",
+    "infoPortal": "Info Portal",
+    "logout": "Logout",
+    "profile": "Profile"
+  },
+  "Header": {
+    "search": "Search",
+    "type": "Type min 3 characters...",
+    "result": "You dont have projects or tasks with this name"
+  },
+  "Notifications": {
+    "title": "Notifications",
+    "placeholder": "You dont have notifications yet"
   }
 }

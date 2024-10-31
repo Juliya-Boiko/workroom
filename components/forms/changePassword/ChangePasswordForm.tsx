@@ -32,7 +32,6 @@ export const ChangePasswordForm = ({ email }: { email: string }) => {
   return (
     <form className={styles.form} onSubmit={handleSubmit(onSubmit)}>
       <h1 className={styles.title}>{tAuth('title')}</h1>
-      
       <PasswordInputField
         label={tForm('password')}
         name="password"

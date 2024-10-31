@@ -27,27 +27,27 @@ export type RouteKeysType = keyof RoutesType;
 
 export const navRoutes = [
   {
-    title: 'Dashboard',
+    title: 'dashboard',
     path: ROUTES.dashboard,
     icon: EIconsSet.Dashboard,
   },
   {
-    title: 'Projects',
+    title: 'projects',
     path: ROUTES.projects,
     icon: EIconsSet.Projects,
   },
   {
-    title: 'Calendar',
+    title: 'calendar',
     path: ROUTES.calendar,
     icon: EIconsSet.Calendar,
   },
   {
-    title: 'Employees',
+    title: 'employees',
     path: ROUTES.employees,
     icon: EIconsSet.Persons,
   },
   {
-    title: 'Info Portal',
+    title: 'infoPortal',
     path: ROUTES.infoPortal,
     icon: EIconsSet.Folder,
   },

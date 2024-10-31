@@ -3,6 +3,7 @@ import styles from './menu.module.scss';
 import Link from 'next/link';
 import { useState } from 'react';
 import { usePathname } from 'next/navigation';
+import { useTranslations } from 'next-intl';
 import { navRoutes } from '@/utils';
 import { SvgHandler } from '@/components/SvgHandler';
 import { BtnIcon, Overlay, Logo, BtnBase } from '@/components/ui';
@@ -11,6 +12,7 @@ import { EIconsSet } from '@/typings';
 export const Menu = () => {
   const [openMenu, setOpenMenu] = useState(false);
   const pathname = usePathname();
+  const t = useTranslations('SidebarMenu');
 
   return (
     <div className={styles.menu}>
@@ -31,7 +33,7 @@ export const Menu = () => {
                   onClick={() => setOpenMenu(false)}
                 >
                   <SvgHandler icon={icon} />
-                  <span>{title}</span>
+                  <span>{t(title)}</span>
                 </Link>
               ))}
             </nav>

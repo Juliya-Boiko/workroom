@@ -1,6 +1,7 @@
 'use client';
 import styles from './account.module.scss';
 import Link from 'next/link';
+import { useTranslations } from 'next-intl';
 import { useState, useEffect, useRef } from 'react';
 import { useUser } from '@/services';
 import { ROUTES } from '@/utils';
@@ -13,6 +14,7 @@ export const Account = () => {
   const [open, setOpen] = useState(false);
   const { data, isLoading } = useUser();
   const ref = useRef<HTMLDivElement>(null);
+  const t = useTranslations('SidebarMenu');
 
   const toggleOpen = () => {
     setOpen((prev) => !prev);
@@ -46,14 +48,14 @@ export const Account = () => {
           <li className={styles.item} onClick={() => setOpen(false)}>
             <Link href={ROUTES.settings} className={styles.action}>
               <SvgHandler icon={EIconsSet.Settings} />
-              <span>Profile</span>
+              <span>{t('profile')}</span>
             </Link>
           </li>
           <li className={styles.item} onClick={() => setOpen(false)}>
             <Logout>
               <div className={styles.action}>
                 <SvgHandler icon={EIconsSet.Logout} />
-                <span>Logout</span>
+                <span>{t('logout')}</span>
               </div>
             </Logout>
           </li>

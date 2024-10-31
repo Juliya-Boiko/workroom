@@ -2,6 +2,7 @@
 import styles from './search.module.scss';
 import Link from 'next/link';
 import Image from 'next/image';
+import { useTranslations } from 'next-intl';
 import { useState, ChangeEvent, useEffect, useRef } from 'react';
 import { defineImageSrc, ROUTES } from '@/utils';
 import { useSearch } from '@/services';
@@ -12,6 +13,7 @@ import { EIconsSet } from '@/typings';
 export const Search = () => {
   const [value, setValue] = useState('');
   const ref = useRef<HTMLLabelElement>(null);
+  const t = useTranslations('Header');
   const { data: result, isLoading } = useSearch({
     value: value.toLowerCase(),
     enabled: value.length >= 3,
@@ -42,13 +44,13 @@ export const Search = () => {
         type="text"
         name="search"
         id="search"
-        placeholder="Search"
+        placeholder={t('search')}
         value={value}
         onChange={handleChange}
         className={styles.input}
       />
       {value && !result && !isLoading && (
-        <div className={styles.placeholder}>Type min 3 characters...</div>
+        <div className={styles.placeholder}>{t('type')}</div>
       )}
       {showResult ? (
         <div className={styles.result}>
@@ -93,7 +95,7 @@ export const Search = () => {
         </div>
       ) : null}
       {value && result && !result.projects.length && !result.tasks.length && (
-        <div className={styles.placeholder}>You dont have projects or tasks with this name</div>
+        <div className={styles.placeholder}>{t('result')}</div>
       )}
     </label>
   );

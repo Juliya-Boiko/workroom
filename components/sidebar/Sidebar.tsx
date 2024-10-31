@@ -3,6 +3,7 @@ import styles from './sidebar.module.scss';
 import Link from 'next/link';
 import { useState } from 'react';
 import { usePathname } from 'next/navigation';
+import { useTranslations } from 'next-intl';
 import { navRoutes } from '@/utils';
 import { Logo } from '../ui';
 import { SvgHandler } from '../SvgHandler';
@@ -12,6 +13,7 @@ import { EIconsSet } from '@/typings';
 export const Sidebar = () => {
   const [open, setOpen] = useState(true);
   const pathname = usePathname();
+  const t = useTranslations('SidebarMenu');
 
   const toggleOpen = () => {
     setOpen((prev) => !prev);
@@ -39,7 +41,7 @@ export const Sidebar = () => {
               className={`${styles.link} ${pathname === path ? styles.active : ''}`}
             >
               <SvgHandler icon={icon} />
-              {open && <span>{title}</span>}
+              {open && <span>{t(title)}</span>}
             </Link>
           ))}
         </nav>
@@ -49,7 +51,7 @@ export const Sidebar = () => {
         <Logout>
           <div className={styles.logout}>
             <SvgHandler icon={EIconsSet.Logout} />
-            {open && <span>Logout</span>}
+            {open && <span>{t('logout')}</span>}
           </div>
         </Logout>
       </div>
