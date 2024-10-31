@@ -15,7 +15,7 @@ import { SvgHandler } from '../../SvgHandler';
 export const SignUpSection = () => {
   const [activeStage, setActiveStages] = useState(ESignStages.EmailStage);
   const { registerOwner, isSuccessRegisterOwner, isRegistering } = useUserMutations();
-  const tAuth = useTranslations('Auth.SignUp');
+  const t = useTranslations('Auth.SignUp');
 
   const handleNext = () => {
     const currentStage = signStagesDataTypes.findIndex((el) => el === activeStage);
@@ -38,7 +38,7 @@ export const SignUpSection = () => {
           <div className={styles.stages}>
             <div className={styles.heading}>
               <Logo cropped />
-              <h1>{tAuth('title')}</h1>
+              <h1>{t('title')}</h1>
             </div>
             <ul className={styles.list}>
               {signStagesDataTypes.map((el, idx) => (
@@ -49,7 +49,7 @@ export const SignUpSection = () => {
                   <div className={styles.circle}>
                     <span className={styles.count}>{idx + 1}</span>
                   </div>
-                  <span>{tAuth(el)}</span>
+                  <span>{t(el)}</span>
                 </li>
               ))}
             </ul>
@@ -77,9 +77,9 @@ export const SignUpSection = () => {
             alt="You are successfully registered!"
             className={styles.image}
           />
-          <h3 className={styles.title}>You are successfully registered!</h3>
+          <h3 className={styles.title}>{t('success')}</h3>
           <Link href={ROUTES.dashboard} className={styles.link}>
-            <span>Let&apos;s Start</span>
+            <span>{t('start')}</span>
             <SvgHandler icon={EIconsSet.ArrowRight} />
           </Link>
         </div>

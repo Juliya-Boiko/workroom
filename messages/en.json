@@ -17,7 +17,19 @@
       "step": "Step",
       "next": "Next Step",
       "previous": "Previous",
-      "signUp": "Sign Up"
+      "signUp": "Sign Up",
+      "success": "You are successfully registered!",
+      "start": "Let's Start"
+    },
+    "ForgotPassword": {
+      "title": "Forgot password?",
+      "text": "Enter youre email & follow instructions in letter",
+      "send": "Send email",
+      "sent": "Email sent"
+    },
+    "NewPassword": {
+      "title": "Enter new password",
+      "confirm": "Confirm"
     }
   },
   "Forms": {

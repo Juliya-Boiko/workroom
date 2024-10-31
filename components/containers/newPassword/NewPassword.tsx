@@ -1,4 +1,4 @@
-import styles from './newPassword.module.scss';
+import { useTranslations } from 'next-intl';
 import { decodeInviteToken } from '@/libs/jose';
 import { IDynamicComponent } from '@/typings';
 import { AuthWrapper } from '@/components/sections/auth/AuthWrapper';
@@ -9,7 +9,6 @@ export const NewPassword = async ({ slug }: IDynamicComponent) => {
 
   return (
     <AuthWrapper>
-      <h1 className={styles.title}>Enter new password</h1>
       <ChangePasswordForm email={email} />
     </AuthWrapper>
   );

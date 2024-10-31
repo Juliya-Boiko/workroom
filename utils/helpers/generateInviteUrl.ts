@@ -8,8 +8,8 @@ export const generateInviteUrl = async (companyId: string, email: string) => {
   return link;
 };
 
-export const generateRecoveryUrl = (companyId: string, email: string) => {
-  const inviteToken = createInviteToken(companyId, email);
+export const generateRecoveryUrl = async (companyId: string, email: string) => {
+  const inviteToken = await createInviteToken(companyId, email);
   const domain = process.env.DOMAIN;
   const link = `${domain}/${ROUTES.newPassword}/${inviteToken}`;
   return link;

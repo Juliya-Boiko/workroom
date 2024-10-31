@@ -703,7 +703,7 @@ export const passwordRecoveryEmailBody = (link: string) => `
                                   <tr>
                                     <td class="v-container-padding-padding" style="overflow-wrap:break-word;word-break:break-word;padding:10px 60px;font-family:'Raleway',sans-serif;" align="left">
                                       <div class="v-font-size" style="font-size: 14px; color: #1386e5; line-height: 140%; text-align: left; word-wrap: break-word;">
-                                        <p style="line-height: 140%;"><span style="text-decoration: underline; line-height: 19.6px;"><span style="line-height: 19.6px;"><a href="${link}">Change password</a></span></span></p>
+                                        <p style="line-height: 140%;"><span style="text-decoration: underline; line-height: 19.6px;"><span style="line-height: 19.6px;"><a href="${link}" target="_blank">Change password</a></span></span></p>
                                       </div>
                                     </td>
                                   </tr>

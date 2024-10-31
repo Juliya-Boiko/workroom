@@ -1,6 +1,7 @@
 'use client';
 import styles from './changePasswordForm.module.scss';
 import { useForm } from 'react-hook-form';
+import { useTranslations } from 'next-intl';
 import { yupResolver } from '@hookform/resolvers/yup';
 import { usePasswordMutations } from '@/services';
 import { passwordSchema, PasswordFormData } from '@/utils';
@@ -8,6 +9,8 @@ import { PasswordInputField, BtnPrimary } from '@/components/ui';
 
 export const ChangePasswordForm = ({ email }: { email: string }) => {
   const { change, isChanging } = usePasswordMutations();
+  const tForm = useTranslations('Forms');
+  const tAuth = useTranslations('Auth.NewPassword');
   const {
     register,
     handleSubmit,
@@ -28,20 +31,22 @@ export const ChangePasswordForm = ({ email }: { email: string }) => {
 
   return (
     <form className={styles.form} onSubmit={handleSubmit(onSubmit)}>
+      <h1 className={styles.title}>{tAuth('title')}</h1>
+      
       <PasswordInputField
-        label="Password"
+        label={tForm('password')}
         name="password"
         register={register}
         errors={errors.password}
       />
       <PasswordInputField
-        label="Confirm Password"
+        label={tForm('confirm')}
         name="confirmPassword"
         register={register}
         errors={errors.confirmPassword}
       />
       <BtnPrimary type="submit" disabled={isDisabled}>
-        <span>Confirm</span>
+        <span>{tAuth('confirm')}</span>
       </BtnPrimary>
     </form>
   );

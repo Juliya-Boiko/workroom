@@ -1,6 +1,7 @@
 'use client';
 import styles from './emailForm.module.scss';
 import { useForm } from 'react-hook-form';
+import { useTranslations } from 'next-intl';
 import { yupResolver } from '@hookform/resolvers/yup';
 import { usePasswordMutations } from '@/services';
 import { emailSchema, EmailFormData } from '@/utils';
@@ -10,6 +11,9 @@ import { EIconsSet } from '@/typings';
 
 export const EmailForm = () => {
   const { sendEmail, isSuccess, isPending } = usePasswordMutations();
+  const tForm = useTranslations('Forms');
+  const tAuth = useTranslations('Auth.ForgotPassword');
+
   const {
     register,
     handleSubmit,
@@ -32,19 +36,19 @@ export const EmailForm = () => {
           <div className={styles.wrapper}>
             <SvgHandler icon={EIconsSet.Checkbox} />
           </div>
-          <p>Email sent</p>
+          <p>{tAuth('sent')}</p>
         </div>
       ) : (
         <form className={styles.form} onSubmit={handleSubmit(onSubmit)}>
           <InputField
-            label="Email Address"
+            label={tForm('email')}
             name="email"
             register={register}
             placeholder="youremail@gmail.com"
             errors={errors.email}
           />
           <BtnPrimary type="submit" disabled={isDisabled}>
-            <span>Send email</span>
+            <span>{tAuth('send')}</span>
             <SvgHandler icon={EIconsSet.ArrowRight} />
           </BtnPrimary>
         </form>

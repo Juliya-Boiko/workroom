@@ -39,7 +39,8 @@ export const sendInviteEmails = async ({ name, companyId, companyName, members }
 };
 
 export const sendPasswordRecoveryEmail = async (email: string, companyId: string) => {
-  const link = generateRecoveryUrl(companyId, email);
+  const link = await generateRecoveryUrl(companyId, email);
+
   await sendEmail({
     to: email,
     subject: 'Password recovery in Workroom',
