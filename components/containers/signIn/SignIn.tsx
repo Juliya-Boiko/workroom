@@ -7,14 +7,14 @@ import { SignInForm } from '@/components/forms/signIn/SignInForm';
 import { AuthWrapper } from '@/components/sections/auth/AuthWrapper';
 
 export const SignInSection = () => {
-  const t = useTranslations('SignIn');
+  const t = useTranslations('Auth.SignIn');
 
   return (
     <AuthWrapper>
       <h1 className={styles.title}>{t('title')}</h1>
       <SignInForm />
       <Link href={ROUTES.signUp} className={styles.link}>
-        Don’t have an account?
+        {t('account')}
       </Link>
     </AuthWrapper>
   );

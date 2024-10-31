@@ -1,5 +1,6 @@
 'use client';
 import styles from './selectDrop.module.scss';
+import { useTranslations } from 'next-intl';
 import { useEffect, useRef, useState } from 'react';
 import { SvgHandler } from '@/components/SvgHandler';
 import { Avatar } from '../avatar/Avatar';
@@ -22,6 +23,7 @@ interface Props {
 export const SelectDrop = ({ clearable, label, options, value, onChange }: Props) => {
   const [open, setOpen] = useState(false);
   const ref = useRef<HTMLDivElement>(null);
+  const t = useTranslations('Options');
 
   const handleOption = (option: string | UserType) => {
     if (typeof option !== 'string' && !option._id) return;
@@ -52,7 +54,7 @@ export const SelectDrop = ({ clearable, label, options, value, onChange }: Props
         onClick={() => setOpen((prev) => !prev)}
       >
         <div>
-          {value && typeof value === 'string' && <span>{value}</span>}
+          {value && typeof value === 'string' && <span>{t(value)}</span>}
           {value && typeof value !== 'string' && (
             <div className={styles.user}>
               {value.name && (
@@ -76,7 +78,7 @@ export const SelectDrop = ({ clearable, label, options, value, onChange }: Props
           {options.map((option) => {
             return typeof option === 'string' ? (
               <li key={option} className={styles.option} onClick={() => handleOption(option)}>
-                {option}
+                {t(option)}
               </li>
             ) : (
               <li key={option._id} className={styles.option} onClick={() => handleOption(option)}>

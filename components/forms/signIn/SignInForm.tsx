@@ -1,18 +1,20 @@
 'use client';
 import styles from './signIn.module.scss';
 import Link from 'next/link';
-import { useState } from 'react';
 import { useForm } from 'react-hook-form';
+import { useTranslations } from 'next-intl';
 import { yupResolver } from '@hookform/resolvers/yup';
 import { signInSchema, SignInFormData, ROUTES } from '@/utils';
-import { InputField, PasswordInputField, BtnPrimary, CheckField } from '@/components/ui';
+import { InputField, PasswordInputField, BtnPrimary } from '@/components/ui';
 import { SvgHandler } from '@/components/SvgHandler';
 import { EIconsSet } from '@/typings';
 import { useUserMutations } from '@/services';
 
 export const SignInForm = () => {
-  const [remember, setRemember] = useState(false);
   const { login } = useUserMutations();
+  const tAuth = useTranslations('Auth.SignIn');
+  const tCommon = useTranslations('Forms');
+
   const {
     register,
     handleSubmit,
@@ -22,10 +24,6 @@ export const SignInForm = () => {
     mode: 'onChange',
   });
 
-  const toggleRemember = () => {
-    setRemember((prev) => !prev);
-  };
-
   const onSubmit = async (data: SignInFormData) => {
     login(data);
   };
@@ -33,29 +31,25 @@ export const SignInForm = () => {
   return (
     <form className={styles.form} onSubmit={handleSubmit(onSubmit)}>
       <InputField
-        label="Email Address"
+        label={tCommon('email')}
         name="email"
         register={register}
         placeholder="youremail@gmail.com"
         errors={errors.email}
       />
       <PasswordInputField
-        label="Password"
+        label={tCommon('password')}
         name="password"
         register={register}
         errors={errors.password}
       />
       <div className={styles.wrapper}>
-        <div className={styles.remember}>
-          <CheckField name="remember" value={remember} onChange={toggleRemember} />
-          <span>Remember me</span>
-        </div>
         <Link href={ROUTES.password} className={styles.link}>
-          Forgot Password?
+          {tAuth('forgot')}
         </Link>
       </div>
       <BtnPrimary type="submit" disabled={!isDirty || !isValid || isSubmitting}>
-        <span>Sign In</span>
+        <span>{tAuth('signIn')}</span>
         <SvgHandler icon={EIconsSet.ArrowRight} />
       </BtnPrimary>
     </form>

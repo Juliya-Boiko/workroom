@@ -1,7 +1,7 @@
 export enum EUsingGoal {
-  Work = 'Work',
-  STUDY = 'Study',
-  OTHER = 'Other',
+  Work = 'work',
+  STUDY = 'study',
+  OTHER = 'other',
 }
 
 export const usingGoalsDataTypes = Object.values(EUsingGoal);

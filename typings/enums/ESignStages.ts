@@ -1,8 +1,8 @@
 export enum ESignStages {
-  EnterYourEmail = 'Enter your email',
-  TellAboutYourself = 'Tell about yourself',
-  TellAboutYourCompany = 'Tell about your company',
-  InviteTeamMembers = 'Invite Team Members',
+  EmailStage = 'emailStage',
+  PersonStage = 'personStage',
+  CompanyStage = 'companyStage',
+  InviteStage = 'inviteStage',
 }
 
 export const signStagesDataTypes = Object.values(ESignStages);

@@ -5,6 +5,7 @@ import Image from 'next/image';
 import imgSrc from '../../../public/placeholder-1.png';
 import { useState } from 'react';
 import { useUserMutations } from '@/services';
+import { useTranslations } from 'next-intl';
 import { SignUpFormData, ROUTES } from '@/utils';
 import { signStagesDataTypes, ESignStages, EIconsSet } from '@/typings';
 import { SignUpForm } from '../../forms/signUp/SignUpForm';
@@ -12,8 +13,9 @@ import { Preloader, Logo } from '../../ui';
 import { SvgHandler } from '../../SvgHandler';
 
 export const SignUpSection = () => {
-  const [activeStage, setActiveStages] = useState(ESignStages.EnterYourEmail);
+  const [activeStage, setActiveStages] = useState(ESignStages.EmailStage);
   const { registerOwner, isSuccessRegisterOwner, isRegistering } = useUserMutations();
+  const tAuth = useTranslations('Auth.SignUp');
 
   const handleNext = () => {
     const currentStage = signStagesDataTypes.findIndex((el) => el === activeStage);
@@ -36,7 +38,7 @@ export const SignUpSection = () => {
           <div className={styles.stages}>
             <div className={styles.heading}>
               <Logo cropped />
-              <h1>Get started</h1>
+              <h1>{tAuth('title')}</h1>
             </div>
             <ul className={styles.list}>
               {signStagesDataTypes.map((el, idx) => (
@@ -47,7 +49,7 @@ export const SignUpSection = () => {
                   <div className={styles.circle}>
                     <span className={styles.count}>{idx + 1}</span>
                   </div>
-                  <span>{el}</span>
+                  <span>{tAuth(el)}</span>
                 </li>
               ))}
             </ul>

@@ -1,5 +1,49 @@
 {
-  "SignIn": {
-    "title": "Sign In to Woorkroom"
+  "Auth": {
+    "title1": "Your place to work",
+    "title2": "Plan. Create. Control.",
+    "SignIn": {
+      "title": "Sign In to Woorkroom",
+      "account": "Don’t have an account?",
+      "signIn": "Sign In",
+      "forgot": "Forgot Password?"
+    },
+    "SignUp": {
+      "title": "Get started",
+      "emailStage": "Enter your email",
+      "personStage": "Tell about yourself",
+      "companyStage": "Tell about your company",
+      "inviteStage": "Invite Team Members",
+      "step": "Step",
+      "next": "Next Step",
+      "previous": "Previous",
+      "signUp": "Sign Up"
+    }
+  },
+  "Forms": {
+    "email": "Email Address",
+    "password": "Password",
+    "name": "Name",
+    "goal": "Why will you use the service?",
+    "confirm": "Confirm Password",
+    "company": "Your Company’s Name",
+    "direction": "Business Direction",
+    "people": "How many people in your team?",
+    "member": "Member’s Email",
+    "addMember": "Add another Member"
+  },
+  "Options": {
+    "work": "Work",
+    "study": "Study",
+    "other": "Other",
+    "it": "IT and programming",
+    "finances": "Finances",
+    "hr": "HR and consulting",
+    "me": "Only me",
+    "xs": "2-5",
+    "s": "6-10",
+    "m": "11-20",
+    "l": "21-40",
+    "xl": ">40"
   }
 }

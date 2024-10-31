@@ -2,6 +2,7 @@
 import styles from './signUp.module.scss';
 import { useForm } from 'react-hook-form';
 import { useState, useEffect } from 'react';
+import { useTranslations } from 'next-intl';
 import { yupResolver } from '@hookform/resolvers/yup';
 import { signUpSchema, SignUpFormData } from '@/utils';
 import { EmailStage, CompanyStage, UserStage, MembersStage } from './stages';
@@ -39,6 +40,7 @@ const defaultValues = {
 
 export const SignUpForm = ({ activeStage, onNext, onPrev, onSubmit }: Props) => {
   const [isDisabled, setIsDisabled] = useState(true);
+  const tAuth = useTranslations('Auth.SignUp');
 
   const {
     register,
@@ -57,13 +59,13 @@ export const SignUpForm = ({ activeStage, onNext, onPrev, onSubmit }: Props) => 
   const members = watch('members');
 
   const watchFields = () => {
-    if (activeStage === ESignStages.EnterYourEmail) {
+    if (activeStage === ESignStages.EmailStage) {
       return watch(['email', 'password', 'confirmPassword']);
     }
-    if (activeStage === ESignStages.TellAboutYourself) {
+    if (activeStage === ESignStages.PersonStage) {
       return watch(['name']);
     }
-    if (activeStage === ESignStages.TellAboutYourCompany) {
+    if (activeStage === ESignStages.CompanyStage) {
       return watch(['companyName']);
     }
   };
@@ -102,21 +104,21 @@ export const SignUpForm = ({ activeStage, onNext, onPrev, onSubmit }: Props) => 
     <div className={styles.signUp}>
       <div className={styles.steps}>
         <p className={styles.step}>
-          Step {step + 1}/{signStagesDataTypes.length}
+          {tAuth('step')} {step + 1}/{signStagesDataTypes.length}
         </p>
-        <h2 className={styles.title}>{activeStage}</h2>
+        <h2 className={styles.title}>{tAuth(activeStage)}</h2>
       </div>
       <form className={styles.form} onSubmit={handleSubmit(onSubmit)}>
-        {activeStage === ESignStages.EnterYourEmail && (
+        {activeStage === ESignStages.EmailStage && (
           <EmailStage register={register} errors={errors} />
         )}
-        {activeStage === ESignStages.TellAboutYourself && (
+        {activeStage === ESignStages.PersonStage && (
           <UserStage register={register} control={control} errors={errors} />
         )}
-        {activeStage === ESignStages.TellAboutYourCompany && (
+        {activeStage === ESignStages.CompanyStage && (
           <CompanyStage register={register} errors={errors} control={control} />
         )}
-        {activeStage === ESignStages.InviteTeamMembers && (
+        {activeStage === ESignStages.InviteStage && (
           <MembersStage
             members={members}
             onAdd={handleAddMember}
@@ -125,22 +127,22 @@ export const SignUpForm = ({ activeStage, onNext, onPrev, onSubmit }: Props) => 
           />
         )}
         <div className={styles.actions}>
-          {activeStage !== ESignStages.EnterYourEmail && (
+          {activeStage !== ESignStages.EmailStage && (
             <BtnSecondary onClick={onPrev}>
               <SvgHandler icon={EIconsSet.ArrowLeft} />
-              <span>Previous</span>
+              <span>{tAuth('previous')}</span>
             </BtnSecondary>
           )}
           <div className={styles.btnWrapper}>
-            {activeStage !== ESignStages.InviteTeamMembers && (
+            {activeStage !== ESignStages.InviteStage && (
               <BtnPrimary disabled={isDisabled} onClick={onNext}>
-                <span>Next Step</span>
+                <span>{tAuth('next')}</span>
                 <SvgHandler icon={EIconsSet.ArrowRight} />
               </BtnPrimary>
             )}
-            {activeStage === ESignStages.InviteTeamMembers && (
+            {activeStage === ESignStages.InviteStage && (
               <BtnPrimary type="submit" disabled={isSubmitting}>
-                <span>Sign Up</span>
+                <span>{tAuth('signUp')}</span>
               </BtnPrimary>
             )}
           </div>

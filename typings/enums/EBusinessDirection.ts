@@ -1,8 +1,8 @@
 export enum EBusinessDirection {
-  IT = 'IT and programming',
-  FINANCES = 'Finances',
-  COSULTING = 'HR and consulting',
-  OTHER = 'Other',
+  IT = 'it',
+  FINANCES = 'finances',
+  COSULTING = 'hr',
+  OTHER = 'other',
 }
 
 export const businessDirectionDataTypes = Object.values(EBusinessDirection);
