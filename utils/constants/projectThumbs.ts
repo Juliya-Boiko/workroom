@@ -1,25 +1,13 @@
-import thumb1 from '../../public/projects-thumbs/Image-1.png';
-import thumb2 from '../../public/projects-thumbs/Image-2.png';
-import thumb3 from '../../public/projects-thumbs/Image-3.png';
-import thumb4 from '../../public/projects-thumbs/Image-4.png';
-import thumb5 from '../../public/projects-thumbs/Image-5.png';
-import thumb6 from '../../public/projects-thumbs/Image-6.png';
-import thumb7 from '../../public/projects-thumbs/Image-7.png';
+export const projectThumbsDataTypes = [
+  'https://res.cloudinary.com/dzacjuorp/image/upload/v1730496363/workroom/workroom-default-projects-thumbs-1_n34uul.png',
+  'https://res.cloudinary.com/dzacjuorp/image/upload/v1730496355/workroom/workroom-default-projects-thumbs-2_cupkyv.png',
+  'https://res.cloudinary.com/dzacjuorp/image/upload/v1730496347/workroom/workroom-default-projects-thumbs-3_zyzdnl.png',
+  'https://res.cloudinary.com/dzacjuorp/image/upload/v1730496333/workroom/workroom-default-projects-thumbs-4_cgvtho.png',
+  'https://res.cloudinary.com/dzacjuorp/image/upload/v1730496324/workroom/workroom-default-projects-thumbs-5_bgdyj2.png',
+  'https://res.cloudinary.com/dzacjuorp/image/upload/v1730496308/workroom/workroom-default-projects-thumbs-6_b7kgzb.png',
+  'https://res.cloudinary.com/dzacjuorp/image/upload/v1730496297/workroom/workroom-default-projects-thumbs-7_rsakac.png',
+];
 
-export const projectThumbs = {
-  thumb1,
-  thumb2,
-  thumb3,
-  thumb4,
-  thumb5,
-  thumb6,
-  thumb7,
-};
-
-export type ProjectThumbsKeys = keyof typeof projectThumbs;
-
-export const projectThumbsDataTypes = Object.entries(projectThumbs);
-
-export const IMAGE_THUMB_STARTS = 'thumb';
+export const IMAGE_THUMB_STARTS = 'workroom-default-projects-thumbs-';
 
 export const CLOUDINARY_URL_REGEX = /\/upload\/(?:v\d+\/)?([^\.]+)/;

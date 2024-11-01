@@ -35,9 +35,9 @@ export const getFolderlessProjects = async (): Promise<{ _id: string; name: stri
 };
 
 export const createProject = async (data: AddProjectFormData): Promise<string> => {
-  let image: string | null = data.image[0];
-  if (!data.image[0].includes(IMAGE_THUMB_STARTS) && data.image[1] instanceof File) {
-    const uploaded = await uploadImage(data.image[1]);
+  let image: string | File | null = data.image;
+  if (typeof data.image !== 'string') {
+    const uploaded = await uploadImage(data.image);
     image = uploaded;
   }
   const response = await axiosInstance.post('/project', { ...data, image });

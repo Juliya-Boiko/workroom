@@ -3,40 +3,25 @@ import styles from './selectImage.module.scss';
 import Image from 'next/image';
 import { useTranslations } from 'next-intl';
 import { UploadThumb } from '@/components/ui';
-import { StaticImageData } from 'next/image';
-import {
-  projectThumbs,
-  projectThumbsDataTypes,
-  ProjectThumbsKeys,
-  IMAGE_THUMB_STARTS,
-} from '@/utils';
+import { projectThumbsDataTypes } from '@/utils';
 
-type SelectedImageType = [string, StaticImageData | File];
+type SelectedImageType = string | File;
 
 interface Props {
-  value: string | SelectedImageType;
+  value: SelectedImageType;
   onChange: (v: SelectedImageType) => void;
 }
 
 export const SelectImage = ({ value, onChange }: Props) => {
   const t = useTranslations('Forms');
 
-  const imgSrc =
-    typeof value === 'string' && value.includes(IMAGE_THUMB_STARTS)
-      ? [value, projectThumbs[value as ProjectThumbsKeys]]
-      : value;
   const handleUpload = (v: File) => {
-    onChange([v.name, v]);
+    onChange(v);
   };
 
   const handleChange = (v: SelectedImageType) => {
     onChange(v);
   };
-
-  const uploadStyles =
-    typeof imgSrc !== 'string' && !imgSrc[0].toString().includes(IMAGE_THUMB_STARTS)
-      ? styles.selected
-      : '';
 
   return (
     <div className={styles.selectImage}>
@@ -45,16 +30,16 @@ export const SelectImage = ({ value, onChange }: Props) => {
       <ul className={styles.list}>
         {projectThumbsDataTypes.map((el) => (
           <li
-            key={el[0]}
-            className={`${styles.item} ${imgSrc[0] === el[0] ? styles.selected : ''}`}
+            key={el}
+            className={`${styles.item} ${value === el ? styles.selected : ''}`}
             onClick={() => handleChange(el)}
           >
-            <Image alt={el[0]} src={el[1]} />
+            <Image alt={el} src={el} width={48} height={48} />
           </li>
         ))}
         <li
           className={`
-            ${styles.upload} ${uploadStyles}
+            ${styles.upload} ${typeof value !== 'string' ? styles.selected : ''}
           `}
         >
           <UploadThumb value={null} onChange={handleUpload} />

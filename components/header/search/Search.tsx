@@ -4,7 +4,7 @@ import Link from 'next/link';
 import Image from 'next/image';
 import { useTranslations } from 'next-intl';
 import { useState, ChangeEvent, useEffect, useRef } from 'react';
-import { defineImageSrc, ROUTES } from '@/utils';
+import { ROUTES } from '@/utils';
 import { useSearch } from '@/services';
 import { BadgeTask } from '@/components/ui';
 import { SvgHandler } from '@/components/SvgHandler';
@@ -63,7 +63,7 @@ export const Search = () => {
                       className={styles.link}
                       onClick={() => setValue('')}
                     >
-                      <Image src={defineImageSrc(el.image)} alt="Thumb" width={30} height={30} />
+                      <Image src={el.image} alt="Thumb" width={30} height={30} />
                       <span>{el.name}</span>
                     </Link>
                   </li>

@@ -3,7 +3,7 @@ import styles from './projectInfo.module.scss';
 import Image from 'next/image';
 import { useState, useEffect } from 'react';
 import { useTranslations } from 'next-intl';
-import { formatDayDate, defineImageSrc, LOCALE_LANGUAGE } from '@/utils';
+import { formatDayDate, LOCALE_LANGUAGE } from '@/utils';
 import { EIconsSet, IProjectDetails } from '@/typings';
 import { BadgePriopity, Assignees } from '@/components/ui';
 import { SvgHandler } from '@/components/SvgHandler';
@@ -16,7 +16,6 @@ interface Props {
 export const ProjectInfo = ({ project }: Props) => {
   const [open, setOpen] = useState(false);
   const [locale, setLocale] = useState<string | null>(null);
-  const imgSrc = defineImageSrc(project.image);
   const t = useTranslations();
 
   useEffect(() => {
@@ -27,7 +26,13 @@ export const ProjectInfo = ({ project }: Props) => {
   return (
     <section className={styles.projectInfo}>
       <div className={styles.main}>
-        <Image alt={project.name} src={imgSrc} width={48} height={48} className={styles.image} />
+        <Image
+          alt={project.name}
+          src={project.image}
+          width={48}
+          height={48}
+          className={styles.image}
+        />
         <button type="button" className={styles.toggleBtn} onClick={() => setOpen((prev) => !prev)}>
           <span>Project details</span>
           <SvgHandler icon={EIconsSet.ChevronDown} />

@@ -2,7 +2,7 @@
 import styles from './projectCard.module.scss';
 import Image from 'next/image';
 import { useEffect, useState } from 'react';
-import { formatDayDate, defineImageSrc } from '@/utils';
+import { formatDayDate } from '@/utils';
 import { useTranslations } from 'next-intl';
 import { LoaderSkeleton } from '@/components/LoaderSkeleton';
 import { SvgHandler } from '@/components/SvgHandler';
@@ -19,7 +19,6 @@ interface Props {
 export const ProjectCard = ({ loading, project, expanded }: Props) => {
   const [locale, setLocale] = useState<string | null>(null);
 
-  const imgSrc = defineImageSrc(project.image);
   const t = useTranslations('Common');
 
   useEffect(() => {
@@ -34,7 +33,13 @@ export const ProjectCard = ({ loading, project, expanded }: Props) => {
           <LoaderSkeleton height={48} />
         ) : (
           <div className={styles.head}>
-            <Image src={imgSrc} alt="Thumb" width={48} height={48} className={styles.image} />
+            <Image
+              src={project.image}
+              alt="Thumb"
+              width={48}
+              height={48}
+              className={styles.image}
+            />
             <div className={styles.block}>
               <p className={styles.order}>{project.order}</p>
               <p className={styles.title}>{project.name}</p>
