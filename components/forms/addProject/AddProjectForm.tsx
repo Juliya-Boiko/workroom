@@ -7,11 +7,7 @@ import { useTranslations } from 'next-intl';
 import { yupResolver } from '@hookform/resolvers/yup';
 import { priorityDataTypes } from '@/typings';
 import { SelectImage } from './selectImage/SelectImage';
-import {
-  addProjectSchema,
-  AddProjectFormData,
-  projectThumbsDataTypes,
-} from '@/utils';
+import { addProjectSchema, AddProjectFormData, projectThumbsDataTypes } from '@/utils';
 import {
   InputField,
   BtnPrimary,

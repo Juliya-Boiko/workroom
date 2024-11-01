@@ -66,6 +66,14 @@
     "sendInvite": "Send Invite",
     "saveFolder": "Save Folder",
     "selectProject": "Select Project",
+    "taskName": "Task Name",
+    "assignee": "Assignee",
+    "taskDescrPlaceholder": "Add some description of the task",
+    "saveTask": "Save Task",
+    "linkTitle": "Link title",
+    "linkPath": "Link path",
+    "cancel": "Cancel",
+    "add": "Add",
     "Errors": {
       "required": "email is required field",
       "invalidEmail": "email must be a valid email",
@@ -125,7 +133,11 @@
   },
   "Projects": {
     "title": "Projects",
-    "add": "Add project"
+    "add": "Add project",
+    "back": "Back to projects"
+  },
+  "Tasks": {
+    "add": "Add Task"
   },
   "Employees": {
     "title": "Workload",
@@ -151,6 +163,5 @@
     "currentProjects": "Current Projects",
     "growth": "Growth",
     "ongoing": "Ongoing projects last month"
-    
   }
 }

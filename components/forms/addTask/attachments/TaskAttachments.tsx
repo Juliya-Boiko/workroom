@@ -6,11 +6,12 @@ import { EAttachType, EIconsSet, ICreateAttach } from '@/typings';
 import { UploadAttach } from '@/components/ui';
 
 interface Props {
+  label: string;
   value: ICreateAttach[];
   onChange: (v: ICreateAttach[]) => void;
 }
 
-export const TaskAttachments = ({ value, onChange }: Props) => {
+export const TaskAttachments = ({ label, value, onChange }: Props) => {
   const links = value.filter((el) => el.type === EAttachType.LINK);
   const images = value
     .filter((el) => el.type === EAttachType.FILE)
@@ -37,7 +38,9 @@ export const TaskAttachments = ({ value, onChange }: Props) => {
 
   return (
     <div className={styles.taskAttachments}>
-      <p className={styles.label}>Attachments ({total})</p>
+      <p className={styles.label}>
+        {label} ({total})
+      </p>
       {links.length ? (
         <ul className={styles.linksList}>
           {links.map(({ title, value, type }) => (

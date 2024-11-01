@@ -13,3 +13,4 @@ export * from './timeFormatter';
 export * from './generateNotification';
 export * from './formatNotification';
 export * from './statisticCounters';
+export * from './getLocale';

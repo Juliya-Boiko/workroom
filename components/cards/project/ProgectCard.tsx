@@ -1,12 +1,14 @@
 'use client';
 import styles from './projectCard.module.scss';
 import Image from 'next/image';
+import { useEffect, useState } from 'react';
 import { formatDayDate, defineImageSrc } from '@/utils';
 import { useTranslations } from 'next-intl';
 import { LoaderSkeleton } from '@/components/LoaderSkeleton';
 import { SvgHandler } from '@/components/SvgHandler';
 import { EIconsSet, IProjectInfo } from '@/typings';
 import { BadgePriopity, Assignees } from '@/components/ui';
+import { LOCALE_LANGUAGE } from '@/utils';
 
 interface Props {
   loading?: boolean;
@@ -15,8 +17,15 @@ interface Props {
 }
 
 export const ProjectCard = ({ loading, project, expanded }: Props) => {
+  const [locale, setLocale] = useState<string | null>(null);
+
   const imgSrc = defineImageSrc(project.image);
   const t = useTranslations('Common');
+
+  useEffect(() => {
+    const storedLocale = localStorage.getItem(LOCALE_LANGUAGE);
+    setLocale(storedLocale);
+  }, []);
 
   return (
     <div className={styles.projectCard}>
@@ -42,7 +51,7 @@ export const ProjectCard = ({ loading, project, expanded }: Props) => {
                 <SvgHandler icon={EIconsSet.Calendar} />
                 <p>
                   <span className={styles.created}>{t('created')}</span>{' '}
-                  {formatDayDate(project.createdAt)}
+                  {formatDayDate(project.createdAt, locale)}
                 </p>
               </div>
               <BadgePriopity label={project.priority} />

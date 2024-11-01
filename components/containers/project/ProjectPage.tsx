@@ -1,6 +1,7 @@
 'use client';
 import styles from './projectPage.module.scss';
 import { useProject } from '@/services';
+import { useTranslations } from 'next-intl';
 import { Topping } from '@/components/topping/Topping';
 import { Modal, BtnPrimary, Preloader } from '@/components/ui';
 import { AddTaskForm } from '@/components/forms/addTask/AddTaskForm';
@@ -12,16 +13,17 @@ import { ROUTES } from '@/utils';
 
 export const ProjectPage = ({ slug }: IDynamicComponent) => {
   const { data: project, isLoading } = useProject(slug);
+  const t = useTranslations();
 
   return (
     <div className={styles.projectPage}>
-      <Topping link="Back to projects" path={ROUTES.projects} subtitle={project?.name || ''}>
+      <Topping link={t('Projects.back')} path={ROUTES.projects} subtitle={project?.name || ''}>
         <Modal
-          title="Add task"
+          title={t('Tasks.add')}
           activator={
             <BtnPrimary disabled={isLoading}>
               <SvgHandler icon={EIconsSet.Plus} />
-              <span>Add Task</span>
+              <span>{t('Tasks.add')}</span>
             </BtnPrimary>
           }
           content={<AddTaskForm slug={slug} start={project?.start} deadline={project?.deadline} />}

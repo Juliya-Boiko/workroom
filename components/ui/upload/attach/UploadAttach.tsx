@@ -1,7 +1,7 @@
 'use client';
 import styles from './uploadAttach.module.scss';
 import { useState, ChangeEvent } from 'react';
-
+import { useTranslations } from 'next-intl';
 import { EIconsSet, EAttachType, ICreateAttach } from '@/typings';
 import { SvgHandler } from '@/components/SvgHandler';
 import { BtnSecondary } from '../../buttons/secondary/BtnSecondary';
@@ -17,6 +17,7 @@ export const UploadAttach = ({ onChange }: Props) => {
     title: '',
     value: '',
   });
+  const t = useTranslations('Forms');
 
   const toggleLinkForm = () => {
     setShowAddLink((v) => !v);
@@ -75,7 +76,7 @@ export const UploadAttach = ({ onChange }: Props) => {
       {showAddLink && (
         <div className={styles.linkForm}>
           <label htmlFor="linkTitle" className={styles.wrapper}>
-            <p className={styles.label}>Link title</p>
+            <p className={styles.label}>{t('linkTitle')}</p>
             <input
               type="text"
               name="linkTitle"
@@ -86,7 +87,7 @@ export const UploadAttach = ({ onChange }: Props) => {
             />
           </label>
           <label htmlFor="linkPath" className={styles.wrapper}>
-            <p className={styles.label}>Link path</p>
+            <p className={styles.label}>{t('linkPath')}</p>
             <input
               type="text"
               name="linkPath"
@@ -97,9 +98,9 @@ export const UploadAttach = ({ onChange }: Props) => {
             />
           </label>
           <div className={styles.buttonsActions}>
-            <BtnSecondary onClick={handleCancel}>Cancel</BtnSecondary>
+            <BtnSecondary onClick={handleCancel}>{t('cancel')}</BtnSecondary>
             <BtnSecondary disabled={!linkFields.value} onClick={addLink}>
-              Add
+              {t('add')}
             </BtnSecondary>
           </div>
         </div>
