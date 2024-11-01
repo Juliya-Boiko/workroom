@@ -38,12 +38,12 @@
   gap: 4px;
   padding: 8px 0;
   transition: all 250ms ease-in-out;
-    &::after {
+  &::after {
     content: '';
     position: absolute;
     bottom: 0;
     left: 0;
-    width: calc(100% - 4px);
+    width: calc(100% - 2px);
     height: 2px;
     border-radius: 1px;
     display: block;

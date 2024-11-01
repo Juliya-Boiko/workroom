@@ -18,10 +18,10 @@ export const UserStage = ({ register, errors, control }: Props) => {
   return (
     <div className={styles.stageWrapper}>
       <InputField
-        label={t('name')}
+        label="name"
         name="name"
         register={register}
-        placeholder="John Doe"
+        placeholder={t('name')}
         errors={errors.name}
       />
       <div className={styles.optionWrapper}>

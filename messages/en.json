@@ -36,12 +36,13 @@
     "email": "Email Address",
     "password": "Password",
     "name": "Name",
-    "goal": "Why will you use the service?",
+    "goal": "Why will you use the service",
     "confirm": "Confirm Password",
     "company": "Your Company’s Name",
     "direction": "Business Direction",
     "people": "How many people in your team?",
     "member": "Member’s Email",
+    "later": "* you can do it later",
     "addMember": "Add another Member",
     "projectName": "Project Name",
     "start": "Start date",
@@ -62,7 +63,13 @@
     "time": "Time",
     "sendInvite": "Send Invite",
     "saveFolder": "Save Folder",
-    "selectProject": "Select Project"
+    "selectProject": "Select Project",
+    "Errors": {
+      "required": "email is required field",
+      "invalidEmail": "email must be a valid email",
+      "passwordRegexp": "5-10 symbols, contain 1 capital letter & 1 digit, without spaces",
+      "matchPasswords": "Passwords must match"
+    }
   },
   "Options": {
     "work": "Work",

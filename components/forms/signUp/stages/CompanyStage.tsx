@@ -18,7 +18,7 @@ export const CompanyStage = ({ register, errors, control }: Props) => {
   return (
     <div className={styles.stageWrapper}>
       <InputField
-        label={t('company')}
+        label="company"
         name="companyName"
         register={register}
         placeholder="Company’s Name"

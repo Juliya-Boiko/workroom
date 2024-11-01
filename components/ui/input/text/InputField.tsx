@@ -45,7 +45,7 @@ export const InputField = <T extends FieldValues>({
           className={styles.input}
         />
         {errors && errors.message && !disabled && (
-          <span className={styles.errorMsg}>{errors.message}</span>
+          <span className={styles.errorMsg}>{t(`Errors.${errors.message}`)}</span>
         )}
       </div>
     </label>

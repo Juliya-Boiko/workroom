@@ -7,28 +7,28 @@ import {
 } from '@/typings';
 
 export const signUpSchema = yup.object().shape({
-  email: yup.string().trim().email().required('Email is required field'),
+  email: yup.string().trim().email('invalidEmail').required('required'),
   password: yup
     .string()
     .trim()
     .matches(/^(?=.*[A-Z])(?=.*\d)[A-Za-z\d]{5,10}$/, {
       excludeEmptyString: true,
-      message: 'Min 5, max 10, contain 1 capital letter & 1 digit, without spaces',
+      message: 'passwordRegexp',
     })
-    .required('Password is required field'),
+    .required('required'),
   confirmPassword: yup
     .string()
     .trim()
-    .oneOf([yup.ref('password')], 'Passwords must match')
-    .required('Confirm password is required field'),
-  name: yup.string().trim().required('Name is required'),
+    .oneOf([yup.ref('password')], 'matchPasswords')
+    .required('required'),
+  name: yup.string().trim().required('required'),
   usingGoal: yup.string().trim().oneOf(usingGoalsDataTypes).default(usingGoalsDataTypes[0]),
   userPosition: yup
     .string()
     .trim()
     .oneOf(userPositionsDataTypes)
     .default(userPositionsDataTypes[0]),
-  companyName: yup.string().trim().required('Company name is required'),
+  companyName: yup.string().trim().required('required'),
   direction: yup
     .string()
     .trim()

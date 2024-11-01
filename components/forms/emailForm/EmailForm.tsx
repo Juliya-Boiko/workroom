@@ -11,8 +11,7 @@ import { EIconsSet } from '@/typings';
 
 export const EmailForm = () => {
   const { sendEmail, isSuccess, isPending } = usePasswordMutations();
-  const tForm = useTranslations('Forms');
-  const tAuth = useTranslations('Auth.ForgotPassword');
+  const t = useTranslations('Auth.ForgotPassword');
 
   const {
     register,
@@ -36,19 +35,19 @@ export const EmailForm = () => {
           <div className={styles.wrapper}>
             <SvgHandler icon={EIconsSet.Checkbox} />
           </div>
-          <p>{tAuth('sent')}</p>
+          <p>{t('sent')}</p>
         </div>
       ) : (
         <form className={styles.form} onSubmit={handleSubmit(onSubmit)}>
           <InputField
-            label={tForm('email')}
+            label="email"
             name="email"
             register={register}
             placeholder="youremail@gmail.com"
             errors={errors.email}
           />
           <BtnPrimary type="submit" disabled={isDisabled}>
-            <span>{tAuth('send')}</span>
+            <span>{t('send')}</span>
             <SvgHandler icon={EIconsSet.ArrowRight} />
           </BtnPrimary>
         </form>

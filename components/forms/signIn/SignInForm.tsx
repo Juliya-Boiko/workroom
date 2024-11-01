@@ -12,8 +12,7 @@ import { useUserMutations } from '@/services';
 
 export const SignInForm = () => {
   const { login } = useUserMutations();
-  const tAuth = useTranslations('Auth.SignIn');
-  const tCommon = useTranslations('Forms');
+  const t = useTranslations('Auth.SignIn');
 
   const {
     register,
@@ -31,25 +30,25 @@ export const SignInForm = () => {
   return (
     <form className={styles.form} onSubmit={handleSubmit(onSubmit)}>
       <InputField
-        label={tCommon('email')}
+        label="email"
         name="email"
         register={register}
         placeholder="youremail@gmail.com"
         errors={errors.email}
       />
       <PasswordInputField
-        label={tCommon('password')}
+        label="password"
         name="password"
         register={register}
         errors={errors.password}
       />
       <div className={styles.wrapper}>
         <Link href={ROUTES.password} className={styles.link}>
-          {tAuth('forgot')}
+          {t('forgot')}
         </Link>
       </div>
       <BtnPrimary type="submit" disabled={!isDirty || !isValid || isSubmitting}>
-        <span>{tAuth('signIn')}</span>
+        <span>{t('signIn')}</span>
         <SvgHandler icon={EIconsSet.ArrowRight} />
       </BtnPrimary>
     </form>

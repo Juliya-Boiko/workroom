@@ -1,7 +1,7 @@
 import * as yup from 'yup';
 
 export const emailSchema = yup.object({
-  email: yup.string().trim().email().required('Email is required field'),
+  email: yup.string().trim().email('invalidEmail').required('required'),
 });
 
 export type EmailFormData = yup.InferType<typeof emailSchema>;

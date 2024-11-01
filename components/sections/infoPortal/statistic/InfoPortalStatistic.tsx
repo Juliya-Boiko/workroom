@@ -19,7 +19,9 @@ export const InfoPortalStatistic = () => {
           <div>
             <div className={styles.amount}>{data.total}</div>
             {data.total ? (
-              <div className={styles.dynamic}>{t('growth')} +{growthAmount(data.projects)}</div>
+              <div className={styles.dynamic}>
+                {t('growth')} +{growthAmount(data.projects)}
+              </div>
             ) : null}
           </div>
           <div className={styles.chart}>

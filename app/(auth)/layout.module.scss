@@ -8,9 +8,13 @@
   min-height: 100vh;
   padding: 24px;
 
-  .localization {
-    @include flexContainer(row, center, flex-end);
+  .head {
+    @include flexContainer(row, center, space-between);
     width: 100%;
+  }
+
+  .link {
+    @extend %secondary-action;
   }
 
   .wrapper {

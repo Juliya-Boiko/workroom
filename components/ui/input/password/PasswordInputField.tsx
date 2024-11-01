@@ -1,7 +1,6 @@
 'use client';
 import styles from './passwordInputField.module.scss';
 import { useState } from 'react';
-import { useTranslations } from 'next-intl';
 import { UseFormRegister, FieldValues, Path } from 'react-hook-form';
 import { SvgHandler } from '@/components/SvgHandler';
 import { EIconsSet } from '@/typings';
@@ -23,8 +22,6 @@ export const PasswordInputField = <T extends FieldValues>({
   register,
 }: Props<T>) => {
   const [typePassword, setTypePassword] = useState(true);
-  const t = useTranslations('Forms');
-
   const toggleType = () => {
     setTypePassword((prev) => !prev);
   };
@@ -32,10 +29,11 @@ export const PasswordInputField = <T extends FieldValues>({
   return (
     <div className={styles.passwordInputField}>
       <InputField
-        label={t(label)}
+        label={label}
         type={typePassword ? 'password' : 'text'}
         name={name}
         register={register}
+        placeholder="• • • • •"
         errors={errors}
       />
       <button type="button" className={styles.btnToggle} onClick={toggleType}>

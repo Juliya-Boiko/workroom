@@ -1,10 +1,12 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 'use client';
 import styles from '../signUp.module.scss';
+import { usePathname } from 'next/navigation';
 import { useTranslations } from 'next-intl';
 import { BtnSecondary } from '@/components/ui';
 import { EIconsSet } from '@/typings';
 import { SvgHandler } from '@/components/SvgHandler';
+import { ROUTES } from '@/utils';
 
 interface Props {
   members: (string | undefined)[] | undefined;
@@ -15,9 +17,11 @@ interface Props {
 
 export const MembersStage = ({ members, onAdd, onChange, onDelete }: Props) => {
   const t = useTranslations('Forms');
+  const pathname = usePathname();
 
   return (
     <div className={styles.stageWrapper}>
+      {pathname === ROUTES.signUp && <p className={styles.text}>{t('later')}</p>}
       <ul className={styles.membersList}>
         {members &&
           Array.isArray(members) &&
