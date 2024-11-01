@@ -17,6 +17,7 @@ export const Localization = () => {
     (v: string) => {
       const lang = languagesSet.find((el) => el.value === v) || languagesSet[0];
       setLocale(lang);
+      localStorage.setItem(LOCALE_LANGUAGE, lang.value);
       document.cookie = `${LOCALE_LANGUAGE}=${v}; path=/;`;
       router.refresh();
     },

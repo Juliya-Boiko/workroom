@@ -8,12 +8,13 @@ import { EIconsSet } from '@/typings';
 
 interface Props {
   children?: string | JSX.Element | JSX.Element[];
-  title: string;
+  title?: string;
+  subtitle?: string;
   link?: string;
   path?: string;
 }
 
-export const Topping = ({ title, children, link, path }: Props) => {
+export const Topping = ({ title, children, link, path, subtitle }: Props) => {
   const t = useTranslations('SidebarMenu');
 
   return (
@@ -25,7 +26,7 @@ export const Topping = ({ title, children, link, path }: Props) => {
         </Link>
       )}
       <div className={styles.wrapper}>
-        <h1 className={styles.title}>{t(title)}</h1>
+        <h1 className={styles.title}>{title ? t(title) : subtitle}</h1>
         {children}
       </div>
     </section>

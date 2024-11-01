@@ -47,8 +47,10 @@
     "projectName": "Назва проекту",
     "start": "Дата початку",
     "deadline": "Кінцевий термін",
+    "selectDate": "Виберіть дату",
     "priority": "Пріоритет",
     "description": "Опис",
+    "projectDescrPlaceholder": "Додайте опис проекту",
     "saveProject": "Зберегти проект",
     "selectImage": "Виберіть зображення",
     "imageFormat": "Виберіть або завантажте аватар для проекту (доступні формати: jpg, png)",
@@ -131,7 +133,13 @@
     "add": "Додати нового"
   },
   "Common": {
-    "viewAll": "Переглянути всі"
+    "viewAll": "Переглянути всі",
+    "created": "Створено",
+    "projectData": "Дані проекту",
+    "allTasks": "Усі завдання",
+    "activeTasks": "Активні завдання",
+    "assignees": "Признвчені",
+    "of": "з"
   },
   "Events": {
     "title": "Найближчі події",

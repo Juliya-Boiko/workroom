@@ -1,6 +1,7 @@
 import moment from 'moment';
 import { format } from 'date-fns';
-import { TODAY_OPTIONS, DATE_LOCALE_ENG } from '@/utils';
+import { TODAY_OPTIONS, DATE_LOCALE_ENG, LOCALE_LANGUAGE, DATE_LOCALE_UK } from '@/utils';
+import { ELanguage } from '@/typings';
 
 export const formatDeadlineDate = (value: string) => {
   if (value) {
@@ -14,9 +15,11 @@ export const formatDeadlineDate = (value: string) => {
 };
 
 export const formatDayDate = (value: string | Date) => {
+  const lang = localStorage.getItem(LOCALE_LANGUAGE);
+  const locale = lang === ELanguage.UK ? DATE_LOCALE_UK : DATE_LOCALE_ENG;
   if (value) {
     const day = new Date(value);
-    return day.toLocaleDateString(DATE_LOCALE_ENG, TODAY_OPTIONS);
+    return day.toLocaleDateString(locale, TODAY_OPTIONS);
   }
 };
 

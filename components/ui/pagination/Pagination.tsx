@@ -1,5 +1,7 @@
-import { SvgHandler } from '@/components/SvgHandler';
+'use client';
 import styles from './pagination.module.scss';
+import { useTranslations } from 'next-intl';
+import { SvgHandler } from '@/components/SvgHandler';
 import { EIconsSet } from '@/typings';
 
 interface Props {
@@ -11,6 +13,8 @@ interface Props {
 }
 
 export const Pagination = ({ page, step, total, onNext, onPrev }: Props) => {
+  const t = useTranslations('Common');
+
   const start = page * step + 1;
   const counter = (page + 1) * step;
   const end = counter > total ? total : counter;
@@ -19,7 +23,7 @@ export const Pagination = ({ page, step, total, onNext, onPrev }: Props) => {
     <div className={styles.pagination}>
       <div className={styles.wrapper}>
         <div>
-          {start}-{end} of {total}
+          {start}-{end} {t('of')} {total}
         </div>
         <button type="button" disabled={!page} className={styles.btnArrow} onClick={onPrev}>
           <SvgHandler icon={EIconsSet.ArrowLeft} />

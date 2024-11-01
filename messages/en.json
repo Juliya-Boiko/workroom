@@ -47,8 +47,10 @@
     "projectName": "Project Name",
     "start": "Start date",
     "deadline": "Deadline",
+    "selectDate": "Select Date",
     "priority": "Priority",
     "description": "Description",
+    "projectDescrPlaceholder": "Add some description of the project",
     "saveProject": "Save Project",
     "selectImage": "Select image",
     "imageFormat": "Select or upload an avatar for the project (available formats: jpg, png)",
@@ -130,7 +132,13 @@
     "add": "Add new"
   },
   "Common": {
-    "viewAll": "View all"
+    "viewAll": "View all",
+    "created": "Created",
+    "projectData": "Project Data",
+    "allTasks": "All tasks",
+    "activeTasks": "Active tasks",
+    "assignees": "Assignees",
+    "of": "of"
   },
   "Events": {
     "title": "Nearest Events",

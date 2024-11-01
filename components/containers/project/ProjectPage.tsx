@@ -15,7 +15,7 @@ export const ProjectPage = ({ slug }: IDynamicComponent) => {
 
   return (
     <div className={styles.projectPage}>
-      <Topping link="Back to projects" path={ROUTES.projects} title={project?.name || ''}>
+      <Topping link="Back to projects" path={ROUTES.projects} subtitle={project?.name || ''}>
         <Modal
           title="Add task"
           activator={

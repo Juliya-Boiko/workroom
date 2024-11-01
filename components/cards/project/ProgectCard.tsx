@@ -1,6 +1,8 @@
+'use client';
 import styles from './projectCard.module.scss';
 import Image from 'next/image';
 import { formatDayDate, defineImageSrc } from '@/utils';
+import { useTranslations } from 'next-intl';
 import { LoaderSkeleton } from '@/components/LoaderSkeleton';
 import { SvgHandler } from '@/components/SvgHandler';
 import { EIconsSet, IProjectInfo } from '@/typings';
@@ -14,6 +16,7 @@ interface Props {
 
 export const ProjectCard = ({ loading, project, expanded }: Props) => {
   const imgSrc = defineImageSrc(project.image);
+  const t = useTranslations('Common');
 
   return (
     <div className={styles.projectCard}>
@@ -38,34 +41,39 @@ export const ProjectCard = ({ loading, project, expanded }: Props) => {
               <div className={styles.date}>
                 <SvgHandler icon={EIconsSet.Calendar} />
                 <p>
-                  <span className={styles.created}>Created</span> {formatDayDate(project.createdAt)}
+                  <span className={styles.created}>{t('created')}</span>{' '}
+                  {formatDayDate(project.createdAt)}
                 </p>
               </div>
               <BadgePriopity label={project.priority} />
             </div>
             {expanded && project.description && (
-              <div className={styles.description}>Description: {project.description}</div>
+              <div className={styles.description}>{project.description}</div>
             )}
           </>
         )}
       </div>
 
       <div className={styles.details}>
-        {loading ? <LoaderSkeleton height={24} /> : <p className={styles.top}>Project Data</p>}
+        {loading ? (
+          <LoaderSkeleton height={24} />
+        ) : (
+          <p className={styles.top}>{t('projectData')}</p>
+        )}
         {loading ? (
           <LoaderSkeleton height={60} />
         ) : (
           <div className={styles.data}>
             <div>
-              <p className={styles.subtitle}>All tasks</p>
+              <p className={styles.subtitle}>{t('allTasks')}</p>
               <div className={styles.value}>{project.tasks.all}</div>
             </div>
             <div>
-              <p className={styles.subtitle}>Active tasks</p>
+              <p className={styles.subtitle}>{t('activeTasks')}</p>
               <div className={styles.value}>{project.tasks.active}</div>
             </div>
             <div>
-              <p className={styles.subtitle}>Assignees</p>
+              <p className={styles.subtitle}>{t('assignees')}</p>
               <Assignees assignees={project.tasks.assignee} />
             </div>
           </div>

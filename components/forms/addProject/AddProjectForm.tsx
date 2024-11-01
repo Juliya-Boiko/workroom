@@ -8,7 +8,6 @@ import { yupResolver } from '@hookform/resolvers/yup';
 import { priorityDataTypes } from '@/typings';
 import { SelectImage } from './selectImage/SelectImage';
 import {
-  getTomorrowDate,
   addProjectSchema,
   AddProjectFormData,
   projectThumbsDataTypes,
@@ -24,8 +23,8 @@ import {
 
 const defaultValues = {
   name: '',
-  start: new Date(),
-  deadline: getTomorrowDate(new Date()),
+  start: undefined,
+  deadline: undefined,
   priority: priorityDataTypes[0],
   description: '',
   image: projectThumbsDataTypes[0],
@@ -41,7 +40,7 @@ export const AddProjectForm = () => {
     watch,
     handleSubmit,
     formState: { errors, isDirty, isValid, isSubmitting },
-  } = useForm({
+  } = useForm<AddProjectFormData>({
     defaultValues,
     resolver: yupResolver(addProjectSchema),
     mode: 'onChange',
@@ -66,10 +65,10 @@ export const AddProjectForm = () => {
       ) : (
         <form className={styles.form} onSubmit={handleSubmit(onSubmit)}>
           <InputField
-            label={t('projectName')}
+            label="projectName"
             name="name"
             register={register}
-            placeholder="Project Name"
+            placeholder={t('projectName')}
             errors={errors.name}
           />
           <div className={styles.pickers}>
@@ -116,7 +115,7 @@ export const AddProjectForm = () => {
             label={t('description')}
             name="description"
             register={register}
-            placeholder="Add some description of the project"
+            placeholder={t('projectDescrPlaceholder')}
           />
           <Controller
             control={control}
