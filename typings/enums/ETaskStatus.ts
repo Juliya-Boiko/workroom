@@ -1,8 +1,8 @@
 export enum ETaskStatus {
-  TODO = 'To Do',
-  INPROGRESS = 'In Progress',
-  REVIEW = 'In Review',
-  DONE = 'Done',
+  TODO = 'toDo',
+  INPROGRESS = 'inProgress',
+  REVIEW = 'inReview',
+  DONE = 'done',
 }
 
 export const taskStatusDataTypes = Object.values(ETaskStatus);

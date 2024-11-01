@@ -1,6 +1,7 @@
 'use client';
 import styles from './pickerPeriod.module.scss';
 import { useState, useRef, useEffect } from 'react';
+import { useTranslations } from 'next-intl';
 import { PickerDate } from '../date/PickerDate';
 import { EIconsSet } from '@/typings';
 import { SvgHandler } from '@/components/SvgHandler';
@@ -17,6 +18,7 @@ export const PickerPeriod = ({ startValue, endValue, onEnd, onStart }: Props) =>
   const [start, setStart] = useState<Date | null>(startValue);
   const [end, setEnd] = useState<Date | null>(endValue);
   const ref = useRef<HTMLDivElement>(null);
+  const t = useTranslations('Forms');
 
   useEffect(() => {
     const handleOutSideClick = (event: MouseEvent) => {
@@ -78,8 +80,8 @@ export const PickerPeriod = ({ startValue, endValue, onEnd, onStart }: Props) =>
       </div>
       {open && (
         <div className={styles.drop}>
-          <PickerDate label="Start" value={start} onChange={handleStart} />
-          <PickerDate label="End" value={end} onChange={handleEnd} />
+          <PickerDate label={t('startAfter')} value={start} onChange={handleStart} />
+          <PickerDate label={t('end')} value={end} onChange={handleEnd} />
         </div>
       )}
     </div>

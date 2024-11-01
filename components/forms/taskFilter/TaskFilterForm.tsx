@@ -1,5 +1,6 @@
 'use client';
 import styles from './taskFilterForm.module.scss';
+import { useTranslations } from 'next-intl';
 import { useForm, Controller } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
 import { SelectAssignees } from './selectAssignees/SelectAssignees';
@@ -19,6 +20,8 @@ interface Props {
 }
 
 export const TaskFilterForm = ({ filters, setFilters }: Props) => {
+  const t = useTranslations();
+
   const defaultValues = {
     priority: filters?.priority ?? null,
     status: filters?.status ?? null,
@@ -45,7 +48,7 @@ export const TaskFilterForm = ({ filters, setFilters }: Props) => {
     if (assignee?.length) count++;
     if (start) count++;
     if (end) count++;
-    return `Save filters (${count})`;
+    return `${t('Forms.saveFilters')} (${count})`;
   };
 
   const handleAssignee = (data: ISelectAssignee[]) => {
@@ -59,7 +62,7 @@ export const TaskFilterForm = ({ filters, setFilters }: Props) => {
   return (
     <form className={styles.taskFilterForm} onSubmit={handleSubmit(onSubmit)}>
       <div className={styles.container}>
-        <p className={styles.label}>Period</p>
+        <p className={styles.label}>{t('Forms.period')}</p>
         <PickerPeriod
           startValue={filters?.start ?? null}
           endValue={filters?.end ?? null}
@@ -74,7 +77,7 @@ export const TaskFilterForm = ({ filters, setFilters }: Props) => {
             name="status"
             render={({ field }) => (
               <SelectDrop
-                label="Status"
+                label={t('Forms.status')}
                 options={taskStatusDataTypes}
                 value={field.value}
                 onChange={field.onChange}
@@ -97,7 +100,7 @@ export const TaskFilterForm = ({ filters, setFilters }: Props) => {
             name="priority"
             render={({ field }) => (
               <SelectDrop
-                label="Priority"
+                label={t('Forms.priority')}
                 options={priorityDataTypes}
                 value={field.value}
                 onChange={field.onChange}
@@ -114,7 +117,7 @@ export const TaskFilterForm = ({ filters, setFilters }: Props) => {
         </div>
       </div>
       <div className={styles.container}>
-        <p className={styles.label}>Assignees</p>
+        <p className={styles.label}>{t('Common.assignees')}</p>
         <SelectAssignees value={assignee} onChange={handleAssignee} />
       </div>
       <div className={styles.wrapper}>

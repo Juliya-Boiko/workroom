@@ -67,15 +67,6 @@
     color: $grey-10;
   }
 
-  .created {
-    display: flex;
-    align-items: center;
-    gap: 4px;
-    font-size: 12px;
-    font-weight: 500;
-    color: $grey-3;
-  }
-
   @include onLaptop {
     .toggleBtn {
       display: none;

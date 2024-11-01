@@ -74,6 +74,10 @@
     "linkPath": "Link path",
     "cancel": "Cancel",
     "add": "Add",
+    "period": "Period",
+    "status": "Status",
+    "end": "End",
+
     "Errors": {
       "required": "email is required field",
       "invalidEmail": "email must be a valid email",
@@ -101,7 +105,11 @@
     "birthday": "Birthday",
     "meeting": "Meeting",
     "list": "List",
-    "activity": "Activity"
+    "activity": "Activity",
+    "toDo": "To do",
+    "inProgress": "In Progress",
+    "done": "Done",
+    "inReview": "In Review"
   },
   "SidebarMenu": {
     "dashboard": "Dashboard",
@@ -129,7 +137,8 @@
     "events": "You dont have events yet",
     "activity": "You dont have any activity yet",
     "folderList": "You dont nave projects without folders",
-    "folders": "You dont have folders yet"
+    "folders": "You dont have folders yet",
+    "tasks": "You dont have tasks in this project"
   },
   "Projects": {
     "title": "Projects",
@@ -137,7 +146,8 @@
     "back": "Back to projects"
   },
   "Tasks": {
-    "add": "Add Task"
+    "add": "Add Task",
+    "title": "Tasks"
   },
   "Employees": {
     "title": "Workload",

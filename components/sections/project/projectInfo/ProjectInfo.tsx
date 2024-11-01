@@ -1,8 +1,9 @@
 'use client';
 import styles from './projectInfo.module.scss';
 import Image from 'next/image';
-import { useState } from 'react';
-import { formatDayDate, defineImageSrc } from '@/utils';
+import { useState, useEffect } from 'react';
+import { useTranslations } from 'next-intl';
+import { formatDayDate, defineImageSrc, LOCALE_LANGUAGE } from '@/utils';
 import { EIconsSet, IProjectDetails } from '@/typings';
 import { BadgePriopity, Assignees } from '@/components/ui';
 import { SvgHandler } from '@/components/SvgHandler';
@@ -14,7 +15,14 @@ interface Props {
 
 export const ProjectInfo = ({ project }: Props) => {
   const [open, setOpen] = useState(false);
+  const [locale, setLocale] = useState<string | null>(null);
   const imgSrc = defineImageSrc(project.image);
+  const t = useTranslations();
+
+  useEffect(() => {
+    const storedLocale = localStorage.getItem(LOCALE_LANGUAGE);
+    setLocale(storedLocale);
+  }, []);
 
   return (
     <section className={styles.projectInfo}>
@@ -27,32 +35,22 @@ export const ProjectInfo = ({ project }: Props) => {
         <OptionsProjectInfo id={project._id} />
       </div>
       <div className={`${styles.details} ${open ? styles.showDetails : styles.hideDetails}`}>
-        {project.description && (
-          <div className={styles.description}>
-            <p className={styles.title}>Description</p>
-            <p>{project.description}</p>
-          </div>
-        )}
+        {project.description && <div className={styles.description}>{project.description}</div>}
         <div className={styles.wrapper}>
-          <p className={styles.subtitle}>Priority</p>
+          <p className={styles.subtitle}>{t('Forms.priority')}</p>
           <BadgePriopity label={project.priority} />
         </div>
         <div className={styles.wrapper}>
-          <p className={styles.subtitle}>Start</p>
-          <p>{formatDayDate(project.start)}</p>
+          <p className={styles.subtitle}>{t('Forms.start')}</p>
+          <p>{formatDayDate(project.start, locale)}</p>
         </div>
         <div className={styles.wrapper}>
-          <p className={styles.subtitle}>Dead Line</p>
-          <p>{formatDayDate(project.deadline)}</p>
+          <p className={styles.subtitle}>{t('Forms.deadline')}</p>
+          <p>{formatDayDate(project.deadline, locale)}</p>
         </div>
         <div className={styles.wrapper}>
-          <p className={styles.subtitle}>Assignees</p>
+          <p className={styles.subtitle}>{t('Common.assignees')}</p>
           <Assignees assignees={project.tasks.assignee} />
-        </div>
-        <div className={styles.created}>
-          <SvgHandler icon={EIconsSet.Calendar} />
-          <span>Created</span>
-          <span>{formatDayDate(project.createdAt)}</span>
         </div>
       </div>
     </section>
