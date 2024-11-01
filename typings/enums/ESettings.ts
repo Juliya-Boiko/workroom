@@ -2,6 +2,7 @@ import { EIconsSet } from './EIconsSet';
 
 export enum ESettings {
   ACCOUNT = 'Account',
+  LANGUAGE = 'Language',
   NOTIFICATIONS = 'Notifications',
   COMPANY = 'My Company',
   APPS = 'Contacts & Apps',
@@ -19,6 +20,10 @@ export const settings: ISetting[] = [
   {
     icon: EIconsSet.User,
     title: ESettings.ACCOUNT,
+  },
+  {
+    icon: EIconsSet.Language,
+    title: ESettings.LANGUAGE,
   },
   {
     icon: EIconsSet.Bell,

@@ -7,6 +7,7 @@ import { SvgHandler } from '@/components/SvgHandler';
 import { EIconsSet, ESettings } from '@/typings';
 import { AccountForm, CompanyForm, ContactsForm, NotifyForm } from '@/components/forms/settings';
 import { ChangePasswordForm } from '@/components/forms/changePassword/ChangePasswordForm';
+import { Localization } from '@/components/ui/localization/Localization';
 
 export const Settings = () => {
   const [open, setOpen] = useState(false);
@@ -15,6 +16,11 @@ export const Settings = () => {
 
   const forms = {
     [ESettings.ACCOUNT]: <AccountForm />,
+    [ESettings.LANGUAGE]: (
+      <div>
+        <Localization />
+      </div>
+    ),
     [ESettings.APPS]: <ContactsForm />,
     [ESettings.COMPANY]: <CompanyForm />,
     [ESettings.SAFETY]: user ? <ChangePasswordForm email={user?.email} /> : null,

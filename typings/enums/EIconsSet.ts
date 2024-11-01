@@ -49,4 +49,5 @@ export enum EIconsSet {
   Folder,
   FlagUkr,
   FlagEng,
+  Language,
 }
