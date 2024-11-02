@@ -1,5 +1,8 @@
 .projectPage {
+  display: flex;
+  flex-direction: column;
   padding: 24px 12px;
+  width: 100%;
 
   .loader {
     width: 100%;
@@ -15,6 +18,7 @@
   .content {
     display: flex;
     flex-direction: column;
+    height: 100%;
     gap: 24px;
   }
 
@@ -35,7 +39,7 @@
 
     .content {
       display: grid;
-      grid-template-columns: 264px 1fr;
+      grid-template-columns: 200px 1fr;
       gap: 24px;
     }
   }

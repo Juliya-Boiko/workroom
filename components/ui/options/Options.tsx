@@ -1,5 +1,6 @@
 'use client';
 import styles from './options.module.scss';
+import { useTranslations } from 'next-intl';
 import { useEffect, useState, useRef } from 'react';
 import { EIconsSet } from '@/typings';
 import { SvgHandler } from '@/components/SvgHandler';
@@ -14,6 +15,7 @@ interface Props {
 export const Options = ({ options }: Props) => {
   const [open, setOpen] = useState(false);
   const ref = useRef<HTMLDivElement>(null);
+  const t = useTranslations('Options');
 
   const handleClick = (action: () => void) => {
     setOpen(false);
@@ -46,7 +48,7 @@ export const Options = ({ options }: Props) => {
         <ul className={styles.list}>
           {options.map(({ value, action }) => (
             <li key={value} className={styles.item} onClick={() => handleClick(action)}>
-              {value}
+              {t(value)}
             </li>
           ))}
         </ul>

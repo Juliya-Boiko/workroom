@@ -3,6 +3,7 @@
   flex-direction: column;
   gap: 24px;
   padding: 24px 12px;
+  width: 100%;
 
   @include onTablet {
     padding: 24px 48px;

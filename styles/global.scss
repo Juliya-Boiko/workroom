@@ -91,6 +91,13 @@ body {
 
 .appMain {
   width: 100%;
+  display: flex;
+  flex-direction: column;
+
+  .appContent {
+    flex-grow: 1;
+    display: flex;
+  }
 }
 
 .loadingPage {

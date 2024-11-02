@@ -109,7 +109,9 @@
     "toDo": "To do",
     "inProgress": "In Progress",
     "done": "Done",
-    "inReview": "In Review"
+    "inReview": "In Review",
+    "edit": "Edit",
+    "delete": "Delete"
   },
   "SidebarMenu": {
     "dashboard": "Dashboard",
@@ -143,7 +145,8 @@
   "Projects": {
     "title": "Projects",
     "add": "Add project",
-    "back": "Back to projects"
+    "back": "Back to projects",
+    "details": "Project details"
   },
   "Tasks": {
     "add": "Add Task",

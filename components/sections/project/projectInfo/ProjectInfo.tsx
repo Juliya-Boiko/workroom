@@ -34,7 +34,7 @@ export const ProjectInfo = ({ project }: Props) => {
           className={styles.image}
         />
         <button type="button" className={styles.toggleBtn} onClick={() => setOpen((prev) => !prev)}>
-          <span>Project details</span>
+          <span>{t('Projects.details')}</span>
           <SvgHandler icon={EIconsSet.ChevronDown} />
         </button>
         <OptionsProjectInfo id={project._id} />
