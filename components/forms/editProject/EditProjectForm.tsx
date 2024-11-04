@@ -2,6 +2,7 @@
 import styles from './editProjectForm.module.scss';
 import Image from 'next/image';
 import { useState } from 'react';
+import { useTranslations } from 'next-intl';
 import { useForm, Controller } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
 import { IProjectDetails, priorityDataTypes, EIconsSet } from '@/typings';
@@ -18,6 +19,8 @@ interface Props {
 export const EditProjectForm = ({ project }: Props) => {
   const [showThumbs, setShowThumbs] = useState(false);
   const { update } = useProjectsMutation();
+  const t = useTranslations('Forms');
+
   const defaultValues = {
     name: project.name,
     start: new Date(project.start),
@@ -31,13 +34,14 @@ export const EditProjectForm = ({ project }: Props) => {
     register,
     watch,
     handleSubmit,
-    formState: { errors },
+    formState: { errors, isDirty, isValid },
   } = useForm({
     defaultValues,
     resolver: yupResolver(addProjectSchema),
     mode: 'onChange',
   });
 
+  const startDate = watch('start');
   const projectImage = watch('image');
   const imgSrc = defineThumbSrc(projectImage);
 
@@ -52,7 +56,7 @@ export const EditProjectForm = ({ project }: Props) => {
     <form className={styles.form} onSubmit={handleSubmit(onSubmit)}>
       <div className={styles.container}>
         <div className={styles.imgWrapper}>
-          <Image src={imgSrc} alt={project.name} fill sizes="96px" />
+          <Image src={imgSrc} alt={project.name} fill sizes="96px" className={styles.image} />
           <button type="button" className={styles.btnPlus} onClick={() => setShowThumbs((v) => !v)}>
             <SvgHandler icon={EIconsSet.Plus} />
           </button>
@@ -67,25 +71,24 @@ export const EditProjectForm = ({ project }: Props) => {
       </div>
 
       <div className={`${styles.container} ${styles.content}`}>
-        <InputField
-          label="Project Name"
-          name="name"
-          register={register}
-          placeholder="Project Name"
-          errors={errors.name}
-        />
+        <InputField label="projectName" name="name" register={register} errors={errors.name} />
         <Controller
           control={control}
           name="start"
           render={({ field }) => (
-            <PickerDate label="Start date" value={field.value} onChange={field.onChange} />
+            <PickerDate label={t('start')} value={field.value} onChange={field.onChange} />
           )}
         />
         <Controller
           control={control}
           name="deadline"
           render={({ field }) => (
-            <PickerDate label="Deadline" value={field.value} onChange={field.onChange} />
+            <PickerDate
+              label={t('deadline')}
+              minDate={startDate}
+              value={field.value}
+              onChange={field.onChange}
+            />
           )}
         />
         <Controller
@@ -93,7 +96,7 @@ export const EditProjectForm = ({ project }: Props) => {
           name="priority"
           render={({ field }) => (
             <SelectDrop
-              label="Priority"
+              label={t('priority')}
               options={priorityDataTypes}
               value={field.value}
               onChange={field.onChange}
@@ -101,13 +104,15 @@ export const EditProjectForm = ({ project }: Props) => {
           )}
         />
         <TextareaField
-          label="Description"
+          label={t('description')}
           name="description"
           register={register}
-          placeholder="Add some description of the project"
+          placeholder={t('projectDescrPlaceholder')}
         />
         <div className={styles.btnWrapper}>
-          <BtnPrimary type="submit">Save changes</BtnPrimary>
+          <BtnPrimary type="submit" disabled={!isValid || !isDirty}>
+            {t('saveChanges')}
+          </BtnPrimary>
         </div>
       </div>
     </form>

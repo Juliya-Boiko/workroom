@@ -4,7 +4,6 @@ import { deleteProjectTasks } from '../tasks/task';
 import {
   AddProjectFormData,
   uploadImage,
-  uploadThumb,
   IMAGE_THUMB_STARTS,
   deleteImage,
 } from '@/utils';
@@ -61,7 +60,11 @@ export const deleteProject = async (id: string) => {
 export type IEditProject = { values: AddProjectFormData; id: string };
 
 export const updateProject = async (data: IEditProject): Promise<string> => {
-  const image = await uploadThumb(data.values.image);
+  let image: string | File | null = data.values.image;
+  if (typeof image !== 'string') {
+    const uploaded = await uploadImage(data.values.image);
+    image = uploaded;
+  }
   const response = await axiosInstance.patch(`/project/${data.id}`, { ...data.values, image });
   return response.data;
 };

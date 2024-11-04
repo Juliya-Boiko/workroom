@@ -77,7 +77,7 @@
     "period": "Period",
     "status": "Status",
     "end": "End",
-
+    "saveChanges": "Save changes",
     "Errors": {
       "required": "email is required field",
       "invalidEmail": "email must be a valid email",
@@ -121,7 +121,8 @@
     "infoPortal": "Info Portal",
     "logout": "Logout",
     "profile": "Profile",
-    "myProfile": "My Profile"
+    "myProfile": "My Profile",
+    "editProject": "Edit project"
   },
   "Header": {
     "search": "Search",
@@ -146,7 +147,8 @@
     "title": "Projects",
     "add": "Add project",
     "back": "Back to projects",
-    "details": "Project details"
+    "details": "Project details",
+    "backTasks": "Back to project tasks"
   },
   "Tasks": {
     "add": "Add Task",
