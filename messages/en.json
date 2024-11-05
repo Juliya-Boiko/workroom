@@ -78,6 +78,12 @@
     "status": "Status",
     "end": "End",
     "saveChanges": "Save changes",
+    "attachments": "attachments",
+    "logged": "logged",
+    "originalEstimate": "Original Estimate",
+    "start": "Start",
+    "end": "End",
+    "addTime": "Add Time",
     "Errors": {
       "required": "email is required field",
       "invalidEmail": "email must be a valid email",
@@ -152,7 +158,12 @@
   },
   "Tasks": {
     "add": "Add Task",
-    "title": "Tasks"
+    "title": "Tasks",
+    "timeTracking": "Time Tracking",
+    "logTime": "Log Time",
+    "info": "Task Info",
+    "details": "Task details",
+    "show": "Show"
   },
   "Employees": {
     "title": "Workload",
@@ -164,8 +175,10 @@
     "projectData": "Project Data",
     "allTasks": "All tasks",
     "activeTasks": "Active tasks",
+    "backlog": "Backlog",
     "assignees": "Assignees",
-    "of": "of"
+    "of": "of",
+    "assigned": "Assigned"
   },
   "Events": {
     "title": "Nearest Events",

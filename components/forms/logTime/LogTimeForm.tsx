@@ -5,6 +5,7 @@ import styles from './logTimeForm.module.scss';
 import imgSrc from '../../../public/placeholder-3.png';
 import Image from 'next/image';
 import { useForm, Controller } from 'react-hook-form';
+import { useTranslations } from 'next-intl';
 import { yupResolver } from '@hookform/resolvers/yup';
 import { useTimelogMutation, useTimelogs } from '@/services';
 import { useModalContext } from '@/components/providers/ModalProvider';
@@ -29,6 +30,7 @@ export const LogTimeForm = ({ taskId, minDate, maxDate }: Props) => {
   const { create, isCreating } = useTimelogMutation();
   const { data: logged } = useTimelogs(taskId || '');
   const { closeModal } = useModalContext();
+  const t = useTranslations('Forms');
 
   const defaultValues = {
     date: minDate || new Date(),
@@ -77,7 +79,7 @@ export const LogTimeForm = ({ taskId, minDate, maxDate }: Props) => {
         name="date"
         render={({ field }) => (
           <PickerDate
-            label="Start date"
+            label={t('date')}
             value={field.value}
             minDate={minDate}
             maxDate={maxDate}
@@ -89,19 +91,19 @@ export const LogTimeForm = ({ taskId, minDate, maxDate }: Props) => {
         control={control}
         name="start"
         render={({ field }) => (
-          <PickerTime label="Start" value={field.value} onChange={field.onChange} />
+          <PickerTime label={t('start')} value={field.value} onChange={field.onChange} />
         )}
       />
       <Controller
         control={control}
         name="end"
         render={({ field }) => (
-          <PickerTime label="End" value={field.value} onChange={field.onChange} />
+          <PickerTime label={t('end')} value={field.value} onChange={field.onChange} />
         )}
       />
       <div className={styles.btnWrapper}>
         <BtnPrimary type="submit" disabled={isSubmitting || !isDirty || isCreating}>
-          Add time
+          {t('addTime')}
         </BtnPrimary>
       </div>
     </form>

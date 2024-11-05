@@ -2,6 +2,7 @@
 import styles from './taskPage.module.scss';
 import { ROUTES } from '@/utils';
 import { useTask } from '@/services';
+import { useTranslations } from 'next-intl';
 import { IDynamicComponent, EIconsSet } from '@/typings';
 import { Topping } from '@/components/topping/Topping';
 import { Preloader, Modal, BtnPrimary } from '@/components/ui';
@@ -15,20 +16,21 @@ import { useAttachments } from '@/services/attachments/useAttachments';
 export const TaskPage = ({ slug }: IDynamicComponent) => {
   const { data: task, isLoading: isLoadingTask } = useTask(slug);
   const { data: attachments } = useAttachments(slug);
+  const t = useTranslations();
 
   return (
     <div className={styles.taskPage}>
       <Topping
-        link="Back to project info"
+        link={t('Projects.backTasks')}
         path={`${ROUTES.project}/${task?.projectId}`}
-        title={task?.name || ''}
+        subtitle={task?.name || ''}
       >
         <Modal
-          title="Time Tracking"
+          title={t('Tasks.timeTracking')}
           activator={
             <BtnPrimary disabled={isLoadingTask}>
               <SvgHandler icon={EIconsSet.ClockOutlined} />
-              <span>Log Time</span>
+              <span>{t('Tasks.logTime')}</span>
             </BtnPrimary>
           }
           content={

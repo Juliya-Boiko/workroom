@@ -70,7 +70,7 @@
     "assignee": "Призначити",
     "taskDescrPlaceholder": "Додайте опис завдання",
     "saveTask": "Зберегти завдання",
-    "attachments": "Attachments",
+    "attachments": "Вкладення",
     "linkTitle": "Назва посилання",
     "linkPath": "Посилання",
     "cancel": "Скасувати",
@@ -79,6 +79,10 @@
     "status": "Статус",
     "end": "До",
     "saveChanges": "Зберегти зміни",
+    "logged": "внесено",
+    "originalEstimate": "Базова оцінка",
+    "start": "Початок",
+    "addTime": "Додати час",
     "Errors": {
       "required": "Обов’язкове поле",
       "invalidEmail": "Електронна адреса має бути дійсною",
@@ -153,7 +157,12 @@
   },
   "Tasks": {
     "add": "Додати завдання",
-    "title": "Завдання"
+    "title": "Завдання",
+    "timeTracking": "Трекінг часу",
+    "logTime": "Додати час",
+    "info": "Інформація",
+    "show": "Показати",
+    "details": "Деталі завдання"
   },
   "Employees": {
     "title": "Співробітники",
@@ -165,8 +174,10 @@
     "projectData": "Дані проекту",
     "allTasks": "Усі завдання",
     "activeTasks": "Активні завдання",
+    "backlog": "Беклог",
     "assignees": "Призначені",
-    "of": "з"
+    "of": "з",
+    "assigned": "Призначений"
   },
   "Events": {
     "title": "Найближчі події",

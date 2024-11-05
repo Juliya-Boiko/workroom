@@ -9,6 +9,9 @@
     justify-content: space-between;
     padding: 12px 24px;
     cursor: pointer;
+  }
+
+  .title {
     font-weight: 700;
   }
 
@@ -16,6 +19,12 @@
     display: flex;
     flex-direction: column;
     align-items: center;
+    font-size: 12px;
+    transition: all 250ms ease-in-out;
+
+    &:hover{
+      color: $blue-1;
+    }
   }
 
   .info {
@@ -79,7 +88,7 @@
       padding-top: 24px;
     }
     
-    .laptopHidden {
+    .toggleBtn {
       display: none;
     }
 

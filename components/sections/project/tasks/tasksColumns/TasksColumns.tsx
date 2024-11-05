@@ -1,6 +1,7 @@
 'use client';
 import styles from './tasksColumns.module.scss';
 import { useState, useEffect } from 'react';
+import { useTranslations } from 'next-intl';
 import { useTasksMutation } from '@/services';
 import { groupTasksByStatus, GroupedTasks } from '@/utils';
 import { DragDropContext, Droppable, Draggable, type DropResult } from '@hello-pangea/dnd';
@@ -15,6 +16,7 @@ interface Props {
 export const TasksColumns = ({ tasks, loading }: Props) => {
   const { update, isUpdating } = useTasksMutation();
   const [groupedTasks, setGroupedTasks] = useState<GroupedTasks>(groupTasksByStatus(tasks));
+  const t = useTranslations('Options');
 
   useEffect(() => {
     if (tasks) {
@@ -56,7 +58,7 @@ export const TasksColumns = ({ tasks, loading }: Props) => {
             {(provided) => (
               <div {...provided.droppableProps} ref={provided.innerRef}>
                 <div className={styles.title}>
-                  <div className={styles.titleWrapper}>{name}</div>
+                  <div className={styles.titleWrapper}>{t(name)}</div>
                 </div>
                 {tasks.map((item: ITask, index) => (
                   <Draggable key={item._id} draggableId={item._id} index={index}>

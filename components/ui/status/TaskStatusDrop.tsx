@@ -2,6 +2,7 @@
 import styles from './taskStatusDrop.module.scss';
 import { useState, useRef, useEffect } from 'react';
 import { useTasksMutation } from '@/services';
+import { useTranslations } from 'next-intl';
 import { EIconsSet, ETaskStatus, taskStatusDataTypes } from '@/typings';
 import { SvgHandler } from '@/components/SvgHandler';
 
@@ -15,6 +16,7 @@ export const TaskStatusDrop = ({ id, status }: Props) => {
   const [selected, setSelected] = useState(status);
   const ref = useRef<HTMLDivElement>(null);
   const { update } = useTasksMutation();
+  const t = useTranslations('Options');
 
   const getStyles = (value: ETaskStatus) => {
     if (value === ETaskStatus.INPROGRESS) return styles.progress;
@@ -53,7 +55,7 @@ export const TaskStatusDrop = ({ id, status }: Props) => {
         className={`${styles.badge} ${getStyles(selected)}`}
         onClick={() => setOpen((prev) => !prev)}
       >
-        <span>{selected}</span>
+        <span>{t(selected)}</span>
         <SvgHandler icon={EIconsSet.ChevronDown} />
       </div>
       {open && (
@@ -64,7 +66,7 @@ export const TaskStatusDrop = ({ id, status }: Props) => {
               className={`${styles.item} ${getStyles(el)}`}
               onClick={() => handleSelected(el)}
             >
-              {el}
+              {t(el)}
             </li>
           ))}
         </ul>

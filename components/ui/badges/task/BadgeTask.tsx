@@ -1,4 +1,6 @@
+'use client';
 import styles from './badge.module.scss';
+import { useTranslations } from 'next-intl';
 import { ETaskStatus } from '@/typings';
 
 interface Props {
@@ -6,6 +8,8 @@ interface Props {
 }
 
 export const BadgeTask = ({ label }: Props) => {
+  const t = useTranslations('Options');
+
   const getStyles = () => {
     if (label === ETaskStatus.INPROGRESS) {
       return styles.badgeProgress;
@@ -18,5 +22,5 @@ export const BadgeTask = ({ label }: Props) => {
     }
     return styles.badgeDefault;
   };
-  return <div className={`${styles.badge} ${getStyles()}`}>{label}</div>;
+  return <div className={`${styles.badge} ${getStyles()}`}>{t(label)}</div>;
 };

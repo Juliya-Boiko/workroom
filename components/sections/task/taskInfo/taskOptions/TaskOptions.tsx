@@ -5,20 +5,20 @@ import { Options, Confirm } from '@/components/ui';
 import { useTasksMutation } from '@/services';
 import { ROUTES } from '@/utils';
 
-export const TaskDetailsOptions = ({ id, projectId }: { id: string; projectId: string }) => {
+export const TaskOptions = ({ id, projectId }: { id: string; projectId: string }) => {
   const [showConfirm, setShowConfirm] = useState(false);
   const { remove } = useTasksMutation();
   const router = useRouter();
 
   const options = [
     {
-      value: 'Edit',
+      value: 'edit',
       action: () => {
         router.push(`${ROUTES.editTask}/${id}`);
       },
     },
     {
-      value: 'Delete',
+      value: 'delete',
       action: () => setShowConfirm(true),
     },
   ];
