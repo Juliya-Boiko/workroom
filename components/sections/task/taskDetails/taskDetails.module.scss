@@ -8,6 +8,10 @@
     font-weight: 700;
   }
 
+  .title {
+    font-weight: 700;
+  }
+
   .wrapper {
     @extend %shadow-s;
     background-color: $white;

@@ -83,6 +83,8 @@
     "originalEstimate": "Базова оцінка",
     "start": "Початок",
     "addTime": "Додати час",
+    "comment": "",
+    "addComment": "",
     "Errors": {
       "required": "Обов’язкове поле",
       "invalidEmail": "Електронна адреса має бути дійсною",
@@ -162,7 +164,8 @@
     "logTime": "Додати час",
     "info": "Інформація",
     "show": "Показати",
-    "details": "Деталі завдання"
+    "details": "Деталі завдання",
+    "comments": "Коментарі"
   },
   "Employees": {
     "title": "Співробітники",

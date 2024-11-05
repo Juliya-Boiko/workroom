@@ -84,6 +84,8 @@
     "start": "Start",
     "end": "End",
     "addTime": "Add Time",
+    "comment": "Коментар",
+    "addComment": "Додати коментар",
     "Errors": {
       "required": "email is required field",
       "invalidEmail": "email must be a valid email",
@@ -163,7 +165,8 @@
     "logTime": "Log Time",
     "info": "Task Info",
     "details": "Task details",
-    "show": "Show"
+    "show": "Show",
+    "comments": "Comments"
   },
   "Employees": {
     "title": "Workload",

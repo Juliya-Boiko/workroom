@@ -14,11 +14,11 @@ export const CommentCardOptions = ({ id, onEdit }: Props) => {
 
   const options = [
     {
-      value: 'Edit',
+      value: 'edit',
       action: () => onEdit(),
     },
     {
-      value: 'Delete',
+      value: 'delete',
       action: () => setShowConfirm(true),
     },
   ];
