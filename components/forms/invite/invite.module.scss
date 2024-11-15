@@ -1,4 +1,9 @@
 .form {
+  .title {
+    @extend %heading-2;
+    text-align: center;
+  }
+
   @include onTablet {
     width: 400px;
   }

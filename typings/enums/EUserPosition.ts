@@ -1,8 +1,8 @@
 export enum EUserPosition {
-  OWNER = 'Busines owner',
-  EMPLOYEE = 'Company emplyee',
-  CLIENT = 'Company client',
-  OTHER = 'Other',
+  OWNER = 'owner',
+  EMPLOYEE = 'employee',
+  CLIENT = 'client',
+  OTHER = 'other',
 }
 
 export const userPositionsDataTypes = Object.values(EUserPosition);

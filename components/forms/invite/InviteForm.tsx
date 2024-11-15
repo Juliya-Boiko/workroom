@@ -3,6 +3,7 @@ import styles from '../common.module.scss';
 import inviteStyles from './invite.module.scss';
 import { useForm, Controller } from 'react-hook-form';
 import { useUserMutations } from '@/services';
+import { useTranslations } from 'next-intl';
 import { yupResolver } from '@hookform/resolvers/yup';
 import { inviteSchema, InviteFormData } from '@/utils';
 import { InputField, PasswordInputField, SelectDrop, BtnPrimary } from '@/components/ui';
@@ -15,6 +16,8 @@ interface Props {
 
 export const InviteForm = ({ companyId, email }: Props) => {
   const { registerMember, isInviting } = useUserMutations();
+  const t = useTranslations();
+
   const defaultValues = {
     email,
     password: '',
@@ -44,8 +47,9 @@ export const InviteForm = ({ companyId, email }: Props) => {
 
   return (
     <form className={`${styles.form} ${inviteStyles.form}`} onSubmit={handleSubmit(onSubmit)}>
+      <h1 className={styles.title}>{t('Auth.Invite.title')}</h1>
       <InputField
-        label="Email Address"
+        label="email"
         name="email"
         disabled
         register={register}
@@ -58,7 +62,7 @@ export const InviteForm = ({ companyId, email }: Props) => {
           name="userPosition"
           render={({ field }) => (
             <SelectDrop
-              label="What describes you best?"
+              label={t('Forms.bestDescribe')}
               options={invitePositionDataTypes}
               value={field.value}
               onChange={field.onChange}
@@ -68,7 +72,7 @@ export const InviteForm = ({ companyId, email }: Props) => {
       </div>
       {position === EUserPosition.EMPLOYEE && (
         <InputField
-          label="Profession"
+          label="profession"
           name="profession"
           register={register}
           placeholder="Designer"
@@ -76,26 +80,26 @@ export const InviteForm = ({ companyId, email }: Props) => {
         />
       )}
       <InputField
-        label="Name"
+        label="name"
         name="name"
         register={register}
-        placeholder="John Doe"
+        placeholder={t('Forms.name')}
         errors={errors.name}
       />
       <PasswordInputField
-        label="Password"
+        label="password"
         name="password"
         register={register}
         errors={errors.password}
       />
       <PasswordInputField
-        label="Confirm Password"
+        label="confirm"
         name="confirmPassword"
         register={register}
         errors={errors.confirmPassword}
       />
       <BtnPrimary type="submit" disabled={!isDirty || !isValid || isSubmitting || isInviting}>
-        Sign In
+        {t('Auth.SignUp.signUp')}
       </BtnPrimary>
     </form>
   );

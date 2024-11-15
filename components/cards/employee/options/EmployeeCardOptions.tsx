@@ -3,7 +3,6 @@ import { useState } from 'react';
 import { useRouter } from 'next/navigation';
 import { Options, Confirm } from '@/components/ui';
 import { ROUTES } from '@/utils';
-import { ECardEmployeeOptions } from '@/typings';
 import { useEmployeeMutation } from '@/services';
 
 interface Props {
@@ -17,11 +16,11 @@ export const EmployeeCardOptions = ({ id }: Props) => {
 
   const options = [
     {
-      value: ECardEmployeeOptions.VIEW,
+      value: 'view',
       action: () => router.push(`${ROUTES.employee}/${id}`),
     },
     {
-      value: ECardEmployeeOptions.DELETE,
+      value: 'delete',
       action: () => setShowConfirm(true),
     },
   ];

@@ -30,8 +30,11 @@
     "NewPassword": {
       "title": "Введіть новий пароль",
       "confirm": "Підтвердити"
+    },
+    "Invite": {
+      "title": "Зареєструватися в Workroom"
     }
-   },
+  },
   "Forms": {
     "email": "Електронна пошта",
     "password": "Пароль",
@@ -45,7 +48,6 @@
     "later": "* ви можете зробити це пізніше",
     "addMember": "Додати учасника",
     "projectName": "Назва проекту",
-    "start": "Дата початку",
     "deadline": "Кінцевий термін",
     "selectDate": "Виберіть дату",
     "priority": "Пріоритет",
@@ -83,8 +85,10 @@
     "originalEstimate": "Базова оцінка",
     "start": "Початок",
     "addTime": "Додати час",
-    "comment": "",
-    "addComment": "",
+    "comment": "Коментар",
+    "addComment": "Додати коментар",
+    "bestDescribe": "Що описує вас найкраще?",
+    "profession": "Посада",
     "Errors": {
       "required": "Обов’язкове поле",
       "invalidEmail": "Електронна адреса має бути дійсною",
@@ -118,7 +122,10 @@
     "done": "Завершено",
     "inReview": "На ревью",
     "edit": "Редагувати",
-    "delete": "Видалити"
+    "delete": "Видалити",
+    "owner": "Власник бізнесу",
+    "employee": "Співробітник компанії",
+    "client": "Клієнт компанії"
   },
   "SidebarMenu": {
     "dashboard": "Дашборд",
@@ -180,7 +187,14 @@
     "backlog": "Беклог",
     "assignees": "Призначені",
     "of": "з",
-    "assigned": "Призначений"
+    "assigned": "Призначений",
+    "name": "Найменування",
+    "estimate": "Час",
+    "status": "Статус",
+    "priority": "Пріоритет",
+    "birthday": "День народження",
+    "age": "Вік",
+    "position": "Посада"
   },
   "Events": {
     "title": "Найближчі події",

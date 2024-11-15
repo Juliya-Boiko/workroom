@@ -30,6 +30,9 @@
     "NewPassword": {
       "title": "Enter new password",
       "confirm": "Confirm"
+    },
+    "Invite": {
+      "title": "Register in Woorkroom"
     }
   },
   "Forms": {
@@ -45,7 +48,6 @@
     "later": "* you can do it later",
     "addMember": "Add another Member",
     "projectName": "Project Name",
-    "start": "Start date",
     "deadline": "Deadline",
     "selectDate": "Select Date",
     "priority": "Priority",
@@ -76,7 +78,6 @@
     "add": "Add",
     "period": "Period",
     "status": "Status",
-    "end": "End",
     "saveChanges": "Save changes",
     "attachments": "attachments",
     "logged": "logged",
@@ -84,8 +85,10 @@
     "start": "Start",
     "end": "End",
     "addTime": "Add Time",
-    "comment": "Коментар",
-    "addComment": "Додати коментар",
+    "comment": "Comment",
+    "addComment": "Add comment",
+    "bestDescribe": "What describes you best?",
+    "profession": "Position",
     "Errors": {
       "required": "email is required field",
       "invalidEmail": "email must be a valid email",
@@ -119,7 +122,10 @@
     "done": "Done",
     "inReview": "In Review",
     "edit": "Edit",
-    "delete": "Delete"
+    "delete": "Delete",
+    "owner": "Busines owner",
+    "employee": "Company employee",
+    "client": "Company client"
   },
   "SidebarMenu": {
     "dashboard": "Dashboard",
@@ -181,7 +187,14 @@
     "backlog": "Backlog",
     "assignees": "Assignees",
     "of": "of",
-    "assigned": "Assigned"
+    "assigned": "Assigned",
+    "name": "Name",
+    "estimate": "Estimate",
+    "status": "Status",
+    "priority": "Priority",
+    "birthday": "Birthday",
+    "age": "Full age",
+    "position": "Position"
   },
   "Events": {
     "title": "Nearest Events",

@@ -21,7 +21,9 @@ export const ProgressTimelog = ({ estimate, value, total }: Props) => {
         <p>
           {logged} {t('logged')}
         </p>
-        <p className={styles.estimate}>{t('originalEstimate')} {estimate}</p>
+        <p className={styles.estimate}>
+          {t('originalEstimate')} {estimate}
+        </p>
       </div>
     </div>
   );

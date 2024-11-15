@@ -8,11 +8,11 @@ import { CommentSkeleton } from '@/components/cards/comment/commentSkeleton/Comm
 
 export const TaskComments = ({ taskId }: { taskId: string }) => {
   const { data: comments, isLoading } = useComments(taskId);
-  const t = useTranslations();
+  const t = useTranslations('Tasks');
 
   return (
     <section className={styles.taskComments}>
-      <p className={styles.title}>{t('Tasks.comments')}</p>
+      <p className={styles.title}>{t('comments')}</p>
       {isLoading ? (
         <ul className={styles.list}>
           <CommentSkeleton />
