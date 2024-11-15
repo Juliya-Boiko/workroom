@@ -75,7 +75,7 @@ export const AddEventForm = () => {
       ) : (
         <form className={commonStyles.form} onSubmit={handleSubmit(onSubmit)}>
           <InputField
-            label={t('eventName')}
+            label="eventName"
             name="name"
             register={register}
             placeholder="Event Name"
@@ -127,7 +127,7 @@ export const AddEventForm = () => {
             label={t('description')}
             name="description"
             register={register}
-            placeholder="Add some description of the event"
+            placeholder={t('eventDescrHolder')}
           />
           <BtnPrimary type="submit" disabled={!isDirty || !isValid || isSubmitting || isCreating}>
             {t('saveEvent')}

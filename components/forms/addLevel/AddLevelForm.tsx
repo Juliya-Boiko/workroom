@@ -1,6 +1,7 @@
 'use client';
 import styles from './addLevelForm.module.scss';
 import { useState } from 'react';
+import { useTranslations } from 'next-intl';
 import { useForm, Controller } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
 import { levelEmployeeDataTypes, EIconsSet, ELevelEmployee } from '@/typings';
@@ -19,6 +20,7 @@ interface Props {
 export const AddLevelForm = ({ id, level, loading }: Props) => {
   const [showForm, setShowForm] = useState(false);
   const { updateLevel, isUpdatingLevel } = useEmployeeMutation();
+  const t = useTranslations('Forms');
   const { handleSubmit, control } = useForm({
     defaultValues: { level: level || levelEmployeeDataTypes[0] },
     resolver: yupResolver(addLevelSchema),
@@ -74,7 +76,7 @@ export const AddLevelForm = ({ id, level, loading }: Props) => {
             </div>
           ) : (
             <BtnPrimary disabled={loading} onClick={() => setShowForm(true)}>
-              Add Level
+              {t('addLevel')}
             </BtnPrimary>
           )}
         </div>

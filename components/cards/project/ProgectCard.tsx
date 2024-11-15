@@ -2,13 +2,12 @@
 import styles from './projectCard.module.scss';
 import Image from 'next/image';
 import { useEffect, useState } from 'react';
-import { formatDayDate } from '@/utils';
+import { formatDayDate, LOCALE_LANGUAGE } from '@/utils';
 import { useTranslations } from 'next-intl';
 import { LoaderSkeleton } from '@/components/LoaderSkeleton';
 import { SvgHandler } from '@/components/SvgHandler';
 import { EIconsSet, IProjectInfo } from '@/typings';
 import { BadgePriopity, Assignees } from '@/components/ui';
-import { LOCALE_LANGUAGE } from '@/utils';
 
 interface Props {
   loading?: boolean;
