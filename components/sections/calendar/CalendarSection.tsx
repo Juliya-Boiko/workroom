@@ -4,10 +4,12 @@ import FullCalendar from '@fullcalendar/react';
 import dayGridPlugin from '@fullcalendar/daygrid';
 import timeGridPlugin from '@fullcalendar/timegrid';
 import interactionPlugin from '@fullcalendar/interaction';
+import ukLocale from '@fullcalendar/core/locales/uk';
+import enLocale from '@fullcalendar/core/locales/en-gb';
 // import { DateSelectArg, EventClickArg } from '@fullcalendar/core';
 import { useState, useEffect } from 'react';
 import { useCalendarEvents } from '@/services';
-import { defineEventStyles } from '@/utils';
+import { defineEventStyles, LOCALE_LANGUAGE } from '@/utils';
 import { ECategoryEvent, EPriority } from '@/typings';
 import { BadgePriopity } from '@/components/ui';
 
@@ -31,6 +33,8 @@ interface IEventInfo {
 export const CalendarSection = () => {
   const { data } = useCalendarEvents();
   const [currentEvents, setCurrentEvents] = useState<EventBase[]>([]);
+  const [locale, setLocale] = useState<string | null>(null);
+
 
   useEffect(() => {
     if (data) {
@@ -44,6 +48,11 @@ export const CalendarSection = () => {
       setCurrentEvents(events);
     }
   }, [data]);
+
+  useEffect(() => {
+    const storedLocale = localStorage.getItem(LOCALE_LANGUAGE);
+    setLocale(storedLocale);
+  }, []);
 
   const renderEventContent = (eventInfo: IEventInfo) => {
     const priority = eventInfo.event.extendedProps.priority;
@@ -67,6 +76,7 @@ export const CalendarSection = () => {
       <div className="">
         <div className="">
           <FullCalendar
+            locale={locale === 'uk' ? ukLocale : enLocale}
             themeSystem="bootstrap"
             headerToolbar={{
               left: 'prev',
