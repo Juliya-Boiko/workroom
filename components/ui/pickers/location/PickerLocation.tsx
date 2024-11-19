@@ -1,6 +1,7 @@
 'use client';
 import styles from './pickerLocation.module.scss';
 import { useEffect, useState } from 'react';
+import { useTranslations } from 'next-intl';
 import { BtnIcon } from '../../buttons/icon/BtnIcon';
 import { SvgHandler } from '@/components/SvgHandler';
 import { EIconsSet, ICountry, ICity } from '@/typings';
@@ -24,6 +25,7 @@ export const PickerLocation = ({ value, disabled, onApprove }: Props) => {
   const [cities, setCities] = useState<ICity[]>([]);
   const [cityFilter, setCityFilter] = useState<string>('');
   const [city, setCity] = useState<ICity | null>(null);
+  const t = useTranslations('Forms');
 
   useEffect(() => {
     if (countryFilter.length >= 2) {
@@ -78,7 +80,7 @@ export const PickerLocation = ({ value, disabled, onApprove }: Props) => {
 
   return (
     <div className={`${styles.pickerLocation} ${disabled ? styles.pickerDis : styles.pickerDef}`}>
-      <p className={styles.label}>Select location</p>
+      <p className={styles.label}>{t('location')}</p>
       <button type="button" className={styles.openBtn} onClick={handleOpen}>
         <span>{value}</span>
         <SvgHandler icon={EIconsSet.Location} />
@@ -96,7 +98,7 @@ export const PickerLocation = ({ value, disabled, onApprove }: Props) => {
             </div>
             <div className={styles.wrapper}>
               <Filter
-                label="Select country"
+                label={t('country')}
                 id="country"
                 selected={country}
                 list={countries}
@@ -107,7 +109,7 @@ export const PickerLocation = ({ value, disabled, onApprove }: Props) => {
               />
               {country && (
                 <Filter
-                  label="Select city"
+                  label={t('city')}
                   id="city"
                   selected={city}
                   list={cities}
@@ -118,7 +120,7 @@ export const PickerLocation = ({ value, disabled, onApprove }: Props) => {
                 />
               )}
               <BtnPrimary disabled={!city || !country} onClick={handleApprove}>
-                Approve
+                {t('saveChanges')}
               </BtnPrimary>
             </div>
           </div>

@@ -1,14 +1,14 @@
 import { EIconsSet } from './EIconsSet';
 
 export enum ESettings {
-  ACCOUNT = 'Account',
-  LANGUAGE = 'Language',
-  NOTIFICATIONS = 'Notifications',
-  COMPANY = 'My Company',
-  APPS = 'Contacts & Apps',
-  PAYMENTS = 'Payments',
-  CONFIDENTIALITY = 'Confidentiality',
-  SAFETY = 'Safety',
+  ACCOUNT = 'account',
+  LANGUAGE = 'language',
+  NOTIFICATIONS = 'notifications',
+  COMPANY = 'company',
+  APPS = 'apps',
+  PAYMENTS = 'payments',
+  CONFIDENTIALITY = 'confidentiality',
+  SAFETY = 'safety',
 }
 
 export interface ISetting {

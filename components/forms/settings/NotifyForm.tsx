@@ -1,6 +1,7 @@
 'use client';
 import styles from './settingsForm.module.scss';
 import { useEffect, useState } from 'react';
+import { useTranslations } from 'next-intl';
 import { Toggle } from '@/components/ui';
 import { useProfile, useProfileMutation } from '@/services';
 import { LoaderSkeleton } from '@/components/LoaderSkeleton';
@@ -11,6 +12,7 @@ export const NotifyForm = () => {
   const [emailActivity, setEmailActivity] = useState(false);
   const [notifyComment, setNotifyComment] = useState(true);
   const [notifyTask, setNotifyTask] = useState(true);
+  const t = useTranslations('Forms');
 
   useEffect(() => {
     if (user) {
@@ -49,8 +51,8 @@ export const NotifyForm = () => {
       ) : (
         <li className={styles.item}>
           <div>
-            <p className={styles.subtitle}>Issue Activity</p>
-            <p>Send me email notifications for issue activity</p>
+            <p className={styles.subtitle}>{t('notifyissueTitle')}</p>
+            <p>{t('notifyissueText')}</p>
           </div>
           <Toggle name="emailActivity" value={emailActivity} onChange={handleEmailActivity} />
         </li>
@@ -60,8 +62,8 @@ export const NotifyForm = () => {
       ) : (
         <li className={styles.item}>
           <div>
-            <p className={styles.subtitle}>Task Activity</p>
-            <p>Send me notifications when someone’ve assign tasks to me</p>
+            <p className={styles.subtitle}>{t('notifyTaskTitle')}</p>
+            <p>{t('notifyTaskText')}</p>
           </div>
           <Toggle name="notifyTask" value={notifyTask} onChange={handleNotifyTask} />
         </li>
@@ -71,8 +73,8 @@ export const NotifyForm = () => {
       ) : (
         <li className={styles.item}>
           <div>
-            <p className={styles.subtitle}>New Comments</p>
-            <p>Send me notifications when someone’ve sent the comment</p>
+            <p className={styles.subtitle}>{t('notifyCommentTitle')}</p>
+            <p>{t('notifyCommentText')}</p>
           </div>
           <Toggle name="notifyComment" value={notifyComment} onChange={handleNotifyComment} />
         </li>

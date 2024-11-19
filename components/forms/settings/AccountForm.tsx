@@ -1,6 +1,7 @@
 'use client';
 import styles from './settingsForm.module.scss';
 import { useEffect } from 'react';
+import { useTranslations } from 'next-intl';
 import { useForm, Controller } from 'react-hook-form';
 import { useProfile, useProfileMutation } from '@/services';
 import { yupResolver } from '@hookform/resolvers/yup';
@@ -10,6 +11,7 @@ import { InputField, PickerDate, PickerLocation, UploadAvatar, BtnPrimary } from
 export const AccountForm = () => {
   const { data: user } = useProfile();
   const { update, isUpdating } = useProfileMutation();
+  const t = useTranslations('Forms');
 
   const {
     register,
@@ -68,14 +70,14 @@ export const AccountForm = () => {
           )}
         />
       </div>
-      <InputField label="Name" name="name" register={register} errors={errors.name} />
+      <InputField label="name" name="name" register={register} errors={errors.name} />
       <Controller
         control={control}
         name="birthday"
         render={({ field }) => (
           <PickerDate
             expanded
-            label="Birthday Date"
+            label={t('birthday')}
             value={field.value}
             onChange={field.onChange}
           />
@@ -84,7 +86,7 @@ export const AccountForm = () => {
       <PickerLocation value={location} onApprove={handleApprove} />
       <div className={styles.btnWrapper}>
         <BtnPrimary type="submit" disabled={isDisabled}>
-          Confirm
+          {t('saveChanges')}
         </BtnPrimary>
       </div>
     </form>

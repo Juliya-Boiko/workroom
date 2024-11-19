@@ -40,9 +40,9 @@ export const projectsViewDataTypes = [
 ];
 
 export enum EViewProfile {
-  PROJECTS = 'Projects',
-  TEAM = 'Team',
-  SETTINGS = 'Settings',
+  PROJECTS = 'projects',
+  TEAM = 'team',
+  SETTINGS = 'settings',
 }
 
 export const viewProfileDataTypes = Object.values(EViewProfile);

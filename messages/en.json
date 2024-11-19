@@ -94,7 +94,16 @@
     "eventDescrHolder": "Add some description of the event",
     "pageTitle": "Page title",
     "savePage": "Save page",
-
+    "birthday": "Birthday",
+    "location": "Select location",
+    "country": "Select country",
+    "city": "Select city",
+    "notifyissueTitle": "Issue Activity",
+    "notifyissueText": "Send me email notifications for issue activity",
+    "notifyTaskTitle": "Task Activity",
+    "notifyTaskText": "Send me notifications when someone’ve assign tasks to me",
+    "notifyCommentTitle": "New Comments",
+    "notifyCommentText": "Send me notifications when someone’ve sent the comment",
     "Errors": {
       "required": "email is required field",
       "invalidEmail": "email must be a valid email",
@@ -134,7 +143,18 @@
     "client": "Company client",
     "junior": "Junior",
     "middle": "Middle",
-    "senior": "Senior"
+    "senior": "Senior",
+    "projects": "Projects",
+    "team": "Team",
+    "settings": "Settings",
+    "account": "Account",
+    "language": "Language",
+    "notifications": "Notifications",
+    "company": "My Company",
+    "apps": "Contacts & Apps",
+    "payments": "Payments",
+    "confidentiality": "Confidentiality",
+    "safety": "Safety"
   },
   "SidebarMenu": {
     "dashboard": "Dashboard",
@@ -210,7 +230,9 @@
     "mainInfo": "Main info",
     "location": "Location",
     "contactInfo": "Contact Info",
-    "company": "Company"
+    "company": "Company",
+    "email": "Email Address",
+    "number": "Mobile Number"
   },
   "Events": {
     "title": "Nearest Events",

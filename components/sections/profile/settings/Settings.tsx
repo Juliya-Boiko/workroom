@@ -2,6 +2,7 @@
 import styles from './settings.module.scss';
 import { useState } from 'react';
 import { useProfile } from '@/services';
+import { useTranslations } from 'next-intl';
 import { settings, ISetting } from '@/typings';
 import { SvgHandler } from '@/components/SvgHandler';
 import { EIconsSet, ESettings } from '@/typings';
@@ -13,6 +14,7 @@ export const Settings = () => {
   const [open, setOpen] = useState(false);
   const [active, setActive] = useState(settings[0]);
   const { data: user } = useProfile();
+  const t = useTranslations('Options');
 
   const forms = {
     [ESettings.ACCOUNT]: <AccountForm />,
@@ -39,7 +41,7 @@ export const Settings = () => {
       <button type="button" className={styles.toggleBtn} onClick={() => setOpen((v) => !v)}>
         <div className={styles.wrapper}>
           <SvgHandler icon={active.icon} />
-          <span>{active.title}</span>
+          <span>{t(active.title)}</span>
         </div>
         <SvgHandler icon={EIconsSet.ChevronDown} />
       </button>
@@ -53,12 +55,12 @@ export const Settings = () => {
             <div className={styles.icon}>
               <SvgHandler icon={el.icon} />
             </div>
-            <span>{el.title}</span>
+            <span>{t(el.title)}</span>
           </li>
         ))}
       </ul>
       <div className={styles.formWrapper}>
-        <h6 className={styles.formTitle}>{active.title}</h6>
+        <h6 className={styles.formTitle}>{t(active.title)}</h6>
         {forms[active.title]}
       </div>
     </div>

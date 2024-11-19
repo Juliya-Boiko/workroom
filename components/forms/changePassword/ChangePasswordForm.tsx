@@ -9,8 +9,7 @@ import { PasswordInputField, BtnPrimary } from '@/components/ui';
 
 export const ChangePasswordForm = ({ email }: { email: string }) => {
   const { change, isChanging } = usePasswordMutations();
-  const tForm = useTranslations('Forms');
-  const tAuth = useTranslations('Auth.NewPassword');
+  const t = useTranslations();
   const {
     register,
     handleSubmit,
@@ -31,21 +30,21 @@ export const ChangePasswordForm = ({ email }: { email: string }) => {
 
   return (
     <form className={styles.form} onSubmit={handleSubmit(onSubmit)}>
-      <h1 className={styles.title}>{tAuth('title')}</h1>
+      <h1 className={styles.title}>{t('Auth.NewPassword.title')}</h1>
       <PasswordInputField
-        label={tForm('password')}
+        label="password"
         name="password"
         register={register}
         errors={errors.password}
       />
       <PasswordInputField
-        label={tForm('confirm')}
+        label="confirm"
         name="confirmPassword"
         register={register}
         errors={errors.confirmPassword}
       />
       <BtnPrimary type="submit" disabled={isDisabled}>
-        <span>{tAuth('confirm')}</span>
+        <span>{t('Forms.saveChanges')}</span>
       </BtnPrimary>
     </form>
   );

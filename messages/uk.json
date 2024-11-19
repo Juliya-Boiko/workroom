@@ -94,6 +94,16 @@
     "eventDescrHolder": "Додайте опис події",
     "pageTitle": "Назва сторінки",
     "savePage": "Зберегти сторінку",
+    "birthday": "День народження",
+    "location": "Додати розташування",
+    "country": "Виберіть країну",
+    "city": "Виберіть місто",
+    "notifyissueTitle": "Проблема",
+    "notifyissueText": "Надсилати мені сповіщення електронною поштою про проблеми",
+    "notifyTaskTitle": "Завдання",
+    "notifyTaskText": "Надсилати мені сповіщення, коли хтось призначає мені завдання",
+    "notifyCommentTitle": "Нові коментарі",
+    "notifyCommentText": "Надсилати мені сповіщення, коли хтось надіслав коментар",
     "Errors": {
       "required": "Обов’язкове поле",
       "invalidEmail": "Електронна адреса має бути дійсною",
@@ -133,7 +143,18 @@
     "client": "Клієнт компанії",
     "junior": "Junior",
     "middle": "Middle",
-    "senior": "Senior"
+    "senior": "Senior",
+    "projects": "Проекти",
+    "team": "Команда",
+    "settings": "Налаштування",
+    "account": "Обліковий запис",
+    "language": "Мова",
+    "notifications": "Сповіщення",
+    "company": "Моя компанія",
+    "apps": "Контакти та програми",
+    "payments": "Платежі",
+    "confidentiality": "Конфіденційність",
+    "safety": "Безпека"
   },
   "SidebarMenu": {
     "dashboard": "Дашборд",
@@ -209,7 +230,9 @@
     "mainInfo": "Основна інформація",
     "location": "Розташування",
     "contactInfo": "Контакти",
-    "company": "Компанія"
+    "company": "Компанія",
+    "email": "Електронна пошта",
+    "number": "Номер телефону"
   },
   "Events": {
     "title": "Найближчі події",

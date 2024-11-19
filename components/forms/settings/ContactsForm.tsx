@@ -2,6 +2,7 @@
 import styles from './settingsForm.module.scss';
 import { useEffect } from 'react';
 import { useForm } from 'react-hook-form';
+import { useTranslations } from 'next-intl';
 import { useProfile, useProfileMutation } from '@/services';
 import { yupResolver } from '@hookform/resolvers/yup';
 import { contactsSchema, ContactsFormData } from '@/utils';
@@ -10,6 +11,7 @@ import { InputField, BtnPrimary } from '@/components/ui';
 export const ContactsForm = () => {
   const { data: user } = useProfile();
   const { update, isUpdating } = useProfileMutation();
+  const t = useTranslations('Forms');
 
   const {
     register,
@@ -38,11 +40,11 @@ export const ContactsForm = () => {
 
   return (
     <form className={styles.form} onSubmit={handleSubmit(onSubmit)}>
-      <InputField label="Email" name="email" register={register} errors={errors.email} />
-      <InputField label="Mobile Number" name="phone" register={register} />
+      <InputField label="email" name="email" register={register} errors={errors.email} />
+      <InputField label="number" name="phone" register={register} />
       <div className={styles.btnWrapper}>
         <BtnPrimary type="submit" disabled={isDisabled}>
-          Confirm
+          {t('saveChanges')}
         </BtnPrimary>
       </div>
     </form>
