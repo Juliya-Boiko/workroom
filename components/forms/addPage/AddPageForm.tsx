@@ -2,6 +2,7 @@
 import styles from './addPageForm.module.scss';
 import { usePageMutation } from '@/services';
 import { useForm, Controller } from 'react-hook-form';
+import { useTranslations } from 'next-intl';
 import { yupResolver } from '@hookform/resolvers/yup';
 import { addPageSchema, AddPageFormData } from '@/utils';
 import { InputField, BtnPrimary, BtnSecondary } from '@/components/ui';
@@ -9,6 +10,7 @@ import { EditorQuill } from '@/components/EditorQuill';
 
 export const AddPageForm = ({ folderId, onCancel }: { folderId: string; onCancel: () => void }) => {
   const { create, isCreating } = usePageMutation();
+  const t = useTranslations('Forms');
   const {
     control,
     register,
@@ -26,16 +28,16 @@ export const AddPageForm = ({ folderId, onCancel }: { folderId: string; onCancel
 
   return (
     <form className={styles.addPageForm} onSubmit={handleSubmit(onSubmit)}>
-      <InputField label="Page title" name="title" register={register} errors={errors.title} />
+      <InputField label="pageTitle" name="title" register={register} errors={errors.title} />
       <Controller
         control={control}
         name="content"
         render={({ field }) => <EditorQuill value={field.value} onChange={field.onChange} />}
       />
       <div className={styles.actions}>
-        <BtnSecondary onClick={() => onCancel()}>Cancel</BtnSecondary>
+        <BtnSecondary onClick={() => onCancel()}>{t('cancel')}</BtnSecondary>
         <BtnPrimary type="submit" disabled={!isDirty || !isValid || isSubmitting || isCreating}>
-          Save Page
+          {t('savePage')}
         </BtnPrimary>
       </div>
     </form>

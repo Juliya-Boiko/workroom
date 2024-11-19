@@ -91,8 +91,10 @@
     "profession": "Position",
     "number": "Mobile Number",
     "addLevel": "Add Level",
-    "eventName": "Event name",
     "eventDescrHolder": "Add some description of the event",
+    "pageTitle": "Page title",
+    "savePage": "Save page",
+
     "Errors": {
       "required": "email is required field",
       "invalidEmail": "email must be a valid email",
@@ -220,6 +222,9 @@
     "description": " Add project data, create thematic pages, edit data, share information with team members",
     "currentProjects": "Current Projects",
     "growth": "Growth",
-    "ongoing": "Ongoing projects last month"
+    "ongoing": "Ongoing projects last month",
+    "share": "Share",
+    "access": "Share folder access",
+    "back": "Back to Info Portal"
   }
 }

@@ -1,10 +1,10 @@
 'use client';
 import styles from './pageSelect.module.scss';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { SvgHandler } from '@/components/SvgHandler';
 import { BtnIcon, BtnPrimary } from '@/components/ui';
 import { EIconsSet, IPage } from '@/typings';
-import { formatDayDate } from '@/utils';
+import { formatDayDate, LOCALE_LANGUAGE } from '@/utils';
 
 interface Props {
   pages: IPage[] | undefined;
@@ -14,6 +14,12 @@ interface Props {
 }
 export const PageSelect = ({ active, pages, setView, onSelect }: Props) => {
   const [open, setOpen] = useState(false);
+  const [locale, setLocale] = useState<string | null>(null);
+
+  useEffect(() => {
+    const storedLocale = localStorage.getItem(LOCALE_LANGUAGE);
+    setLocale(storedLocale);
+  }, []);
 
   const handleSleect = (id: string) => {
     onSelect(id);
@@ -45,7 +51,7 @@ export const PageSelect = ({ active, pages, setView, onSelect }: Props) => {
                 onClick={() => handleSleect(_id)}
               >
                 <p className={styles.name}>{title}</p>
-                <p className={styles.date}>Last modified {formatDayDate(updatedAt)}</p>
+                <p className={styles.date}>Last modified {formatDayDate(updatedAt, locale)}</p>
               </li>
             ))
           : null}

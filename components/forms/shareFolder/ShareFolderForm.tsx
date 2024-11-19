@@ -2,6 +2,7 @@
 import styles from './shareFolderForm.module.scss';
 import { useModalContext } from '@/components/providers/ModalProvider';
 import { useForm } from 'react-hook-form';
+import { useTranslations } from 'next-intl';
 import { useEmployees, useFolder, useFolderMutation } from '@/services';
 import { yupResolver } from '@hookform/resolvers/yup';
 import { shareFolderSchema, ShareFolderFormData } from '@/utils';
@@ -12,6 +13,7 @@ export const ShareFolderForm = ({ slug }: { slug: string }) => {
   const { data: employees, isLoading: isLoadingEmployees } = useEmployees();
   const { closeModal } = useModalContext();
   const { share, isSharing } = useFolderMutation();
+  const t = useTranslations('InfoPortal');
 
   const variants = employees?.filter((el) => !folder?.users.includes(el._id));
 
@@ -66,7 +68,7 @@ export const ShareFolderForm = ({ slug }: { slug: string }) => {
         <div className={styles.placeholder}>You dont have employees to share folder</div>
       ) : null}
       <BtnPrimary type="submit" disabled={isDisabled}>
-        Share
+        {t('share')}
       </BtnPrimary>
     </form>
   );

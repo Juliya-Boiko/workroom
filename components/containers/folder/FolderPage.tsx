@@ -2,6 +2,7 @@
 import styles from './folderPage.module.scss';
 import { useEffect, useState } from 'react';
 import { useFolder, usePages } from '@/services';
+import { useTranslations } from 'next-intl';
 import { Topping } from '@/components/topping/Topping';
 import { Modal, BtnPrimary, Preloader } from '@/components/ui';
 import { EIconsSet, IDynamicComponent } from '@/typings';
@@ -17,6 +18,7 @@ export const FolderPage = ({ slug }: IDynamicComponent) => {
   const [editorView, setEditorView] = useState(false);
   const { data: folder, isLoading: isLoadingFolder } = useFolder(slug);
   const { data: pages, isLoading: isLoadingPages } = usePages(slug);
+  const t = useTranslations('InfoPortal');
 
   useEffect(() => {
     if (pages && pages.length) {
@@ -28,13 +30,13 @@ export const FolderPage = ({ slug }: IDynamicComponent) => {
 
   return (
     <div className={styles.projectPage}>
-      <Topping link="Back to Info Portal" path={ROUTES.infoPortal} title={folder?.title || ''}>
+      <Topping link={t('back')} path={ROUTES.infoPortal} subtitle={folder?.title || ''}>
         <Modal
-          title="Share folder access"
+          title={t('access')}
           activator={
             <BtnPrimary disabled={isLoadingFolder}>
               <SvgHandler icon={EIconsSet.UserPlus} />
-              <span>Share</span>
+              <span>{t('share')}</span>
             </BtnPrimary>
           }
           content={<ShareFolderForm slug={slug} />}
