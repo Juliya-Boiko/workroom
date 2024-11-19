@@ -78,7 +78,7 @@ export const AddEventForm = () => {
             label="eventName"
             name="name"
             register={register}
-            placeholder="Event Name"
+            placeholder="eventName"
             errors={errors.name}
           />
           <div className={commonStyles.optionWrapper}>

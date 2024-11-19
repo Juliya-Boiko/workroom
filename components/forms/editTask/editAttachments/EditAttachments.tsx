@@ -2,6 +2,7 @@
 import styles from './editAttachments.module.scss';
 import Link from 'next/link';
 import Image from 'next/image';
+import { useTranslations } from 'next-intl';
 import { useAttachMutation } from '@/services/attachments/useAttachments';
 import { ICreateAttach, EAttachType, EIconsSet } from '@/typings';
 import { SvgHandler } from '@/components/SvgHandler';
@@ -14,6 +15,7 @@ interface Props {
 
 export const EditAttachments = ({ value, onChange }: Props) => {
   const { remove } = useAttachMutation();
+  const t = useTranslations('Forms');
 
   const total = value.length;
   const links = value.filter((el) => el.type === EAttachType.LINK);
@@ -55,7 +57,9 @@ export const EditAttachments = ({ value, onChange }: Props) => {
 
   return (
     <div className={styles.editAttachments}>
-      <p className={styles.label}>Attachments {total ? `(${total})` : ''}</p>
+      <p className={styles.label}>
+        {t('attachments')} {total ? `(${total})` : ''}
+      </p>
       {images.length ? (
         <ul className={styles.filesList}>
           {images.map(({ _id, title, type, value, preview }) => (

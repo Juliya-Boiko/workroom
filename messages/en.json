@@ -154,7 +154,8 @@
     "apps": "Contacts & Apps",
     "payments": "Payments",
     "confidentiality": "Confidentiality",
-    "safety": "Safety"
+    "safety": "Safety",
+    "view": "View"
   },
   "SidebarMenu": {
     "dashboard": "Dashboard",
@@ -167,7 +168,8 @@
     "myProfile": "My Profile",
     "editProject": "Edit project",
     "employeeProfile": "Employee’s Profile",
-    "events": "Nearest Events"
+    "events": "Nearest Events",
+    "editTask": "Edit task"
   },
   "Header": {
     "search": "Search",
@@ -204,7 +206,8 @@
     "info": "Task Info",
     "details": "Task details",
     "show": "Show",
-    "comments": "Comments"
+    "comments": "Comments",
+    "back": "Back to task"
   },
   "Employees": {
     "title": "Workload",

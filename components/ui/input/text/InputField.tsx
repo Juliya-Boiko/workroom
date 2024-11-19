@@ -41,7 +41,7 @@ export const InputField = <T extends FieldValues>({
           type={type ? type : 'text'}
           {...register(name)}
           disabled={disabled}
-          placeholder={placeholder}
+          placeholder={t(placeholder)}
           className={styles.input}
         />
         {errors && errors.message && !disabled && (

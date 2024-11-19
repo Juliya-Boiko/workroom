@@ -2,6 +2,7 @@
 import styles from './editTaskForm.module.scss';
 import { useEffect } from 'react';
 import { useForm, Controller } from 'react-hook-form';
+import { useTranslations } from 'next-intl';
 import { yupResolver } from '@hookform/resolvers/yup';
 import { editTaskSchema, EditTaskFormData } from '@/utils';
 import { priorityDataTypes, ITask } from '@/typings';
@@ -17,8 +18,8 @@ export const EditTaskForm = ({ task }: Props) => {
   const { data: employees } = useEmployees();
   const { data: attachments } = useAttachments(task._id);
   const { data: project } = useProject(task.projectId);
-
   const { update } = useTasksMutation();
+  const t = useTranslations('Forms');
 
   const defaultValues = {
     name: task.name,
@@ -75,7 +76,7 @@ export const EditTaskForm = ({ task }: Props) => {
           name="start"
           render={({ field }) => (
             <PickerDate
-              label="Start date"
+              label={t('start')}
               value={field.value}
               minDate={project?.start}
               maxDate={project?.deadline}
@@ -88,7 +89,7 @@ export const EditTaskForm = ({ task }: Props) => {
           name="deadline"
           render={({ field }) => (
             <PickerDate
-              label="Deadline"
+              label={t('deadline')}
               value={field.value}
               minDate={project?.start}
               maxDate={project?.deadline}
@@ -101,7 +102,7 @@ export const EditTaskForm = ({ task }: Props) => {
           name="assignee"
           render={({ field }) => (
             <SelectDrop
-              label="Assignee"
+              label={t('assignee')}
               options={employeesOptions || []}
               value={field.value}
               onChange={field.onChange}
@@ -113,7 +114,7 @@ export const EditTaskForm = ({ task }: Props) => {
           name="priority"
           render={({ field }) => (
             <SelectDrop
-              label="Priority"
+              label={t('priority')}
               options={priorityDataTypes}
               value={field.value}
               onChange={field.onChange}
@@ -123,17 +124,17 @@ export const EditTaskForm = ({ task }: Props) => {
       </div>
       <div className={styles.container}>
         <InputField
-          label="Task Name"
+          label="taskName"
           name="name"
           register={register}
           placeholder="Task Name"
           errors={errors.name}
         />
         <TextareaField
-          label="Description"
+          label={t('description')}
           name="description"
           register={register}
-          placeholder="Add some description of the task"
+          placeholder={t('taskDescrPlaceholder')}
         />
         <Controller
           control={control}
@@ -142,7 +143,7 @@ export const EditTaskForm = ({ task }: Props) => {
         />
         <div className={styles.btnWrapper}>
           <BtnPrimary type="submit" disabled={!isDirty || !isValid || isSubmitting}>
-            Save Task
+            {t('saveTask')}
           </BtnPrimary>
         </div>
       </div>
