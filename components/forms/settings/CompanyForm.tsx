@@ -47,7 +47,7 @@ export const CompanyForm = () => {
         label="company"
         name="name"
         register={register}
-        placeholder="Company’s Name"
+        placeholder="company"
         errors={errors.name}
       />
       <div className={styles.optionWrapper}>

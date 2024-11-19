@@ -33,7 +33,7 @@ export const SignInForm = () => {
         label="email"
         name="email"
         register={register}
-        placeholder="youremail@gmail.com"
+        placeholder="emailHolder"
         errors={errors.email}
       />
       <PasswordInputField

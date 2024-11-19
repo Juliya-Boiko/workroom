@@ -73,7 +73,7 @@ export const AddTaskForm = ({ slug, start, deadline }: Props) => {
         label="taskName"
         name="name"
         register={register}
-        placeholder={t('taskName')}
+        placeholder="taskName"
         errors={errors.name}
       />
       <div className={styles.pickers}>

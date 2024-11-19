@@ -104,6 +104,8 @@
     "notifyTaskText": "Надсилати мені сповіщення, коли хтось призначає мені завдання",
     "notifyCommentTitle": "Нові коментарі",
     "notifyCommentText": "Надсилати мені сповіщення, коли хтось надіслав коментар",
+    "emailHolder": "youremail@gmail.com",
+    "passwordHolder": "• • • • •",
     "Errors": {
       "required": "Обов’язкове поле",
       "invalidEmail": "Електронна адреса має бути дійсною",

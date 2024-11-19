@@ -14,7 +14,7 @@ export const EmailStage = ({ register, errors }: Props) => (
       label="email"
       name="email"
       register={register}
-      placeholder="youremail@gmail.com"
+      placeholder="emailHolder"
       errors={errors?.email}
     />
     <PasswordInputField

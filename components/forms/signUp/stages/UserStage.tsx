@@ -21,7 +21,7 @@ export const UserStage = ({ register, errors, control }: Props) => {
         label="name"
         name="name"
         register={register}
-        placeholder={t('name')}
+        placeholder="name"
         errors={errors.name}
       />
       <div className={styles.optionWrapper}>

@@ -35,7 +35,6 @@ export const CalendarSection = () => {
   const [currentEvents, setCurrentEvents] = useState<EventBase[]>([]);
   const [locale, setLocale] = useState<string | null>(null);
 
-
   useEffect(() => {
     if (data) {
       const events = data.map((el) => ({

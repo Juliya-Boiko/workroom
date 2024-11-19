@@ -53,7 +53,7 @@ export const InviteForm = ({ companyId, email }: Props) => {
         name="email"
         disabled
         register={register}
-        placeholder="youremail@gmail.com"
+        placeholder="emailHolder"
         errors={errors.email}
       />
       <div className={styles.optionWrapper}>
@@ -75,7 +75,7 @@ export const InviteForm = ({ companyId, email }: Props) => {
           label="profession"
           name="profession"
           register={register}
-          placeholder="Designer"
+          placeholder="profession"
           errors={errors.profession}
         />
       )}
@@ -83,7 +83,7 @@ export const InviteForm = ({ companyId, email }: Props) => {
         label="name"
         name="name"
         register={register}
-        placeholder={t('Forms.name')}
+        placeholder="name"
         errors={errors.name}
       />
       <PasswordInputField

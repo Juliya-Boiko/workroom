@@ -21,7 +21,7 @@ export const CompanyStage = ({ register, errors, control }: Props) => {
         label="company"
         name="companyName"
         register={register}
-        placeholder="Company’s Name"
+        placeholder="company"
         errors={errors.companyName}
       />
       <div className={styles.optionWrapper}>

@@ -43,7 +43,7 @@ export const EmailForm = () => {
             label="email"
             name="email"
             register={register}
-            placeholder="youremail@gmail.com"
+            placeholder="emailHolder"
             errors={errors.email}
           />
           <BtnPrimary type="submit" disabled={isDisabled}>

@@ -127,7 +127,7 @@ export const EditTaskForm = ({ task }: Props) => {
           label="taskName"
           name="name"
           register={register}
-          placeholder="Task Name"
+          placeholder="taskName"
           errors={errors.name}
         />
         <TextareaField

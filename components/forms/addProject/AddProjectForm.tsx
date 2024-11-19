@@ -64,7 +64,7 @@ export const AddProjectForm = () => {
             label="projectName"
             name="name"
             register={register}
-            placeholder={t('projectName')}
+            placeholder="projectName"
             errors={errors.name}
           />
           <div className={styles.pickers}>

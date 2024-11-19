@@ -33,7 +33,7 @@ export const PasswordInputField = <T extends FieldValues>({
         type={typePassword ? 'password' : 'text'}
         name={name}
         register={register}
-        placeholder="• • • • •"
+        placeholder="passwordHolder"
         errors={errors}
       />
       <button type="button" className={styles.btnToggle} onClick={toggleType}>
