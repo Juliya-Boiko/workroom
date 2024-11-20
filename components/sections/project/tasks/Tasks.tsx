@@ -7,6 +7,7 @@ import { TasksView } from './tasksView/TasksView';
 import { TasksFilter } from './tasksFilter/TasksFilter';
 import { TasksList } from './tasksList/TasksList';
 import { TasksColumns } from './tasksColumns/TasksColumns';
+import { TasksTimeline } from './tasksTimeline/TasksTimeline';
 import { EViewTasks, IFilters } from '@/typings';
 import { Placeholder } from '@/components/ui';
 
@@ -20,6 +21,12 @@ export const Tasks = ({ projectId }: Props) => {
   const { data: tasks, isLoading } = useTasks(projectId, filters);
   const t = useTranslations();
 
+  const getView = () => {
+    if (view === EViewTasks.LIST) return <TasksList tasks={tasks} loading={isLoading} />;
+    if (view === EViewTasks.COLUMNS) return <TasksColumns tasks={tasks} loading={isLoading} />;
+    return <TasksTimeline tasks={tasks} />;
+  };
+
   return (
     <section className={styles.tasks}>
       <div className={styles.container}>
@@ -28,16 +35,7 @@ export const Tasks = ({ projectId }: Props) => {
           <TasksView view={view} setView={(v) => setView(v)} />
           <TasksFilter filters={filters} setFilters={(v) => setFilters(v)} />
         </div>
-        {tasks && !tasks.length ? <Placeholder primary title="tasks" /> : null}
-        {view === EViewTasks.LIST && tasks && tasks.length ? (
-          <TasksList tasks={tasks} loading={isLoading} />
-        ) : null}
-        {view === EViewTasks.COLUMNS && tasks && tasks.length ? (
-          <TasksColumns tasks={tasks} loading={isLoading} />
-        ) : null}
-        {view === EViewTasks.TIMELINE && tasks && tasks.length ? (
-          <div>EViewTasks.TIMELINE</div>
-        ) : null}
+        {tasks && (!tasks.length ? <Placeholder primary title="tasks" /> : getView())}
       </div>
     </section>
   );
