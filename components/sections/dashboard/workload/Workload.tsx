@@ -30,11 +30,7 @@ export const WorkloadSection = () => {
           <SvgHandler icon={EIconsSet.ChevronRight} />
         </BtnSecondary>
       </div>
-      <EmployeesGrid
-        holder="employees"
-        loading={isLoading}
-        employees={employees}
-      />
+      <EmployeesGrid holder="employees" loading={isLoading} employees={employees} />
     </section>
   );
 };

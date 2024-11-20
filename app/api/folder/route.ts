@@ -28,8 +28,8 @@ export async function GET(request: NextRequest) {
   if (!token) {
     return NextResponse.json({ message: 'Token null or expired' }, { status: 403 });
   }
-  const { companyId } = await decodeToken(token);
-  const folders = await Folder.find({ companyId })
+  const { id, companyId } = await decodeToken(token);
+  const folders = await Folder.find({ companyId, users: { $in: [id] } })
     .sort({ createdAt: 'desc' })
     .populate({ path: 'projectId', select: 'name' })
     .lean();

@@ -35,18 +35,20 @@ export const ProjectsPage = () => {
           ))}
           <ProjectsFilter filters={filters} setFilters={(v) => setFilters(v)} />
         </div>
-        {user?.position === EUserPosition.OWNER && (
-          <Modal
-            title={t('Projects.add')}
-            activator={
-              <BtnPrimary disabled={isLoadingProjects}>
-                <SvgHandler icon={EIconsSet.Plus} />
-                <span>{t('Projects.add')}</span>
-              </BtnPrimary>
-            }
-            content={<AddProjectForm />}
-          />
-        )}
+        <>
+          {user?.position === EUserPosition.OWNER && (
+            <Modal
+              title={t('Projects.add')}
+              activator={
+                <BtnPrimary disabled={isLoadingProjects}>
+                  <SvgHandler icon={EIconsSet.Plus} />
+                  <span>{t('Projects.add')}</span>
+                </BtnPrimary>
+              }
+              content={<AddProjectForm />}
+            />
+          )}
+        </>
       </Topping>
       <div className={styles.container}>
         {isLoadingProjects && (

@@ -7,7 +7,6 @@ import { NOTIFICATIONS_TAKE_DASHBOARD } from '@/utils';
 
 export const ActivitySection = () => {
   const { data: notifications } = useNotifications(NOTIFICATIONS_TAKE_DASHBOARD);
-  const tHolder = useTranslations('Placeholder');
   const t = useTranslations('Notifications');
 
   return (

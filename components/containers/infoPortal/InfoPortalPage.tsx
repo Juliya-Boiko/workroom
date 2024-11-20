@@ -1,9 +1,10 @@
 'use client';
 import styles from './infoPortalPage.module.scss';
+import { useUser } from '@/services';
 import { useTranslations } from 'next-intl';
 import { Topping } from '@/components/topping/Topping';
 import { Modal, BtnPrimary } from '@/components/ui';
-import { EIconsSet } from '@/typings';
+import { EIconsSet, EUserPosition } from '@/typings';
 import { SvgHandler } from '@/components/SvgHandler';
 import { AddFolderForm } from '@/components/forms/addFolder/AddFolderForm';
 import { InfoPortalHero } from '@/components/sections/infoPortal/hero/InfoPortalHero';
@@ -13,26 +14,33 @@ import { InfoPortalStatistic } from '@/components/sections/infoPortal/statistic/
 
 export const InfoPortalPage = () => {
   const t = useTranslations('InfoPortal');
+  const { data: user } = useUser();
 
   return (
     <div className={styles.infoPortalPage}>
       <Topping title="infoPortal">
-        <Modal
-          title={t('add')}
-          activator={
-            <BtnPrimary>
-              <SvgHandler icon={EIconsSet.Plus} />
-              <span>{t('add')}</span>
-            </BtnPrimary>
-          }
-          content={<AddFolderForm />}
-        />
+        <>
+          {user?.position === EUserPosition.OWNER && (
+            <Modal
+              title={t('add')}
+              activator={
+                <BtnPrimary>
+                  <SvgHandler icon={EIconsSet.Plus} />
+                  <span>{t('add')}</span>
+                </BtnPrimary>
+              }
+              content={<AddFolderForm />}
+            />
+          )}
+        </>
       </Topping>
       <div className={styles.container}>
-        <div className={styles.wrapper}>
-          <InfoPortalHero />
-          <InfoPortalStatistic />
-        </div>
+        {user?.position === EUserPosition.OWNER && (
+          <div className={styles.wrapper}>
+            <InfoPortalHero />
+            <InfoPortalStatistic />
+          </div>
+        )}
         <FoldersList />
       </div>
     </div>
