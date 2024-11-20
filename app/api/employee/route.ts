@@ -22,6 +22,7 @@ export async function GET(request: NextRequest) {
   const employees = await User.find({
     companyId,
     position: EUserPosition.EMPLOYEE,
+    _id: { $ne: id },
   })
     .select('-companyId -createdAt -updatedAt -password')
     .populate({

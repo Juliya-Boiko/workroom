@@ -32,7 +32,7 @@ export async function GET(request: NextRequest) {
   if (!token) {
     return NextResponse.json({ message: 'Token null or expired' }, { status: 403 });
   }
-  const { companyId } = await decodeToken(token);
+  const { companyId, position, id } = await decodeToken(token);
   const url = new URL(request.url);
   const take = url.searchParams.get('take');
   const skip = url.searchParams.get('skip');
@@ -61,13 +61,13 @@ export async function GET(request: NextRequest) {
       path: 'tasks',
       match: { projectId: { $exists: true } },
       model: 'Task',
-      select: 'assignee status -projectId -_id',
+      select: 'assignee status -projectId',
       populate: {
         path: 'assignee',
         select: 'name avatar',
       },
     })
     .lean<IProjectResponse[]>();
-  const formatted = formatProjectsWithTasks(projects);
+  const formatted = formatProjectsWithTasks(projects, position, id);
   return NextResponse.json({ projects: formatted, total }, { status: 200 });
 }

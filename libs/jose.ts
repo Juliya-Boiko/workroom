@@ -1,8 +1,8 @@
 import { SignJWT, jwtVerify } from 'jose';
 
-export const createToken = async (id: string, companyId: string) => {
+export const createToken = async (id: string, companyId: string, position: string) => {
   const secret = new TextEncoder().encode(process.env.TOKEN_SECRET);
-  const token = await new SignJWT({ id, companyId })
+  const token = await new SignJWT({ id, companyId, position })
     .setProtectedHeader({ alg: 'HS256' })
     .setExpirationTime('5h')
     .sign(secret);
@@ -25,7 +25,7 @@ export const isValid = async (token: string) => {
 export const decodeToken = async (token: string) => {
   const secret = new TextEncoder().encode(process.env.TOKEN_SECRET);
   const { payload } = await jwtVerify(token, secret);
-  return payload as { id: string; companyId: string };
+  return payload as { id: string; companyId: string; position: string };
 };
 
 export const createInviteToken = async (companyId: string, email: string) => {

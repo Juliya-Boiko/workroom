@@ -102,6 +102,7 @@ export const EditTaskForm = ({ task }: Props) => {
           name="assignee"
           render={({ field }) => (
             <SelectDrop
+              clearable
               label={t('assignee')}
               options={employeesOptions || []}
               value={field.value}

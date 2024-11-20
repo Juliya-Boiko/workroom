@@ -71,7 +71,7 @@ export async function POST(request: NextRequest) {
         members: reqBody.members,
       });
     }
-    initToken = await createToken(savedUser._id, companyId);
+    initToken = await createToken(savedUser._id, companyId, savedUser.position);
   } else {
     // Register user
     const newUser = new User({
@@ -79,7 +79,7 @@ export async function POST(request: NextRequest) {
       companyId: reqBody.companyId,
     });
     const savedUser = await newUser.save();
-    initToken = await createToken(savedUser._id, reqBody.companyId);
+    initToken = await createToken(savedUser._id, reqBody.companyId, savedUser.position);
   }
 
   const response = NextResponse.json({ message: 'Sign up successful' }, { status: 201 });
@@ -101,7 +101,7 @@ export async function PUT(request: NextRequest) {
   if (!validPassword) {
     return NextResponse.json({ message: 'Invalid password' }, { status: 403 });
   }
-  const token = await createToken(user._id, user.companyId);
+  const token = await createToken(user._id, user.companyId, user.position);
   const response = NextResponse.json({ message: 'Login successful' }, { status: 200 });
   response.cookies.set('workroom', token, { httpOnly: true });
   return response;

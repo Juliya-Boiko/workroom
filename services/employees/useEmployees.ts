@@ -1,6 +1,6 @@
-import { useQuery, useQueryClient, useMutation } from '@tanstack/react-query';
 import { QUERY_KEYS } from '@/utils';
 import { IEmployee } from '@/typings';
+import { useQuery, useQueryClient, useMutation } from '@tanstack/react-query';
 import { getEmployeeById, updateLevelEmployee, getEmployees, deleteEmployee } from './employee';
 
 export const useEmployees = (take?: number) => {
