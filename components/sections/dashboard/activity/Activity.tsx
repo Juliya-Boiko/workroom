@@ -16,7 +16,7 @@ export const ActivitySection = () => {
         <h2 className={styles.title}>{t('stream')}</h2>
       </div>
       {notifications && (
-        <ActivityList holder={tHolder('activity')} notifications={notifications.slice(0, 3)} />
+        <ActivityList holder="activity" notifications={notifications.slice(0, 3)} />
       )}
     </section>
   );

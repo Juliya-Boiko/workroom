@@ -1,15 +1,15 @@
 'use client';
 import styles from './projectsPage.module.scss';
 import { useState } from 'react';
-import { useProjects } from '@/services';
+import { useProjects, useUser } from '@/services';
 import { useTranslations } from 'next-intl';
-import { projectsViewDataTypes, EIconsSet, IFilters } from '@/typings';
+import { projectsViewDataTypes, EIconsSet, IFilters, EUserPosition } from '@/typings';
 import { Topping } from '@/components/topping/Topping';
-import { Modal, BtnPrimary, Preloader, BtnIcon, Pagination, Placeholder } from '@/components/ui';
-import { AddProjectForm } from '@/components/forms/addProject/AddProjectForm';
 import { SvgHandler } from '@/components/SvgHandler';
-import { ProjectsGrid } from '@/components/sections/projects/projectsGrid/ProjectsGrid';
 import { PROJECTS_STEP } from '@/utils';
+import { ProjectsGrid } from '@/components/sections/projects/projectsGrid/ProjectsGrid';
+import { AddProjectForm } from '@/components/forms/addProject/AddProjectForm';
+import { Modal, BtnPrimary, Preloader, BtnIcon, Pagination, Placeholder } from '@/components/ui';
 import { ProjectsFilter } from '@/components/sections/projects/projectsFilter/ProjectsFilter';
 
 export const ProjectsPage = () => {
@@ -17,8 +17,8 @@ export const ProjectsPage = () => {
   const [view, setView] = useState(projectsViewDataTypes[0].value);
   const [page, setPage] = useState(0);
   const { data, isLoading: isLoadingProjects } = useProjects(filters, PROJECTS_STEP, page);
-  const tHolder = useTranslations('Placeholder');
-  const t = useTranslations('Projects');
+  const { data: user } = useUser();
+  const t = useTranslations();
 
   return (
     <div className={styles.projectsPage}>
@@ -35,16 +35,18 @@ export const ProjectsPage = () => {
           ))}
           <ProjectsFilter filters={filters} setFilters={(v) => setFilters(v)} />
         </div>
-        <Modal
-          title={t('add')}
-          activator={
-            <BtnPrimary disabled={isLoadingProjects}>
-              <SvgHandler icon={EIconsSet.Plus} />
-              <span>{t('add')}</span>
-            </BtnPrimary>
-          }
-          content={<AddProjectForm />}
-        />
+        {user?.position === EUserPosition.OWNER && (
+          <Modal
+            title={t('Projects.add')}
+            activator={
+              <BtnPrimary disabled={isLoadingProjects}>
+                <SvgHandler icon={EIconsSet.Plus} />
+                <span>{t('Projects.add')}</span>
+              </BtnPrimary>
+            }
+            content={<AddProjectForm />}
+          />
+        )}
       </Topping>
       <div className={styles.container}>
         {isLoadingProjects && (
@@ -52,7 +54,7 @@ export const ProjectsPage = () => {
             <Preloader />
           </div>
         )}
-        {data && !data.projects.length && <Placeholder primary title={tHolder('projects')} />}
+        {data && !data.projects.length && <Placeholder primary title="projects" />}
         {data && data.projects.length > 0 && (
           <>
             <ProjectsGrid

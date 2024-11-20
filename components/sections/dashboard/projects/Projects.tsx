@@ -33,7 +33,7 @@ export const ProjectsSection = () => {
       <ProjectsList
         loading={isLoading}
         projects={data?.projects}
-        placeholder={t('Placeholder.projects')}
+        placeholder="projects"
       />
     </section>
   );

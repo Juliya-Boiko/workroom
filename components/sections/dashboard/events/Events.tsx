@@ -12,7 +12,6 @@ import { EventsList } from './eventsList/EventsList';
 export const EventsSection = () => {
   const { data: events, isLoading } = useEvents(3);
   const router = useRouter();
-  const tHolder = useTranslations('Placeholder');
   const tCommon = useTranslations('Common');
   const t = useTranslations('Events');
 
@@ -25,7 +24,7 @@ export const EventsSection = () => {
           <SvgHandler icon={EIconsSet.ChevronRight} />
         </BtnSecondary>
       </div>
-      <EventsList holder={tHolder('events')} loading={isLoading} events={events} />
+      <EventsList holder="events" loading={isLoading} events={events} />
     </section>
   );
 };

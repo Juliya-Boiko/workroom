@@ -31,7 +31,7 @@ export const WorkloadSection = () => {
         </BtnSecondary>
       </div>
       <EmployeesGrid
-        holder={t('Placeholder.employees')}
+        holder="employees"
         loading={isLoading}
         employees={employees}
       />

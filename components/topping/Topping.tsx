@@ -7,7 +7,7 @@ import { SvgHandler } from '../SvgHandler';
 import { EIconsSet } from '@/typings';
 
 interface Props {
-  children?: string | JSX.Element | JSX.Element[];
+  children?: string | JSX.Element | JSX.Element[] | null;
   title?: string;
   subtitle?: string;
   link?: string;
