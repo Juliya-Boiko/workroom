@@ -1,4 +1,3 @@
-'use client';
 import styles from './editFolderPage.module.scss';
 import { IDynamicComponent } from '@/typings';
 import { Topping } from '@/components/topping/Topping';

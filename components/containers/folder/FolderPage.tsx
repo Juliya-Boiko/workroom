@@ -30,7 +30,7 @@ export const FolderPage = ({ slug }: IDynamicComponent) => {
 
   return (
     <div className={styles.projectPage}>
-      <Topping link={t('back')} path={ROUTES.infoPortal} subtitle={folder?.title || ''}>
+      <Topping link="InfoPortal.back" path={ROUTES.infoPortal} subtitle={folder?.title || ''}>
         <Modal
           title={t('access')}
           activator={

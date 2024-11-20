@@ -28,7 +28,7 @@ export const Tasks = ({ projectId }: Props) => {
           <TasksView view={view} setView={(v) => setView(v)} />
           <TasksFilter filters={filters} setFilters={(v) => setFilters(v)} />
         </div>
-        {tasks && !tasks.length ? <Placeholder primary title={t('Placeholder.tasks')} /> : null}
+        {tasks && !tasks.length ? <Placeholder primary title="tasks" /> : null}
         {view === EViewTasks.LIST && tasks && tasks.length ? (
           <TasksList tasks={tasks} loading={isLoading} />
         ) : null}

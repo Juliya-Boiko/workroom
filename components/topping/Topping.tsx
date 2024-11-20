@@ -15,18 +15,19 @@ interface Props {
 }
 
 export const Topping = ({ title, children, link, path, subtitle }: Props) => {
-  const t = useTranslations('SidebarMenu');
+  const t = useTranslations();
+  const text = 'SidebarMenu.' + title;
 
   return (
     <section className={styles.topping}>
       {link && (
         <Link href={path || ROUTES.dashboard} className={styles.link}>
           <SvgHandler icon={EIconsSet.ArrowLeft} />
-          <span>{link}</span>
+          <span>{t(link)}</span>
         </Link>
       )}
       <div className={styles.wrapper}>
-        <h1 className={styles.title}>{title ? t(title) : subtitle}</h1>
+        <h1 className={styles.title}>{title ? t(text) : subtitle}</h1>
         {children}
       </div>
     </section>

@@ -47,10 +47,12 @@ export const config = {
     '/task/:path*',
     '/calendar',
     '/employees',
+    '/employee/:path*',
     '/sign-in',
     '/sign-up',
     '/profile',
     '/info-portal',
     '/folder/:path*',
+    '/events',
   ],
 };

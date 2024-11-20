@@ -17,7 +17,7 @@ export const ProjectPage = ({ slug }: IDynamicComponent) => {
 
   return (
     <div className={styles.projectPage}>
-      <Topping link={t('Projects.back')} path={ROUTES.projects} subtitle={project?.name || ''}>
+      <Topping link="Projects.back" path={ROUTES.projects} subtitle={project?.name || ''}>
         <Modal
           title={t('Tasks.add')}
           activator={
