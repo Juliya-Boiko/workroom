@@ -62,7 +62,7 @@ export const EditTaskForm = ({ task }: Props) => {
       _id: task._id,
       update: {
         ...data,
-        assignee: data.assignee?._id || undefined,
+        assignee: data.assignee?._id || null,
       },
     };
     update(values);

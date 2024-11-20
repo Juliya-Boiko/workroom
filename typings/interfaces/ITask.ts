@@ -25,7 +25,7 @@ export interface ITask extends Omit<ICreateTask, 'assignee' | 'attachments'> {
 export interface IUpdateTask {
   _id: string;
   update: {
-    assignee?: string;
+    assignee?: string | null;
     deadline?: Date;
     description?: string;
     priority?: EPriority;

@@ -19,7 +19,7 @@ export const WorkloadSection = () => {
     <section className={styles.workload}>
       <div className={styles.head}>
         <h2 className={styles.title}>{t('Employees.title')}</h2>
-        <BtnSecondary onClick={() => router.push(ROUTES.employees)}>
+        <BtnSecondary disabled={isLoading} onClick={() => router.push(ROUTES.employees)}>
           <span>
             {t(
               user?.position === EUserPosition.OWNER && !employees?.length

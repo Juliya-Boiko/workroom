@@ -48,8 +48,7 @@ export const SelectDrop = ({ clearable, label, options, value, onChange }: Props
   return (
     <div className={styles.wrapper} ref={ref}>
       {label && <div className={styles.label}>{label}</div>}
-      <button
-        type="button"
+      <div
         className={`${styles.selectedBtn} ${open ? styles.openDropBtn : ''}`}
         onClick={() => setOpen((prev) => !prev)}
       >
@@ -72,7 +71,7 @@ export const SelectDrop = ({ clearable, label, options, value, onChange }: Props
           )}
           <SvgHandler icon={EIconsSet.ChevronDown} />
         </div>
-      </button>
+      </div>
       {open && options && (
         <ul className={styles.options}>
           {options.map((option) => {
