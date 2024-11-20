@@ -2,7 +2,7 @@ import styles from './textareaField.module.scss';
 import { UseFormRegister, FieldValues, Path } from 'react-hook-form';
 
 type AreaFieldProps<T extends FieldValues> = {
-  label: string;
+  label?: string;
   name: Path<T>;
   placeholder?: string;
   disabled?: boolean;
@@ -26,7 +26,7 @@ export const TextareaField = <T extends FieldValues>({
       ${styles.label} ${disabled ? styles.labelDis : errors ? styles.labelErr : styles.labelDef}
     `}
   >
-    <span className={styles.title}>{label}</span>
+    {label && <span className={styles.title}>{label}</span>}
     <div className={styles.wrapper}>
       <textarea
         id={name}

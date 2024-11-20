@@ -21,7 +21,7 @@ export const TaskPage = ({ slug }: IDynamicComponent) => {
   return (
     <div className={styles.taskPage}>
       <Topping
-        link={t('Projects.backTasks')}
+        link="Projects.backTasks"
         path={`${ROUTES.project}/${task?.projectId}`}
         subtitle={task?.name || ''}
       >
