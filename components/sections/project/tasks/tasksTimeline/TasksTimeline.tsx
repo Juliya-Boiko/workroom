@@ -9,12 +9,12 @@ export const TasksTimeline = ({ tasks }: Props) => {
 
   return (
     <ul>
-      {tasks && 
+      {tasks &&
         tasks.map(({ _id, name }) => (
-        <li key={_id}>
-          <p>{name}</p>
-        </li>
-      ))}
+          <li key={_id}>
+            <p>{name}</p>
+          </li>
+        ))}
     </ul>
   );
 };
